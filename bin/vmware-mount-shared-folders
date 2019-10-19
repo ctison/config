@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+ft_vmware_mount_shared_folder() {
+    echo "Mounting ${1}  (/mnt/hgfs/${1})"
+    mkdir -p "/mnt/hgfs/${1}"
+    umount -f "/mnt/hgfs/${1}" 2>/dev/null
+    vmhgfs-fuse -o allow_other -o auto_unmount ".host:/${1}" "/mnt/hgfs/${1}"
+}
+
+if [ $# = 0 ]; then
+    vmware-hgfsclient | while read folder; do
+        ft_vmware_mount_shared_folder $folder
+    done
+    exit
+fi
+
+for ARG in $@; do
+    ft_vmware_mount_shared_folder $ARG
+done

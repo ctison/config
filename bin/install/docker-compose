@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+DOCKER_COMPOSE_VERSION='1.24.1'
+
+curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64
+chmod 500 /usr/local/bin/docker-compose

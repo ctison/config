@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+curl -Lo /usr/local/bin/reg https://github.com/genuinetools/reg/releases/latest/download/reg-linux-amd64
+chmod 500 /usr/local/bin/reg

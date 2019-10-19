@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -bp /opt/conda
+chmod 500 /opt/conda/bin/*
+rm Miniconda3-latest-Linux-x86_64.sh

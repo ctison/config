@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+HYDRA_VERSION='1.0.8'
+
+curl -LO https://github.com/ory/hydra/releases/download/v${HYDRA_VERSION}/hydra_${HYDRA_VERSION}_Linux_64-bit.tar.gz
+tar --no-same-o --no-same-p -xzf hydra_${HYDRA_VERSION}_Linux_64-bit.tar.gz -C /usr/local/bin/ hydra
+rm hydra_${HYDRA_VERSION}_Linux_64-bit.tar.gz
+chmod 500 /usr/local/bin/hydra

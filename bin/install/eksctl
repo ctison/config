@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+curl -LO https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_Linux_amd64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf eksctl_Linux_amd64.tar.gz
+rm eksctl_Linux_amd64.tar.gz
+chmod 500 /usr/local/bin/eksctl

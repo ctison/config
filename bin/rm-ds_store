@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -ex
+
+exec find . -name '.DS_Store' -type f -print -delete

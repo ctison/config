@@ -1,0 +1,21 @@
+#!/bin/sh
+
+umask 0077
+
+if [ $# -ne 3 ] && [ $# -ne 4 ]; then
+	echo "Usage: $0 CONTAINER NAME PORT [LOCAL_PORT]"
+	echo '  CONTAINER is the container which specified PORT will be exposed'
+	echo '  NAME is the name for the socat container'
+	echo '  PORT is the port exposed on the CONTAINER'
+	echo '  LOCAL_PORT is the port to expose on the host and defaults to PORT'
+	exit 1
+fi
+
+set -ex
+
+CONTAINER_URL="`docker inspect "$1" -f '{{.NetworkSettings.IPAddress}}'`"
+NAME="$2"
+PORT="$3"
+LOCAL_PORT="${4:-$PORT}"
+
+exec docker run -d --rm -p "$LOCAL_PORT":"$PORT" --name "$NAME" ctison/socat "TCP-LISTEN:$PORT,reuseaddr,fork" "TCP:$CONTAINER_URL:$PORT"

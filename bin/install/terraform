@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+TERRAFORM_VERSION='0.12.12'
+
+curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin
+rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+chmod 500 /usr/local/bin/terraform

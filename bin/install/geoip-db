@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+TAR='tar --no-same-o --no-same-p'
+
+# GeoIP databases
+mkdir -p /usr/share/geoip
+curl -L https://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN.tar.gz | ${TAR} -xz --strip-components=1 --wildcards '*.mmdb'
+curl -L https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz | ${TAR} -xz --strip-components=1 --wildcards '*.mmdb'
+curl -L https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz | ${TAR} -xz --strip-components=1 --wildcards '*.mmdb'

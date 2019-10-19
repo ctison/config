@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $# != 1 ]; then
+  cat << EOF
+Usage:
+  type-ls <BINARY IN PATH>
+Example:
+  type-ls ls
+EOF
+  exit 1
+fi
+
+for l in $(type -ap "$1"); do
+  T=$(type -ap $l)
+  ls -lah -- "$T"
+done

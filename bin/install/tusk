@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+TUSK_VERSION='0.4.7'
+
+curl -LO https://github.com/rliebz/tusk/releases/download/v${TUSK_VERSION}/tusk_${TUSK_VERSION}_linux_amd64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf tusk_${TUSK_VERSION}_linux_amd64.tar.gz tusk
+rm tusk_${TUSK_VERSION}_linux_amd64.tar.gz

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+if [ $# = 0 ]; then
+	cat << EOF
+Usage:
+	docker-ops [DOCKER_RUN_OPTIONS] IMAGE [ARGS]
+Example:
+	docker-ops --security-opt seccomp:unconfined ubuntu bash
+EOF
+	exit
+fi
+
+NAME=`echo "${PWD##*/}" | tr ' ' '-'`
+
+set -x
+
+exec docker run -it --name "${NAME}" --hostname "${NAME}" \
+	-v "${PWD}":/"${NAME}" --workdir "/${NAME}" $@

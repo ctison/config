@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+DIVE_VERSION='0.8.0'
+
+curl -LO https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb
+dpkg -i dive_${DIVE_VERSION}_linux_amd64.deb
+chmod 500 /usr/local/bin/dive
+rm dive_${DIVE_VERSION}_linux_amd64.deb

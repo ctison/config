@@ -1,0 +1,18 @@
+name: x
+usage: 42
+
+options:
+  pwd:
+    environment: PWD
+
+tasks:
+  k8z:
+    usage: scaffold kustomize
+    options:
+      path:
+        usage: 'path where to create folders and files (Default: $PWD)'
+        environment: PWD
+    run:
+    - mkdir -p ${path}/k8z/{base,dev,prod}/{k8s,config}/
+    - touch ${path}/k8z/{base,dev,prod}/kustomization.yaml
+    - touch ${path}/k8z/base/k8s/{deployment,service}.yaml

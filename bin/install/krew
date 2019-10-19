@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+curl -LO https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz
+curl -LO https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.yaml
+tar --no-same-o --no-same-p -xf krew.tar.gz ./krew-linux_amd64
+./krew-linux_amd64 install --manifest=krew.yaml --archive=krew.tar.gz
+rm krew.tar.gz krew.yaml krew-linux_amd64

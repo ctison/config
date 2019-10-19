@@ -1,0 +1,11 @@
+# LogLevel DEBUG
+
+AllowUsers                       root
+
+PubkeyAuthentication             yes
+HostKey                          /root/ssh/ssh_host_ed25519_key.key
+AuthorizedKeysFile               /root/ssh/authorized_keys
+
+PermitRootLogin                  yes
+PasswordAuthentication           no
+ChallengeResponseAuthentication  no

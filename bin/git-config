@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -ex
+
+git config --global user.name 'Charles Tison'
+git config --global user.email 'ctison@pm.me'
+
+git config --global user.signingKey 370CFA775A27453DAD251F7230F902E98B6158A5
+git config --global commit.gpgsign true
+# NOTE: Do not forget to set GPG_TTY=$(tty) to permit gpg to prompt for passphrase.
+
+git config --global url.'git@github.com:'.insteadOf 'https://github.com/'
+git config --global url.'git@gitlab.com:'.insteadOf 'https://gitlab.com/'

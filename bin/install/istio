@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+ISTIO_VERSION='1.3.2'
+
+curl -LO https://github.com/istio/istio/releases/download/${ISTIO_VERSION}/istio-${ISTIO_VERSION}-linux.tar.gz
+tar --no-same-o --no-same-p -xzf istio-${ISTIO_VERSION}-linux.tar.gz -C /usr/local/
+rm -- istio-${ISTIO_VERSION}-linux.tar.gz
+ln -s /usr/local/istio-${ISTIO_VERSION} /usr/local/istio
+ln -s /usr/local/istio/bin/istioctl /usr/local/bin/

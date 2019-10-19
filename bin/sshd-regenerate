@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -ex
+
+rm -f -- /etc/ssh/ssh_host_*
+exec ssh-keygen -A

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+CONTAINERS=$(docker ps -qf status=created -f status=paused -f status=exited -f status=dead)
+if [ "${CONTAINERS}" ]; then
+    set -x
+	docker rm -- ${CONTAINERS}
+    set +x
+fi
+
+IMAGES=$(docker images -qf dangling=true)
+if [ "${IMAGES}" ]; then
+    set -x
+    docker rmi  -- ${IMAGES}
+    set +x
+fi
+
+set -x
+exec docker volume prune -f

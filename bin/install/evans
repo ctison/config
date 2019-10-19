@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+TAR='tar --no-same-o --no-same-p'
+
+curl -LO https://github.com/ktr0731/evans/releases/latest/download/evans_linux_amd64.tar.gz
+${TAR} -C /usr/local/bin/ -xzf evans_linux_amd64.tar.gz evans
+chmod 500 /usr/local/bin/evans
+rm evans_linux_amd64.tar.gz

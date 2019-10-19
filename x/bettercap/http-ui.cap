@@ -1,0 +1,13 @@
+# Configure API
+set api.rest.address 0.0.0.0
+set api.rest.port 8081
+set api.rest.websocket true
+
+# Configure UI
+set http.server.address 0.0.0.0
+set http.server.port 8080
+set http.server.path /usr/share/bettercap/ui
+
+# Start serving
+api.rest on
+http.server on

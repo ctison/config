@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+curl -Lo /usr/local/bin/gomplate https://github.com/hairyhenderson/gomplate/releases/latest/download/gomplate_linux-amd64
+chmod 500 /usr/local/bin/gomplate

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+umask 0077
+
+if [[ $# < 2 || $# > 3 ]]; then
+	echo "Usage: $0 GO_PRO_SD_FOLDER DEST_FOLDER [DATE]"
+	exit 1
+fi
+
+set -e
+
+MOVIES="`find $1 -type f -iname '*.MP4' -not -name '.*'`"
+for M in $MOVIES ; do
+	DATE=`date -r $M '+%Y-%m-%d %H-%M-%S'`
+	if [[ "$DATE" > "$3" ]]; then
+		NAME="$2/$DATE.MP4"
+		set -x
+		cp -v -n -- "$M" "$NAME"
+		set +x
+		chmod 0400 "$NAME"
+	fi
+done

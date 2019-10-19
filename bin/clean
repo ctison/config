@@ -1,0 +1,11 @@
+#!/bin/sh
+
+umask 0077
+set -ex
+
+MODE=${1:-'0600'}
+
+for f in `find .`; do
+  test -d "$f" && chmod 0700 "$f"
+  test -f "$f" && chmod $MODE "$f"
+done

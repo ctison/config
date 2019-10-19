@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+HUB_VERSION='2.12.8'
+
+curl -LO https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz
+tar --no-same-o --no-same-p -xzf hub-linux-amd64-${HUB_VERSION}.tgz
+hub-linux-amd64-${HUB_VERSION}/install
+rm -rf -- hub-linux-amd64-${HUB_VERSION} hub-linux-amd64-${HUB_VERSION}.tgz

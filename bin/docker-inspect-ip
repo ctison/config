@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 CONTAINER"
+	exit
+fi
+
+CONTAINER="$1"
+
+set -x
+
+exec docker inspect "$CONTAINER" -f '{{.NetworkSettings.IPAddress}}'

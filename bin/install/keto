@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+KETO_VERSION='0.3.6-sandbox'
+
+curl -LO https://github.com/ory/keto/releases/download/v${KETO_VERSION}/keto_${KETO_VERSION}_Linux_64-bit.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf keto_${KETO_VERSION}_Linux_64-bit.tar.gz keto
+rm keto_${KETO_VERSION}_Linux_64-bit.tar.gz
+chmod 500 /usr/local/bin/keto

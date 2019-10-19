@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+HELM_VERSION='3.0.0-beta.4'
+curl -LO https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
+tar --no-same-o --no-same-p -xzf helm-v${HELM_VERSION}-linux-amd64.tar.gz -C /usr/local/bin/ linux-amd64/helm --strip-c=1
+chmod 500 /usr/local/bin/helm
+mv /usr/local/bin/helm /usr/local/bin/helm3
+rm helm-v${HELM_VERSION}-linux-amd64.tar.gz

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ex
+umask 0077
+
+AWS_IAM_AUTHENTICATOR_VERSION='0.4.0'
+
+curl -Lo /usr/local/bin/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v${AWS_IAM_AUTHENTICATOR_VERSION}/aws-iam-authenticator_${AWS_IAM_AUTHENTICATOR_VERSION}_linux_amd64
+chmod 500 /usr/local/bin/aws-iam-authenticator
