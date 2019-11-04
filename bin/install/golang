@@ -3,7 +3,7 @@
 set -ex
 umask 0077
 
-GOLANG_VERSION='1.13.3'
+GOLANG_VERSION='1.13.4'
 
 curl -LO https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz
 tar --no-same-o --no-same-p -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz

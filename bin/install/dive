@@ -3,7 +3,7 @@
 set -ex
 umask 0077
 
-DIVE_VERSION='0.8.0'
+DIVE_VERSION='0.8.1'
 
 curl -LO https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb
 dpkg -i dive_${DIVE_VERSION}_linux_amd64.deb

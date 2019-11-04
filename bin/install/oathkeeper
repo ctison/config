@@ -3,7 +3,7 @@
 set -ex
 umask 0077
 
-OATHKEEPER_VERSION='0.19.1-beta.1'
+OATHKEEPER_VERSION='0.32.0-beta.1'
 
 curl -LO https://github.com/ory/oathkeeper/releases/download/v${OATHKEEPER_VERSION}/oathkeeper_${OATHKEEPER_VERSION}_Linux_64-bit.tar.gz
 tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf oathkeeper_${OATHKEEPER_VERSION}_Linux_64-bit.tar.gz oathkeeper

@@ -3,7 +3,7 @@
 set -ex
 umask 0077
 
-RANCHER_VERSION='v2.3.0'
+RANCHER_VERSION='v2.3.2'
 
 curl -LO https://github.com/rancher/cli/releases/download/${RANCHER_VERSION}/rancher-linux-amd64-${RANCHER_VERSION}.tar.xz
 tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=2 -xf rancher-linux-amd64-${RANCHER_VERSION}.tar.xz ./rancher-${RANCHER_VERSION}/rancher

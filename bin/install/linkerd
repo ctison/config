@@ -3,7 +3,7 @@
 set -ex
 umask 0077
 
-LINKERD_VERSION='stable-2.5.0'
+LINKERD_VERSION='stable-2.6.0'
 
 curl -Lo /usr/local/bin/linkerd https://github.com/linkerd/linkerd2/releases/download/${LINKERD_VERSION}/linkerd2-cli-${LINKERD_VERSION}-linux
 chmod 500 /usr/local/bin/linkerd
