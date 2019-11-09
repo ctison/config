@@ -16,9 +16,6 @@ RUN echo 'deb https://http.kali.org/kali kali-bleeding-edge main contrib non-fre
 RUN echo 'deb https://packages.cloud.google.com/apt cloud-sdk main' > /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
-# RUN echo 'deb https://storage.googleapis.com/bazel-apt stable jdk1.8' > /etc/apt/sources.list.d/bazel.list
-# RUN curl -sS https://bazel.build/bazel-release.pub.gpg | apt-key add -
-
 RUN echo 'deb https://deb.nodesource.com/node_12.x stretch main' > /etc/apt/sources.list.d/nodesource.list
 RUN curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 
@@ -33,49 +30,34 @@ RUN rm -f /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install --autoremove -y \
-				# amass \
 				apt \
-				# bazel \
-				# bettercap{,-caplets,-ui} \
 				bind9-host \
-				# calibre \
-				# certbot \
-				# cmatrix \
+				certbot \
 				docker.io \
 				dpkg \
 				ffmpeg \
 				fish \
-				# fzf \
 				git \
 				google-cloud-sdk \
-				google-cloud-sdk-cloud-build-local \
-				# hashcat \
 				htop \
 				imagemagick \
-				# inotify-tools \
 				kubectl \
 				libimage-exiftool-perl \
 				liblz4-tool \
 				locales \
 				make \
 				man \
-				# mmdb-bin \
 				ncat \
 				nodejs \
 				mediainfo \
-				# metasploit-framework \
-				# mitmproxy \
 				net-tools \
 				nmap \
-				# origami-pdf \
 				p7zip \
 				pinfo \
-				# postgresql-11 \
 				python3 \
 				python3-pip \
 				socat \
 				ssh \
-				# tesseract-ocr \
 				tmux \
 				tree \
 				unrar \
@@ -105,11 +87,6 @@ RUN pip3 install certbot-dns-route53
 RUN /config/bin/install/golang
 ENV PATH="$PATH:/root/go/bin"
 
-# Rust
-# RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
-# ENV PATH="$PATH:/root/.cargo/bin"
-# RUN rustup component add rustfmt
-
 RUN /config/bin/install/miniconda
 ENV PATH="/opt/conda/bin:$PATH"
 
@@ -120,22 +97,14 @@ RUN kubectl krew install access-matrix config-cleanup get-all konfig prune-unuse
 RUN ln -s /root/.krew/bin/kubectl-view_serviceaccount_kubeconfig /usr/local/bin/kubectl-vsk
 
 RUN /config/bin/install/aws-iam-authenticator
-RUN /config/bin/install/crictl
-RUN /config/bin/install/dive
 RUN /config/bin/install/docker-compose
 RUN /config/bin/install/eksctl
 RUN /config/bin/install/gomplate
-RUN /config/bin/install/grpc
 RUN /config/bin/install/hub
-RUN /config/bin/install/hydra
 RUN /config/bin/install/jq
 RUN /config/bin/install/k9s
-RUN /config/bin/install/keto
 RUN /config/bin/install/kustomize
 RUN /config/bin/install/nim
-RUN /config/bin/install/oathkeeper
-RUN /config/bin/install/protoc
 RUN /config/bin/install/pulumi
-RUN /config/bin/install/reg
 RUN /config/bin/install/terraform
 RUN /config/bin/install/tusk

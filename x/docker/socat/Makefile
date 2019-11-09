@@ -1,4 +1,4 @@
-include ../../x/make/docker.mk
+include ../../make/docker.mk
 
 DOCKER_IMAGE_NAME    := ctison/socat
 DOCKER_BUILD_OPTIONS += --no-cache --pull

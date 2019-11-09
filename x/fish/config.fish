@@ -43,6 +43,7 @@ function setupConfig -a CONFIGPATH
   if type -q tusk 2>/dev/null && test -f "$CONFIGPATH/x/tusk/tusk.yaml"
     alias x="tusk -f '$CONFIGPATH/x/tusk/tusk.yaml'"
   end
+  set -p PATH $CONFIGPATH/bin
 end
 
 if test -d ~/config/.git
@@ -58,4 +59,8 @@ functions -e setupConfig
 if type -q gpg 2>/dev/null
   alias gpg='gpg --keyid-format long'
   set -gx GPG_TTY (tty)
+end
+
+if type -q docker-compose 2>/dev/null
+  alias dc=docker-compose
 end

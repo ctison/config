@@ -1,0 +1,5 @@
+#!/bin/sh
+umask 0077
+set -ex
+
+pulumi new -c 'backend.url=file://.' typescript

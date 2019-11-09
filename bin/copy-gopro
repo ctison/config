@@ -7,16 +7,29 @@ if [[ $# < 2 || $# > 3 ]]; then
 	exit 1
 fi
 
-set -e
+function displayNotification () {
+	osascript -e "display notification \"$1\" with title \"🎥 Copy GoPro\""
+	echo "$1"
+}
 
 MOVIES="`find $1 -type f -iname '*.MP4' -not -name '.*'`"
 for M in $MOVIES ; do
 	DATE=`date -r $M '+%Y-%m-%d %H-%M-%S'`
 	if [[ "$DATE" > "$3" ]]; then
+		if [ "`df -g / | tail -n1 | awk -F' ' '{print $4}'`" -lt 10 ]; then
+			displayNotification 'ERROR: not enough memory available  💾'
+			exit 1
+		fi
 		NAME="$2/$DATE.MP4"
-		set -x
-		cp -v -n -- "$M" "$NAME"
-		set +x
+		printf '%s -> %s ' "$M" "$NAME"
+		cp -n -- "$M" "$NAME"
+		if [ $? -ne 0 ]; then
+			echo KO
+		else
+			echo OK
+		fi
 		chmod 0400 "$NAME"
 	fi
 done
+
+displayNotification 'Finished successfuly 🚀'

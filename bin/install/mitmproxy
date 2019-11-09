@@ -1,0 +1,11 @@
+#!/bin/sh
+
+VERSION='4.0.4'
+
+umask 0077
+set -ex
+
+curl -LO https://snapshots.mitmproxy.org/${VERSION}/mitmproxy-${VERSION}-linux.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf mitmproxy-${VERSION}-linux.tar.gz
+chmod 500 /usr/local/bin/mitm*
+rm mitmproxy-${VERSION}-linux.tar.gz

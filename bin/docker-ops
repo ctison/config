@@ -17,4 +17,4 @@ NAME=`echo "${PWD##*/}" | tr ' ' '-'`
 set -x
 
 exec docker run -it --name "${NAME}" --hostname "${NAME}" \
-	-v "${PWD}":/"${NAME}" --workdir "/${NAME}" $@
+	-v "${PWD}":/"${NAME}":delegated --workdir "/${NAME}" $@

@@ -6,13 +6,44 @@ options:
     environment: PWD
 
 tasks:
-  k8z:
-    usage: scaffold kustomize
+  build-kali:
     options:
-      path:
-        usage: 'path where to create folders and files (Default: $PWD)'
-        environment: PWD
+      options:
+        usage: options to pass to docker build command
     run:
-    - mkdir -p ${path}/k8z/{base,dev,prod}/{k8s,config}/
-    - touch ${path}/k8z/{base,dev,prod}/kustomization.yaml
-    - touch ${path}/k8z/base/k8s/{deployment,service}.yaml
+    - docker build -f ../docker/kali/Dockerfile -t ctison/kali ${options} ../../
+
+  create-bin:
+    args:
+      NAME: {}
+    run:
+    - 'test ! -f ../../bin/${NAME}'
+    - |
+      /bin/sh -c '
+      cat > ../../bin/${NAME} << EOF
+      #!/bin/sh
+      umask 0077
+      set -ex
+      
+      EOF'
+    - chmod 700 ../../bin/${NAME}
+
+  create-bin-install:
+    args:
+      NAME: {}
+    run:
+    - 'test ! -f ../../bin/install/${NAME}'
+    - |
+        /bin/sh -c '
+        cat > ../../bin/install/${NAME} << EOF
+        #!/bin/sh
+        umask 0077
+        set -ex
+
+        EOF'
+    - chmod 700 ../../bin/install/${NAME}
+
+  install:
+    args:
+      NAME: {}
+    run: exec ../../bin/install/${NAME}
