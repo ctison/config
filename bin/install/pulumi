@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='1.5.1'
+set -ex
 
-PULUMI_VERSION='1.5.1'
-
-curl -LO https://get.pulumi.com/releases/sdk/pulumi-v${PULUMI_VERSION}-linux-x64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=1 -xzf pulumi-v${PULUMI_VERSION}-linux-x64.tar.gz pulumi/pulumi pulumi/pulumi-language-nodejs
-rm pulumi-v${PULUMI_VERSION}-linux-x64.tar.gz
+curl -LO https://get.pulumi.com/releases/sdk/pulumi-v${VERSION}-linux-x64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=1 -xzf pulumi-v${VERSION}-linux-x64.tar.gz pulumi/pulumi pulumi/pulumi-language-nodejs
+rm pulumi-v${VERSION}-linux-x64.tar.gz
 chmod 500 /usr/local/bin/pulumi /usr/local/bin/pulumi-language-nodejs

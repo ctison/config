@@ -37,6 +37,7 @@ RUN apt-get install --autoremove -y \
 				dpkg \
 				ffmpeg \
 				fish \
+				fping \
 				git \
 				google-cloud-sdk \
 				htop \
@@ -59,19 +60,22 @@ RUN apt-get install --autoremove -y \
 				socat \
 				ssh \
 				tmux \
+				traceroute \
 				tree \
 				unrar \
 				vim \
 				wget \
 				whois \
+				whowatch \
 				xattr \
 				yarn \
 				youtube-dl \
 				zip
 
 COPY ./ /config
+RUN ln -sv /config ~/
 
-ENV PATH="/config/bin:$PATH"
+ENV PATH="~/config/bin:$PATH"
 ENV EDITOR='vim'
 
 RUN /config/docker/kali/configure
@@ -85,16 +89,16 @@ RUN pip3 install certbot-dns-route53
 
 # Golang
 RUN /config/bin/install/golang
-ENV PATH="$PATH:/root/go/bin"
+ENV PATH="$PATH:~/go/bin"
 
 RUN /config/bin/install/miniconda
 ENV PATH="/opt/conda/bin:$PATH"
 
 RUN /config/bin/install/krew
-ENV PATH="$PATH:/root/.krew/bin"
+ENV PATH="$PATH:~/.krew/bin"
 RUN kubectl krew update
 RUN kubectl krew install access-matrix config-cleanup get-all konfig prune-unused rbac-lookup resource-capacity sniff view-serviceaccount-kubeconfig warp who-can
-RUN ln -s /root/.krew/bin/kubectl-view_serviceaccount_kubeconfig /usr/local/bin/kubectl-vsk
+RUN ln -s ~/.krew/bin/kubectl-view_serviceaccount_kubeconfig /usr/local/bin/kubectl-vsk
 
 RUN /config/bin/install/aws-iam-authenticator
 RUN /config/bin/install/docker-compose

@@ -1,7 +1,6 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+set -ex
 
 curl -LO https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz
 curl -LO https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.yaml

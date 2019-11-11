@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='3.10.1'
+set -ex
 
-PROTOC_VERSION='3.10.1'
-
-curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-$(uname -m).zip
-unzip -q protoc-${PROTOC_VERSION}-linux-$(uname -m).zip -d /usr/local/protoc/
-rm protoc-${PROTOC_VERSION}-linux-$(uname -m).zip
+curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION}/protoc-${VERSION}-linux-$(uname -m).zip
+unzip -q protoc-${VERSION}-linux-$(uname -m).zip -d /usr/local/protoc/
+rm protoc-${VERSION}-linux-$(uname -m).zip
 ln -fsv /usr/local/protoc/bin/protoc /usr/local/bin/protoc

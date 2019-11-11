@@ -1,7 +1,6 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+set -ex
 
 # Swift
 # ARG SWIFT_VERSION='5.1'

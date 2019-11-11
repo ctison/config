@@ -1,0 +1,9 @@
+#!/bin/sh
+umask 0077
+VERSION='0.7.0'
+set -ex
+
+curl -LO https://github.com/kubeflow/kubeflow/releases/download/v${VERSION}/kfctl_v${VERSION}_linux.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf kfctl_v${VERSION}_linux.tar.gz ./kfctl
+chmod 500 /usr/local/bin/kfctl
+rm kfctl_v${VERSION}_linux.tar.gz

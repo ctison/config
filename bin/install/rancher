@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='v2.3.2'
+set -ex
 
-RANCHER_VERSION='v2.3.2'
-
-curl -LO https://github.com/rancher/cli/releases/download/${RANCHER_VERSION}/rancher-linux-amd64-${RANCHER_VERSION}.tar.xz
-tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=2 -xf rancher-linux-amd64-${RANCHER_VERSION}.tar.xz ./rancher-${RANCHER_VERSION}/rancher
-rm rancher-linux-amd64-${RANCHER_VERSION}.tar.xz
+curl -LO https://github.com/rancher/cli/releases/download/${VERSION}/rancher-linux-amd64-${VERSION}.tar.xz
+tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=2 -xf rancher-linux-amd64-${VERSION}.tar.xz ./rancher-${VERSION}/rancher
+rm rancher-linux-amd64-${VERSION}.tar.xz
 chmod 500 /usr/local/bin/rancher

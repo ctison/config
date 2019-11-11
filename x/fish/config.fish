@@ -23,11 +23,17 @@ set fish_color_valid_path          --underline
 umask 0077
 
 if test (uname -s) = Darwin
-  set -gx HOMEBREW_CASK_OPTS '--appdir=~/Applications'
+  alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+  set -a PATH /Library/Developer/CommandLineTools/usr/bin
 end
 
 if type -q git 2>/dev/null
   alias gs='git status --short --branch'
+  alias gl='git log --pretty=oneline'
+  alias gc='git commit'
+  alias gp='git push'
+  alias ga='git add'
+  alias gr='git remote'
 end
 
 if type -q kubectl 2>/dev/null

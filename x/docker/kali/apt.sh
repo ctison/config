@@ -18,3 +18,7 @@ apt-get install -y \
           origami-pdf \
           postgresql-11 \
           tesseract-ocr
+
+# Networking
+apt-get install -y \
+amass 

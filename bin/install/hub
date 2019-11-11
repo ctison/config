@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='2.13.0'
+set -ex
 
-HUB_VERSION='2.13.0'
-
-curl -LO https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz
-tar --no-same-o --no-same-p -xzf hub-linux-amd64-${HUB_VERSION}.tgz
-hub-linux-amd64-${HUB_VERSION}/install
-rm -rf -- hub-linux-amd64-${HUB_VERSION} hub-linux-amd64-${HUB_VERSION}.tgz
+curl -LO https://github.com/github/hub/releases/download/v${VERSION}/hub-linux-amd64-${VERSION}.tgz
+tar --no-same-o --no-same-p -xzf hub-linux-amd64-${VERSION}.tgz
+hub-linux-amd64-${VERSION}/install
+rm -rf -- hub-linux-amd64-${VERSION} hub-linux-amd64-${VERSION}.tgz

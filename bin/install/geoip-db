@@ -1,7 +1,6 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+set -ex
 
 # GeoIP databases
 mkdir -p /usr/share/geoip

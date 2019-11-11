@@ -43,7 +43,7 @@ tasks:
         EOF'
     - chmod 700 ../../bin/install/${NAME}
 
-  install:
+  i:
     args:
       NAME: {}
     run: exec ../../bin/install/${NAME}

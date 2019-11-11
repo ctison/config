@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='1.0.2'
+set -ex
 
-NIM_VERSION='1.0.2'
-
-curl -LO https://nim-lang.org/download/nim-${NIM_VERSION}-linux_x64.tar.xz
-tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=2 -xf nim-${NIM_VERSION}-linux_x64.tar.xz nim-${NIM_VERSION}/bin/
+curl -LO https://nim-lang.org/download/nim-${VERSION}-linux_x64.tar.xz
+tar --no-same-o --no-same-p -C /usr/local/bin/ --strip=2 -xf nim-${VERSION}-linux_x64.tar.xz nim-${VERSION}/bin/
 chmod 500 /usr/local/bin/*
-rm nim-${NIM_VERSION}-linux_x64.tar.xz
+rm nim-${VERSION}-linux_x64.tar.xz

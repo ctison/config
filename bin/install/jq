@@ -1,7 +1,6 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+set -ex
 
 curl -LO https://github.com/stedolan/jq/releases/latest/download/jq-linux64
 chmod 500 jq-linux64

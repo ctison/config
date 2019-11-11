@@ -1,7 +1,6 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+set -ex
 
 curl -LO https://github.com/ktr0731/evans/releases/latest/download/evans_linux_amd64.tar.gz
 tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf evans_linux_amd64.tar.gz evans

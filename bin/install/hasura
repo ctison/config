@@ -1,8 +1,6 @@
 #!/bin/sh
-
-VERSION='v1.0.0-beta.9'
-
 umask 0077
+VERSION='v1.0.0-beta.9'
 set -ex
 
 curl -Lo /usr/local/bin/hasura https://github.com/hasura/graphql-engine/releases/download/${VERSION}/cli-hasura-linux-amd64

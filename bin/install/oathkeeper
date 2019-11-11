@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='0.32.0-beta.1'
+set -ex
 
-OATHKEEPER_VERSION='0.32.0-beta.1'
-
-curl -LO https://github.com/ory/oathkeeper/releases/download/v${OATHKEEPER_VERSION}/oathkeeper_${OATHKEEPER_VERSION}_Linux_64-bit.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf oathkeeper_${OATHKEEPER_VERSION}_Linux_64-bit.tar.gz oathkeeper
+curl -LO https://github.com/ory/oathkeeper/releases/download/v${VERSION}/oathkeeper_${VERSION}_Linux_64-bit.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf oathkeeper_${VERSION}_Linux_64-bit.tar.gz oathkeeper
 chmod 500 /usr/local/bin/oathkeeper
-rm oathkeeper_${OATHKEEPER_VERSION}_Linux_64-bit.tar.gz
+rm oathkeeper_${VERSION}_Linux_64-bit.tar.gz

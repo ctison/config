@@ -1,8 +1,6 @@
 #!/bin/sh
-
-VERSION='4.0.4'
-
 umask 0077
+VERSION='4.0.4'
 set -ex
 
 curl -LO https://snapshots.mitmproxy.org/${VERSION}/mitmproxy-${VERSION}-linux.tar.gz

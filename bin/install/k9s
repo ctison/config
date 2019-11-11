@@ -1,11 +1,9 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='0.9.3'
+set -ex
 
-K9S_VERSION='0.9.3'
-
-curl -LO https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_${K9S_VERSION}_Linux_x86_64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf k9s_${K9S_VERSION}_Linux_x86_64.tar.gz k9s
+curl -LO https://github.com/derailed/k9s/releases/download/${VERSION}/k9s_${VERSION}_Linux_x86_64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xzf k9s_${VERSION}_Linux_x86_64.tar.gz k9s
 chmod 500 /usr/local/bin/k9s
-rm k9s_${K9S_VERSION}_Linux_x86_64.tar.gz
+rm k9s_${VERSION}_Linux_x86_64.tar.gz

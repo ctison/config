@@ -1,13 +1,11 @@
 #!/bin/sh
-
-set -ex
 umask 0077
+VERSION='1.13.4'
+set -ex
 
-GOLANG_VERSION='1.13.4'
-
-curl -LO https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz
-rm go${GOLANG_VERSION}.linux-amd64.tar.gz
+curl -LO https://dl.google.com/go/go${VERSION}.linux-amd64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local -xzf go${VERSION}.linux-amd64.tar.gz
+rm go${VERSION}.linux-amd64.tar.gz
 ln -st /usr/local/bin /usr/local/go/bin/*
 
 go get -u -v golang.org/x/tools/cmd/goimports

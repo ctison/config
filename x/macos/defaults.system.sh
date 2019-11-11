@@ -7,3 +7,6 @@ defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEna
 
 # Deactivate captive portal
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
+
+# Add host.docker.internal
+echo 127.0.0.1 host.docker.internal

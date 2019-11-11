@@ -1,0 +1,26 @@
+#!/bin/sh
+umask 0077
+set -ex
+
+if [ $# != 1 ]; then
+  echo 'Usage: next-init DIRNAME'
+  exit 1
+fi
+
+npx create-next-app -- "$1"
+
+cd "$1"
+
+npx next telemetry disable
+
+cat > next.config.js <<EOF
+module.exports = {
+  poweredByHeader: false,
+}
+EOF
+
+touch tsconfig.json
+
+for file in components/*.js pages/*.js ; do
+  mv "$file" $(echo "$file" | sed 's/\.js$/.tsx/')
+done

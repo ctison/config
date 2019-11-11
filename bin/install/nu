@@ -1,9 +1,7 @@
 #!/bin/sh
-
 umask 0077
-set -ex
-
 VERSION='0_5_0'
+set -ex
 
 # NOT WORKING
 
