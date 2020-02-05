@@ -1,0 +1,74 @@
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+
+mkdir migrations
+cat > config.yaml <<EOF
+### Hasura configuration file
+# List migrations:  hasura migrate status
+# Apply migrations: hasura migrate apply
+
+endpoint: http://kubernetes.docker.internal:30000
+EOF
+mkdir src
+
+mkdir -p k8z/{base,dev,prod,staging}
+touch k8z/{base,dev,prod,staging}/kustomization.yaml
+
+echo '/node_modules/' > .gitignore
+
+cat > .dockerignore <<EOF
+*
+!/migrations/
+EOF
+
+cat > Dockerfile <<EOF
+FROM hasura/graphql-engine:v1.0.0.cli-migrations
+COPY migrations/ /hasura-migrations
+EOF
+
+cat > package.json <<EOF
+{
+  "private": true,
+  "scripts": {
+    "gen": "graphql-codegen",
+    "format": "prettier --write **/*.{ts,tsx,json,yaml,gql,md,html,css}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,json,yaml,gql,md,html,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "endOfLine": "lf",
+    "trailingComma": "all",
+    "printWidth": 100
+  }
+}
+EOF
+
+npm i -D husky lint-staged prettier
+npm i -O @graphql-codegen/cli @graphql-codegen/introspection graphql
+
+cat > codegen.yaml <<EOF
+config:
+namingConvention:
+  typeNames: change-case#pascalCase
+  transformUnderscore: true
+scalars:
+  uuid: string
+generates:
+  ./gen/root.json:
+    schema:
+      - http://kubernetes.docker.internal:30000/v1/graphql
+    plugins:
+      - introspection
+EOF

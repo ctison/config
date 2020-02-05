@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='0.32.0-beta.1'
+VERSION='0.32.1-beta.1'
 set -ex
 
 curl -LO https://github.com/ory/oathkeeper/releases/download/v${VERSION}/oathkeeper_${VERSION}_Linux_64-bit.tar.gz

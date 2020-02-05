@@ -3,15 +3,15 @@
 set -e
 
 NAMESPACE="${1:-default}"
-NAME=`echo "${PWD##*/}" | tr '. ' '-'`
+NAME=$(echo "${PWD##*/}" | tr '. ' '-')
 
-FILE=`cat <<EOF
+FILE=$(cat <<EOF
 kind: Pod
 apiVersion: v1
 metadata:
-  name: "${NAME}"
+  name: "$NAME"
 spec:
-  hostname: "${NAME}"
+  hostname: "$NAME"
   restartPolicy: Never
   volumes:
     - name: hostvolume
@@ -30,14 +30,14 @@ spec:
       tty: true
       volumeMounts:
         - name: hostvolume
-          mountPath: "/${NAME}"
+          mountPath: "/$NAME"
         - name: docker
           mountPath: /var/run/docker.sock
-      workingDir: "/${NAME}"
+      workingDir: "/$NAME"
 EOF
-`
+)
 
-echo "$FILE" | kubectl -n ${NAMESPACE} apply -f-
-kubectl -n ${NAMESPACE} wait --for=condition=Ready -- "pod/${NAME}"
-kubectl -n ${NAMESPACE} attach -it -- "pod/${NAME}"
-kubectl -n ${NAMESPACE} delete -- "pod/${NAME}"
+echo "$FILE" | kubectl -n "$NAMESPACE" apply -f-
+kubectl -n "$NAMESPACE" wait --for=condition=Ready -- "pod/$NAME"
+kubectl -n "$NAMESPACE" attach -it -- "pod/$NAME"
+kubectl -n "$NAMESPACE" delete -- "pod/$NAME"

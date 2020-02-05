@@ -1,0 +1,11 @@
+#!/bin/sh
+umask 0077
+VERSION='0.7.0'
+set -eux
+
+
+curl -LO https://github.com/arduino/arduino-cli/releases/download/${VERSION}/arduino-cli_${VERSION}_Linux_64bit.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf arduino-cli_${VERSION}_Linux_64bit.tar.gz arduino-cli
+chmod 500 /usr/local/bin/arduino-cli
+mv /usr/local/bin/arduino-cli /usr/local/bin/arduino
+rm arduino-cli_${VERSION}_Linux_64bit.tar.gz

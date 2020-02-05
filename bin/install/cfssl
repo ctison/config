@@ -1,0 +1,13 @@
+#!/bin/sh
+umask 0077
+VERSION='1.4.1'
+set -eux
+
+curl -Lo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/cfssl_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/cfssl-bundle https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/cfssl-bundle_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/cfssl-certinfo https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/cfssl-certinfo_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/cfssl-newkey https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/cfssl-newkey_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/cfssl-scan https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/cfssl-newkey_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/cfssljson https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/cfssljson_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/mkbundle https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/mkbundle_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/multirootca https://github.com/cloudflare/cfssl/releases/download/v${VERSION}/multirootca_${VERSION}_linux_amd64

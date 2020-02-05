@@ -30,55 +30,55 @@ RUN rm -f /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install --autoremove -y \
-				apt \
-				bind9-host \
-				certbot \
-				docker.io \
-				dpkg \
-				ffmpeg \
-				fish \
-				fping \
-				git \
-				google-cloud-sdk \
-				htop \
-				imagemagick \
-				kubectl \
-				libimage-exiftool-perl \
-				liblz4-tool \
-				locales \
-				make \
-				man \
-				ncat \
-				nodejs \
-				mediainfo \
-				net-tools \
-				nmap \
-				p7zip \
-				pinfo \
-				python3 \
-				python3-pip \
-				socat \
-				ssh \
-				tmux \
-				traceroute \
-				tree \
-				unrar \
-				vim \
-				wget \
-				whois \
-				whowatch \
-				xattr \
-				yarn \
-				youtube-dl \
-				zip
+	apt \
+	bind9-host \
+	certbot \
+	docker.io \
+	dpkg \
+	ffmpeg \
+	fish \
+	fping \
+	git \
+	google-cloud-sdk \
+	htop \
+	imagemagick \
+	kubectl \
+	libimage-exiftool-perl \
+	liblz4-tool \
+	locales \
+	make \
+	man \
+	ncat \
+	nodejs \
+	mediainfo \
+	net-tools \
+	nmap \
+	p7zip \
+	pinfo \
+	python3 \
+	python3-pip \
+	socat \
+	ssh \
+	tmux \
+	traceroute \
+	tree \
+	unrar \
+	vim \
+	wget \
+	whois \
+	whowatch \
+	xattr \
+	yarn \
+	youtube-dl \
+	zip
 
 COPY ./ /config
 RUN ln -sv /config ~/
 
-ENV PATH="~/config/bin:$PATH"
+ENV PATH="/root/config/bin:$PATH"
 ENV EDITOR='vim'
 
-RUN /config/docker/kali/configure
+RUN /config/x/docker/kali/configure
 
 CMD ["tmux"]
 
@@ -89,15 +89,15 @@ RUN pip3 install certbot-dns-route53
 
 # Golang
 RUN /config/bin/install/golang
-ENV PATH="$PATH:~/go/bin"
+ENV PATH="$PATH:/root/go/bin"
 
 RUN /config/bin/install/miniconda
 ENV PATH="/opt/conda/bin:$PATH"
 
 RUN /config/bin/install/krew
-ENV PATH="$PATH:~/.krew/bin"
+ENV PATH="$PATH:/root/.krew/bin"
 RUN kubectl krew update
-RUN kubectl krew install access-matrix config-cleanup get-all konfig prune-unused rbac-lookup resource-capacity sniff view-serviceaccount-kubeconfig warp who-can
+RUN kubectl krew install access-matrix prune-unused rbac-lookup resource-capacity sniff view-serviceaccount-kubeconfig warp who-can
 RUN ln -s ~/.krew/bin/kubectl-view_serviceaccount_kubeconfig /usr/local/bin/kubectl-vsk
 
 RUN /config/bin/install/aws-iam-authenticator

@@ -1,0 +1,166 @@
+#!/bin/bash
+umask 0077
+set -euo pipefail
+
+if test -f package.json ; then
+  echo 'Error: package.json already exist'
+  exit 1
+fi
+
+mkdir -p src
+
+! test -f src/index.ts && cat > src/index.ts <<EOF
+export function add(a: number, b: number): number {
+  return a + b
+}
+EOF
+
+! test -f src/index.test.ts && cat > src/index.test.ts <<EOF
+import { add } from './index'
+test('add', () => {
+  expect(add(40, 2)).toBe(42)
+})
+EOF
+
+cat >> .gitignore <<EOF
+/node_modules/
+/dist/
+/tsconfig.tsbuildinfo
+EOF
+
+! test -f Dockerfile && cat > Dockerfile <<EOF
+ARG NODE_VERSION=13.3.0-stretch
+
+FROM node:\$NODE_VERSION as build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm i
+COPY . ./
+RUN npm run format
+RUN npm run lint
+RUN npm run test
+RUN npm run build
+
+FROM node:\$NODE_VERSION
+WORKDIR /app
+COPY package.json package-lock.json ./
+ENV NODE_ENV=production
+RUN npm i
+COPY --from=build /app/dist ./
+CMD ["./dist/index.js"]
+EOF
+
+cat > .dockerignore <<EOF
+*
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/src/
+!/.prettierignore
+EOF
+
+cat > .prettierignore <<EOF
+/.git/
+/node_modules/
+/dist/
+EOF
+
+cat > package.json <<EOF
+{
+  "private": true,
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "dev:debug": "npm run dev -- --inspect=4321",
+    "docker:build": "docker build .",
+    "format": "prettier --write **/*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+    "test": "jest --passWithNoTests",
+    "build": "tsc",
+    "build:precommit": "rm -rf -- dist/ && tsc && echo > /dev/null"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings 0"
+    ],
+    "*": [
+      "npm run build:precommit"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "endOfLine": "lf",
+    "trailingComma": "all",
+    "printWidth": 100
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "rootDir": "./src/"
+  }
+}
+EOF
+
+npm i -D typescript ts-node-dev husky lint-staged jest @types/jest ts-jest \
+  prettier eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser \
+  eslint-config-prettier
+
+npx tsc --init
+sed -Ei 's|^( +)// ("rootDir": )".+"(.+)$|\1\2"./src/"\3|' tsconfig.json
+sed -Ei 's|^( +)// ("outDir": )".+"(.+)$|\1\2"./dist/"\3|' tsconfig.json
+sed -Ei 's|^( +)// ("incremental": true,.*)$|\1\2|' tsconfig.json
+sed -Ei 's|^}$|,"include":["src/**/*"],"exclude":["**/*.test.*"]}|' tsconfig.json
+
+! test -f README.md && cat > README.md <<EOF
+# ${PWD##*/}
+
+## Usage
+
+\`\`\`sh
+# Install dependencies and pre-commit git hook to ensure code quality
+$ npm i
+# Start watch mode to make changes
+$ npm run dev
+# On git commit, the following commands are run: format, lint, test and build
+$ git commit
+\`\`\`
+
+## Commands
+
+| COMMAND          | Description                            |
+| ---------------- | -------------------------------------- |
+| **dev**          | Run dev mode                           |
+| **dev:debug**    | Run dev mode with inspect on port 4321 |
+| **docker:build** | Build docker image                     |
+| **format**       | Format source code                     |
+| **lint**         | Lint source code                       |
+| **test**         | Test source code                       |
+| **build**        | Build \`dist\` from \`src\`            |
+EOF
+
+npm run format
+npm run lint
+npm run test
+npm run build

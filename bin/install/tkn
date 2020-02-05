@@ -1,0 +1,9 @@
+#!/bin/sh
+umask 0077
+VERSION='0.7.1'
+set -ex
+
+curl -LO https://github.com/tektoncd/cli/releases/download/v${VERSION}/tkn_${VERSION}_Linux_x86_64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf tkn_${VERSION}_Linux_x86_64.tar.gz tkn
+chmod 500 /usr/local/bin/tkn
+rm tkn_${VERSION}_Linux_x86_64.tar.gz

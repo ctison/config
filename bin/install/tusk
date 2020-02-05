@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='0.4.7'
+VERSION='0.5.2'
 set -ex
 
 curl -LO https://github.com/rliebz/tusk/releases/download/v${VERSION}/tusk_${VERSION}_linux_amd64.tar.gz

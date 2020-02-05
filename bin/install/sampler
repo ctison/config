@@ -1,0 +1,7 @@
+#!/bin/sh
+umask 0077
+VERSION='1.1.0'
+set -ex
+
+curl -Lo /usr/local/bin/sampler https://github.com/sqshq/sampler/releases/download/v$VERSION/sampler-$VERSION-linux-amd64
+chmod 500 /usr/local/bin/sampler

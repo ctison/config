@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='1.24.1'
+VERSION='1.25.4'
 set -ex
 
 curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-Linux-x86_64

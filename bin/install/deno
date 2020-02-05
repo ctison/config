@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -L https://github.com/denoland/deno/releases/latest/download/deno_linux_x64.gz | zcat > /usr/local/bin/deno
+chmod 500 /usr/local/bin/deno

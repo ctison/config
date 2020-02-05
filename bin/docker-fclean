@@ -3,13 +3,15 @@
 set -e
 
 CONTAINERS=$(docker ps -qf status=created -f status=paused -f status=exited -f status=dead)
-if [ "${CONTAINERS}" ]; then
-	docker rm -- ${CONTAINERS}
+# shellcheck disable=SC2086
+if [ "$CONTAINERS" ]; then
+	docker rm -- $CONTAINERS
 fi
 
 IMAGES=$(docker images -qf dangling=true)
-if [ "${IMAGES}" ]; then
-    docker rmi  -- ${IMAGES}
+# shellcheck disable=SC2086
+if [ "$IMAGES" ]; then
+    docker rmi  -- $IMAGES
 fi
 
 exec docker volume prune -f

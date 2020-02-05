@@ -1,0 +1,8 @@
+#!/bin/sh
+umask 0077
+VERSION='0.10.1'
+set -eux
+
+curl -LO https://github.com/vmware-tanzu/octant/releases/download/v${VERSION}/octant_${VERSION}_Linux-64bit.deb
+dpkg -i octant_${VERSION}_Linux-64bit.deb
+rm octant_${VERSION}_Linux-64bit.deb

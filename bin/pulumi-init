@@ -2,4 +2,57 @@
 umask 0077
 set -ex
 
-pulumi new -c 'backend.url=file://.' typescript
+if ! test -d .git ; then
+  echo >&2 'Error: pulumi-init requires to be run in a git repository'
+  exit 1
+fi
+
+pulumi new typescript -fgy
+cat >> Pulumi.yaml <<EOF
+backend:
+  url: file://.
+EOF
+
+npm i
+npm i -D prettier husky lint-staged
+sed -i '/^}$/d' package.json
+cat >> package.json <<EOF
+  , "main": "src/index.ts",
+  "scripts": {
+    "format": "prettier --write **/*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}",
+    "pre-commit": "pulumi preview --expect-no-changes --non-interactive -s prod && echo >/dev/null"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*": [
+      "npm run pre-commit"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "endOfLine": "lf",
+    "trailingComma": "all"
+  }
+}
+EOF
+
+cat > .prettierignore <<EOF
+/.git/
+/node_modules/
+/bin/
+EOF
+
+npm run format
+
+mkdir src
+mv index.ts src/
+sed -Ei 's|^( +"files":) .+$|\1 ["src/**/*.ts"]|' tsconfig.json

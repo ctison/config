@@ -1,0 +1,9 @@
+#!/bin/sh
+umask 0077
+VERSION='0.11.0'
+set -ex
+
+curl -LO https://github.com/imsnif/bandwhich/releases/download/${VERSION}/bandwhich-v${VERSION}-x86_64-unknown-linux-musl.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf bandwhich-v${VERSION}-x86_64-unknown-linux-musl.tar.gz bandwhich
+chmod 500 /usr/local/bin/bandwhich
+rm bandwhich-v${VERSION}-x86_64-unknown-linux-musl.tar.gz

@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -ex
+
+curl -Lo /usr/local/bin/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod 500 /usr/local/bin/mc

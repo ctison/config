@@ -1,0 +1,13 @@
+#!/bin/sh
+umask 0077
+
+if [ $# != 1 ]; then
+  echo 'Usage: clean-media PATH'
+  exit 1
+fi
+
+set -ex
+
+chmod 600 "$1"
+mogrify -strip "$1"
+chmod 400 "$1" 

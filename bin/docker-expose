@@ -12,7 +12,7 @@ fi
 
 set -ex
 
-CONTAINER_URL="`docker inspect "$1" -f '{{.NetworkSettings.IPAddress}}'`"
+CONTAINER_URL="$(docker inspect "$1" -f '{{.NetworkSettings.IPAddress}}')"
 NAME="$1-$2"
 PORT="$2"
 LOCAL_PORT="${3:-$PORT}"

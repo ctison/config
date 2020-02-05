@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='0.12.13'
+VERSION='0.12.19'
 set -ex
 
 curl -LO https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip

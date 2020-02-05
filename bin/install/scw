@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -Lo /usr/local/bin/scw https://github.com/scaleway/scaleway-cli/releases/latest/download/scw-linux-amd64
+chmod 500 /usr/local/bin/scw

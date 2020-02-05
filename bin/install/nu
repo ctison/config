@@ -1,13 +1,9 @@
 #!/bin/sh
 umask 0077
-VERSION='0_5_0'
+VERSION='0_9_0'
 set -ex
 
-# NOT WORKING
-
-# curl -LO https://github.com/nushell/nushell/releases/download/${VERSION}/nu_${VERSION}_linux.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin -xzf nu_${VERSION}_linux.tar.gz --strip=1 --wildcards nushell_${VERSION}/nu nushell_${VERSION}/'nu_plugin_*'
-# apt-get install -y libssl1.0-dev
-# ln -sv /usr/lib/x86_64-linux-gnu/libcrypto.so /usr/local/lib/libcrypto.so.1.0.0 2>/dev/null || true
-# ln -sv /usr/lib/x86_64-linux-gnu/libssl.so /usr/local/lib/libssl.so.1.0.0  2>/dev/null || true
-# rm nu_${VERSION}_linux.tar.gz
+curl -LO "https://github.com/nushell/nushell/releases/download/$(echo $VERSION | tr _ .)/nu_${VERSION}_linux.tar.gz"
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf nu_${VERSION}_linux.tar.gz --wildcards "nu_${VERSION}_linux/nushell_${VERSION}/nu*" --strip=2
+chmod 500 /usr/local/bin/nu*
+rm nu_${VERSION}_linux.tar.gz

@@ -1,0 +1,5 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+exec rm -- ~/Library/Application Support/WiFi Explorer/*

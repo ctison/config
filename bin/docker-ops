@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 if [ $# = 0 ]; then
 	cat << EOF
@@ -12,9 +12,9 @@ EOF
 	exit
 fi
 
-NAME=`echo "${PWD##*/}" | tr ' ' '-'`
+NAME=$(echo "${PWD##*/}" | tr ' ' '-')
 
 set -x
 
 exec docker run -it --name "${NAME}" --hostname "${NAME}" \
-	-v "${PWD}":/"${NAME}":delegated --workdir "/${NAME}" $@
+	-v "${PWD}":/"${NAME}":delegated --workdir "/${NAME}" "$@"

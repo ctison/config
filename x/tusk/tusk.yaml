@@ -11,37 +11,39 @@ tasks:
       options:
         usage: options to pass to docker build command
     run:
-    - docker build -f ../docker/kali/Dockerfile -t ctison/kali ${options} ../../
+      - docker build -f ../docker/kali/Dockerfile -t ctison/kali ${options} ../../
 
   create-bin:
     args:
       NAME: {}
     run:
-    - 'test ! -f ../../bin/${NAME}'
-    - |
-      /bin/sh -c '
-      cat > ../../bin/${NAME} << EOF
-      #!/bin/sh
-      umask 0077
-      set -ex
-      
-      EOF'
-    - chmod 700 ../../bin/${NAME}
+      - "test ! -f ../../bin/${NAME}"
+      - |
+        /bin/sh -c '
+        cat > ../../bin/${NAME} << EOF
+        #!/bin/sh
+        umask 0077
+        set -eux
+
+        EOF'
+      - chmod 700 ../../bin/${NAME}
+      - type code >/dev/null 2>&1 && code ../../bin/${NAME}
 
   create-bin-install:
     args:
       NAME: {}
     run:
-    - 'test ! -f ../../bin/install/${NAME}'
-    - |
+      - "test ! -f ../../bin/install/${NAME}"
+      - |
         /bin/sh -c '
         cat > ../../bin/install/${NAME} << EOF
         #!/bin/sh
         umask 0077
-        set -ex
+        set -eux
 
         EOF'
-    - chmod 700 ../../bin/install/${NAME}
+      - chmod 700 ../../bin/install/${NAME}
+      - type code >/dev/null 2>&1 && code ../../bin/install/${NAME}
 
   i:
     args:

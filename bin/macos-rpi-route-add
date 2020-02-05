@@ -1,0 +1,13 @@
+#!/bin/sh
+umask 0077
+
+if [ $# = 0 ]; then
+  echo 'Usage: macos-rpi-route-add [ROUTE_ADD_OPTIONS] RPI_ADDRESS INTERFACE'
+  echo 'Note that some network related system permissions may probably be required'
+  echo '  Example: macos-rpi-route-add 169.254.42.42/32 en5'
+  exit 1
+fi
+
+set -ex
+
+route -n add -interface -cloning "$@"

@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='1.5.1'
+VERSION='1.9.1'
 set -ex
 
 curl -LO https://get.pulumi.com/releases/sdk/pulumi-v${VERSION}-linux-x64.tar.gz

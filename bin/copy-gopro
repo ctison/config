@@ -1,32 +1,35 @@
-#!/bin/sh
-
+#!/bin/bash
+set -euo pipefail
 umask 0077
 
-if [[ $# < 2 || $# > 3 ]]; then
+if [ $# -lt 2 ] || [ $# -gt 3 ] ; then
 	echo "Usage: $0 GO_PRO_SD_FOLDER DEST_FOLDER [DATE]"
 	exit 1
 fi
 
-function displayNotification () {
+displayNotification () {
 	osascript -e "display notification \"$1\" with title \"🎥 Copy GoPro\""
 	echo "$1"
 }
 
-MOVIES="`find $1 -type f -iname '*.MP4' -not -name '.*'`"
+MOVIES="$(find "$1" -type f -iname '*.MP4' -not -name '.*')"
 for M in $MOVIES ; do
-	DATE=`date -r $M '+%Y-%m-%d %H-%M-%S'`
-	if [[ "$DATE" > "$3" ]]; then
-		if [ "`df -g / | tail -n1 | awk -F' ' '{print $4}'`" -lt 10 ]; then
+	DATE=$(date -r "$M" '+%Y-%m-%d %H-%M-%S')
+	if [[ "$DATE" > "${3:-''}" ]]; then
+		if [ "$(df -g / | tail -n1 | awk -F' ' '{print $4}')" -lt 10 ]; then
 			displayNotification 'ERROR: not enough memory available  💾'
 			exit 1
 		fi
 		NAME="$2/$DATE.MP4"
 		printf '%s -> %s ' "$M" "$NAME"
-		cp -n -- "$M" "$NAME"
-		if [ $? -ne 0 ]; then
-			echo KO
-		else
+		if test -f "$NAME" ; then
+			echo SKIP
+			continue
+		elif cp -n -- "$M" "$NAME" ; then
 			echo OK
+		else
+			echo KO
+			continue
 		fi
 		chmod 0400 "$NAME"
 	fi

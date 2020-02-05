@@ -1,0 +1,8 @@
+#!/bin/sh
+umask 0077
+VERSION='0.9.0'
+set -eux
+
+curl -LO https://github.com/future-architect/vuls/releases/download/v${VERSION}/vuls_${VERSION}_linux_amd64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf vuls_${VERSION}_linux_amd64.tar.gz vuls
+rm vuls_${VERSION}_linux_amd64.tar.gz

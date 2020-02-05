@@ -25,8 +25,14 @@ function fish_prompt
 		set_color -o black
 		set -l KUBE_CONTEXT (kubectl config current-context 2>/dev/null)
 		if [ "$KUBE_CONTEXT" ]
-			echo -n " $KUBE_CONTEXT"
+			echo -n " k8s:$KUBE_CONTEXT"
 		end
+	end
+	if set -q AWS_PROFILE
+		echo -n " aws:$AWS_PROFILE"
+	end
+	if set -q CLOUDSDK_ACTIVE_CONFIG_NAME
+		echo -n " gcp:$CLOUDSDK_ACTIVE_CONFIG_NAME"
 	end
 	echo ""
   set_color -o red

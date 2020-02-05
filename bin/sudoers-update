@@ -2,4 +2,4 @@
 
 set -ex
 
-echo "Defaults timestamp_timeout = 0" >> /etc/sudoers
+echo 'Defaults timestamp_timeout = 0' >> /etc/sudoers

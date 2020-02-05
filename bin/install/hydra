@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='1.0.9'
+VERSION='1.2.0'
 set -ex
 
 curl -LO https://github.com/ory/hydra/releases/download/v${VERSION}/hydra_${VERSION}_Linux_64-bit.tar.gz

@@ -1,6 +1,6 @@
 #!/bin/bash
 umask 0077
-set -ex
+set -euxo pipefail
 
 mkdir -p k8z/{base,dev,prod}/{k8s,config}/
 touch k8z/{base,dev,prod}/kustomization.yaml

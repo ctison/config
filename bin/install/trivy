@@ -1,0 +1,8 @@
+#!/bin/sh
+umask 0077
+VERSION='0.4.3'
+set -eux
+
+curl -LO https://github.com/aquasecurity/trivy/releases/download/v${VERSION}/trivy_${VERSION}_Linux-64bit.deb
+dpkg -i trivy_${VERSION}_Linux-64bit.deb
+rm trivy_${VERSION}_Linux-64bit.deb

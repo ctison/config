@@ -1,9 +1,10 @@
 #!/bin/sh
 
-if test $(uname) = Darwin ; then
-  exec ls -lhG $@
+# shellcheck disable=SC2010
+if test "$(uname)" = Darwin ; then
+  exec ls -lhG "$@"
 elif test -n "$(ls --version 2>&1 | grep GNU)"; then
-  exec ls -lhv --color=auto --group-d $@
+  exec ls -lhv --color=auto --group-d "$@"
 else
-  exec ls -lhv --color=auto $@
+  exec ls -lhv --color=auto "$@"
 fi
