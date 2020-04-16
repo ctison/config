@@ -1,0 +1,9 @@
+#!/bin/sh
+umask 0077
+VERSION='0.21.0'
+set -eux
+
+curl -LO https://github.com/junegunn/fzf-bin/releases/download/${VERSION}/fzf-${VERSION}-linux_amd64.tgz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf fzf-${VERSION}-linux_amd64.tgz fzf
+chmod 500 /usr/local/bin/fzf
+rm fzf-${VERSION}-linux_amd64.tgz

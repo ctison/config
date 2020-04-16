@@ -27,6 +27,18 @@ if test (uname -s) = Darwin
   set -a PATH /Library/Developer/CommandLineTools/usr/bin
 end
 
+if test -d ~/work/bin
+  set -p PATH ~/work/bin
+end
+
+if test -d ~/.cargo/bin
+  set -a PATH ~/.cargo/bin
+end
+
+if test -d /snap/bin
+  set -a PATH /snap/bin
+end
+
 if type -q git 2>/dev/null
   alias gs='git status --short --branch'
   alias gl='git log --pretty=oneline'
@@ -106,4 +118,12 @@ end
 
 if type -q octant 2>/dev/null
   alias octant='octant --disable-open-browser --listener-addr 0.0.0.0:7777'
+end
+
+if type -q hasura 2>/dev/null
+  alias hasura='hasura --skip-update-check'
+end
+
+if type -q tar 2>/dev/null
+  alias tar='tar --no-same-o --no-same-p'
 end

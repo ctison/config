@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -Lo /usr/local/bin/okteto https://github.com/okteto/okteto/releases/latest/download/okteto-Linux-x86_64
+chmod 500 /usr/local/bin/okteto

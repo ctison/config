@@ -1,10 +1,10 @@
 #!/bin/sh
 umask 0077
-VERSION='1.4.3'
+VERSION='1.5.1'
 set -ex
 
 curl -LO https://github.com/istio/istio/releases/download/${VERSION}/istio-${VERSION}-linux.tar.gz
 tar --no-same-o --no-same-p -C /usr/local/ -xzf istio-${VERSION}-linux.tar.gz
-# rm -- istio-${VERSION}-linux.tar.gz
-ln -s /usr/local/istio-${VERSION} /usr/local/istio
-ln -s /usr/local/istio/bin/istioctl /usr/local/bin/
+ln -fsvT /usr/local/istio-${VERSION} /usr/local/istio
+ln -fsv /usr/local/istio/bin/istioctl -t /usr/local/bin/
+rm -- istio-${VERSION}-linux.tar.gz

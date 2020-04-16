@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -Lo /usr/local/bin/gloo https://github.com/solo-io/gloo/releases/latest/download/glooctl-linux-amd64
+chmod 500 /usr/local/bin/gloo

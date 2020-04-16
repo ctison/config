@@ -1,0 +1,9 @@
+#!/bin/sh
+umask 0077
+VERSION='0.12.1'
+set -eux
+
+curl -LO https://github.com/Qovery/qovery-cli/releases/download/v${VERSION}/qovery-cli_${VERSION}_linux_amd64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf qovery-cli_${VERSION}_linux_amd64.tar.gz qovery
+rm qovery-cli_${VERSION}_linux_amd64.tar.gz
+chmod 500 /usr/local/bin/qovery

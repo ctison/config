@@ -1,0 +1,8 @@
+#!/bin/sh
+umask 0077
+VERSION='0.2.2'
+set -eux
+
+curl -LO https://github.com/ClementTsang/bottom/releases/download/${VERSION}/bottom_${VERSION}_amd64.deb
+dpkg -i bottom_${VERSION}_amd64.deb
+rm bottom_${VERSION}_amd64.deb

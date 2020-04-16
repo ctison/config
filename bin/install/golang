@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='1.13.7'
+VERSION='1.13.8'
 set -ex
 
 curl -LO https://dl.google.com/go/go${VERSION}.linux-amd64.tar.gz

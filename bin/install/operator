@@ -1,0 +1,7 @@
+#!/bin/sh
+umask 0077
+VERSION='v0.16.0'
+set -eux
+
+curl -Lo /usr/local/bin/o https://github.com/operator-framework/operator-sdk/releases/download/${VERSION}/operator-sdk-${VERSION}-x86_64-linux-gnu
+chmod 500 /usr/local/bin/o

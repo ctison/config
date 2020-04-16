@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -Lo /usr/local/bin/wasme https://github.com/solo-io/wasme/releases/latest/download/wasme-linux-amd64
+chmod 500 /usr/local/bin/wasme

@@ -1,0 +1,11 @@
+#!/bin/sh
+umask 0077
+VERSION='2.5.0'
+set -eux
+
+curl -LO https://github.com/denisidoro/navi/releases/download/v${VERSION}/navi-v${VERSION}-x86_64-unknown-linux-musl.tar.gz
+mkdir -p /usr/local/navi/
+tar --no-same-o --no-same-p -C /usr/local/navi/ -xf navi-v${VERSION}-x86_64-unknown-linux-musl.tar.gz
+rm navi-v${VERSION}-x86_64-unknown-linux-musl.tar.gz
+chmod 500 /usr/local/navi/navi
+ln -sfv /usr/local/navi/navi /usr/local/bin/navi

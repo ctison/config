@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='0_9_0'
+VERSION='0_12_0'
 set -ex
 
 curl -LO "https://github.com/nushell/nushell/releases/download/$(echo $VERSION | tr _ .)/nu_${VERSION}_linux.tar.gz"

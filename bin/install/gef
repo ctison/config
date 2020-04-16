@@ -1,0 +1,6 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -Lo /etc/gef.py https://github.com/hugsy/gef/raw/master/gef.py
+echo 'source /etc/gef.py' > ~/.gdbinit

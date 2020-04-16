@@ -1,0 +1,8 @@
+#!/bin/sh
+umask 0077
+set -eux
+
+curl -LO https://github.com/aquasecurity/kubectl-who-can/releases/latest/download/kubectl-who-can_darwin_x86_64.tar.gz
+tar --no-same-o --no-same-p -C /usr/local/bin/ -xf kubectl-who-can_darwin_x86_64.tar.gz kubectl-who-can
+chmod 500 /usr/local/bin/kubectl-who-can
+rm kubectl-who-can_darwin_x86_64.tar.gz

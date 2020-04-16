@@ -8,6 +8,12 @@ if [ "$CONTAINERS" ]; then
 	docker rm -- $CONTAINERS
 fi
 
+IMAGES=$(docker images -f dangling=false --format '{{.Repository}}:{{.Tag}}' | fzf --cycle -m --preview 'docker inspect {} | jq -C' | cut -d' ' -f1)
+# shellcheck disable=SC2086
+if [ "$IMAGES" ]; then
+    docker rmi  -- $IMAGES
+fi
+
 IMAGES=$(docker images -qf dangling=true)
 # shellcheck disable=SC2086
 if [ "$IMAGES" ]; then

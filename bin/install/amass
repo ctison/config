@@ -1,0 +1,11 @@
+#!/bin/sh
+umask 0077
+VERSION='3.4.4'
+set -eux
+
+curl -LO https://github.com/OWASP/Amass/releases/download/v${VERSION}/amass_v${VERSION}_linux_amd64.zip
+rm -rf -- /usr/local/amass/ && mkdir -p /usr/local/amass/
+unzip amass_v${VERSION}_linux_amd64.zip -d /usr/local/amass/
+mv /usr/local/amass/amass_v${VERSION}_linux_amd64/* /usr/local/amass/
+rm -rf /usr/local/amass/amass_v${VERSION}_linux_amd64/
+rm amass_v${VERSION}_linux_amd64.zip

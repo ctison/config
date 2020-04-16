@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-VERSION='0.7.1'
+VERSION='0.8.0'
 set -ex
 
 curl -LO https://github.com/tektoncd/cli/releases/download/v${VERSION}/tkn_${VERSION}_Linux_x86_64.tar.gz
