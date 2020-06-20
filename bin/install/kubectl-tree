@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION='0.4.0'
-set -ex
+VERSION=$(curl -s https://api.github.com/repos/ahmetb/kubectl-tree/releases/latest | jq -r .tag_name | sed s/^v//)
+set -eux
 
-curl -LO https://github.com/ahmetb/kubectl-tree/releases/download/v${VERSION}/kubectl-tree_v${VERSION}_linux_amd64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xf kubectl-tree_v${VERSION}_linux_amd64.tar.gz kubectl-tree
+curl -LO https://github.com/ahmetb/kubectl-tree/releases/download/v"$VERSION"/kubectl-tree_v"$VERSION"_linux_amd64.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf kubectl-tree_v"$VERSION"_linux_amd64.tar.gz kubectl-tree
 chmod 500 /usr/local/bin/kubectl-tree
-rm kubectl-tree_v${VERSION}_linux_amd64.tar.gz
+rm kubectl-tree_v"$VERSION"_linux_amd64.tar.gz

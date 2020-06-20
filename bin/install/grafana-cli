@@ -1,9 +1,0 @@
-#!/bin/sh
-umask 0077
-VERSION='6.5.0'
-set -ex
-
-curl -LO https://dl.grafana.com/oss/release/grafana-$VERSION.linux-amd64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xf grafana-$VERSION.linux-amd64.tar.gz grafana-$VERSION/bin/grafana-cli --strip=2
-chmod 500 /usr/local/bin/grafana-cli
-rm grafana-$VERSION.linux-amd64.tar.gz

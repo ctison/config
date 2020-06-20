@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-set -ex
+set -eux
 
 curl -Lo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 chmod 500 /usr/local/bin/yq

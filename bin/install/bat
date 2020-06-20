@@ -1,0 +1,8 @@
+#!/bin/sh
+umask 0077
+VERSION=$(curl -s https://api.github.com/repos/sharkdp/bat/releases/latest | jq -r .tag_name | sed s/^v//)
+set -eux
+
+curl -LO https://github.com/sharkdp/bat/releases/download/v"$VERSION"/bat_"$VERSION"_amd64.deb
+dpkg -i bat_"$VERSION"_amd64.deb
+rm bat_"$VERSION"_amd64.deb

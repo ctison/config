@@ -30,6 +30,7 @@ RUN rm -f /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install --autoremove -y \
+	amass \
 	apt \
 	bind9-host \
 	certbot \
@@ -55,6 +56,7 @@ RUN apt-get install --autoremove -y \
 	nmap \
 	p7zip \
 	pinfo \
+	pipx \
 	python3 \
 	python3-pip \
 	socat \
@@ -69,7 +71,6 @@ RUN apt-get install --autoremove -y \
 	whowatch \
 	xattr \
 	yarn \
-	youtube-dl \
 	zip
 
 COPY ./ /config
@@ -91,24 +92,7 @@ RUN pip3 install certbot-dns-route53
 RUN /config/bin/install/golang
 ENV PATH="$PATH:/root/go/bin"
 
-RUN /config/bin/install/miniconda
-ENV PATH="/opt/conda/bin:$PATH"
-
-RUN /config/bin/install/krew
-ENV PATH="$PATH:/root/.krew/bin"
-RUN kubectl krew update
-RUN kubectl krew install access-matrix prune-unused rbac-lookup resource-capacity sniff view-serviceaccount-kubeconfig warp who-can
-RUN ln -s ~/.krew/bin/kubectl-view_serviceaccount_kubeconfig /usr/local/bin/kubectl-vsk
-
-RUN /config/bin/install/aws-iam-authenticator
 RUN /config/bin/install/docker-compose
-RUN /config/bin/install/eksctl
-RUN /config/bin/install/gomplate
-RUN /config/bin/install/hub
 RUN /config/bin/install/jq
 RUN /config/bin/install/k9s
-RUN /config/bin/install/kustomize
-RUN /config/bin/install/nim
-RUN /config/bin/install/pulumi
-RUN /config/bin/install/terraform
 RUN /config/bin/install/tusk

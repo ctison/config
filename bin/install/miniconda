@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-set -ex
+set -eux
 
 curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -bp /opt/conda

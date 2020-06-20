@@ -1,8 +1,8 @@
 #!/bin/sh
 umask 0077
-VERSION='0.5.2'
+VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | jq -r .tag_name | sed s/^v//)
 set -eux
 
-curl -LO https://github.com/aquasecurity/trivy/releases/download/v${VERSION}/trivy_${VERSION}_Linux-64bit.deb
-dpkg -i trivy_${VERSION}_Linux-64bit.deb
-rm trivy_${VERSION}_Linux-64bit.deb
+curl -LO https://github.com/aquasecurity/trivy/releases/download/v"$VERSION"/trivy_"$VERSION"_Linux-64bit.deb
+dpkg -i trivy_"$VERSION"_Linux-64bit.deb
+rm trivy_"$VERSION"_Linux-64bit.deb

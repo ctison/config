@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION='0_12_0'
-set -ex
+VERSION=$(curl -s https://api.github.com/repos/nushell/nushell/releases/latest | jq -r .tag_name | sed s/^v//)
+VERSION2=$(echo "$VERSION" | tr . _)
+set -eux
 
-curl -LO "https://github.com/nushell/nushell/releases/download/$(echo $VERSION | tr _ .)/nu_${VERSION}_linux.tar.gz"
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xf nu_${VERSION}_linux.tar.gz --wildcards "nu_${VERSION}_linux/nushell_${VERSION}/nu*" --strip=2
+curl -LO https://github.com/nushell/nushell/releases/download/"$VERSION"/nu_"$VERSION2"_linux.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf nu_"$VERSION2"_linux.tar.gz --wildcards nu_"$VERSION2"_linux/nushell_"$VERSION2"/nu'*' --strip=2
 chmod 500 /usr/local/bin/nu*
-rm nu_${VERSION}_linux.tar.gz
+rm nu_"$VERSION2"_linux.tar.gz

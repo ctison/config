@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -ex
+set -eux
 
-# curl -LO https://github.com/go-task/task/releases/latest/download/task_linux_amd64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xf task_linux_amd64.tar.gz task
+curl -LO https://github.com/go-task/task/releases/latest/download/task_linux_amd64.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf task_linux_amd64.tar.gz task
 chmod 500 /usr/local/bin/task
 rm task_linux_amd64.tar.gz

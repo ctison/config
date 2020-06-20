@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
 set -eux
 
 curl -LO https://github.com/nektos/act/releases/latest/download/act_Linux_x86_64.tar.gz
-tar --no-same-o --no-same-p -C /usr/local/bin/ -xf act_Linux_x86_64.tar.gz act
+tar --no-same-{o,p} -C /usr/local/bin/ -xf act_Linux_x86_64.tar.gz act
 chmod 500 /usr/local/bin/act
 rm act_Linux_x86_64.tar.gz

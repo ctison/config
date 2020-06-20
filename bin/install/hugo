@@ -1,8 +1,0 @@
-#!/bin/sh
-umask 0077
-VERSION='0.59.1'
-set -ex
-
-curl -LO https://github.com/gohugoio/hugo/releases/download/v${VERSION}/hugo_extended_${VERSION}_Linux-64bit.deb
-dpkg -i hugo_extended_${VERSION}_Linux-64bit.deb
-rm hugo_extended_${VERSION}_Linux-64bit.deb

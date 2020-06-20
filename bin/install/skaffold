@@ -1,6 +1,6 @@
 #!/bin/sh
 umask 0077
-set -ex
+set -eux
 
 curl -Lo /usr/local/bin/skaffold https://github.com/GoogleContainerTools/skaffold/releases/latest/download/skaffold-linux-amd64
 chmod 500 /usr/local/bin/skaffold

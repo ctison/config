@@ -1,9 +1,11 @@
 #!/bin/sh
 umask 0077
-VERSION='0.7.1'
+VERSION=$(curl -s https://api.github.com/repos/jakedeichert/mask/releases/latest | jq -r .tag_name | sed s/^v//)
 set -eux
 
-curl -LO https://github.com/jakedeichert/mask/releases/download/v${VERSION}/mask-v${VERSION}-x86_64-unknown-linux-gnu.zip
-unzip -jd /usr/local/bin/ mask-v${VERSION}-x86_64-unknown-linux-gnu.zip mask-v${VERSION}-x86_64-unknown-linux-gnu/mask
+# A CLI task runner defined by a simple markdown file 
+
+curl -LO https://github.com/jakedeichert/mask/releases/download/v"$VERSION"/mask-v"$VERSION"-x86_64-unknown-linux-gnu.zip
+unzip -jd /usr/local/bin/ mask-v"$VERSION"-x86_64-unknown-linux-gnu.zip mask-v"$VERSION"-x86_64-unknown-linux-gnu/mask
 chmod 500 /usr/local/bin/mask
-rm mask-v${VERSION}-x86_64-unknown-linux-gnu.zip
+rm mask-v"$VERSION"-x86_64-unknown-linux-gnu.zip

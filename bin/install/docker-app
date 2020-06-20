@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION="${VERSION:-0.9.0-beta1}"
-set -ex
+VERSION=$(curl -s https://api.github.com/repos/docker/app/tags | jq -r '.[0].name')
+set -eux
 
 mkdir -p ~/.docker/cli-plugins/
-curl -LO "https://github.com/docker/app/releases/download/v${VERSION}/docker-app-linux.tar.gz"
-tar --no-same-o --no-same-p -C ~/.docker/cli-plugins/ -xf docker-app-linux.tar.gz docker-app-plugin-linux
+curl -LO https://github.com/docker/app/releases/download/"$VERSION"/docker-app-linux.tar.gz
+tar --no-same-{o,p} -C ~/.docker/cli-plugins/ -xf docker-app-linux.tar.gz docker-app-plugin-linux
 chmod 500 ~/.docker/cli-plugins/docker-app-plugin-linux
 mv ~/.docker/cli-plugins/docker-app-plugin-linux ~/.docker/cli-plugins/docker-app
 rm docker-app-linux.tar.gz

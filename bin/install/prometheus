@@ -1,9 +1,9 @@
 #!/bin/bash
 umask 0077
-VERSION='2.14.0'
-set -euxo pipefail
+VERSION=$(curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | jq -r .tag_name | sed s/^v//)
+set -eux
 
-# curl -LO https://github.com/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-amd64.tar.gz
-tar --no-same-o --no-same-p -xf prometheus-${VERSION}.linux-amd64.tar.gz -C /usr/local/bin/ --strip=1 prometheus-2.14.0.linux-amd64/{prometheus,promtool,tsdb}
+curl -LO https://github.com/prometheus/prometheus/releases/download/v"$VERSION"/prometheus-"$VERSION".linux-amd64.tar.gz
+tar --no-same-{o,p} -xf prometheus-"$VERSION".linux-amd64.tar.gz -C /usr/local/bin/ --strip=1 prometheus-2.14.0.linux-amd64/{prometheus,promtool,tsdb}
 chmod 500 /usr/local/bin/{prometheus,promtool,tsdb}
-rm prometheus-${VERSION}.linux-amd64.tar.gz
+rm prometheus-"$VERSION".linux-amd64.tar.gz

@@ -1,7 +1,7 @@
 #!/bin/sh
 umask 0077
-VERSION='0.4.0'
-set -ex
+VERSION=$(curl -s https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases/latest | jq -r .tag_name | sed s/^v//)
+set -eux
 
-curl -Lo /usr/local/bin/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v${VERSION}/aws-iam-authenticator_${VERSION}_linux_amd64
+curl -Lo /usr/local/bin/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v"$VERSION"/aws-iam-authenticator_"$VERSION"_linux_amd64
 chmod 500 /usr/local/bin/aws-iam-authenticator

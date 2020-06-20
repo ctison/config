@@ -1,9 +1,9 @@
 #!/bin/sh
 umask 0077
-VERSION='0.12.24'
-set -ex
+VERSION=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | jq -r .tag_name | sed s/^v//)
+set -eux
 
-curl -LO https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
-unzip terraform_${VERSION}_linux_amd64.zip -d /usr/local/bin
-rm terraform_${VERSION}_linux_amd64.zip
+curl -LO https://releases.hashicorp.com/terraform/"$VERSION"/terraform_"$VERSION"_linux_amd64.zip
+unzip terraform_"$VERSION"_linux_amd64.zip -d /usr/local/bin
+rm terraform_"$VERSION"_linux_amd64.zip
 chmod 500 /usr/local/bin/terraform

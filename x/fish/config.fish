@@ -39,6 +39,10 @@ if test -d /snap/bin
   set -a PATH /snap/bin
 end
 
+if test -d ~/.local/bin # pipx
+  set -a PATH ~/.local/bin
+end
+
 if type -q git 2>/dev/null
   alias gs='git status --short --branch'
   alias gl='git log --pretty=oneline'
@@ -94,10 +98,6 @@ if grep -E ~/.vscode-server/bin/'[[:alnum:]]+'/bin/code (type -p code 2>/dev/nul
   set -gx EDITOR 'code -w'
 end
 
-if not test -f /var/run/docker.sock && type -q host 2>/dev/null && host -W1 docker >/dev/null 2>&1
-  set -gx DOCKER_HOST 'tcp://docker:2375'
-end
-
 if type -q terraform 2>/dev/null
   alias tf='terraform'
 end
@@ -126,4 +126,8 @@ end
 
 if type -q tar 2>/dev/null
   alias tar='tar --no-same-o --no-same-p'
+end
+
+if type -q docker 2>/dev/null
+  set -gx DOCKER_BUILDKIT '1'
 end
