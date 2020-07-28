@@ -1,0 +1,92 @@
+{
+  "version": "1.8",
+  "preferences": {
+    "automaticMode": {
+      "active": true,
+      "newTab": "created"
+    },
+    "notifications": false,
+    "container": {
+      "namePrefix": "",
+      "color": "toolbar",
+      "colorRandom": true,
+      "colorRandomExcluded": [],
+      "icon": "fingerprint",
+      "iconRandom": false,
+      "iconRandomExcluded": [],
+      "numberMode": "reuse",
+      "removal": 120000
+    },
+    "iconColor": "default",
+    "isolation": {
+      "active": true,
+      "global": {
+        "navigation": {
+          "action": "notsamedomain"
+        },
+        "mouseClick": {
+          "middle": {
+            "action": "never",
+            "container": "default"
+          },
+          "ctrlleft": {
+            "action": "never",
+            "container": "default"
+          },
+          "left": {
+            "action": "never",
+            "container": "default"
+          }
+        },
+        "excluded": {},
+        "excludedContainers": []
+      },
+      "domain": [],
+      "mac": {
+        "action": "disabled"
+      }
+    },
+    "browserActionPopup": true,
+    "pageAction": false,
+    "contextMenu": true,
+    "contextMenuBookmarks": false,
+    "keyboardShortcuts": {
+      "AltC": false,
+      "AltP": false,
+      "AltN": false,
+      "AltShiftC": false,
+      "AltX": true,
+      "AltO": false,
+      "AltI": false
+    },
+    "replaceTabs": true,
+    "closeRedirectorTabs": {
+      "active": false,
+      "delay": 2000,
+      "domains": ["t.co", "outgoing.prod.mozaws.net", "slack-redir.net"]
+    },
+    "ignoreRequests": [],
+    "cookies": {
+      "domain": {}
+    },
+    "deletesHistory": {
+      "active": false,
+      "automaticMode": "never",
+      "contextMenu": false,
+      "contextMenuBookmarks": false,
+      "containerAlwaysPerDomain": "never",
+      "containerIsolation": "never",
+      "containerRemoval": 0,
+      "containerMouseClicks": "never",
+      "statistics": false
+    },
+    "statistics": false,
+    "ui": {
+      "expandPreferences": false,
+      "popupDefaultTab": "isolation-global"
+    },
+    "scripts": {
+      "domain": {}
+    }
+  }
+}

@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/cloudflare/cfssl/releases/latest | jq -r .tag_name | sed s/^v//)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/cloudflare/cfssl/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -Lo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/cfssl_"$VERSION"_linux_amd64
 curl -Lo /usr/local/bin/cfssl-bundle https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/cfssl-bundle_"$VERSION"_linux_amd64
 curl -Lo /usr/local/bin/cfssl-certinfo https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/cfssl-certinfo_"$VERSION"_linux_amd64

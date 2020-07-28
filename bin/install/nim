@@ -1,8 +1,9 @@
 #!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/nim-lang/nim/tags | jq -r .[0].name | sed s/^v//)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/nim-lang/nim/tags | jq -r .[0].name | sed s/^v//)
 curl -LO https://nim-lang.org/download/nim-"$VERSION"-linux_x64.tar.xz
 tar --no-same-{o,p} -C /usr/local/bin/ --strip=2 -xf nim-"$VERSION"-linux_x64.tar.xz nim-"$VERSION"/bin/
 chmod 500 /usr/local/bin/*

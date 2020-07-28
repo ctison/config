@@ -1,0 +1,10 @@
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+shopt -s nullglob
+
+apt-get install --no-install-recommends -y \
+  ffmpeg \
+  imagemagick \
+  libimage-exiftool-perl \
+  mediainfo

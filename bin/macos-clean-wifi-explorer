@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 exec rm -- ~/Library/Application Support/WiFi Explorer/*

@@ -2,8 +2,8 @@ name: x
 usage: 42
 
 options:
-  pwd:
-    environment: PWD
+  oldpwd:
+    environment: PWD # Capture $PWD before it gets eventually overwritten by -f config file's directory !
 
 tasks:
   build-kali:
@@ -17,15 +17,7 @@ tasks:
     args:
       NAME: {}
     run:
-      - "test ! -f ../../bin/${NAME}"
-      - |
-        /bin/sh -c '
-        cat > ../../bin/${NAME} << EOF
-        #!/bin/sh
-        umask 0077
-        set -eux
-
-        EOF'
+      - cp create-bin-template.sh ../../bin/${NAME}
       - chmod 700 ../../bin/${NAME}
       - type code >/dev/null 2>&1 && code ../../bin/${NAME}
 
@@ -33,19 +25,12 @@ tasks:
     args:
       NAME: {}
     run:
-      - "test ! -f ../../bin/install/${NAME}"
-      - |
-        /bin/sh -c '
-        cat > ../../bin/install/${NAME} << EOF
-        #!/bin/sh
-        umask 0077
-        set -eux
-
-        EOF'
+      - cp create-bin-install-template.sh ../../bin/install/${NAME}
       - chmod 700 ../../bin/install/${NAME}
       - type code >/dev/null 2>&1 && code ../../bin/install/${NAME}
 
   i:
     args:
       NAME: {}
-    run: exec ../../bin/install/${NAME}
+    run:
+      - export S=$PWD/../../bin/install/${NAME} && cd ${oldpwd} && exec $S

@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest | jq -r .tag_name)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest | jq -r .tag_name)
 curl -Lo /usr/local/bin/sops https://github.com/mozilla/sops/releases/download/"$VERSION"/sops-"$VERSION".linux
 chmod 500 /usr/local/bin/sops

@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 curl -Lo /usr/local/bin/kpt https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt
 chmod 500 /usr/local/bin/kpt

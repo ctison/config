@@ -1,6 +1,7 @@
 #!/bin/bash
-
+umask 0077
 set -euo pipefail
+shopt -s nullglob
 
 if [ $# = 0 ]; then
 	cat << EOF
@@ -15,6 +16,5 @@ fi
 NAME=$(echo "${PWD##*/}" | tr ' ' '-')
 
 set -x
-
 exec docker run -it --name "${NAME}" --hostname "${NAME}" \
 	-v "${PWD}":/"${NAME}":delegated --workdir "/${NAME}" "$@"

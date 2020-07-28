@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -e
+set -euo pipefail
+shopt -s nullglob
 
 if [ $# = 0 ]; then
   echo 'Usage: clean-file FILE [FILE ...]'

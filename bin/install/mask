@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
+set -euxo pipefail
+shopt -s nullglob
+
 VERSION=$(curl -s https://api.github.com/repos/jakedeichert/mask/releases/latest | jq -r .tag_name | sed s/^v//)
-set -eux
-
-# A CLI task runner defined by a simple markdown file 
-
 curl -LO https://github.com/jakedeichert/mask/releases/download/v"$VERSION"/mask-v"$VERSION"-x86_64-unknown-linux-gnu.zip
 unzip -jd /usr/local/bin/ mask-v"$VERSION"-x86_64-unknown-linux-gnu.zip mask-v"$VERSION"-x86_64-unknown-linux-gnu/mask
 chmod 500 /usr/local/bin/mask

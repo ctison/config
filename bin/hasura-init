@@ -1,6 +1,9 @@
 #!/bin/bash
 umask 0077
 set -euxo pipefail
+shopt -s nullglob
+
+# TODO: Convert to template repository
 
 mkdir migrations
 cat > config.yaml <<EOF

@@ -1,6 +1,7 @@
 #!/bin/bash
-
 umask 0077
+set -euxo pipefail
+shopt -s nullglob
 
 rm -rf -- /etc/fish
 ln -s /config/x/fish /etc/fish

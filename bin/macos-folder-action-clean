@@ -1,0 +1,25 @@
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+shopt -s nullglob
+
+log() {
+  xargs -0t syslog -s -l 6
+}
+
+PATH="/usr/local/bin:$PATH"
+for f in "$@"
+do
+  log <<EOF
+folder-action-clean: started for '$f':
+$(mdls "$f")
+EOF
+	~/work/config/bin/clean-media "$1"
+  log <<EOF
+folder-action-clean: finished for '$f':
+$(mdls "$f")
+EOF
+	osascript - <<EOF
+display notification "Cleaned '$f'" with title "Folder Action Clean"
+EOF
+done

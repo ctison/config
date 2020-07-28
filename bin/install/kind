@@ -1,0 +1,7 @@
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+shopt -s nullglob
+
+curl -Lo /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-linux-amd64
+chmod 500 /usr/local/bin/kind

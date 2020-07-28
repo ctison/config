@@ -1,6 +1,0 @@
-#!/bin/bash
-umask 0077
-set -eu
-set -o pipefail
-
-apropos 2>&1 "$@" | grep -v 'makewhatis: '

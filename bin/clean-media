@@ -1,13 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
+set -euo pipefail
+shopt -s nullglob
 
 if [ $# != 1 ]; then
   echo 'Usage: clean-media PATH'
   exit 1
 fi
 
-set -ex
+set -x
 
 chmod 600 "$1"
 mogrify -strip "$1"
-chmod 400 "$1" 
+xattr -c "$1" >/dev/null 2>&1 || true
+chmod 400 "$1"

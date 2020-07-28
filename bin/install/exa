@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/ogham/exa/releases/latest | jq -r .tag_name | sed s/^v//)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/ogham/exa/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/ogham/exa/releases/download/v"$VERSION"/exa-linux-x86_64-"$VERSION".zip
 unzip exa-linux-x86_64-"$VERSION".zip exa-linux-x86_64 -d /usr/local/bin/
 chmod 500 /usr/local/bin/exa-linux-x86_64

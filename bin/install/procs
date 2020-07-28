@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/dalance/procs/releases/latest | jq -r .tag_name)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/dalance/procs/releases/latest | jq -r .tag_name)
 curl -LO https://github.com/dalance/procs/releases/download/"$VERSION"/procs-"$VERSION"-x86_64-lnx.zip
 unzip procs-"$VERSION"-x86_64-lnx.zip procs -d /usr/local/bin/
 chmod 500 /usr/local/bin/procs

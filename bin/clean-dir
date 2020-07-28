@@ -1,7 +1,7 @@
-#!/bin/sh
-
+#!/bin/bash
 umask 0077
-set -ex
+set -euo pipefail
+shopt -s nullglob
 
 MODE="${1:-'0600'}"
 

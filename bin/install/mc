@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 curl -Lo /usr/local/bin/mc https://dl.min.io/client/mc/release/linux-amd64/mc
 chmod 500 /usr/local/bin/mc

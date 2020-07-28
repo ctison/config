@@ -1,6 +1,7 @@
-#!/bin/sh
-
-set -ex
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+shopt -s nullglob
 
 git config --global user.name 'Charles Tison'
 git config --global user.email 'ctison@pm.me'

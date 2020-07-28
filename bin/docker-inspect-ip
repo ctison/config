@@ -1,6 +1,7 @@
-#!/bin/sh
-
-set -e
+#!/bin/bash
+umask 0077
+set -euo pipefail
+shopt -s nullglob
 
 if [ $# -ne 1 ]; then
 	echo "Usage: $0 CONTAINER"
@@ -8,7 +9,5 @@ if [ $# -ne 1 ]; then
 fi
 
 CONTAINER="$1"
-
 set -x
-
 exec docker inspect "$CONTAINER" -f '{{.NetworkSettings.IPAddress}}'

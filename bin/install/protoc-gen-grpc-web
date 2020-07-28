@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/grpc/grpc-web/releases/latest | jq -r .tag_name | sed s/^v//)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/grpc/grpc-web/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -Lo /usr/local/bin/protoc-gen-grpc-web https://github.com/grpc/grpc-web/releases/download/"$VERSION"/protoc-gen-grpc-web-"$VERSION"-linux-x86_64
 chmod 500 /usr/local/bin/protoc-gen-grpc-web

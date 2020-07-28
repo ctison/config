@@ -1,6 +1,7 @@
 #!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 curl -LO https://github.com/nektos/act/releases/latest/download/act_Linux_x86_64.tar.gz
 tar --no-same-{o,p} -C /usr/local/bin/ -xf act_Linux_x86_64.tar.gz act

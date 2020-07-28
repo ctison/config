@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 curl -Lo /usr/local/bin/opa https://github.com/open-policy-agent/opa/releases/latest/download/opa_linux_amd64
 chmod 500 /usr/local/bin/opa

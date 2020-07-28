@@ -1,5 +1,0 @@
-#!/bin/sh
-umask 0077
-set -eux
-
-rm -i ~/Library/ApplicationSupport/.ffuserdata

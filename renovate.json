@@ -1,4 +1,0 @@
-{
-  "$schema": "https://raw.githubusercontent.com/renovatebot/renovate/master/renovate-schema.json",
-  "extends": ["config:base", ":prHourlyLimitNone", ":rebaseStalePrs"]
-}

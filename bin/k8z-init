@@ -1,7 +1,8 @@
 #!/bin/bash
 umask 0077
 set -euxo pipefail
+shopt -s nullglob
 
-mkdir -p k8z/{base,dev,prod}/{k8s,config}/
-touch k8z/{base,dev,prod}/kustomization.yaml
+mkdir -p k8z/{base,dev,staging,production}/{k8s,config}/
+touch k8z/{base,dev,staging,production}/kustomization.yaml
 touch k8z/base/k8s/{deployment,service}.yaml

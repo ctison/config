@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -ex
-
-echo 'Defaults timestamp_timeout = 0' >> /etc/sudoers

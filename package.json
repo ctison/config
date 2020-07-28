@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "scripts": {
+    "kali": "docker build -f x/docker/kali/Dockerfile -t ctison/kali .",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}'"
+  },
+  "devDependencies": {
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
+    "prettier": "2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}": [
+      "prettier --write"
+    ]
+  },
+  "renovate": {
+    "enabledManagers": [
+      "npm",
+      "dockerfile"
+    ],
+    "extends": [
+      ":ignoreModulesAndTests",
+      ":pinAllExceptPeerDependencies",
+      ":separateMultipleMajorReleases",
+      ":combinePatchMinorReleases",
+      ":semanticPrefixFixDepsChoreOthers",
+      ":rebaseStalePrs",
+      ":prImmediately",
+      ":disableRateLimiting",
+      ":automergeAll",
+      ":ignoreUnstable",
+      ":updateNotScheduled",
+      ":enableVulnerabilityAlerts",
+      "docker:enableMajor",
+      "group:monorepos",
+      "group:recommended"
+    ]
+  }
+}

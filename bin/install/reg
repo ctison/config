@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 curl -Lo /usr/local/bin/reg https://github.com/genuinetools/reg/releases/latest/download/reg-linux-amd64
 chmod 500 /usr/local/bin/reg

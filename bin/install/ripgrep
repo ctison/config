@@ -1,8 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-VERSION=$(curl -s https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq -r .tag_name | sed s/^v//)
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
+VERSION=$(curl -s https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/"$VERSION"/ripgrep_"$VERSION"_amd64.deb
 dpkg -i ripgrep_"$VERSION"_amd64.deb
 rm ripgrep_"$VERSION"_amd64.deb

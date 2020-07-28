@@ -1,6 +1,7 @@
-#!/bin/sh
-
-set -e
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+shopt -s nullglob
 
 # Disable infrared receiver
 defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -int 0

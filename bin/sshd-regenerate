@@ -1,6 +1,7 @@
-#!/bin/sh
-
-set -ex
+#!/bin/bash
+umask 0077
+set -euxo pipefail
+shopt -s nullglob
 
 rm -f -- /etc/ssh/ssh_host_*
 exec ssh-keygen -A

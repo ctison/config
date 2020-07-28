@@ -1,6 +1,7 @@
 #!/bin/bash
 umask 0077
-set -eux
+set -euxo pipefail
+shopt -s nullglob
 
 # GeoIP databases
 mkdir -p /usr/share/geoip

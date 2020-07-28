@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 umask 0077
-set -eux
-
-# Wasme - the tool for building, pushing, pulling, and deploying Envoy Web Assembly Filters
+set -euxo pipefail
+shopt -s nullglob
 
 curl -Lo /usr/local/bin/wasme https://github.com/solo-io/wasme/releases/latest/download/wasme-linux-amd64
 chmod 500 /usr/local/bin/wasme
