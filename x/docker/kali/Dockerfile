@@ -1,4 +1,4 @@
-FROM debian:10.4
+FROM debian:10.4@sha256:aaaaf56b44807c64d294e6c8059b479f35350b454492398225034174808d1726
 
 SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
 
