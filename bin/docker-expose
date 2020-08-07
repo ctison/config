@@ -4,7 +4,7 @@ set -euo pipefail
 shopt -s nullglob
 
 if [ $# -ne 2 ] && [ $# -ne 3 ]; then
-	echo "Usage: $0 CONTAINER NAME PORT [LOCAL_PORT]"
+	echo "Usage: $0 CONTAINER PORT [LOCAL_PORT]"
 	echo '  CONTAINER is the container which specified PORT will be exposed'
 	echo '  PORT is the port exposed on the CONTAINER'
 	echo '  LOCAL_PORT is the port to expose on the host and defaults to PORT'

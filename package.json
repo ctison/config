@@ -19,27 +19,16 @@
       "prettier --write"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true
+  },
   "renovate": {
-    "enabledManagers": [
-      "npm",
-      "dockerfile"
-    ],
     "extends": [
-      ":ignoreModulesAndTests",
-      ":pinAllExceptPeerDependencies",
-      ":separateMultipleMajorReleases",
-      ":combinePatchMinorReleases",
-      ":semanticPrefixFixDepsChoreOthers",
-      ":rebaseStalePrs",
-      ":prImmediately",
-      ":disableRateLimiting",
-      ":automergeAll",
-      ":ignoreUnstable",
-      ":updateNotScheduled",
-      ":enableVulnerabilityAlerts",
-      "docker:enableMajor",
-      "group:monorepos",
-      "group:recommended"
-    ]
+      "github>ctison/renovate-config"
+    ],
+    "automerge": true,
+    "requiredStatusChecks": null
   }
 }

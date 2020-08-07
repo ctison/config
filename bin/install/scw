@@ -3,5 +3,6 @@ umask 0077
 set -euxo pipefail
 shopt -s nullglob
 
-curl -Lo /usr/local/bin/scw https://github.com/scaleway/scaleway-cli/releases/latest/download/scw-linux-amd64
+VERSION=$(curl -s https://api.github.com/repos/scaleway/scaleway-cli/releases/latest | jq -r .tag_name | sed s/^v// | tr . -)
+curl -Lo /usr/local/bin/scw https://github.com/scaleway/scaleway-cli/releases/latest/download/scw-"$VERSION"-linux-x86_64
 chmod 500 /usr/local/bin/scw

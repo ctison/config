@@ -12,6 +12,9 @@ RUN apt-get update && \
 RUN rm -rf /root && mkdir -m 700 /root
 RUN rm -f /etc/apt/sources.list
 
+# Suppress an apt-key warning about stdout not being a terminal.
+ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
+
 RUN curl -sS https://archive.kali.org/archive-key.asc | apt-key add -
 RUN echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' > /etc/apt/sources.list.d/kali.list
 RUN echo 'deb https://http.kali.org/kali kali-experimental main contrib non-free' >> /etc/apt/sources.list.d/kali.list

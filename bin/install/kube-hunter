@@ -3,4 +3,4 @@ umask 0077
 set -euxo pipefail
 shopt -s nullglob
 
-exec rm -- ~/Library/Application\ Support/WiFi\ Explorer/*
+pip3 install -U kube-hunter
