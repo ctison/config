@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/nim-lang/nim/tags | jq -r .[0].name | sed s/^v//)
 curl -LO https://nim-lang.org/download/nim-"$VERSION"-linux_x64.tar.xz

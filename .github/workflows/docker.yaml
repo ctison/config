@@ -1,23 +1,34 @@
-name: docker
+name: Docker
 
 on:
   push:
     branches: [master]
 
 jobs:
-  build:
+  Build-and-Push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the source code
         uses: actions/checkout@v2
-      - name: Build and push image to Dockerhub
+
+      - name: Build and push ctison/ubuntu
         uses: docker/build-push-action@v1.1.0
         with:
-          repository: ctison/kali
+          repository: ctison/ubuntu
+          target: ubuntu
+          add_git_labels: true
           tag_with_ref: true
           tag_with_sha: true
           username: ctison
           password: ${{secrets.DOCKERHUB_PASSWORD}}
-          dockerfile: x/docker/kali/Dockerfile
-          cache_froms: ctison/kali:latest
+
+      - name: Build and push ctison/kali
+        uses: docker/build-push-action@v1.1.0
+        with:
+          repository: ctison/kali
+          target: kali
           add_git_labels: true
+          tag_with_ref: true
+          tag_with_sha: true
+          username: ctison
+          password: ${{secrets.DOCKERHUB_PASSWORD}}

@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 log() {
   xargs -0t syslog -s -l 6
@@ -10,16 +10,17 @@ log() {
 PATH="/usr/local/bin:$PATH"
 for f in "$@"
 do
+  if [[ "$f" =~ ~$ ]] ; then continue ; fi
   log <<EOF
 folder-action-clean: started for '$f':
 $(mdls "$f")
 EOF
-	~/work/config/bin/clean-media "$1"
+	~/work/config/bin/clean-file "$1"
   log <<EOF
 folder-action-clean: finished for '$f':
 $(mdls "$f")
 EOF
 	osascript - <<EOF
-display notification "Cleaned '$f'" with title "Folder Action Clean"
+display notification "$f" with title "File Cleaned"
 EOF
 done

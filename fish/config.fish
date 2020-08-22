@@ -22,6 +22,8 @@ set fish_color_valid_path          --underline
 
 umask 0077
 
+functions -e l ll
+
 if test (uname -s) = Darwin
   alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   set -a PATH /Library/Developer/CommandLineTools/usr/bin
@@ -68,8 +70,8 @@ if type -q kubebuilder 2>/dev/null
 end
 
 function setupConfig -a CONFIGPATH
-  if type -q tusk 2>/dev/null && test -f "$CONFIGPATH/x/tusk/tusk.yaml"
-    alias x="tusk -f '$CONFIGPATH/x/tusk/tusk.yaml'"
+  if type -q tusk 2>/dev/null && test -f "$CONFIGPATH/tusk/tusk.yaml"
+    alias x="tusk -f '$CONFIGPATH/tusk/tusk.yaml'"
   end
   set -p PATH $CONFIGPATH/bin
   alias man="man -P $CONFIGPATH/bin/pager"
@@ -117,7 +119,7 @@ if type -q shellcheck 2>/dev/null
 end
 
 if type -q octant 2>/dev/null
-  alias octant='octant --disable-open-browser --listener-addr 0.0.0.0:7777'
+  alias octant='octant --listener-addr 0.0.0.0:7777'
 end
 
 if type -q hasura 2>/dev/null

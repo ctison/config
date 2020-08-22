@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases | jq -r 'map(select(.tag_name | test("^v3"))) | .[0].tag_name' | sed s/^v//)
 curl -LO https://get.helm.sh/helm-v"$VERSION"-linux-amd64.tar.gz

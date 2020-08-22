@@ -1,8 +1,115 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euo pipefail
 
-mkdir -p k8z/{base,dev,staging,production}/{k8s,config}/
-touch k8z/{base,dev,staging,production}/kustomization.yaml
-touch k8z/base/k8s/{deployment,service}.yaml
+NAME=${NAME:-${PWD##*/}}
+
+mkdir -p k8z/{base,dev,prod}/{resources,configs}/
+
+cat <<EOF | tee k8z/{base,dev,prod}/kustomization.yaml > /dev/null
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: $NAME
+
+commonLabels:
+  app.kubernetes.io/name: $NAME
+
+EOF
+
+cat <<EOF | tee -a k8z/{dev,prod}/kustomization.yaml > /dev/null
+bases:
+  - ../base/
+EOF
+
+cat >> k8z/base/kustomization.yaml <<EOF
+resources:
+  - resources/serviceaccount.yaml
+  - resources/clusterrole.yaml
+  - resources/clusterrolebinding.yaml
+  - resources/deployment.yaml
+  - resources/service.yaml
+EOF
+
+cat > k8z/base/resources/serviceaccount.yaml <<EOF
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: $NAME
+EOF
+
+cat > k8z/base/resources/clusterrole.yaml <<EOF
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: $NAME
+rules: []
+EOF
+
+cat > k8z/base/resources/clusterrolebinding.yaml <<EOF
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: $NAME
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: $NAME
+subjects:
+  - kind: ServiceAccount
+    name: $NAME
+EOF
+
+cat > k8z/base/resources/deployment.yaml <<EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $NAME
+spec:
+  template:
+    metadata:
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: runtime/default
+        container.apparmor.security.beta.kubernetes.io/$NAME: runtime/default
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      serviceAccountName: $NAME
+      containers:
+        - name: $NAME
+          image: $NAME
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [all]
+            privileged: false
+            readOnlyRootFilesystem: true
+          ports: []
+          env: []
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health/alive
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
+          volumeMounts: []
+      volumes: []
+EOF
+
+cat > k8z/base/resources/service.yaml <<EOF
+apiVersion: v1
+kind: Service
+metadata:
+  name: $NAME
+spec:
+  ports: []
+EOF

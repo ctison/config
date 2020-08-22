@@ -1,6 +1,6 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 exec rm -- ~/Library/Application\ Support/WiFi\ Explorer/*

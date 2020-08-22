@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/denisidoro/navi/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/denisidoro/navi/releases/download/v"$VERSION"/navi-v"$VERSION"-x86_64-unknown-linux-musl.tar.gz

@@ -1,0 +1,10 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+VERSION=$(curl -s https://api.github.com/repos/cuelang/cue/releases/latest | jq -r .tag_name | sed s/^v//)
+curl -LO https://github.com/cuelang/cue/releases/download/v"$VERSION"/cue_"$VERSION"_Linux_x86_64.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf cue_"$VERSION"_Linux_x86_64.tar.gz cue
+chmod 500 /usr/local/bin/cue
+rm cue_"$VERSION"_Linux_x86_64.tar.gz

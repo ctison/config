@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/ahmetb/kubectl-tree/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/ahmetb/kubectl-tree/releases/download/v"$VERSION"/kubectl-tree_v"$VERSION"_linux_amd64.tar.gz

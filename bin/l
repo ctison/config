@@ -1,11 +1,11 @@
 #!/bin/bash
 umask 0077
-set -eulo pipefail
 shopt -s nullglob
+set -euo pipefail
 
 # shellcheck disable=SC2010
 if test "$(uname)" = Darwin ; then
-  exec ls -lhG "$@"
+  exec ls -lhGO "$@"
 elif test -n "$(ls --version 2>&1 | grep GNU)"; then
   exec ls -lhv --color=auto --group-d "$@"
 else

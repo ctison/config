@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 curl -LO https://github.com/go-task/task/releases/latest/download/task_linux_amd64.tar.gz
 tar --no-same-{o,p} -C /usr/local/bin/ -xf task_linux_amd64.tar.gz task

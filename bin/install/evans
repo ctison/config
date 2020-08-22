@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 curl -LO https://github.com/ktr0731/evans/releases/latest/download/evans_linux_amd64.tar.gz
 tar --no-same-{o,p} -C /usr/local/bin/ -xzf evans_linux_amd64.tar.gz evans

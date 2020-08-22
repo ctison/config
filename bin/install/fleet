@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 curl -Lo /usr/local/bin/fleet https://github.com/rancher/fleet/releases/latest/download/fleet-linux-amd64
 chmod 500 /usr/local/bin/fleet

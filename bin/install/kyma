@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 curl -LO https://github.com/kyma-project/cli/releases/latest/download/kyma_Linux_x86_64.tar.gz
 tar --no-same-{o,p} -C /usr/local/bin/ -xzf kyma_Linux_x86_64.tar.gz kyma

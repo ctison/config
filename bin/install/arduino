@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/arduino/arduino-cli/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/arduino/arduino-cli/releases/download/"$VERSION"/arduino-cli_"$VERSION"_Linux_64bit.tar.gz

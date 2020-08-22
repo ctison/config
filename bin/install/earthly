@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-set -euxo pipefail
-shopt -s nullglob
-
-curl -Lo /usr/local/bin/earthly https://github.com/earthly/earthly/releases/latest/download/earth-linux-amd64
-chmod 500 /usr/local/bin/earthly

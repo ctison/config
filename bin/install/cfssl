@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/cloudflare/cfssl/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -Lo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/cfssl_"$VERSION"_linux_amd64

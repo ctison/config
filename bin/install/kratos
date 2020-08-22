@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/ory/kratos/tags | jq -r '.[0].name' | sed s/^v//)
 curl -LO https://github.com/ory/kratos/releases/download/v"$VERSION"/kratos_"$VERSION"_linux_64bit.tar.gz

@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/junegunn/fzf-bin/releases/latest | jq -r .tag_name)
 curl -LO https://github.com/junegunn/fzf-bin/releases/download/"$VERSION"/fzf-"$VERSION"-linux_amd64.tgz

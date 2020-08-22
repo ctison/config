@@ -1,0 +1,10 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+VERSION=$(curl -s https://api.github.com/repos/fishworks/gofish/releases/latest | jq -r .tag_name | sed s/^v//)
+curl -LO https://gofi.sh/releases/gofish-v"$VERSION"-linux-amd64.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ --strip=1 -xf gofish-v"$VERSION"-linux-amd64.tar.gz linux-amd64/gofish
+chmod 500 /usr/local/bin/gofish
+rm gofish-v"$VERSION"-linux-amd64.tar.gz

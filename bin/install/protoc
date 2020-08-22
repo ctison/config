@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r .tag_name | sed s/^v//)UNAME=$(uname -m)
 curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v"$VERSION"/protoc-"$VERSION"-linux-"$UNAME".zip

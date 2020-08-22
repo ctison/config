@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euo pipefail
 shopt -s nullglob
+set -euo pipefail
 
 if [ $# = 0 ]; then
   echo 'Usage: macos-rpi-route-add [ROUTE_ADD_OPTIONS] RPI_ADDRESS INTERFACE'

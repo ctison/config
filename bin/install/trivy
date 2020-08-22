@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/aquasecurity/trivy/releases/download/v"$VERSION"/trivy_"$VERSION"_Linux-64bit.tar.gz

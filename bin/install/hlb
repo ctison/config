@@ -1,0 +1,8 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+VERSION=$(curl -s https://api.github.com/repos/openllb/hlb/releases | jq -r '.[0].tag_name' | sed s/^v//)
+curl -Lo /usr/local/bin/hlb https://github.com/openllb/hlb/releases/download/v"$VERSION"/hlb-linux-amd64
+chmod 500 /usr/local/bin/hlb

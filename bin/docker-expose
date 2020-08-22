@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euo pipefail
 shopt -s nullglob
+set -euo pipefail
 
 if [ $# -ne 2 ] && [ $# -ne 3 ]; then
 	echo "Usage: $0 CONTAINER PORT [LOCAL_PORT]"

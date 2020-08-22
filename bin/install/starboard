@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 curl -LO https://github.com/aquasecurity/starboard/releases/latest/download/starboard_linux_x86_64.tar.gz
 tar --no-same-{o,p} -C /usr/local/bin -xf starboard_linux_x86_64.tar.gz starboard

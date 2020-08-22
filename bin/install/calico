@@ -1,0 +1,7 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+curl -Lo /usr/local/bin/calico https://github.com/projectcalico/calicoctl/releases/latest/download/calicoctl-linux-amd64
+chmod 500 /usr/local/bin/calico

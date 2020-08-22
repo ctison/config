@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "kali": "docker build -f x/docker/kali/Dockerfile -t ctison/kali .",
+    "ubuntu": "docker build -t ctison/ubuntu --target ubuntu .",
+    "kali": "docker build -t ctison/kali --target kali .",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}'"
   },
   "devDependencies": {

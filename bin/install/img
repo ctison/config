@@ -1,0 +1,7 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+curl -Lo /usr/local/bin/img https://github.com/genuinetools/img/releases/latest/download/img-linux-amd64
+chmod 500 /usr/local/bin/img

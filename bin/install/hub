@@ -1,7 +1,7 @@
 #!/bin/bash
 umask 0077
-set -euxo pipefail
 shopt -s nullglob
+set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/github/hub/releases/latest | jq -r .tag_name | sed s/^v//)
 curl -LO https://github.com/github/hub/releases/download/v"$VERSION"/hub-linux-amd64-"$VERSION".tgz

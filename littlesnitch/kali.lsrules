@@ -1,0 +1,69 @@
+{
+  "name": "Kali",
+  "description": "Rules for kali docker image - https://github.com/ctison/config/blob/master/x/docker/kali/",
+  "rules": [
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "archive-4.kali.org",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "d28dx6y1hfq314.cloudfront.net",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "deb.nodesource.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "dl.yarnpkg.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "http.kali.org",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "packagecloud.io",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "packages.cloud.google.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    }
+  ]
+}
