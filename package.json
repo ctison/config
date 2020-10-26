@@ -6,7 +6,7 @@
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}'"
   },
   "devDependencies": {
-    "husky": "4.2.5",
+    "husky": "4.3.0",
     "lint-staged": "10.2.13",
     "prettier": "2.1.1"
   },
