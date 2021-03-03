@@ -9,10 +9,10 @@ if [ "$CONTAINERS" ]; then
 	docker rm -- $CONTAINERS
 fi
 
-IMAGES=$(docker images -f dangling=false --format '{{.Repository}}:{{.Tag}}' | fzf --cycle -m --preview 'docker inspect {} | jq -C' | cut -d' ' -f1)
+IMAGES=$(docker images -f dangling=false --format '{{.ID}} {{.Repository}}:{{.Tag}}' | sk -d' ' --with-nth 2 --cycle -m --preview 'docker inspect {1} | jq -C')
 # shellcheck disable=SC2086
 if [ "$IMAGES" ]; then
-    docker rmi  -- $IMAGES
+    docker rmi  -- ${IMAGES%% *}
 fi
 
 IMAGES=$(docker images -qf dangling=true)
@@ -20,5 +20,7 @@ IMAGES=$(docker images -qf dangling=true)
 if [ "$IMAGES" ]; then
     docker rmi  -- $IMAGES
 fi
+
+echo "To reclaim space on Desktop, run: docker run --privileged --pid=host docker/desktop-reclaim-space"
 
 exec docker volume prune -f

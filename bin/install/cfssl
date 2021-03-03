@@ -12,3 +12,4 @@ curl -Lo /usr/local/bin/cfssl-scan https://github.com/cloudflare/cfssl/releases/
 curl -Lo /usr/local/bin/cfssljson https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/cfssljson_"$VERSION"_linux_amd64
 curl -Lo /usr/local/bin/mkbundle https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/mkbundle_"$VERSION"_linux_amd64
 curl -Lo /usr/local/bin/multirootca https://github.com/cloudflare/cfssl/releases/download/v"$VERSION"/multirootca_"$VERSION"_linux_amd64
+chmod 500 /usr/local/bin/{cfssl{,-{bundle,certinfo,newkey,scan},json},mkbundle,multirootca}

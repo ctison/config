@@ -1,0 +1,7 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+mkdir -p "${@:1}"
+exec code "${@:1}"

@@ -25,5 +25,16 @@ tasks:
   i:
     args:
       NAME: {}
+    options:
+      version:
+        usage: display version and exit
+        short: v
+        default: false
+        type: boolean
     run:
-      - export S=$PWD/../bin/install/${NAME} && cd ${oldpwd} && exec $S
+      - when:
+          equal: { version: false }
+        command: export S=$PWD/../bin/install/${NAME} && cd ${oldpwd} && exec $S
+      - when:
+          equal: { version: true }
+        command: export S=$PWD/../bin/install/${NAME} && cd ${oldpwd} && exec $S version

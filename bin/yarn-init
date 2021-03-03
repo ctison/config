@@ -1,0 +1,21 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+set -x
+
+if ! test -f package.json; then cat > package.json <<EOF
+{
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
+EOF
+fi
+yarn add -LED husky lint-staged prettier
+JQ=$(jq -s '.[0] * .[1]' package.json "$DIR/../npm/base.json")
+echo "$JQ" > package.json

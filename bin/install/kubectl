@@ -1,0 +1,10 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+VERSION=$(curl -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r .tag_name)
+if [ $# = 1 ] && [ "$1" = "version" ]; then echo "v$VERSION" ; exit 0 ; fi
+set -x
+curl -fLo /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/"$VERSION"/bin/linux/amd64/kubectl
+chmod 500 /usr/local/bin/kubectl

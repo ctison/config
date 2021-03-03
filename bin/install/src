@@ -1,0 +1,13 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+VERSION=$(curl -sS https://api.github.com/repos/sourcegraph/src-cli/releases/latest | jq -r .tag_name)
+echo "VERSION=$VERSION"
+if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
+set -x
+curl -fLO https://github.com/sourcegraph/src-cli/releases/download/"$VERSION"/src-cli_"$VERSION"_linux_amd64.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf src-cli_"$VERSION"_linux_amd64.tar.gz src
+chmod 500 /usr/local/bin/src
+rm src-cli_"$VERSION"_linux_amd64.tar.gz

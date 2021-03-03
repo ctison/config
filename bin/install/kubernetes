@@ -1,0 +1,10 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+VERSION=$(curl -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r .tag_name | sed s/^v//)
+if [ $# = 1 ] && [ "$1" = "version" ]; then echo "v$VERSION" ; exit 0 ; fi
+set -x
+curl -LOC- https://dl.k8s.io/v"$VERSION"/kubernetes-server-linux-amd64.tar.gz
+# curl -LO https://dl.k8s.io/v"$VERSION"/kubernetes-node-linux-amd64.tar.gz

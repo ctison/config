@@ -16,7 +16,7 @@ EOF
 }
 
 MOVIES="$(find "$1" -type f -iname '*.MP4' -not -name '.*')"
-for M in $MOVIES ; do
+echo "$MOVIES" | while IFS= read -r M ; do
 	DATE=$(date -r "$M" '+%Y-%m-%d %H-%M-%S')
 	if [[ "$DATE" > "${3:-''}" ]]; then
 		if [ "$(df -g / | tail -n1 | awk -F' ' '{print $4}')" -lt 10 ]; then

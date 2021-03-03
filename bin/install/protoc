@@ -3,7 +3,8 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-VERSION=$(curl -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r .tag_name | sed s/^v//)UNAME=$(uname -m)
+VERSION=$(curl -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r .tag_name | sed s/^v//)
+UNAME=$(uname -m)
 curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v"$VERSION"/protoc-"$VERSION"-linux-"$UNAME".zip
 unzip -q protoc-"$VERSION"-linux-"$UNAME".zip -d /usr/local/protoc/
 rm protoc-"$VERSION"-linux-"$UNAME".zip

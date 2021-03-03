@@ -1,0 +1,15 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if test $# = 0; then
+  echo "Usage: k3d-create NAME"
+  exit
+fi
+
+set -x
+
+k3d cluster create --kubeconfig-switch-context=false --kubeconfig-update-default=false --no-lb "$1"
+mkdir -p ~/.kube/configs/
+k3d kubeconfig get "$1" | sed 's/0\.0\.0\.0/host.docker.internal/' > ~/.kube/configs/"$1".yaml

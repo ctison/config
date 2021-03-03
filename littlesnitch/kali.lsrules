@@ -1,7 +1,52 @@
 {
   "name": "Kali",
-  "description": "Rules for kali docker image - https://github.com/ctison/config/blob/master/x/docker/kali/",
+  "description": "Rules for kali docker image - https://github.com/ctison/config",
   "rules": [
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "security.ubuntu.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "archive.ubuntu.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "download.docker.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "packages.microsoft.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "archive.kali.org",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
     {
       "action": "allow",
       "owner": "me",
@@ -63,6 +108,42 @@
       "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
       "protocol": "tcp",
       "remote-hosts": "packages.cloud.google.com",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "ftp.acc.umu.se",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "kali.download",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "mirror.karneval.cz",
+      "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
+    },
+    {
+      "action": "allow",
+      "owner": "me",
+      "ports": "443",
+      "process": "/Applications/Docker.app/Contents/MacOS/com.docker.supervisor",
+      "protocol": "tcp",
+      "remote-hosts": "ftp.halifax.rwth-aachen.de",
       "via": "/Applications/Docker.app/Contents/Resources/bin/com.docker.vpnkit"
     }
   ]

@@ -1,0 +1,13 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+VERSION=$(curl -sS https://api.github.com/repos/hybridgroup/gort/releases/latest | jq -r .tag_name | sed s/^v//)
+echo "VERSION=$VERSION"
+if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
+set -x
+curl -LO https://github.com/hybridgroup/gort/releases/download/v"$VERSION"/gort_"$VERSION"_linux_amd64.tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ --strip=1 -xf gort_"$VERSION"_linux_amd64.tar.gz gort_"$VERSION"_linux_amd64/gort
+chmod 500 /usr/local/bin/gort
+rm gort_"$VERSION"_linux_amd64.tar.gz

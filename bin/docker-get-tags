@@ -1,0 +1,21 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if test $# = 0; then
+cat <<EOF
+Usage: $0 IMAGE [SEARCH_TAG] [ARCH=amd64]
+
+Scrape IMAGE tags from dockerhub
+EOF
+exit
+fi
+
+QUERY="?page_size=100"
+if test $# -gt 1; then
+QUERY="$QUERY&name=$2"
+fi
+
+curl -fsS https://hub.docker.com/v2/repositories/"$1"/tags/"$QUERY" |
+jq -r '.results[] | "\(.name)@\(.images[] | select(.architecture == "amd64" and .os == "linux") | "\(.digest) \(.os) \(.architecture) \(.size)")"'

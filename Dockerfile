@@ -18,7 +18,7 @@ RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key a
 RUN echo 'deb https://packages.cloud.google.com/apt cloud-sdk main' > /etc/apt/sources.list.d/google-cloud-sdk.list
 
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo 'deb https://deb.nodesource.com/node_14.x focal main' > /etc/apt/sources.list.d/nodesource.list
+RUN echo 'deb https://deb.nodesource.com/node_15.x groovy main' > /etc/apt/sources.list.d/nodesource.list
 
 RUN curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
 RUN echo 'deb https://packagecloud.io/github/git-lfs/ubuntu/ focal main' > /etc/apt/sources.list.d/git-lfs.list
@@ -49,8 +49,6 @@ CMD ["tmux"]
 
 FROM ubuntu as kali
 
-ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
-
 RUN curl -fsSL https://archive.kali.org/archive-key.asc | apt-key add -
 RUN echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' > /etc/apt/sources.list.d/kali.list
 RUN echo 'deb https://http.kali.org/kali kali-experimental main contrib non-free' >> /etc/apt/sources.list.d/kali.list
@@ -58,12 +56,10 @@ RUN echo 'deb https://http.kali.org/kali kali-bleeding-edge main contrib non-fre
 
 RUN sed -Ei 's|^(path-exclude=/usr/share/man/)|# \1|' /etc/dpkg/dpkg.cfg.d/excludes
 
-ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
   apt-get install --autoremove --no-install-recommends -y \
-  bind9-host \
+  bind9-dnsutils \
   docker-ce \
-  kubectl \
   make \
   man \
   ncat \

@@ -8,8 +8,8 @@ if [ $# = 0 ]; then
   exit 1
 fi
 
-for file in "$@" ; do
-  chmod 600 "$file"
-  xattr -c "$1" >/dev/null 2>&1 || true
-  chmod 400 "$file"
-done
+chmod 600 "$@"
+if test "$(uname -s)" = Darwin ; then
+  xattr -c -- "$@"
+fi
+chmod 400 "$@"

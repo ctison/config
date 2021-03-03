@@ -1,14 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "ubuntu": "docker build -t ctison/ubuntu --target ubuntu .",
+    "format": "prettier --write .",
     "kali": "docker build -t ctison/kali --target kali .",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}'"
-  },
-  "devDependencies": {
-    "husky": "5.1.3",
-    "lint-staged": "10.5.4",
-    "prettier": "2.2.1"
+    "ubuntu": "docker build -t ctison/ubuntu --target ubuntu ."
   },
   "husky": {
     "hooks": {
@@ -16,20 +11,24 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,yaml,gql,md,html,css}": [
+    "*.{js,jsx,ts,tsx,json,yaml,yml,gql,md,html,css}": [
       "prettier --write"
     ]
   },
   "prettier": {
+    "jsxSingleQuote": true,
     "semi": false,
-    "singleQuote": true,
-    "jsxSingleQuote": true
+    "singleQuote": true
   },
   "renovate": {
     "extends": [
-      "github>ctison/renovate-config"
+      "github>ctison/renovate"
     ],
-    "automerge": true,
     "requiredStatusChecks": null
+  },
+  "devDependencies": {
+    "husky": "5.1.3",
+    "lint-staged": "10.5.4",
+    "prettier": "2.2.1"
   }
 }

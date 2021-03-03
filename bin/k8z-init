@@ -5,9 +5,11 @@ set -euo pipefail
 
 NAME=${NAME:-${PWD##*/}}
 
-mkdir -p k8z/{base,dev,prod}/{resources,configs}/
+mkdir -p k8z/{base,dev,staging,prod}/{resources,configs}/
+mkdir -p k8z/{dev,staging,prod}/patches/
 
-cat <<EOF | tee k8z/{base,dev,prod}/kustomization.yaml > /dev/null
+cat <<EOF | tee k8z/{base,dev,staging,prod}/kustomization.yaml >/dev/null
+# yaml-language-server: \$schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -18,13 +20,58 @@ commonLabels:
 
 EOF
 
-cat <<EOF | tee -a k8z/{dev,prod}/kustomization.yaml > /dev/null
+sed -Ei= 's/^(namespace: .+)$/\1-staging/' k8z/staging/kustomization.yaml
+
+cat <<EOF | tee -a k8z/{dev,prod}/kustomization.yaml >/dev/null
 bases:
   - ../base/
 EOF
 
-cat >> k8z/base/kustomization.yaml <<EOF
+cat >>k8z/staging/kustomization.yaml <<EOF
+bases:
+  - ../prod/
+
+patchesJson6902:
+  - target:
+      version: v1
+      kind: Namespace
+      name: $NAME
+    path: patches/namespace.yaml
+EOF
+
+cat <<EOF | tee -a k8z/{dev,prod}/kustomization.yaml >/dev/null
+
+patchesStrategicMerge:
+  - patches/deployment.yaml
+EOF
+
+cat >k8z/base/configuration.yaml <<EOF
+varReference:
+  - apiVersion: getambassador.io/v2
+    kind: Mapping
+    path: spec/service
+EOF
+
+cat >>k8z/base/kustomization.yaml <<EOF
+configurations:
+- configuration.yaml
+
+vars:
+- name: ${NAME}_SVC_NAME
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: $NAME
+- name: ${NAME}_SVC_NAMESPACE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: $NAME
+  fieldref:
+    fieldpath: metadata.namespace
+
 resources:
+  - resources/namespace.yaml
   - resources/serviceaccount.yaml
   - resources/clusterrole.yaml
   - resources/clusterrolebinding.yaml
@@ -32,23 +79,42 @@ resources:
   - resources/service.yaml
 EOF
 
-cat > k8z/base/resources/serviceaccount.yaml <<EOF
+cat >k8z/base/resources/namespace.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/namespace-v1.json
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: $NAME
+  annotations:
+    linkerd.io/inject: enabled
+EOF
+
+cat >k8z/staging/patches/namespace.yaml <<EOF
+- op: replace
+  path: /metadata/name
+  value: $NAME-staging
+EOF
+
+cat >k8z/base/resources/serviceaccount.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/serviceaccount-v1.json
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: $NAME
 EOF
 
-cat > k8z/base/resources/clusterrole.yaml <<EOF
-apiVersion: rbac.authorization.k8s.io/v1beta1
+cat >k8z/base/resources/clusterrole.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/clusterrole-rbac-v1.json
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: $NAME
 rules: []
 EOF
 
-cat > k8z/base/resources/clusterrolebinding.yaml <<EOF
-apiVersion: rbac.authorization.k8s.io/v1beta1
+cat >k8z/base/resources/clusterrolebinding.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/clusterrolebinding-rbac-v1.json
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: $NAME
@@ -61,7 +127,8 @@ subjects:
     name: $NAME
 EOF
 
-cat > k8z/base/resources/deployment.yaml <<EOF
+cat >k8z/base/resources/deployment.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/deployment-apps-v1.json
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -70,11 +137,13 @@ spec:
   template:
     metadata:
       annotations:
-        seccomp.security.alpha.kubernetes.io/pod: runtime/default
-        container.apparmor.security.beta.kubernetes.io/$NAME: runtime/default
+        linkerd.io/inject: enabled
+        # seccomp.security.alpha.kubernetes.io/defaultProfileName: runtime/default
     spec:
       securityContext:
         runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       serviceAccountName: $NAME
       containers:
         - name: $NAME
@@ -105,7 +174,36 @@ spec:
       volumes: []
 EOF
 
-cat > k8z/base/resources/service.yaml <<EOF
+cat >k8z/dev/patches/deployment.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/deployment-apps-v1.json
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $NAME
+spec:
+  template:
+    spec:
+      containers:
+        - name: $NAME
+          imagePullPolicy: Never
+EOF
+
+cat >k8z/prod/patches/deployment.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/deployment-apps-v1.json
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $NAME
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/$NAME: runtime/default
+EOF
+
+cat >k8z/base/resources/service.yaml <<EOF
+# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/service-v1.json
 apiVersion: v1
 kind: Service
 metadata:

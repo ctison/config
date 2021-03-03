@@ -26,17 +26,11 @@ functions -e l ll
 
 if test (uname -s) = Darwin
   alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-  set -a PATH /Library/Developer/CommandLineTools/usr/bin
-end
-
-if test -d ~/work/bin
-  set -p PATH ~/work/bin
 end
 
 if test -d ~/.cargo/bin
   set -a PATH ~/.cargo/bin
 end
-
 if test -d /snap/bin
   set -a PATH /snap/bin
 end
@@ -45,9 +39,8 @@ if test -d ~/.local/bin # pipx
   set -a PATH ~/.local/bin
 end
 
-if type -q git 2>/dev/null
-  alias gs='git status --short --branch'
-  alias gl='git log --pretty=oneline'
+if test -d ~/gpm/bin
+  set -a PATH ~/gpm/bin
 end
 
 if type -q kubectl 2>/dev/null
@@ -96,7 +89,7 @@ if type -q docker-compose 2>/dev/null
   alias dc=docker-compose
 end
 
-if grep -E ~/.vscode-server/bin/'[[:alnum:]]+'/bin/code (type -p code 2>/dev/null | psub) >/dev/null 2>&1
+if grep -E ~/.vscode-server/bin/'[[:alnum:]]+'/bin/code (type -p code 2>/dev/null | psub) >/dev/null 2>&1 || type -q code 2>/dev/null
   set -gx EDITOR 'code -w'
 end
 
@@ -132,4 +125,30 @@ end
 
 if type -q docker 2>/dev/null
   set -gx DOCKER_BUILDKIT '1'
+end
+
+if type -q hub 2>/dev/null
+  alias hub='env GITHUB_TOKEN="$GITHUB_TOKEN" hub'
+end
+
+if type -q mkdir 2>/dev/null
+  alias mkdir='mkdir -p'
+  alias m='mkdir'
+end
+
+if type -q pip 2>/dev/null
+  alias pip='pip --use-feature=2020-resolver'
+end
+
+if type -q go 2>/dev/null
+  set -gx GO111MODULE on
+end
+
+if type -q gem 2>/dev/null
+  set -gx GEM_HOME "$HOME/.gem"
+  set -p PATH $GEM_HOME/ruby/*/bin
+end
+
+if type -q git 2>/dev/null
+  alias g='git'
 end

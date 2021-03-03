@@ -1,5 +1,5 @@
 {
-  "version": "1.8",
+  "version": "1.9.2",
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -19,7 +19,6 @@
     },
     "iconColor": "default",
     "isolation": {
-      "active": true,
       "global": {
         "navigation": {
           "action": "notsamedomain"
@@ -44,7 +43,8 @@
       "domain": [],
       "mac": {
         "action": "disabled"
-      }
+      },
+      "reactivateDelay": 0
     },
     "browserActionPopup": true,
     "pageAction": false,
@@ -63,7 +63,7 @@
     "closeRedirectorTabs": {
       "active": false,
       "delay": 2000,
-      "domains": ["t.co", "outgoing.prod.mozaws.net", "slack-redir.net"]
+      "domains": []
     },
     "ignoreRequests": [],
     "cookies": {
@@ -86,7 +86,8 @@
       "popupDefaultTab": "isolation-global"
     },
     "scripts": {
-      "domain": {}
+      "domain": {},
+      "active": false
     }
   }
 }

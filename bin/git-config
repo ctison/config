@@ -15,3 +15,18 @@ git config --global url.'git@github.com:'.insteadOf 'https://github.com/'
 git config --global url.'git@gitlab.com:'.insteadOf 'https://gitlab.com/'
 
 git config --global status.submoduleSummary true
+git config --global pull.rebase false
+git config --global push.default current
+
+git config --global init.defaultBranch main
+
+git config --global alias.p 'push'
+git config --global alias.pu 'push --set-upstream origin @'
+git config --global alias.pf 'push --force'
+git config --global alias.s 'status --branch --short'
+git config --global alias.l 'log --format=oneline --graph'
+git config --global alias.c 'checkout'
+git config --global alias.rst 'reset --soft @{u}'
+git config --global alias.f 'pull --all --ff-only'
+git config --global alias.rb 'rebase'
+git config --global alias.rbm 'rebase origin/main'

@@ -1,0 +1,20 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if [ $# != 1 ]; then
+  echo "Usage: $0 USER/REPO"
+  exit 1
+fi
+
+FAILED=$(hub api "/repos/$1/actions/runs?status=failure" | jq '.workflow_runs[].id')
+
+echo Failed jobs:
+echo "$FAILED"
+
+for ID in $FAILED ; do
+  hub api -X DELETE "/repos/$1/actions/runs/$ID"
+done
+
+echo 'All cleared!'
