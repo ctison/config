@@ -1,0 +1,62 @@
+[
+  {
+    "enabled": true,
+    "name": "console.aws.amazon.com",
+    "sections": [
+      {
+        "code": "textarea.gwt-TextArea {\n    resize: both;\n    width: unset;\n}",
+        "domains": ["console.aws.amazon.com"]
+      }
+    ]
+  },
+  {
+    "enabled": true,
+    "name": "istio.io",
+    "sections": [
+      {
+        "code": "html {\n    --textColor: black !important;\n}\n",
+        "domains": ["istio.io"]
+      }
+    ]
+  },
+  {
+    "enabled": true,
+    "name": "pulumi.com",
+    "sections": [
+      {
+        "code": "main>div:first-child {\n    margin-left: 0;\n    margin-right: 0;\n}\n\nmain>div:first-child>div:first-child {\n    width: 98vw;\n}",
+        "domains": ["pulumi.com"]
+      }
+    ]
+  },
+  {
+    "enabled": true,
+    "name": "google.com",
+    "sections": [
+      {
+        "code": "html {\n    overflow: scroll !important;\n}",
+        "domains": ["google.com"]
+      }
+    ]
+  },
+  {
+    "enabled": true,
+    "name": "docs.python.org",
+    "sections": [
+      {
+        "code": "div.body[role='main'] {\n    max-width: unset !important;\n}",
+        "domains": ["docs.python.org"]
+      }
+    ]
+  },
+  {
+    "enabled": true,
+    "name": "retool.com",
+    "sections": [
+      {
+        "code": ".CodeMirror-lines {\n    text-align: left;\n}",
+        "domains": ["retool.com"]
+      }
+    ]
+  }
+]
