@@ -6,7 +6,6 @@ set -euxo pipefail
 git config --global user.name 'Charles Tison'
 git config --global user.email 'ctison@pm.me'
 
-git config --global user.signingKey 75493B60BAB7091E79D8625F70F37D9616CE6039
 git config --global commit.gpgsign true
 git config --global tag.gpgSign true
 # NOTE: Do not forget to set GPG_TTY=$(tty) to permit gpg to prompt for passphrase.

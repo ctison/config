@@ -3,6 +3,7 @@
   "extensions": [
     "CoenraadS.bracket-pair-colorizer-2",
     "dbaeumer.vscode-eslint",
+    "bmalehorn.vscode-fish",
     "denoland.vscode-deno",
     "eamodio.gitlens",
     "emmanuelbeziat.vscode-great-icons",
@@ -38,6 +39,8 @@
     "yo1dog.cursor-align",
     "yzhang.markdown-all-in-one",
     "znck.grammarly",
+    "richie5um2.vscode-sort-json",
+    "shd101wyy.markdown-preview-enhanced",
     "zxh404.vscode-proto3"
   ]
 }

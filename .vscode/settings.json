@@ -1,80 +1,9 @@
 {
-  "diffEditor.ignoreTrimWhitespace": false,
-  "editor.formatOnSave": true,
-  "editor.renderWhitespace": "all",
-  "editor.suggestSelection": "first",
-  "editor.tabSize": 2,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "extensions.ignoreRecommendations": true,
-  "files.associations": {
-    ".env.*": "shellscript",
-    ".env": "shellscript",
-    "*.lsrules": "json",
-    "**/*.json": "jsonc",
-    "**/package.json": "json",
-    "PROJECT": "yaml"
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "files.insertFinalNewline": true,
-  "files.eol": "\n",
-  "files.exclude": {
-    "**/.DS_Store": false,
-    "**/.git": false,
-    "**/.hg": false,
-    "**/.svn": false,
-    "**/CVS": false
-  },
-  "gitlens.mode.active": "review",
-  "gitlens.views.repositories.branches.layout": "list",
-  "gitlens.views.repositories.files.layout": "list",
-  "go.autocompleteUnimportedPackages": true,
-  "go.lintFlags": ["--fast"],
-  "go.lintTool": "golangci-lint",
-  "go.useLanguageServer": true,
-  "gopls": {
-    "allExperiments": true
-  },
-  "grammarly.autoActivate": true,
-  "prettier.arrowParens": "avoid",
-  "prettier.jsxSingleQuote": true,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "python.analysis.typeCheckingMode": "strict",
-  "python.languageServer": "Pylance",
-  "remote.containers.defaultExtensions": ["mutantdino.resourcemonitor"],
-  "remote.containers.workspaceMountConsistency": "delegated",
-  "remote.downloadExtensionsLocally": true,
-  "search.showLineNumbers": true,
-  "search.smartCase": true,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.showExitAlert": false,
-  "vs-kubernetes": {
-    "disable-linters": ["resource-limits"]
-  },
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "window.newWindowDimensions": "maximized",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Abyss",
-  "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.revealIfOpen": true,
-  "workbench.editor.tabCloseButton": "off",
-  "workbench.editor.tabSizing": "shrink",
-  "workbench.enableExperiments": false,
-  "workbench.iconTheme": "vscode-great-icons",
-  "workbench.settings.enableNaturalLanguageSearch": false,
-  "workbench.settings.openDefaultKeybindings": true,
-  "workbench.settings.openDefaultSettings": true,
-  "workbench.startupEditor": "none",
-  "yaml.format.singleQuote": true,
-  "python.showStartPage": false,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[fish]": {
+    "editor.defaultFormatter": null
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -85,41 +14,123 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[python]": {
+    "gitlens.codeLens.symbolScopes": ["!Module"]
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "git.autofetch": true,
-  "shellcheck.ignorePatterns": {
-    "**/.env*": true,
-    "**/*.zsh": true,
-    "**/*.zshrc": true,
-    "**/zshrc": true,
-    "**/*.zprofile": true,
-    "**/zprofile": true,
-    "**/*.zlogin": true,
-    "**/zlogin": true,
-    "**/*.zlogout": true,
-    "**/zlogout": true,
-    "**/*.zshenv": true,
-    "**/zshenv": true,
-    "**/*.zsh-theme": true
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "all",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    "**/*.json": "jsonc",
+    "**/package.json": "json",
+    "*.lsrules": "json",
+    ".env": "shellscript",
+    ".env.*": "shellscript",
+    "PROJECT": "yaml"
   },
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.DS_Store": false,
+    "**/.git": false,
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/CVS": false
+  },
+  "files.insertFinalNewline": true,
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.autofetch": true,
   "git.confirmSync": false,
-  "workbench.editor.wrapTabs": true,
+  "githubPullRequests.fileListLayout": "tree",
+  "gitlens.mode.active": "review",
+  "gitlens.views.repositories.branches.layout": "list",
+  "gitlens.views.repositories.files.layout": "list",
+  "go.autocompleteUnimportedPackages": true,
+  "go.lintFlags": ["--fast"],
+  "go.lintTool": "golangci-lint",
+  "go.useLanguageServer": true,
+  "gopls": {
+    "allExperiments": true
+  },
+  "prettier.arrowParens": "avoid",
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfArgs": [
+    "--style",
+    "{indent_width: 2, continuation_indent_width: 2}"
+  ],
+  "python.languageServer": "Pylance",
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": ["--load-plugins", "pylint_quotes"],
+  "python.showStartPage": false,
+  "remote.containers.defaultExtensions": ["mutantdino.resourcemonitor"],
+  "remote.containers.workspaceMountConsistency": "delegated",
+  "remote.downloadExtensionsLocally": true,
+  "search.showLineNumbers": true,
+  "search.smartCase": true,
+  "shellcheck.ignorePatterns": {
+    "**/*.zlogin": true,
+    "**/*.zlogout": true,
+    "**/*.zprofile": true,
+    "**/*.zsh": true,
+    "**/*.zsh-theme": true,
+    "**/*.zshenv": true,
+    "**/*.zshrc": true,
+    "**/.env*": true,
+    "**/zlogin": true,
+    "**/zlogout": true,
+    "**/zprofile": true,
+    "**/zshenv": true,
+    "**/zshrc": true
+  },
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.showExitAlert": false,
+  "vs-kubernetes": {
+    "disable-linters": ["resource-limits"]
+  },
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.newWindowDimensions": "maximized",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Abyss",
+  "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "diffEditor.renderSideBySide": false,
-  "githubPullRequests.fileListLayout": "tree",
-  "git.alwaysShowStagedChangesResourceGroup": true,
-  "workbench.sideBar.location": "right",
-  "terminal.integrated.rendererType": "dom",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": [
     {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
+      "filenamePattern": "*.ipynb",
+      "viewType": "jupyter.notebook.ipynb"
     }
-  ]
+  ],
+  "workbench.enableExperiments": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.settings.openDefaultKeybindings": true,
+  "workbench.settings.openDefaultSettings": true,
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "yaml.format.singleQuote": true
 }

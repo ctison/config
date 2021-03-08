@@ -62,24 +62,6 @@ if type -q kubebuilder 2>/dev/null
   alias kb=kubebuilder
 end
 
-function setupConfig -a CONFIGPATH
-  if type -q tusk 2>/dev/null && test -f "$CONFIGPATH/tusk/tusk.yaml"
-    alias x="tusk -f '$CONFIGPATH/tusk/tusk.yaml'"
-  end
-  set -p PATH $CONFIGPATH/bin
-  alias man="man -P $CONFIGPATH/bin/pager"
-end
-
-if test -d ~/config/.git
-  setupConfig ~/config
-else if test -d ~/work/config/.git
-  setupConfig ~/work/config
-else if test -d /config/.git
-  setupConfig /config
-end
-
-functions -e setupConfig
-
 if type -q gpg 2>/dev/null
   alias gpg='gpg --keyid-format long'
   set -gx GPG_TTY (tty)
@@ -152,3 +134,46 @@ end
 if type -q git 2>/dev/null
   alias g='git'
 end
+
+if type -q code-insiders 2>/dev/null
+  alias code='code-insiders'
+  alias vscode='command code'
+end
+
+if type -q brew 2>/dev/null
+  alias b='brew'
+end
+
+if test -d /opt/homebrew/bin
+  set -p PATH /opt/homebrew/bin
+end
+
+if type -q arch 2>/dev/null
+  function x86
+    set -lx PATH (string replace -ar '^/opt/homebrew/bin$' '' $PATH)
+    arch -x86_64 $argv
+  end
+end
+
+### Setup config
+
+function setupConfig -a CONFIGPATH
+  if type -q tusk 2>/dev/null && test -f "$CONFIGPATH/tusk/tusk.yaml"
+    alias x="tusk -f '$CONFIGPATH/tusk/tusk.yaml'"
+  end
+  set -p PATH $CONFIGPATH/bin
+  alias man="man -P $CONFIGPATH/bin/pager"
+end
+
+if test -d ~/config/.git
+  setupConfig ~/config
+else if test -d ~/work/config/.git
+  setupConfig ~/work/config
+else if test -d /config/.git
+  setupConfig /config
+else if test -d ~/Documents/Work/ctison/config/.git
+  setupConfig ~/Documents/Work/ctison/config
+end
+
+functions -e setupConfig
+

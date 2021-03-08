@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euxo pipefail
+shopt -s nullglob
+
+IMG=$(mktemp).png
+
+/usr/sbin/screencapture -i -- "$IMG"
+
+/opt/homebrew/bin/tesseract "$IMG" stdout | pbcopy
