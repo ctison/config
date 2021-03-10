@@ -136,6 +136,7 @@ if type -q git 2>/dev/null
 end
 
 if type -q code-insiders 2>/dev/null
+  set -gx EDITOR 'code-insiders -w'
   alias code='code-insiders'
   alias vscode='command code'
 end
