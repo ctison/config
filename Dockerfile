@@ -1,4 +1,4 @@
-FROM ubuntu:21.04@sha256:2fc51f401cb873bfec33022d065efacbaf868b2e23f4dd76d7230d129258e255 as ubuntu
+FROM ubuntu:21.04@sha256:f537a135b5ae51f4969eda45abd7cac7a3ecc4fbd0d0907cdbfc0d0d4c28a430 as ubuntu
 
 SHELL [ "/bin/bash", "--norc", "--noprofile", "-euxo", "pipefail", "-O", "nullglob", "-c" ]
 ENV LANG C.UTF-8
