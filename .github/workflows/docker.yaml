@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2
 
       - name: Build and push ctison/ubuntu
-        uses: docker/build-push-action@v2.6.1
+        uses: docker/build-push-action@1bc1040caef9e604eb543693ba89b5bf4fc80935 # renovate: tag=v2.6.1
         with:
           repository: ctison/ubuntu
           target: ubuntu
@@ -23,7 +23,7 @@ jobs:
           password: ${{secrets.DOCKERHUB_PASSWORD}}
 
       - name: Build and push ctison/kali
-        uses: docker/build-push-action@v2.6.1
+        uses: docker/build-push-action@1bc1040caef9e604eb543693ba89b5bf4fc80935 # renovate: tag=v2.6.1
         with:
           repository: ctison/kali
           target: kali
