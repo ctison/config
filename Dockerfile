@@ -17,9 +17,6 @@ RUN echo 'deb https://download.docker.com/linux/ubuntu focal stable' > /etc/apt/
 RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN echo 'deb https://packages.cloud.google.com/apt cloud-sdk main' > /etc/apt/sources.list.d/google-cloud-sdk.list
 
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo 'deb https://deb.nodesource.com/node_15.x groovy main' > /etc/apt/sources.list.d/nodesource.list
-
 RUN curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
 RUN echo 'deb https://packagecloud.io/github/git-lfs/ubuntu/ focal main' > /etc/apt/sources.list.d/git-lfs.list
 
@@ -35,8 +32,7 @@ COPY ./ /config
 RUN ln -sv /config ~/
 ENV PATH="/config/bin:$PATH"
 ENV EDITOR='vim'
-RUN rm -rf -- /etc/fish
-RUN ln -s /config/fish /etc/fish
+RUN mkdir -p ~/.config && ln -s /config/fish ~/.config/fish
 RUN chsh -s /usr/bin/fish
 RUN useradd -D -s /usr/bin/fish
 RUN fish -c fish_update_completions
@@ -44,6 +40,10 @@ RUN ln -fs /config/bash/bash.bashrc /etc/bash.bashrc
 RUN ln -fs /config/tmux/tmux.conf /etc/tmux.conf
 RUN ln -fs /config/vim/vimrc /etc/vim/vimrc
 RUN rm -rf -- /etc/skel && mkdir /etc/skel
+
+SHELL [ "/usr/bin/fish", "-c" ]
+RUN fisher update
+RUN nvm install lts
 
 CMD ["tmux"]
 

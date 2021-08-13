@@ -43,6 +43,14 @@ if test -d ~/gpm/bin
   set -a PATH ~/gpm/bin
 end
 
+if test -d ~/work/bin
+  set -a PATH ~/work/bin
+end
+
+if test -d /opt/homebrew/bin
+  set -p PATH /opt/homebrew/bin
+end
+
 if type -q kubectl 2>/dev/null
   alias k=kubectl
   alias kz='k kustomize'
@@ -152,8 +160,18 @@ end
 if type -q arch 2>/dev/null
   function x86
     set -lx PATH (string replace -ar '^/opt/homebrew/bin$' '' $PATH)
+    set -p PATH /usr/local/opt/node@14/bin
     arch -x86_64 $argv
   end
+end
+
+if type -q nats 2>/dev/null
+  alias n='nats'
+end
+
+if type -q exa 2>/dev/null
+  alias e='exa -lag@ --group-directories-first --icons --git'
+  alias t='e -T'
 end
 
 ### Setup config
@@ -164,6 +182,7 @@ function setupConfig -a CONFIGPATH
   end
   set -p PATH $CONFIGPATH/bin
   alias man="man -P $CONFIGPATH/bin/pager"
+  set -gx PAGER $CONFIGPATH/bin/pager
 end
 
 if test -d ~/config/.git
@@ -178,3 +197,24 @@ end
 
 functions -e setupConfig
 
+# starship init fish | source
+
+function mkcd -d "Create a directory and set CWD" -w mkdir
+  command mkdir $argv
+  if test $status = 0
+    switch $argv[(count $argv)]
+      case '-*'
+      case '*'
+        cd $argv[(count $argv)]
+        return
+    end
+  end
+end
+
+if test -d /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/
+  set -a PATH /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/
+end
+
+if type -q docker-machine 2>/dev/null
+  alias dm='docker-machine'
+end
