@@ -10,5 +10,9 @@
   {
     "key": "f13",
     "command": "git-graph.view"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.action.createTerminalEditor"
   }
 ]

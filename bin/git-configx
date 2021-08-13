@@ -10,8 +10,8 @@ git config --global commit.gpgsign true
 git config --global tag.gpgSign true
 # NOTE: Do not forget to set GPG_TTY=$(tty) to permit gpg to prompt for passphrase.
 
-git config --global url.'git@github.com:'.insteadOf 'https://github.com/'
-git config --global url.'git@gitlab.com:'.insteadOf 'https://gitlab.com/'
+# git config --global url.'git@github.com:'.insteadOf 'https://github.com/'
+# git config --global url.'git@gitlab.com:'.insteadOf 'https://gitlab.com/'
 
 git config --global status.submoduleSummary true
 git config --global pull.rebase false
@@ -20,11 +20,15 @@ git config --global push.default current
 git config --global init.defaultBranch main
 
 git config --global alias.p 'push'
+git config --global alias.ch 'checkout'
+git config --global alias.cb 'checkout -b'
 git config --global alias.pu 'push --set-upstream origin @'
 git config --global alias.pf 'push --force'
 git config --global alias.s 'status --branch --short'
 git config --global alias.l 'log --format=oneline --graph'
-git config --global alias.c 'checkout'
+git config --global alias.c 'commit'
+git config --global alias.ca 'commit --amend'
+git config --global alias.can 'commit --amend --no-edit'
 git config --global alias.rst 'reset --soft @{u}'
 git config --global alias.f 'pull --all --ff-only'
 git config --global alias.rb 'rebase'

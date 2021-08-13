@@ -6,4 +6,8 @@ IMG=$(mktemp).png
 
 /usr/sbin/screencapture -i -- "$IMG"
 
+if test -d /opt/homebrew/bin/ ; then
+  export PATH=/opt/homebrew/bin:"$PATH"
+fi
+
 tesseract "$IMG" stdout | pbcopy

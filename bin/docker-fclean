@@ -9,18 +9,19 @@ if [ "$CONTAINERS" ]; then
 	docker rm -- $CONTAINERS
 fi
 
-IMAGES=$(docker images -f dangling=false --format '{{.ID}} {{.Repository}}:{{.Tag}}' | sk -d' ' --with-nth 2 --cycle -m --preview 'docker inspect {1} | jq -C')
+# docker images -f dangling=false --format '{{.ID}} {{.Repository}}:{{.Tag}}' | sk -d' ' --with-nth 2 --cycle -m --preview 'docker inspect {1} | jq -C' | hexdump -C
+IMAGES="$(docker images -f dangling=false --format '{{.ID}} {{.Repository}}:{{.Tag}}' | sk -d' ' --with-nth 2 --cycle -m --preview 'docker inspect {1} | jq -C')"
 # shellcheck disable=SC2086
 if [ "$IMAGES" ]; then
-    docker rmi  -- ${IMAGES%% *}
+    docker rmi -f -- $(echo "$IMAGES" | cut -d' ' -f1 | uniq)
 fi
 
 IMAGES=$(docker images -qf dangling=true)
 # shellcheck disable=SC2086
 if [ "$IMAGES" ]; then
-    docker rmi  -- $IMAGES
+    docker rmi -f -- $IMAGES
 fi
 
-echo "To reclaim space on Desktop, run: docker run --privileged --pid=host docker/desktop-reclaim-space"
+echo 'To reclaim space on Desktop, run: docker run --privileged --pid=host docker/desktop-reclaim-space'
 
 exec docker volume prune -f

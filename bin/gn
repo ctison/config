@@ -1,0 +1,7 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+git f
+git checkout -b $@ $(git symbolic-ref --short refs/remotes/origin/HEAD)

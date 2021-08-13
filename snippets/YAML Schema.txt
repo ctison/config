@@ -1,1 +1,1 @@
-# yaml-language-server: $schema=<|urlOfTheSchema>
+# yaml-language-server: $schema=https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master/horizontalpodautoscaler-autoscaling-v1.json

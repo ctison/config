@@ -5,11 +5,10 @@ set -euo pipefail
 
 NAME=${NAME:-${PWD##*/}}
 
-mkdir -p k8z/{base,dev,staging,prod}/{resources,configs}/
-mkdir -p k8z/{dev,staging,prod}/patches/
+mkdir -p {base,dev,staging,production}/{resources,configs}/
+mkdir -p {dev,staging,production}/patches/
 
-cat <<EOF | tee k8z/{base,dev,staging,prod}/kustomization.yaml >/dev/null
-# yaml-language-server: \$schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json
+cat <<EOF | tee {base,dev,staging,production}/kustomization.yaml >/dev/null
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -20,16 +19,20 @@ commonLabels:
 
 EOF
 
-sed -Ei= 's/^(namespace: .+)$/\1-staging/' k8z/staging/kustomization.yaml
+if test $(uname -s) = 'Darwin'; then
+  sed -Ei '' 's/^(namespace: .+)$/\1-staging/' staging/kustomization.yaml
+else
+  sed -Ei 's/^(namespace: .+)$/\1-staging/' staging/kustomization.yaml
+fi
 
-cat <<EOF | tee -a k8z/{dev,prod}/kustomization.yaml >/dev/null
+cat <<EOF | tee -a {dev,production}/kustomization.yaml >/dev/null
 bases:
   - ../base/
 EOF
 
-cat >>k8z/staging/kustomization.yaml <<EOF
+cat >> staging/kustomization.yaml <<EOF
 bases:
-  - ../prod/
+  - ../production/
 
 patchesJson6902:
   - target:
@@ -39,20 +42,20 @@ patchesJson6902:
     path: patches/namespace.yaml
 EOF
 
-cat <<EOF | tee -a k8z/{dev,prod}/kustomization.yaml >/dev/null
+cat <<EOF | tee -a {dev,production}/kustomization.yaml >/dev/null
 
 patchesStrategicMerge:
   - patches/deployment.yaml
 EOF
 
-cat >k8z/base/configuration.yaml <<EOF
+cat > base/configuration.yaml <<EOF
 varReference:
   - apiVersion: getambassador.io/v2
     kind: Mapping
     path: spec/service
 EOF
 
-cat >>k8z/base/kustomization.yaml <<EOF
+cat >> base/kustomization.yaml <<EOF
 configurations:
 - configuration.yaml
 
@@ -79,8 +82,7 @@ resources:
   - resources/service.yaml
 EOF
 
-cat >k8z/base/resources/namespace.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/namespace-v1.json
+cat > base/resources/namespace.yaml <<EOF
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -89,22 +91,20 @@ metadata:
     linkerd.io/inject: enabled
 EOF
 
-cat >k8z/staging/patches/namespace.yaml <<EOF
+cat > staging/patches/namespace.yaml <<EOF
 - op: replace
   path: /metadata/name
   value: $NAME-staging
 EOF
 
-cat >k8z/base/resources/serviceaccount.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/serviceaccount-v1.json
+cat > base/resources/serviceaccount.yaml <<EOF
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: $NAME
 EOF
 
-cat >k8z/base/resources/clusterrole.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/clusterrole-rbac-v1.json
+cat > base/resources/clusterrole.yaml <<EOF
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -112,8 +112,7 @@ metadata:
 rules: []
 EOF
 
-cat >k8z/base/resources/clusterrolebinding.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/clusterrolebinding-rbac-v1.json
+cat > base/resources/clusterrolebinding.yaml <<EOF
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -127,8 +126,7 @@ subjects:
     name: $NAME
 EOF
 
-cat >k8z/base/resources/deployment.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/deployment-apps-v1.json
+cat > base/resources/deployment.yaml <<EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -156,7 +154,7 @@ spec:
             readOnlyRootFilesystem: true
           ports: []
           env: []
-          readinessProbe:
+          startupProbe:
             httpGet:
               path: /health/ready
               port: http
@@ -174,8 +172,7 @@ spec:
       volumes: []
 EOF
 
-cat >k8z/dev/patches/deployment.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/deployment-apps-v1.json
+cat > dev/patches/deployment.yaml <<EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -188,8 +185,7 @@ spec:
           imagePullPolicy: Never
 EOF
 
-cat >k8z/prod/patches/deployment.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/deployment-apps-v1.json
+cat > production/patches/deployment.yaml <<EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -202,8 +198,7 @@ spec:
         container.apparmor.security.beta.kubernetes.io/$NAME: runtime/default
 EOF
 
-cat >k8z/base/resources/service.yaml <<EOF
-# yaml-language-server: \$schema=https://kubernetesjsonschema.dev/master/service-v1.json
+cat > base/resources/service.yaml <<EOF
 apiVersion: v1
 kind: Service
 metadata:
