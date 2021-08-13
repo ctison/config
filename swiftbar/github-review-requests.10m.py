@@ -91,7 +91,10 @@ if __name__ == '__main__':
 
   response = ft_search(GITHUB_LOGIN)
 
-  ft_print(f':arrow.triangle.pull: #{response["issueCount"]}')
+  prs = [r['node'] for r in response['edges']]
+  prs = list(filter(lambda pr: not pr['repository']['nameWithOwner'].startswith('ctison/'), prs))
+
+  ft_print(f':arrow.triangle.pull: #{len(prs)}')
   ft_print('---')
 
   CI_STATE = {
@@ -103,8 +106,7 @@ if __name__ == '__main__':
     'SUCCESS': (':checkmark:', 'mediumspringgreen')
   }
 
-  for pr in [r['node'] for r in response['edges']]:
-
+  for pr in prs:
     title = '%s - %s' % (pr['repository']['nameWithOwner'], pr['title'])
     ci_status = (pr['commits']['nodes'][0].get('commit', {}).get(
       'statusCheckRollup', {}) or {}).get('state', None)

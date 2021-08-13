@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[fish]": {
-    "editor.defaultFormatter": null
+    "editor.formatOnSave": false
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -15,7 +15,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "gitlens.codeLens.symbolScopes": ["!Module"]
+    "gitlens.codeLens.symbolScopes": [
+      "!Module"
+    ],
+    "editor.defaultFormatter": "ms-python.python"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -41,7 +44,9 @@
     "*.lsrules": "json",
     ".env": "shellscript",
     ".env.*": "shellscript",
-    "PROJECT": "yaml"
+    "PROJECT": "yaml",
+    "*.env": "shellscript",
+    "*.hcl": "terraform"
   },
   "files.eol": "\n",
   "files.exclude": {
@@ -53,10 +58,8 @@
   },
   "files.insertFinalNewline": true,
   "git.alwaysShowStagedChangesResourceGroup": true,
-  "git.autofetch": true,
   "git.confirmSync": false,
   "githubPullRequests.fileListLayout": "tree",
-  "gitlens.mode.active": "review",
   "gitlens.views.repositories.branches.layout": "list",
   "gitlens.views.repositories.files.layout": "list",
   "go.autocompleteUnimportedPackages": true,
@@ -107,10 +110,14 @@
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
   },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json": [
+      "kustomization.yaml"
+    ],
+    "kubernetes": ["/dev/*"]
+  },
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "maximized",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Abyss",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
@@ -119,18 +126,29 @@
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.wrapTabs": true,
-  "workbench.editorAssociations": [
-    {
-      "filenamePattern": "*.ipynb",
-      "viewType": "jupyter.notebook.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "vscode-great-icons",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
-  "workbench.settings.openDefaultSettings": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "yaml.format.singleQuote": true
+  "workbench.colorCustomizations": {
+    "editor.findMatchBackground": "#ffc400"
+  },
+  "yaml.format.singleQuote": true,
+  "notebook.lineNumbers": "on",
+  "workbench.editor.untitled.hint": "hidden",
+  "gitlens.views.branches.branches.layout": "list",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "redhat.telemetry.enabled": false,
+  "workbench.colorTheme": "GitHub Dark",
+  "editor.minimap.enabled": false,
+  "jupyter.askForKernelRestart": false,
+  "go.toolsManagement.autoUpdate": true
 }

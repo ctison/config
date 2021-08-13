@@ -21,6 +21,13 @@ function fish_prompt
 	end
 	set_color -o red
 	__fish_git_prompt
+	if type -q nvm
+		set -l nvm_current (nvm current)
+		if test -n "$nvm_current"
+			set_color -o black
+			echo -n " node:$nvm_current"
+		end
+	end
 	if type -q kubectl
 		set_color -o black
 		set -l KUBE_CONTEXT (kubectl config current-context 2>/dev/null)
