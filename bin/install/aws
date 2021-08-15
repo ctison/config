@@ -3,13 +3,11 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-if test -d /usr/local/aws/
-then
-/usr/local/aws/aws/install -u
+if test -d /usr/local/aws/ ; then
+  /usr/local/aws/aws/install -u
 else 
-curl -fLO https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-rm -rf -- /usr/local/aws/
-unzip awscli-exe-linux-x86_64.zip -d /usr/local/aws/
-rm awscli-exe-linux-x86_64.zip
-/usr/local/aws/aws/install
+  curl -fSLO https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+  unzip -q awscli-exe-linux-x86_64.zip -d /usr/local/
+  rm awscli-exe-linux-x86_64.zip
+  /usr/local/aws/install
 fi

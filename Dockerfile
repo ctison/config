@@ -25,7 +25,7 @@ RUN echo 'deb https://packages.microsoft.com/repos/azure-cli/ focal main' > /etc
 
 RUN apt-get update && \
   apt-get install --autoremove --no-install-recommends -y \
-  fish less tmux vim \
+  exa fish jq less tmux unzip vim xz-utils \
   && rm -rf -- /var/lib/apt/lists/*
 
 COPY ./ /config

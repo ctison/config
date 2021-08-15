@@ -15,9 +15,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "gitlens.codeLens.symbolScopes": [
-      "!Module"
-    ],
+    "gitlens.codeLens.symbolScopes": ["!Module"],
     "editor.defaultFormatter": "ms-python.python"
   },
   "[typescript]": {
@@ -81,7 +79,6 @@
   "python.languageServer": "Pylance",
   "python.linting.enabled": true,
   "python.linting.pylintArgs": ["--load-plugins", "pylint_quotes"],
-  "python.showStartPage": false,
   "remote.containers.defaultExtensions": ["mutantdino.resourcemonitor"],
   "remote.containers.workspaceMountConsistency": "delegated",
   "remote.downloadExtensionsLocally": true,
@@ -102,10 +99,7 @@
     "**/zshenv": true,
     "**/zshrc": true
   },
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.rendererType": "dom",
   "terminal.integrated.showExitAlert": false,
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
@@ -116,7 +110,6 @@
     ],
     "kubernetes": ["/dev/*"]
   },
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "maximized",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
@@ -150,5 +143,10 @@
   "workbench.colorTheme": "GitHub Dark",
   "editor.minimap.enabled": false,
   "jupyter.askForKernelRestart": false,
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "resmon.show.cputemp": true,
+  "git-graph.commitDetailsView.location": "Docked to Bottom",
+  "git-graph.openNewTabEditorGroup": "Beside",
+  "git-graph.repository.commits.showSignatureStatus": true,
+  "git-graph.showStatusBarItem": false
 }

@@ -170,7 +170,7 @@ if type -q nats 2>/dev/null
 end
 
 if type -q exa 2>/dev/null
-  alias e='exa -lag@ --group-directories-first --icons --git'
+  alias e='exa -lag@ --group-directories-first --git'
   alias t='e -T'
 end
 
@@ -185,13 +185,13 @@ function setupConfig -a CONFIGPATH
   set -gx PAGER $CONFIGPATH/bin/pager
 end
 
-if test -d ~/config/.git
+if test -f ~/config/Dockerfile
   setupConfig ~/config
-else if test -d ~/work/config/.git
+else if test -f ~/work/config/Dockerfile
   setupConfig ~/work/config
-else if test -d /config/.git
+else if test -f /config/Dockerfile
   setupConfig /config
-else if test -d ~/Documents/Work/ctison/config/.git
+else if test -f ~/Documents/Work/ctison/config/Dockerfile
   setupConfig ~/Documents/Work/ctison/config
 end
 
@@ -217,4 +217,8 @@ end
 
 if type -q docker-machine 2>/dev/null
   alias dm='docker-machine'
+end
+
+if test -d ~/.pyenv/bin
+  set -a PATH ~/.pyenv/bin ~/.pyenv/shims
 end

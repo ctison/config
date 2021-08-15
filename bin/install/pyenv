@@ -1,0 +1,6 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+curl -fSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash

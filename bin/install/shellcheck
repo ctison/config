@@ -1,0 +1,13 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+VERSION=$(curl -fsS https://api.github.com/repos/koalaman/shellcheck/releases/latest | jq -r .tag_name)
+echo "VERSION=$VERSION"
+if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
+set -x
+curl -fSLO https://github.com/koalaman/shellcheck/releases/download/"$VERSION"/shellcheck-"$VERSION".linux.x86_64.tar.xz
+tar --no-same-{o,p} -C /usr/local/bin/ --strip=1 -xf shellcheck-"$VERSION".linux.x86_64.tar.xz shellcheck-"$VERSION"/shellcheck
+chmod 500 /usr/local/bin/shellcheck
+rm shellcheck-"$VERSION".linux.x86_64.tar.xz
