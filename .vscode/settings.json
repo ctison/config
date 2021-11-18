@@ -5,6 +5,9 @@
   "[fish]": {
     "editor.formatOnSave": false
   },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -15,8 +18,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
-    "gitlens.codeLens.symbolScopes": ["!Module"],
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.python",
+    "gitlens.codeLens.symbolScopes": ["!Module"]
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -27,24 +30,36 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "breadcrumbs.enabled": false,
+  "debug.allowBreakpointsEverywhere": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
+  "diffEditor.wordWrap": "off",
+  "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": true,
   "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.inlayHints.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
+  "editor.snippetSuggestions": "none",
+  "editor.suggest.preview": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "editor.wordWrap": "off",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
     "**/*.json": "jsonc",
     "**/package.json": "json",
+    "*.env": "shellscript",
+    "*.hcl": "terraform",
     "*.lsrules": "json",
     ".env": "shellscript",
     ".env.*": "shellscript",
-    "PROJECT": "yaml",
-    "*.env": "shellscript",
-    "*.hcl": "terraform"
+    "PROJECT": "yaml"
   },
   "files.eol": "\n",
   "files.exclude": {
@@ -52,21 +67,37 @@
     "**/.git": false,
     "**/.hg": false,
     "**/.svn": false,
-    "**/CVS": false
+    "**/CVS": false,
+    "**/Thumbs.db": false
   },
   "files.insertFinalNewline": true,
+  "git-graph.openNewTabEditorGroup": "Beside",
+  "git-graph.repository.commits.showSignatureStatus": true,
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": false,
+    "plaintext": false,
+    "yaml": true
+  },
   "githubPullRequests.fileListLayout": "tree",
+  "gitlens.views.branches.branches.layout": "list",
   "gitlens.views.repositories.branches.layout": "list",
   "gitlens.views.repositories.files.layout": "list",
   "go.autocompleteUnimportedPackages": true,
   "go.lintFlags": ["--fast"],
   "go.lintTool": "golangci-lint",
+  "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "gopls": {
     "allExperiments": true
   },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "notebook.lineNumbers": "on",
   "prettier.arrowParens": "avoid",
   "prettier.jsxSingleQuote": true,
   "prettier.semi": false,
@@ -79,9 +110,11 @@
   "python.languageServer": "Pylance",
   "python.linting.enabled": true,
   "python.linting.pylintArgs": ["--load-plugins", "pylint_quotes"],
+  "redhat.telemetry.enabled": false,
   "remote.containers.defaultExtensions": ["mutantdino.resourcemonitor"],
   "remote.containers.workspaceMountConsistency": "delegated",
   "remote.downloadExtensionsLocally": true,
+  "resmon.show.cputemp": true,
   "search.showLineNumbers": true,
   "search.smartCase": true,
   "shellcheck.ignorePatterns": {
@@ -101,16 +134,20 @@
   },
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.showExitAlert": false,
+  "terminal.integrated.tabs.enabled": false,
+  "terminal.integrated.tabs.hideCondition": "singleGroup",
+  "terminal.integrated.tabs.showActions": "never",
+  "terminal.integrated.tabs.showActiveTerminal": "never",
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
   },
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json": [
-      "kustomization.yaml"
-    ],
-    "kubernetes": ["/dev/*"]
+  "workbench.colorCustomizations": {
+    "editor.findMatchBackground": "#ffc400",
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f",
+    "terminal.selectionBackground": "#e26cffcb"
   },
-  "window.newWindowDimensions": "maximized",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
@@ -118,35 +155,22 @@
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.untitled.hint": "hidden",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "workbench.enableExperiments": false,
   "workbench.iconTheme": "vscode-great-icons",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "workbench.colorCustomizations": {
-    "editor.findMatchBackground": "#ffc400"
-  },
   "yaml.format.singleQuote": true,
-  "notebook.lineNumbers": "on",
-  "workbench.editor.untitled.hint": "hidden",
-  "gitlens.views.branches.branches.layout": "list",
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json": [
+      "kustomization.yaml"
+    ],
+    "kubernetes": ["/dev/*"]
   },
-  "redhat.telemetry.enabled": false,
-  "workbench.colorTheme": "GitHub Dark",
-  "editor.minimap.enabled": false,
-  "jupyter.askForKernelRestart": false,
-  "go.toolsManagement.autoUpdate": true,
-  "resmon.show.cputemp": true,
-  "git-graph.commitDetailsView.location": "Docked to Bottom",
-  "git-graph.openNewTabEditorGroup": "Beside",
-  "git-graph.repository.commits.showSignatureStatus": true,
-  "git-graph.showStatusBarItem": false
+  "editor.linkedEditing": true
 }

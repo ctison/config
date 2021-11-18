@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rancher/k3d/main/pkg/config/v1alpha3/schema.json
+apiVersion: k3d.io/v1alpha3
+kind: Simple
+options:
+  k3d:
+    disableLoadbalancer: true
+  k3s:
+    extraArgs:
+      - arg: --disable=traefik
+  kubeconfig:
+    updateDefaultKubeconfig: false
+    switchCurrentContext: false

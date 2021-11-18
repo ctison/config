@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: {{ name }}
+
+commonLabels:
+  app.kubernetes.io/name: {{ name }}
+
+resources:
+  - resources/namespace.yaml
+  - resources/service-account.yaml
+  - resources/cluster-role.yaml
+  - resources/cluster-role-binding.yaml
+  - resources/deployment.yaml
+  - resources/service.yaml

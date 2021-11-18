@@ -1,0 +1,5 @@
+inputDir: ./templates/
+outputDir: ./output/
+suppressEmpty: true
+plugins:
+  name: ../plugins/name.sh

@@ -45,4 +45,5 @@ function fish_prompt
   set_color -o red
   echo -n 'λ '
   set_color normal
+	nvm use  1>/dev/null 2>&1
 end

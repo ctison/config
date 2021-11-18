@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ name }}
+spec:
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+        # seccomp.security.alpha.kubernetes.io/defaultProfileName: runtime/default
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: {{ name }}
+      containers:
+        - name: {{ name }}
+          image: {{ name }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [all]
+            privileged: false
+            readOnlyRootFilesystem: true
+          ports: []
+          env: []
+          startupProbe:
+            httpGet:
+              path: /health/ready
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health/alive
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
+          volumeMounts: []
+      volumes: []

@@ -3,3 +3,4 @@ yarn-debug.log*
 yarn-error.log*
 __pycache__/
 *-checkpoint.ipynb
+.secrets.json

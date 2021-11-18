@@ -1,0 +1,54 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if ! test -d .git ; then
+  echo "Usage: $0 must be run at the root of a Github repository" >&2
+  exit 1
+fi
+
+# # Create a branch
+git fetch origin main
+git checkout -B chore/debug origin/main
+
+# Compute the list of secrets on the repository
+SECRETS=$(gh secret list | cut -d$'\t' -f1)
+
+rm -f -- .github/workflows/*
+
+# Setup the github CI debug job
+cat > .github/workflows/debug.yaml <<EOF
+name: debug
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - env:
+$(for SECRET in $SECRETS; do echo "        $SECRET: \${{ secrets.$SECRET }}"; done)
+      run: |
+        cat > .env <<EOF
+$(for SECRET in $SECRETS; do echo "        $SECRET=\$$SECRET"; done)
+        EOF
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: env
+        path: .env
+EOF
+
+git add .github/workflows/
+git commit -nm 'chore(ci): setup debug'
+git push -f
+
+sleep 5
+
+RUN_ID=$(gh run list -w debug -L 1 | head -n2 | tail -n1 | rev | cut -d$'\t' -f3 | rev)
+gh run watch "$RUN_ID"
+
+gh run download "$RUN_ID"
+
+git push origin --delete chore/debug
+
+gh api -X DELETE "repos/{owner}/{repo}/actions/runs/$RUN_ID"

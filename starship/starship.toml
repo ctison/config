@@ -1,97 +1,64 @@
+# format = '''
+# [\[](bold white)[$username@$hostname](bold green)[\]](bold white) [$directory](bold blue)
+# [λ](bold red)
+# '''
+
 [directory]
-read_only = ' '
-truncate_to_repo = false
 truncation_length = 0
+truncate_to_repo = false
+style = 'bold blue'
 
 [status]
 disabled = false
-map_symbol = true
-
-[time]
-disabled = false
+# map_symbol = true
 
 [git_branch]
-format = '[$symbol$branch]($style) '
-symbol = ' '
+format = '[(\($branch\))]($style)'
+style = 'bold red'
+
+[git_status]
+disabled = true
 
 [character]
 success_symbol = '[λ](bold red)'
 
 [cmd_duration]
+min_time = 1_000
 show_milliseconds = true
-show_notifications = true
 
-[aws]
-format = '[$symbol$profile($region)]($style)'
-symbol = '  '
+# [aws]
+# format = '[( aws:$profile)]($style)'
+# style = 'bold black'
+# [aws.region_aliases]
+# ap-southeast-2 = "au"
+# eu-west-3 = 'eu3'
+# us-east-1 = "va"
 
-[conda]
-symbol = ' '
+# [docker_context]
+# only_with_files = false
+# format = '[( docker:$context)]($style)'
+# style = 'bold black'
 
-[dart]
-symbol = ' '
+# [gcloud]
+# format = '[( gcp:$account)]($style)'
+# style = 'bold black dimmed'
+# disabled = true
 
-[docker]
-symbol = ' '
+# [golang]
+# disabled = true
 
-[elixir]
-symbol = ' '
+# [helm]
+# disabled = true
 
-[elm]
-symbol = ' '
+# [hostname]
+# # ssh_only = false
+# style = 'bold green'
 
-[golang]
-symbol = ' '
+# [kubernetes]
+# disabled = false
+# format = '[( k8s:$context(:$namespace))]($style)'
+# style = 'bold black'
 
-[haskell]
-symbol = ' '
-
-[hg_branch]
-symbol = ' '
-
-[java]
-symbol = ' '
-
-[julia]
-symbol = ' '
-
-[memory_usage]
-symbol = ' '
-
-[nim]
-symbol = ' '
-
-[nix_shell]
-symbol = ' '
-
-[nodejs]
-format = '[$symbol($version )]($style)'
-symbol = ' '
-
-[package]
-symbol = ' '
-
-[perl]
-symbol = ' '
-
-[php]
-symbol = ' '
-
-[python]
-symbol = ' '
-
-[ruby]
-symbol = ' '
-
-[rust]
-symbol = ' '
-
-[swift]
-symbol = 'ﯣ '
-
-[custom.k8s]
-command = '''
-'''
-
-[kubernetes]
-disabled = false
+# [nodejs]
+# format = '[( node:$version)]($style)'
+# style = 'bold black'

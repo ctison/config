@@ -1,0 +1,7 @@
+prompt = "starship_prompt"
+startup = [
+  "mkdir ~/.cache/starship",
+  "starship init nu | save ~/.cache/starship/init.nu",
+  "source ~/.cache/starship/init.nu",
+]
+skip_welcome_message = true

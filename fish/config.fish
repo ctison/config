@@ -88,7 +88,7 @@ if type -q terraform 2>/dev/null
 end
 
 if type -q aws 2>/dev/null
-  alias ls-aws='grep -Po \'^\[profile \K([[:alpha:]]+)(?=]$)\' ~/.aws/config'
+  alias ls-aws='rg -NPo \'^\[profile \K(.+)(?=]$)\' ~/.aws/config'
   alias set-aws='set -gx AWS_PROFILE'
 end
 
@@ -134,6 +134,10 @@ if type -q go 2>/dev/null
   set -gx GO111MODULE on
 end
 
+if test -d ~/go/bin
+  set -a PATH ~/go/bin
+end
+
 if type -q gem 2>/dev/null
   set -gx GEM_HOME "$HOME/.gem"
   set -p PATH $GEM_HOME/ruby/*/bin
@@ -165,12 +169,8 @@ if type -q arch 2>/dev/null
   end
 end
 
-if type -q nats 2>/dev/null
-  alias n='nats'
-end
-
 if type -q exa 2>/dev/null
-  alias e='exa -lag@ --group-directories-first --git'
+  alias l='exa -lag@ --group-directories-first --git'
   alias t='e -T'
 end
 
@@ -183,6 +183,7 @@ function setupConfig -a CONFIGPATH
   set -p PATH $CONFIGPATH/bin
   alias man="man -P $CONFIGPATH/bin/pager"
   set -gx PAGER $CONFIGPATH/bin/pager
+  alias .j="j -f $CONFIGPATH/justfile -d (pwd)"
 end
 
 if test -f ~/config/Dockerfile
@@ -221,4 +222,16 @@ end
 
 if test -d ~/.pyenv/bin
   set -a PATH ~/.pyenv/bin ~/.pyenv/shims
+end
+
+if type -q just 2>/dev/null
+  alias j='just --chooser sk'
+end
+
+if type -q k9s 2>/dev/null
+  alias k9s='k9s --logoless --headless -c pu'
+end
+
+if type -q kustomize 2>/dev/null
+  alias kzt='kustomize cfg tree --all -'
 end
