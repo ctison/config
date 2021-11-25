@@ -235,3 +235,7 @@ end
 if type -q kustomize 2>/dev/null
   alias kzt='kustomize cfg tree --all -'
 end
+
+if test -d ~/.krew/bin
+  set -a PATH ~/.krew/bin
+end

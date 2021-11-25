@@ -7,7 +7,7 @@ export NAME := `echo ${NAME:-${PWD##*/}}`
 
 # Display available commands
 @default:
-  {{just}} --list --unsorted 
+  {{just}} --list --unsorted
 
 # Template a kustomize app
 @k8z dir=`$PWD`:

@@ -1,0 +1,75 @@
+[user]
+	name = Charles Tison
+	email = ctison@pm.me
+
+[alias]
+	p = push
+	pu = push --set-upstream origin @
+	pf = push --force
+	s = status --branch --short
+	l = log --format=oneline --graph
+	c = commit
+	rst = reset --soft @{u}
+	f = pull --ff-only
+	rb = rebase
+	rbm = rebase origin/main
+	ca = commit --amend
+	can = commit --amend --no-edit
+	cb = checkout -b
+	ch = checkout
+
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
+# [url "git@gitlab.com:"]
+# 	insteadOf = https://gitlab.com/
+
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[status]
+	submoduleSummary = true
+[pull]
+	rebase = false
+[push]
+	default = current
+[init]
+	defaultBranch = main
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	syntax-theme = Coldark-Dark
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+	side-by-side = true
+	line-numbers-left-format = ""
+	line-numbers-right-format = "│ "
+
+[delta "decorations"]
+	commit-decoration-style = bold red box ul
+	file-style = bold red ul
+	file-decoration-style = none
+
+[diff]
+	tool = vscode
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE

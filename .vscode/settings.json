@@ -1,14 +1,23 @@
 {
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[fish]": {
     "editor.formatOnSave": false
   },
+  "[graphql]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
@@ -17,9 +26,18 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.python",
     "gitlens.codeLens.symbolScopes": ["!Module"]
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -30,24 +48,33 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "breadcrumbs.enabled": false,
   "debug.allowBreakpointsEverywhere": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "diffEditor.wordWrap": "off",
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": true,
-  "editor.inlayHints.enabled": false,
   "editor.inlineSuggest.enabled": true,
+  "editor.insertSpaces": true,
+  "editor.lightbulb.enabled": false,
+  "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
+  "editor.minimap.scale": 3,
   "editor.renderWhitespace": "all",
-  "editor.snippetSuggestions": "none",
+  "editor.scrollbar.vertical": "visible",
+  "editor.snippetSuggestions": "bottom",
   "editor.suggest.preview": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "explorer.autoReveal": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
@@ -71,6 +98,12 @@
     "**/Thumbs.db": false
   },
   "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.rush/**": true,
+    "**/common/temp/**": true
+  },
   "git-graph.openNewTabEditorGroup": "Beside",
   "git-graph.repository.commits.showSignatureStatus": true,
   "git.alwaysShowStagedChangesResourceGroup": true,
@@ -92,6 +125,12 @@
   "go.useLanguageServer": true,
   "gopls": {
     "allExperiments": true
+  },
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "javascript.referencesCodeLens.enabled": true,
+  "launch": {
+    "compounds": [],
+    "configurations": []
   },
   "notebook.cellToolbarLocation": {
     "default": "right",
@@ -115,6 +154,11 @@
   "remote.containers.workspaceMountConsistency": "delegated",
   "remote.downloadExtensionsLocally": true,
   "resmon.show.cputemp": true,
+  "search.exclude": {
+    "**/.rush": true,
+    "**/common/temp": true
+  },
+  "search.mode": "newEditor",
   "search.showLineNumbers": true,
   "search.smartCase": true,
   "shellcheck.ignorePatterns": {
@@ -132,12 +176,14 @@
     "**/zshenv": true,
     "**/zshrc": true
   },
+  "telemetry.telemetryLevel": "off",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.enabled": false,
   "terminal.integrated.tabs.hideCondition": "singleGroup",
   "terminal.integrated.tabs.showActions": "never",
   "terminal.integrated.tabs.showActiveTerminal": "never",
+  "typescript.disableAutomaticTypeAcquisition": true,
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
   },
@@ -145,13 +191,22 @@
     "editor.findMatchBackground": "#ffc400",
     "editor.lineHighlightBackground": "#1073cf2d",
     "editor.lineHighlightBorder": "#9fced11f",
+    "editorBracketPairGuide.background1": "#A21CAF",
+    "editorBracketPairGuide.background2": "#C026D3",
+    "editorBracketPairGuide.background3": "#D946EF",
+    "editorBracketPairGuide.background4": "#E879F9",
+    "editorBracketPairGuide.background5": "#F0ABFC",
+    "editorBracketPairGuide.background6": "#F5D0FE",
     "terminal.selectionBackground": "#e26cffcb"
   },
+  // "editor.guides.bracketPairsHorizontal": false,
+  // "editor.guides.highlightActiveBracketPair": false,
+  // "editor.guides.highlightActiveIndentation": false,
+  // "editor.guides.indentation": false,
   "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.decorations.badges": true,
-  "workbench.editor.decorations.colors": true,
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
@@ -169,8 +224,7 @@
   "yaml.schemas": {
     "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json": [
       "kustomization.yaml"
-    ],
-    "kubernetes": ["/dev/*"]
+    ]
   },
-  "editor.linkedEditing": true
+  "zenMode.fullScreen": false
 }
