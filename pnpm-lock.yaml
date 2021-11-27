@@ -123,7 +123,7 @@ packages:
       which: 2.0.2
     dev: true
 
-  /debug/4.3.2_supports-color@9.1.0:
+  /debug/4.3.2_supports-color@9.2.1:
     resolution: {integrity: sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==}
     engines: {node: '>=6.0'}
     peerDependencies:
@@ -133,7 +133,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-      supports-color: 9.1.0
+      supports-color: 9.2.1
     dev: true
 
   /emoji-regex/8.0.0:
@@ -231,7 +231,7 @@ packages:
       cli-truncate: 3.1.0
       colorette: 2.0.16
       commander: 8.3.0
-      debug: 4.3.2_supports-color@9.1.0
+      debug: 4.3.2_supports-color@9.2.1
       enquirer: 2.3.6
       execa: 5.1.1
       lilconfig: 2.0.4
@@ -240,7 +240,7 @@ packages:
       normalize-path: 3.0.0
       object-inspect: 1.11.0
       string-argv: 0.3.1
-      supports-color: 9.1.0
+      supports-color: 9.2.1
       yaml: 1.10.2
     dev: true
 
@@ -443,8 +443,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /supports-color/9.1.0:
-    resolution: {integrity: sha512-lOCGOTmBSN54zKAoPWhHkjoqVQ0MqgzPE5iirtoSixhr0ZieR/6l7WZ32V53cvy9+1qghFnIk7k52p991lKd6g==}
+  /supports-color/9.2.1:
+    resolution: {integrity: sha512-Obv7ycoCTG51N7y175StI9BlAXrmgZrFhZOb0/PyjHBher/NmsdBgbbQ1Inhq+gIhz6+7Gb+jWF2Vqi7Mf1xnQ==}
     engines: {node: '>=12'}
     dev: true
 
