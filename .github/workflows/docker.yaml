@@ -25,7 +25,7 @@ jobs:
           echo ::set-output name=value::${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy == 'true' }}
 
       - if: steps.should-deploy.outputs.value == 'true'
-        uses: docker/login-action@42d299face0c5c43a0487c477f595ac9cf22f1a7 # renovate: tag=v1
+        uses: docker/login-action@6af3c118c8376c675363897acf1757f7a9be6583 # tag=v1
         with:
           username: ctison
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
