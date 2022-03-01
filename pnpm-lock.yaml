@@ -86,7 +86,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       slice-ansi: 5.0.0
-      string-width: 5.1.1
+      string-width: 5.1.2
     dev: true
 
   /color-convert/2.0.1:
@@ -407,8 +407,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /string-width/5.1.1:
-    resolution: {integrity: sha512-V4jFFhDoJzUOpG491nUrDginBuZi+wKtG+omlT5hgdBLYGPNNVT/o75JWwsSqClbrYMEV9Dvm3fXjZzxyOjk2w==}
+  /string-width/5.1.2:
+    resolution: {integrity: sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==}
     engines: {node: '>=12'}
     dependencies:
       eastasianwidth: 0.2.0
