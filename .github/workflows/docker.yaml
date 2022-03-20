@@ -10,6 +10,10 @@ on:
         description: Set to `true` to deploy to K8s
         required: false
 
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,32 +28,34 @@ jobs:
         run: |
           echo ::set-output name=value::${{ github.ref == 'refs/heads/main' || github.event.inputs.deploy == 'true' }}
 
-      - if: steps.should-deploy.outputs.value == 'true'
+      - name: Login to Docker Hub
+        if: steps.should-deploy.outputs.value == 'true'
         uses: docker/login-action@dd4fa0671be5250ee6f50aedf4cb05514abda2c7 # tag=v1
         with:
           username: ctison
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Cache the Docker layers
-        uses: actions/cache@937d24475381cd9c75ae6db12cb4e79714b926ed # renovate: tag=v2
+      - name: Login to Github Registry
+        uses: docker/login-action@dd4fa0671be5250ee6f50aedf4cb05514abda2c7 # tag=v1
         with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
+          registry: ghcr.io
+          username: ctison
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a # tag=v2
         with:
-          tags: ctison/ubuntu
+          tags: |
+            ctison/ubuntu
           target: ubuntu
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+          cache-from: type=registry,ref=ghcr.io/ctison/ubuntu:cache
+          cache-to: type=registry,ref=ghcr.io/ctison/ubuntu:cache,mode=max
           push: ${{ steps.should-deploy.outputs.value == 'true' }}
 
       - uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a # tag=v2
         with:
-          tags: ctison/kali
+          tags: |
+            ctison/kali
           target: kali
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
+          cache-from: type=registry,ref=ghcr.io/ctison/kali:cache
+          cache-to: type=registry,ref=ghcr.io/ctison/kali:cache,mode=max
           push: ${{ steps.should-deploy.outputs.value == 'true' }}
