@@ -1,0 +1,131 @@
+[
+  {
+    "key": "cmd+m",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "cmd+shift+2",
+    "command": "workbench.action.toggleEditorWidths"
+  },
+  {
+    "key": "f13",
+    "command": "git-graph.view"
+  },
+  {
+    "key": "cmd+l cmd+c",
+    "command": "-fiveServer.close",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+l cmd+o",
+    "command": "-fiveServer.start",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+l cmd+o",
+    "command": "-extension.liveServer.goOnline",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+l cmd+c",
+    "command": "-extension.liveServer.goOffline",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.action.createTerminalEditorSide"
+  },
+  {
+    "key": "alt+cmd+j",
+    "command": "-liveshare.join",
+    "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
+  },
+  {
+    "key": "alt+cmd+j",
+    "command": "-editor.action.insertSnippet",
+    "when": "editorTextFocus && editorLangId == 'nushell'"
+  },
+  {
+    "key": "alt+cmd+x",
+    "command": "workbench.action.nextPanelView"
+  },
+  {
+    "key": "alt+cmd+z",
+    "command": "workbench.action.previousPanelView"
+  },
+  {
+    "key": "cmd+l cmd+0",
+    "command": "-l13Projects.action.hotkey.previousWorkspace"
+  },
+  {
+    "key": "cmd+l cmd+t",
+    "command": "-l13Projects.action.tag.pickTag"
+  },
+  {
+    "key": "cmd+l cmd+1",
+    "command": "-l13Projects.action.hotkey.slot1"
+  },
+  {
+    "key": "cmd+l cmd+2",
+    "command": "-l13Projects.action.hotkey.slot2"
+  },
+  {
+    "key": "cmd+l cmd+3",
+    "command": "-l13Projects.action.hotkey.slot3"
+  },
+  {
+    "key": "cmd+l cmd+4",
+    "command": "-l13Projects.action.hotkey.slot4"
+  },
+  {
+    "key": "cmd+l cmd+5",
+    "command": "-l13Projects.action.hotkey.slot5"
+  },
+  {
+    "key": "cmd+l cmd+6",
+    "command": "-l13Projects.action.hotkey.slot6"
+  },
+  {
+    "key": "cmd+l cmd+7",
+    "command": "-l13Projects.action.hotkey.slot7"
+  },
+  {
+    "key": "cmd+l cmd+8",
+    "command": "-l13Projects.action.hotkey.slot8"
+  },
+  {
+    "key": "cmd+l cmd+9",
+    "command": "-l13Projects.action.hotkey.slot9"
+  },
+  {
+    "key": "cmd+l cmd+p",
+    "command": "-workbench.view.extension.l13Projects"
+  },
+  {
+    "key": "alt+cmd+;",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "alt+cmd+'",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "alt+cmd+;",
+    "command": "git.openChange"
+  }
+]
