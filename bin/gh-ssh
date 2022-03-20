@@ -47,6 +47,7 @@ sleep 5
 RUN_ID=$(gh run list -w debug -L 1 | head -n2 | tail -n1 | rev | cut -d$'\t' -f3 | rev)
 gh run watch "$RUN_ID"
 
+rm -f env/.env
 gh run download "$RUN_ID"
 
 git push origin --delete chore/debug

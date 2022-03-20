@@ -1,0 +1,42 @@
+#!/bin/bash
+set -euo pipefail
+shopt -s nullglob
+
+exec gh api graphql -f query='
+  query {
+   search(query: "type:pr state:open review-requested:@me", type: ISSUE, first: 100) {
+      issueCount
+      edges {
+        node {
+          ... on PullRequest {
+            repository {
+              nameWithOwner
+            }
+            author {
+              login
+            }
+            createdAt
+            mergeable
+            number
+            url
+            title
+            commits(last: 1) {
+              nodes {
+                commit {
+                  statusCheckRollup {
+                    state
+                  }
+                }
+              }
+            }
+            labels(first:100) {
+              nodes {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+' -q '.data.search.edges[].node | "\(.repository.nameWithOwner) - \(.title)"'
