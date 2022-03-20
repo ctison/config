@@ -9,15 +9,15 @@ export NAME := `echo ${NAME:-${PWD##*/}}`
 @default:
   {{just}} --list --unsorted
 
-# Template a kustomize app
-@k8z dir=`$PWD`:
-  cd '{{justfile_directory()}}/gomplate/k8z' && gomplate --output-dir '{{invocation_directory()}}/{{dir}}'
+# Run a template
+@t a dir='.':
+  cd '{{justfile_directory()}}/gomplate/{{a}}' && gomplate --output-dir '{{invocation_directory()}}/{{dir}}'
 
 # Start a k3d cluster
 @k3d name:
   k3d cluster create --config '{{justfile_directory()}}/k3d/config.yaml' '{{name}}'
   mkdir -p ~/.kube/configs/k3d
-  k3d kubeconfig get {{name}} | sed 's/0\.0\.0\.0/127.0.0.1/' > ~/.kube/configs/k3d/'{{name}}.yaml'
+  k3d kubeconfig get {{name}} | sed -E 's|(^ +server: https://)([0-9]+\.){3}[0-9]+|\1127.0.0.1|g' > ~/.kube/configs/k3d/'{{name}}.yaml'
 
 # Create an issue in linear
 linear issueTitle:
