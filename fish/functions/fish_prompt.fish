@@ -21,11 +21,12 @@ function fish_prompt
 	end
 	set_color -o red
 	__fish_git_prompt
-	if type -q nvm
-		set -l nvm_current (nvm current)
-		if test -n "$nvm_current"
+	if type -q fnm
+	fnm use  1>/dev/null 2>&1
+		set -l node_current (fnm current)
+		if test -n "$node_current"
 			set_color -o black
-			echo -n " node:$nvm_current"
+			echo -n " node:$node_current"
 		end
 	end
 	if type -q kubectl
@@ -45,5 +46,4 @@ function fish_prompt
   set_color -o red
   echo -n 'λ '
   set_color normal
-	nvm use  1>/dev/null 2>&1
 end

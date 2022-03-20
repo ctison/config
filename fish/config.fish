@@ -35,8 +35,12 @@ if test -d /snap/bin
   set -a PATH /snap/bin
 end
 
-if test -d ~/.local/bin # pipx
+if test -d ~/.local/bin
   set -a PATH ~/.local/bin
+end
+
+if test -d ~/.poetry/bin
+  set -a PATH ~/.poetry/bin
 end
 
 if test -d ~/gpm/bin
@@ -114,7 +118,7 @@ if type -q tar 2>/dev/null
 end
 
 if type -q docker 2>/dev/null
-  set -gx DOCKER_BUILDKIT '1'
+  set -gx DOCKER_BUILDKIT 1
 end
 
 if type -q hub 2>/dev/null
@@ -233,9 +237,26 @@ if type -q k9s 2>/dev/null
 end
 
 if type -q kustomize 2>/dev/null
-  alias kzt='kustomize cfg tree --all -'
+  alias kt='kustomize cfg tree -'
+  alias kg='kustomize cfg grep --annotate=false'
 end
 
 if test -d ~/.krew/bin
   set -a PATH ~/.krew/bin
+end
+
+if type -q fnm 2>/dev/null
+  eval (fnm env)
+end
+
+if type -q direnv 2>/dev/null
+  direnv hook fish | source
+end
+
+if type -q mcfly 2>/dev/null
+  mcfly init fish | source
+end
+
+if type -q lazygit 2>/dev/null
+  alias lg='lazygit'
 end
