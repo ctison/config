@@ -3,12 +3,9 @@
   "scripts": {
     "format": "prettier --write .",
     "kali": "docker build -t ctison/kali --target kali .",
-    "ubuntu": "docker build -t ctison/ubuntu --target ubuntu ."
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "ubuntu": "docker build -t ctison/ubuntu --target ubuntu .",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,yaml,yml,gql,md,html,css}": [
