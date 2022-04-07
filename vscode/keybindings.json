@@ -47,10 +47,6 @@
     "when": "!terminalFocus"
   },
   {
-    "key": "shift+cmd+c",
-    "command": "workbench.action.createTerminalEditorSide"
-  },
-  {
     "key": "alt+cmd+j",
     "command": "-liveshare.join",
     "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
@@ -125,7 +121,21 @@
     "command": "workbench.action.toggleAuxiliaryBar"
   },
   {
-    "key": "alt+cmd+;",
+    "key": "alt+cmd+,",
     "command": "git.openChange"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.action.createTerminalEditorSide"
+  },
+  {
+    "key": "alt+cmd+/",
+    "command": "-liveshare.followToTheSide",
+    "when": "liveshare:hasCollaborators"
+  },
+  {
+    "key": "alt+cmd+/",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
   }
 ]
