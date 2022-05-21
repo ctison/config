@@ -5,7 +5,7 @@ set -euxo pipefail
 
 mkdir -p "${@:1}"
 
-if type -q code-insiders >/dev/null 2>&1 ; then
+if type code-insiders >/dev/null 2>&1 ; then
   exec code-insiders "${@:1}"
 fi
 

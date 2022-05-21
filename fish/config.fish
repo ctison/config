@@ -249,6 +249,10 @@ if type -q fnm 2>/dev/null
   eval (fnm env)
 end
 
+if type -q zoxide 2>/dev/null
+  zoxide init fish | source
+end
+
 if type -q direnv 2>/dev/null
   direnv hook fish | source
 end
@@ -257,6 +261,18 @@ if type -q mcfly 2>/dev/null
   mcfly init fish | source
 end
 
+if test -S ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+  set -x SSH_AUTH_SOCK ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+end
+
+if test -d /usr/local/go/bin
+  set -p fish_user_paths /usr/local/go/bin
+end
+
 if type -q lazygit 2>/dev/null
   alias lg='lazygit'
+end
+
+if type -q docker 2>/dev/null
+  alias d='docker'
 end

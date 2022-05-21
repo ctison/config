@@ -4,3 +4,4 @@ yarn-error.log*
 __pycache__/
 *-checkpoint.ipynb
 .secrets.json
+.DS_Store

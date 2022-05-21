@@ -1,6 +1,6 @@
 [user]
-  name = Charles Tison
-  email = ctison@pm.me
+	name = Charles Tison
+	email = ctison@pm.me
 
 [alias]
   a = add
@@ -11,23 +11,23 @@
   bm = branch --merged
   bnm = branch --no-merged
   bed = branch --edit-description
-  c = commit
-  ca = commit --amend
-  can = commit --amend --no-edit
-  cb = checkout -b
-  ch = checkout
+	c = commit
+	ca = commit --amend
+	can = commit --amend --no-edit
+	cb = checkout -b
+	ch = checkout
   d = diff
-  f = pull --ff-only
+	f = pull --ff-only
   ff = fetch --all
   g = grep
-  l = log --format=oneline --graph
-  p = push
-  pf = push --force
-  pu = push --set-upstream origin @
-  rb = rebase
-  rbm = rebase origin/main
-  rst = reset --soft @{u}
-  s = status --branch --short
+	l = log --format=oneline --graph
+	p = push
+	pf = push --force
+	pu = push --set-upstream origin @
+	rb = rebase
+	rbm = rebase origin/main
+	rst = reset --soft @{u}
+	s = status --branch --short
   w = whatchanged
 
 
@@ -35,8 +35,11 @@
     branch=\"${1:-$(git rev-parse --abbrev-ref HEAD 2>/dev/null)}\";  \
     git config \"branch.$branch.description\"; \
   };f"
-  rba = rebase --abort
-  rbc = rebase --continue
+	rba = rebase --abort
+	rbc = rebase --continue
+	m = merge
+	ma = merge --abort
+	mc = merge --continue
 
 # [url "git@github.com:"]
 #   insteadOf = https://github.com/
@@ -44,9 +47,9 @@
 #   insteadOf = https://gitlab.com/
 
 [commit]
-  gpgsign = true
+	gpgsign = true
 [tag]
-  gpgSign = true
+	gpgSign = true
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -55,13 +58,13 @@
   required = true
 
 [status]
-  submoduleSummary = true
+	submoduleSummary = true
 [pull]
-  rebase = false
+	rebase = false
 [push]
-  default = current
+	default = current
 [init]
-  defaultBranch = main
+	defaultBranch = main
 
 [pager]
   diff = delta

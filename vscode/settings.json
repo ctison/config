@@ -17,9 +17,11 @@
   },
   "debug.allowBreakpointsEverywhere": true,
   "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
   "diffEditor.wordWrap": "off",
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
@@ -28,6 +30,9 @@
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.minimap.scale": 3,
+  "editor.quickSuggestions": {
+    "other": "inline"
+  },
   "editor.renderWhitespace": "all",
   "editor.scrollbar.vertical": "visible",
   "editor.snippetSuggestions": "bottom",
@@ -40,6 +45,7 @@
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
+  "explorer.autoReveal": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
@@ -73,10 +79,39 @@
   "git-graph.repository.commits.showSignatureStatus": true,
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
+  "git.defaultCloneDirectory": "~/work",
+  "gitProjectManager.baseProjectsFolders": ["~/work"],
+  "gitProjectManager.checkRemoteOrigin": false,
+  "gitProjectManager.ignoredFolders": ["node_modules"],
+  "gitProjectManager.maxDepthRecursion": 2,
+  "gitProjectManager.openInNewWindow": true,
+  "github.copilot.enable": {
+    // https://code.visualstudio.com/docs/languages/identifiers
+    "*": false,
+    "css": true,
+    "dockerfile": true,
+    "go": true,
+    "html": true,
+    "javascript": true,
+    "javascriptreact": true,
+    "json": true,
+    "jsonc": true,
+    "makefile": true,
+    "python": true,
+    "rust": true,
+    "shellscript": true,
+    "typescript": true,
+    "typescriptreact": true,
+    "yaml": true
+  },
+  "githubPullRequests.createOnPublishBranch": "never",
   "githubPullRequests.fileListLayout": "tree",
   "gitlens.views.branches.branches.layout": "list",
+  "gitlens.views.commits.showBranchComparison": false,
   "gitlens.views.repositories.branches.layout": "list",
   "gitlens.views.repositories.files.layout": "list",
+  "gitlens.views.repositories.includeWorkingTree": true,
+  "gitlens.views.worktrees.files.layout": "list",
   "go.autocompleteUnimportedPackages": true,
   "go.lintFlags": ["--fast"],
   "go.lintTool": "golangci-lint",
@@ -151,6 +186,7 @@
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
   },
+  "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "editor.findMatchBackground": "#ffc400",
     "editor.lineHighlightBackground": "#1073cf2d",
@@ -161,6 +197,7 @@
     "editorBracketPairGuide.background4": "#E879F9",
     "editorBracketPairGuide.background5": "#F0ABFC",
     "editorBracketPairGuide.background6": "#F5D0FE",
+    "errorLens.infoBackground": "#0000",
     "terminal.selectionBackground": "#e26cffcb"
   },
   // "editor.guides.bracketPairsHorizontal": false,
@@ -177,27 +214,20 @@
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb",
-    "*.md": "vscode.markdown.preview.editor"
+    "*.ipynb": "jupyter-notebook"
+    // "*.md": "vscode.markdown.preview.editor"
   },
   "workbench.iconTheme": "vscode-great-icons",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.startupEditor": "none",
+  "workbench.tree.indent": 10,
+  "workbench.tree.renderIndentGuides": "always",
   "yaml.format.singleQuote": true,
   "yaml.schemas": {
     "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json": [
       "kustomization.yaml"
     ]
   },
-  "zenMode.fullScreen": false,
-  "gitlens.views.repositories.includeWorkingTree": true,
-  "projectManager.git.baseFolders": ["~/work"],
-  "projectManager.filterOnFullPath": true,
-  "l13Projects.git.folders": ["~/work/"],
-  "trunk.trunkGrayOutNonBlockingIssues": false,
-  "diffEditor.renderSideBySide": false,
-  "gitlens.views.worktrees.files.layout": "list",
-  "gitlens.views.commits.showBranchComparison": false,
-  "workbench.activityBar.visible": false
+  "zenMode.fullScreen": false
 }

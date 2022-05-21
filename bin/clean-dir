@@ -6,7 +6,8 @@ set -euo pipefail
 MODE="${1:-'0600'}"
 
 FILES=$(find .)
-for f in $FILES ; do
+for f in $FILES; do
   test -d "$f" && chmod 0700 "$f"
   test -f "$f" && chmod "$MODE" "$f"
+  xattr -c "$f"
 done
