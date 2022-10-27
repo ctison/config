@@ -1,5 +1,5 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/rancher/k3d/main/pkg/config/v1alpha3/schema.json
-apiVersion: k3d.io/v1alpha3
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rancher/k3d/main/pkg/config/v1alpha4/schema.json
+apiVersion: k3d.io/v1alpha4
 kind: Simple
 options:
   k3d:

@@ -1,45 +1,44 @@
 [user]
-	name = Charles Tison
-	email = ctison@pm.me
+name = Charles Tison
+email = ctison@pm.me
+signingKey = "AF97BFE3"
 
 [alias]
-  a = add
-  aa = add --all
-  ap = add --patch
-  au = add --update
-  b = branch
-  bm = branch --merged
-  bnm = branch --no-merged
-  bed = branch --edit-description
-	c = commit
-	ca = commit --amend
-	can = commit --amend --no-edit
-	cb = checkout -b
-	ch = checkout
-  d = diff
-	f = pull --ff-only
-  ff = fetch --all
-  g = grep
-	l = log --format=oneline --graph
-	p = push
-	pf = push --force
-	pu = push --set-upstream origin @
-	rb = rebase
-	rbm = rebase origin/main
-	rst = reset --soft @{u}
-	s = status --branch --short
-  w = whatchanged
+a = add
+aa = add --all
+ap = add --patch
+au = add --update
+b = branch
+bm = branch --merged
+bnm = branch --no-merged
+bed = branch --edit-description
+c = commit
+ca = commit --amend
+can = commit --amend --no-edit
+cb = checkout -b
+ch = checkout
+d = diff
+f = pull --ff-only
+ff = fetch --all
+g = grep
+l = log --format=oneline --graph
+p = push
+pf = push --force
+pu = push --set-upstream origin @
+rb = rebase
+rbm = rebase origin/main
+rst = reset --soft @{u}
+s = status --branch --short
+sk = stash --keep-index -u
+sp = stash pop
+w = whatchanged
 
-
-  bsd = "!f(){ \
+bsd = "!f(){ \
     branch=\"${1:-$(git rev-parse --abbrev-ref HEAD 2>/dev/null)}\";  \
     git config \"branch.$branch.description\"; \
   };f"
-	rba = rebase --abort
-	rbc = rebase --continue
-	m = merge
-	ma = merge --abort
-	mc = merge --continue
+rba = rebase --abort
+rbc = rebase --continue
 
 # [url "git@github.com:"]
 #   insteadOf = https://github.com/
@@ -47,52 +46,52 @@
 #   insteadOf = https://gitlab.com/
 
 [commit]
-	gpgsign = true
+gpgsign = true
 [tag]
-	gpgSign = true
+gpgSign = true
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
 
 [status]
-	submoduleSummary = true
+submoduleSummary = true
 [pull]
-	rebase = false
+rebase = false
 [push]
-	default = current
+default = current
 [init]
-	defaultBranch = main
+defaultBranch = main
 
 [pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
+diff = delta
+log = delta
+reflog = delta
+show = delta
 
 [interactive]
-  diffFilter = delta --color-only
+diffFilter = delta --color-only
 
 [delta]
-  syntax-theme = Coldark-Dark
-  features = side-by-side line-numbers decorations
-  whitespace-error-style = 22 reverse
-  side-by-side = true
-  line-numbers-left-format = ""
-  line-numbers-right-format = "│ "
+syntax-theme = Coldark-Dark
+features = side-by-side line-numbers decorations
+whitespace-error-style = 22 reverse
+side-by-side = true
+line-numbers-left-format = ""
+line-numbers-right-format = "│ "
 
 [delta "decorations"]
-  commit-decoration-style = bold red box ul
-  file-style = bold red ul
-  file-decoration-style = none
+commit-decoration-style = bold red box ul
+file-style = bold red ul
+file-decoration-style = none
 
 [diff]
-  tool = vscode
+tool = vscode
 [merge]
-  tool = vscode
+tool = vscode
 [mergetool "vscode"]
-  cmd = code-insiders --wait $MERGED
+cmd = code-insiders --wait $MERGED
 [difftool "vscode"]
-  cmd = code-insiders --wait --diff $LOCAL $REMOTE
+cmd = code-insiders --wait --diff $LOCAL $REMOTE

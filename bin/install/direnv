@@ -1,0 +1,7 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+curl -fsSLo /usr/local/bin/direnv https://github.com/direnv/direnv/releases/latest/download/direnv.linux-"$(dpkg --print-architecture)"
+chmod 500 /usr/local/bin/direnv

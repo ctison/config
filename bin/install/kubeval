@@ -3,7 +3,7 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-curl -LO https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ -xf kubeval-linux-amd64.tar.gz kubeval
+curl -LO https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-"$(dpkg --print-architecture)".tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf kubeval-linux-"$(dpkg --print-architecture)".tar.gz kubeval
 chmod 500 /usr/local/bin/kubeval
-rm kubeval-linux-amd64.tar.gz
+rm kubeval-linux-"$(dpkg --print-architecture)".tar.gz

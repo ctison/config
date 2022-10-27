@@ -4,10 +4,10 @@ shopt -s nullglob
 set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/golang/go/git/matching-refs/tags/go | jq -r '.[].ref' | sed 's|^refs/tags/go||' | grep -P '^\d+\.\d+(\.\d+)?$' | tail -n1)
-curl -LO https://dl.google.com/go/go"$VERSION".linux-amd64.tar.gz
+curl -LO https://dl.google.com/go/go"$VERSION".linux-"$(dpkg --print-architecture)".tar.gz
 rm -rf /usr/local/go
-tar --no-same-{o,p} -C /usr/local -xzf go"$VERSION".linux-amd64.tar.gz
-rm go"$VERSION".linux-amd64.tar.gz
+tar --no-same-{o,p} -C /usr/local -xzf go"$VERSION".linux-"$(dpkg --print-architecture)".tar.gz
+rm go"$VERSION".linux-"$(dpkg --print-architecture)".tar.gz
 ln -fst /usr/local/bin /usr/local/go/bin/*
 
 go get -u -v golang.org/x/tools/cmd/goimports

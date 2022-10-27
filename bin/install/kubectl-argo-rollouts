@@ -7,5 +7,5 @@ VERSION=$(curl -sS https://api.github.com/repos/argoproj/argo-rollouts/releases/
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -LO /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/download/"$VERSION"/kubectl-argo-rollouts-linux-amd64
+curl -LO /usr/local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/download/"$VERSION"/kubectl-argo-rollouts-linux-"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/kubectl-argo-rollouts

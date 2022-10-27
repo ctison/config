@@ -7,5 +7,5 @@ VERSION=$(curl -sS https://api.github.com/repos/containerd/containerd/releases/l
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -LO https://github.com/containerd/containerd/releases/download/v"$VERSION"/containerd-"$VERSION"-linux-amd64.tar.gz
-# curl -LO https://github.com/containerd/containerd/releases/download/v"$VERSION"/cri-containerd-cni-"$VERSION"-linux-amd64.tar.gz
+curl -LO https://github.com/containerd/containerd/releases/download/v"$VERSION"/containerd-"$VERSION"-linux-"$(dpkg --print-architecture)".tar.gz
+# curl -LO https://github.com/containerd/containerd/releases/download/v"$VERSION"/cri-containerd-cni-"$VERSION"-linux-"$(dpkg --print-architecture)".tar.gz

@@ -7,7 +7,7 @@ VERSION=$(curl -sS https://api.github.com/repos/cirruslabs/cirrus-cli/releases/l
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -fLO https://github.com/cirruslabs/cirrus-cli/releases/download/"$VERSION"/cirrus-linux-amd64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ -xf cirrus-linux-amd64.tar.gz cirrus
+curl -fLO https://github.com/cirruslabs/cirrus-cli/releases/download/"$VERSION"/cirrus-linux-"$(dpkg --print-architecture)".tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf cirrus-linux-"$(dpkg --print-architecture)".tar.gz cirrus
 chmod 500 /usr/local/bin/cirrus
-rm cirrus-linux-amd64.tar.gz
+rm cirrus-linux-"$(dpkg --print-architecture)".tar.gz

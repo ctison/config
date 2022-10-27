@@ -4,6 +4,6 @@ shopt -s nullglob
 set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/sharkdp/bat/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -LO https://github.com/sharkdp/bat/releases/download/v"$VERSION"/bat_"$VERSION"_amd64.deb
-dpkg -i bat_"$VERSION"_amd64.deb
-rm bat_"$VERSION"_amd64.deb
+curl -LO https://github.com/sharkdp/bat/releases/download/v"$VERSION"/bat_"$VERSION"_"$(dpkg --print-architecture)".deb
+dpkg -i bat_"$VERSION"_"$(dpkg --print-architecture)".deb
+rm bat_"$VERSION"_"$(dpkg --print-architecture)".deb

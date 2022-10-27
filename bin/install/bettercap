@@ -4,7 +4,7 @@ shopt -s nullglob
 set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/bettercap/bettercap/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -LO https://github.com/bettercap/bettercap/releases/download/v"$VERSION"/bettercap_linux_amd64_v"$VERSION".zip
-unzip bettercap_linux_amd64_v"$VERSION".zip bettercap -d /usr/local/bin/
+curl -LO https://github.com/bettercap/bettercap/releases/download/v"$VERSION"/bettercap_linux_"$(dpkg --print-architecture)"_v"$VERSION".zip
+unzip bettercap_linux_"$(dpkg --print-architecture)"_v"$VERSION".zip bettercap -d /usr/local/bin/
 chmod 500 /usr/local/bin/bettercap
-rm bettercap_linux_amd64_v"$VERSION".zip
+rm bettercap_linux_"$(dpkg --print-architecture)"_v"$VERSION".zip

@@ -3,20 +3,26 @@ umask 0077
 shopt -s nullglob
 set -euo pipefail
 
-if [ $# -lt 2 ] || [ $# -gt 3 ] ; then
+if [ $# -lt 2 ] || [ $# -gt 3 ]; then
 	echo "Usage: $0 GO_PRO_SD_FOLDER DEST_FOLDER [DATE]"
 	exit 1
 fi
 
-displayNotification () {
+displayNotification() {
 	osascript <<EOF
 display notification "$1" with title "🎥 Copy GoPro"
 EOF
 	echo "$1"
 }
 
+if ! test -f "$1/Get_started_with_GoPro.url"; then
+	echo >&2 'Disk not recognized as GoPro disk... exiting'
+	exit
+fi
+
 MOVIES="$(find "$1" -type f -iname '*.MP4' -not -name '.*')"
-echo "$MOVIES" | while IFS= read -r M ; do
+
+echo "$MOVIES" | while IFS= read -r M; do
 	DATE=$(date -r "$M" '+%Y-%m-%d %H-%M-%S')
 	if [[ "$DATE" > "${3:-''}" ]]; then
 		if [ "$(df -g / | tail -n1 | awk -F' ' '{print $4}')" -lt 10 ]; then
@@ -25,10 +31,10 @@ echo "$MOVIES" | while IFS= read -r M ; do
 		fi
 		NAME="$2/$DATE.MP4"
 		printf '%s -> %s ' "$M" "$NAME"
-		if test -f "$NAME" ; then
+		if test -f "$NAME"; then
 			echo SKIP
 			continue
-		elif cp -n -- "$M" "$NAME" ; then
+		elif cp -n -- "$M" "$NAME"; then
 			echo OK
 		else
 			echo KO
@@ -37,5 +43,8 @@ echo "$MOVIES" | while IFS= read -r M ; do
 		chmod 0400 "$NAME"
 	fi
 done
+
+diskutil reformat "$1"
+diskutil eject "$1"
 
 displayNotification 'Finished successfuly 🚀'

@@ -4,8 +4,8 @@ shopt -s nullglob
 set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/CircleCI-Public/circleci-cli/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -LO https://github.com/CircleCI-Public/circleci-cli/releases/download/v"$VERSION"/circleci-cli_"$VERSION"_linux_amd64.tar.gz
-tar --no-same-{o,p} --strip=1 -C /usr/local/bin/ -xf circleci-cli_"$VERSION"_linux_amd64.tar.gz circleci-cli_"$VERSION"_linux_amd64/circleci
+curl -LO https://github.com/CircleCI-Public/circleci-cli/releases/download/v"$VERSION"/circleci-cli_"$VERSION"_linux_"$(dpkg --print-architecture)".tar.gz
+tar --no-same-{o,p} --strip=1 -C /usr/local/bin/ -xf circleci-cli_"$VERSION"_linux_"$(dpkg --print-architecture)".tar.gz circleci-cli_"$VERSION"_linux_"$(dpkg --print-architecture)"/circleci
 chmod 500 /usr/local/bin/circleci
-rm circleci-cli_"$VERSION"_linux_amd64.tar.gz
+rm circleci-cli_"$VERSION"_linux_"$(dpkg --print-architecture)".tar.gz
 ln -s /usr/local/bin/circleci /usr/local/bin/ci

@@ -7,7 +7,7 @@ VERSION=$(curl -sS https://api.github.com/repos/hybridgroup/gort/releases/latest
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -LO https://github.com/hybridgroup/gort/releases/download/v"$VERSION"/gort_"$VERSION"_linux_amd64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ --strip=1 -xf gort_"$VERSION"_linux_amd64.tar.gz gort_"$VERSION"_linux_amd64/gort
+curl -LO https://github.com/hybridgroup/gort/releases/download/v"$VERSION"/gort_"$VERSION"_linux_"$(dpkg --print-architecture)".tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ --strip=1 -xf gort_"$VERSION"_linux_"$(dpkg --print-architecture)".tar.gz gort_"$VERSION"_linux_"$(dpkg --print-architecture)"/gort
 chmod 500 /usr/local/bin/gort
-rm gort_"$VERSION"_linux_amd64.tar.gz
+rm gort_"$VERSION"_linux_"$(dpkg --print-architecture)".tar.gz

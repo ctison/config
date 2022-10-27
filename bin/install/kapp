@@ -7,5 +7,5 @@ VERSION=$(curl -sS https://api.github.com/repos/k14s/kapp/releases/latest | jq -
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -fLo /usr/local/bin/kapp https://github.com/k14s/kapp/releases/download/"$VERSION"/kapp-linux-amd64
+curl -fLo /usr/local/bin/kapp https://github.com/k14s/kapp/releases/download/"$VERSION"/kapp-linux-"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/kapp

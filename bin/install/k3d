@@ -3,5 +3,5 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-curl -Lo /usr/local/bin/k3d https://github.com/rancher/k3d/releases/latest/download/k3d-linux-amd64
+curl -Lo /usr/local/bin/k3d https://github.com/rancher/k3d/releases/latest/download/k3d-linux-"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/k3d

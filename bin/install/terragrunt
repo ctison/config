@@ -3,5 +3,5 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-curl -Lo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/latest/download/terragrunt_linux_amd64
+curl -Lo /usr/local/bin/terragrunt https://github.com/gruntwork-io/terragrunt/releases/latest/download/terragrunt_linux_"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/terragrunt

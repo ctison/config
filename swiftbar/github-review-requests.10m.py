@@ -20,8 +20,6 @@ with open(
   ACCESS_TOKEN = data['ACCESS_TOKEN']
   GITHUB_LOGIN = data['GITHUB_LOGIN']
 
-DARK_MODE = os.environ.get('BitBarDarkMode')
-
 QUERY = '''{
   search(query: "%(query)s", type: ISSUE, first: 100) {
     issueCount

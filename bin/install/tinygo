@@ -7,7 +7,7 @@ VERSION=$(curl -sS https://api.github.com/repos/tinygo-org/tinygo/releases/lates
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -LO https://github.com/tinygo-org/tinygo/releases/download/v"$VERSION"/tinygo"$VERSION".linux-amd64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ --strip=2 -xf tinygo"$VERSION".linux-amd64.tar.gz tinygo/bin/tinygo
+curl -LO https://github.com/tinygo-org/tinygo/releases/download/v"$VERSION"/tinygo"$VERSION".linux-"$(dpkg --print-architecture)".tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ --strip=2 -xf tinygo"$VERSION".linux-"$(dpkg --print-architecture)".tar.gz tinygo/bin/tinygo
 chmod 500 /usr/local/bin/tinygo
-rm tinygo"$VERSION".linux-amd64.tar.gz
+rm tinygo"$VERSION".linux-"$(dpkg --print-architecture)".tar.gz

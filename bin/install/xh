@@ -1,0 +1,24 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+VERSION=$(curl -fsS https://api.github.com/repos/ducaale/xh/releases/latest | jq -r .tag_name | sed s/^v//)
+echo "VERSION=$VERSION"
+if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
+set -x
+
+TMP="$(mktemp -d)"
+
+case "$(uname -m)" in
+x86_64)
+  curl -fsSLo "$TMP/xh.deb" --tlsv1.2 --proto '=https' https://github.com/ducaale/xh/releases/download/v"$VERSION"/xh_"$VERSION"_amd64.deb
+  dpkg -i "$TMP/xh.deb"
+  ;;
+aarch64)
+  curl -fsSLo "$TMP/xh.tar.gz" --tlsv1.2 --proto '=https' https://github.com/ducaale/xh/releases/download/v"$VERSION"/xh-v"$VERSION"-aarch64-unknown-linux-musl.tar.gz
+  tar --no-same-{o,p} --strip=1 -C /usr/local/bin -xf "$TMP/xh.tar.gz" xh-v"$VERSION"-aarch64-unknown-linux-musl/xh
+  ;;
+esac
+
+rm -rf -- "$TMP"

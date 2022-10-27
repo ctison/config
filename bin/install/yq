@@ -3,5 +3,5 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-curl -Lo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+curl -Lo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/yq

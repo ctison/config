@@ -3,5 +3,5 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-curl -Lo /usr/local/bin/skaffold https://github.com/GoogleContainerTools/skaffold/releases/latest/download/skaffold-linux-amd64
+curl -Lo /usr/local/bin/skaffold https://github.com/GoogleContainerTools/skaffold/releases/latest/download/skaffold-linux-"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/skaffold

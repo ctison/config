@@ -7,5 +7,5 @@ VERSION=$(curl -sS https://api.github.com/repos/rancher/rancher/releases/latest 
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -fLo /usr/local/bin/rancherd https://github.com/rancher/rancher/releases/download/"$VERSION"/rancherd-amd64
+curl -fLo /usr/local/bin/rancherd https://github.com/rancher/rancher/releases/download/"$VERSION"/rancherd-"$(dpkg --print-architecture)"
 chmod 500 /usr/local/bin/rancherd

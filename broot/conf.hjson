@@ -1,6 +1,6 @@
 # https://dystroy.org/broot/conf_file/
 {
-    default_flags: ghI
+    default_flags: dghps
     show_selection_mark: true
     verbs: [
 
@@ -107,6 +107,15 @@
     #     key: ctrl-g
     #     execution: ":toggle_git_status"
     # }
+
+    // {
+    //     key: "enter"
+    //     apply_to: "directory"
+    //     internal: ":"
+    // }
+    { key: "right", internal: ":panel_right" }
+    { key: "left", internal: ":panel_left" }
+    // { key: "ctrl-j", internal: ":panel_left" }
 
     # You can reproduce the bindings of Norton Commander
     # on copying or moving to the other panel:

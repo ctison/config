@@ -3,7 +3,7 @@ umask 0077
 shopt -s nullglob
 set -euxo pipefail
 
-curl -LO https://github.com/drone/drone-cli/releases/latest/download/drone_linux_amd64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ -xf drone_linux_amd64.tar.gz drone
+curl -LO https://github.com/drone/drone-cli/releases/latest/download/drone_linux_"$(dpkg --print-architecture)".tar.gz
+tar --no-same-{o,p} -C /usr/local/bin/ -xf drone_linux_"$(dpkg --print-architecture)".tar.gz drone
 chmod 500 /usr/local/bin/drone
-rm drone_linux_amd64.tar.gz
+rm drone_linux_"$(dpkg --print-architecture)".tar.gz

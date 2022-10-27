@@ -32,9 +32,8 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+n",
-    "command": "explorer.newFile",
-    "when": "explorerViewletFocus"
+    "key": "cmd+n",
+    "command": "explorer.newFile"
   },
   {
     "key": "ctrl+shift+n",
@@ -138,8 +137,91 @@
     "command": "editor.action.showHover",
     "when": "editorTextFocus"
   },
+  // Show the quick pick shell commands history in terminal
   {
-    "key": "shift+cmd+1",
+    "key": "ctrl+r",
+    "command": "workbench.action.quickOpenNavigateNextInViewPicker",
+    "when": "inQuickOpen && inTerminalRunCommandPicker"
+  },
+  // Have ctrl+c close the quick pick
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen && inTerminalRunCommandPicker"
+  },
+  {
+    "key": "alt+cmd+b",
+    "command": "editor.emmet.action.balanceOut"
+  },
+  {
+    "key": "alt+cmd+v",
+    "command": "editor.emmet.action.balanceIn"
+  },
+  {
+    "key": "cmd+0",
+    "command": "-workbench.action.focusSideBar"
+  },
+  {
+    "key": "cmd+0",
     "command": "revealInExplorer"
+  },
+  {
+    "key": "cmd+r",
+    "command": "rust-analyzer.run",
+    "when": "editorLangId == rust"
+  },
+  {
+    "key": "alt+cmd+d",
+    "command": "rust-analyzer.openDocs",
+    "when": "editorLangId == rust"
+  },
+  {
+    "key": "alt+cmd+o",
+    "command": "outline.focus"
+  },
+  {
+    "key": "ctrl+cmd+up",
+    "command": "workbench.action.terminal.resizePaneLeft",
+    "when": "terminalFocus && panelPosition != 'bottom'"
+  },
+  {
+    "key": "ctrl+cmd+down",
+    "command": "workbench.action.terminal.resizePaneRight",
+    "when": "terminalFocus && panelPosition != 'bottom'"
+  },
+  {
+    "key": "ctrl+cmd+up",
+    "command": "workbench.action.terminal.resizePaneUp",
+    "when": "terminalFocus && panelPosition == 'bottom'"
+  },
+  {
+    "key": "ctrl+cmd+down",
+    "command": "workbench.action.terminal.resizePaneDown",
+    "when": "terminalFocus && panelPosition == 'bottom'"
+  },
+  // Remove default resize terminal
+  {
+    "key": "ctrl+cmd+down",
+    "command": "-workbench.action.terminal.resizePaneDown",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+cmd+left",
+    "command": "-workbench.action.terminal.resizePaneLeft",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+cmd+right",
+    "command": "-workbench.action.terminal.resizePaneRight",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+cmd+up",
+    "command": "-workbench.action.terminal.resizePaneUp",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "alt+cmd+h",
+    "command": "workbench.view.extension.copilot-labs"
   }
 ]

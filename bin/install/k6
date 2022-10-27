@@ -3,11 +3,11 @@ umask 0077
 shopt -s nullglob
 set -euo pipefail
 
-VERSION=$(curl -sS https://api.github.com/repos/loadimpact/k6/releases/latest | jq -r .tag_name)
+VERSION=$(curl -sS https://api.github.com/repos/grafana/k6/releases/latest | jq -r .tag_name)
 echo "VERSION=$VERSION"
 if [ $# = 1 ] && [ "$1" = 'version' ]; then exit 0; fi
 set -x
-curl -fLO https://github.com/loadimpact/k6/releases/download/"$VERSION"/k6-"$VERSION"-linux64.tar.gz
+curl -fLO https://github.com/grafana/k6/releases/download/"$VERSION"/k6-"$VERSION"-linux64.tar.gz
 tar --no-same-{o,p} -C /usr/local/bin/ --strip 1 -xf k6-"$VERSION"-linux64.tar.gz k6-"$VERSION"-linux64/k6
 chmod 500 /usr/local/bin/k6
 rm k6-"$VERSION"-linux64.tar.gz

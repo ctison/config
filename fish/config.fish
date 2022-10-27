@@ -79,8 +79,9 @@ if type -q gpg 2>/dev/null
   set -gx GPG_TTY (tty)
 end
 
-if type -q docker-compose 2>/dev/null
-  alias dc=docker-compose
+if type -q docker 2>/dev/null
+  alias dc='docker compose'
+  alias dx='docker buildx'
 end
 
 if grep -E ~/.vscode-server/bin/'[[:alnum:]]+'/bin/code (type -p code 2>/dev/null | psub) >/dev/null 2>&1 || type -q code 2>/dev/null
@@ -194,7 +195,7 @@ if test -f ~/config/Dockerfile
   setupConfig ~/config
 else if test -f ~/work/config/Dockerfile
   setupConfig ~/work/config
-else if test -f /config/Dockerfile
+else if test -f /config/tusk/tusk.yaml
   setupConfig /config
 else if test -f ~/Documents/Work/ctison/config/Dockerfile
   setupConfig ~/Documents/Work/ctison/config
@@ -202,7 +203,9 @@ end
 
 functions -e setupConfig
 
-# starship init fish | source
+if type -q starship 2>/dev/null
+  starship init fish | source
+end
 
 function mkcd -d "Create a directory and set CWD" -w mkdir
   command mkdir $argv
@@ -249,10 +252,6 @@ if type -q fnm 2>/dev/null
   eval (fnm env)
 end
 
-if type -q zoxide 2>/dev/null
-  zoxide init fish | source
-end
-
 if type -q direnv 2>/dev/null
   direnv hook fish | source
 end
@@ -261,18 +260,17 @@ if type -q mcfly 2>/dev/null
   mcfly init fish | source
 end
 
-if test -S ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-  set -x SSH_AUTH_SOCK ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-end
-
-if test -d /usr/local/go/bin
-  set -p fish_user_paths /usr/local/go/bin
-end
-
 if type -q lazygit 2>/dev/null
   alias lg='lazygit'
 end
 
-if type -q docker 2>/dev/null
-  alias d='docker'
+if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
+  eval /opt/homebrew/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+end
+
+if test "$TERM_PROGRAM" = 'vscode'
+  set -l fishIntegrationPath (code --locate-shell-integration-path fish)
+  if test -f "$fishIntegrationPath"
+    source "$fishIntegrationPath"
+  end
 end

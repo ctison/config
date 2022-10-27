@@ -1,0 +1,19 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+TMP="$(mktemp -d)"
+
+case "$(uname -m)" in
+x86_64)
+  curl -fsSLo "$TMP/fnm.zip" --tlsv1.2 --proto '=https' https://github.com/Schniz/fnm/releases/latest/download/fnm-linux.zip
+  ;;
+aarch64)
+  curl -fsSLo "$TMP/fnm.zip" --tlsv1.2 --proto '=https' https://github.com/Schniz/fnm/releases/latest/download/fnm-arm64.zip
+  ;;
+esac
+
+unzip "$TMP/fnm.zip" -d /usr/local/bin/
+chmod 500 /usr/local/bin/fnm
+rm -rf -- "$TMP"

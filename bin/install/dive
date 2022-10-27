@@ -4,7 +4,7 @@ shopt -s nullglob
 set -euxo pipefail
 
 VERSION=$(curl -s https://api.github.com/repos/wagoodman/dive/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -LO https://github.com/wagoodman/dive/releases/download/v"$VERSION"/dive_"$VERSION"_linux_amd64.deb
-dpkg -i dive_"$VERSION"_linux_amd64.deb
+curl -LO https://github.com/wagoodman/dive/releases/download/v"$VERSION"/dive_"$VERSION"_linux_"$(dpkg --print-architecture)".deb
+dpkg -i dive_"$VERSION"_linux_"$(dpkg --print-architecture)".deb
 chmod 500 /usr/local/bin/dive
-rm dive_"$VERSION"_linux_amd64.deb
+rm dive_"$VERSION"_linux_"$(dpkg --print-architecture)".deb
