@@ -1,12 +1,11 @@
-name: Renovate
+name: CI/CD
 
 on:
+  workflow_dispatch:
+  pull_request:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:
 
 permissions: {}
 
@@ -15,13 +14,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  renovate:
+  lint:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
       - uses: actions/checkout@v3
-      - uses: renovatebot/github-action@v34.109.1
+      - uses: actions/setup-node@v3
         with:
-          configurationFile: .github/renovate.json
-          token: ${{ secrets.RENOVATE_TOKEN }}
+          node-version-file: .nvmrc
+      - name: Lint
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+          pnpm run format:check

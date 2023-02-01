@@ -266,8 +266,6 @@
   "devskim.enableBestPracticeRules": true,
   "devskim.enableManualReviewRules": true,
   "devskim.enableSuppressionInfo": true,
-  "devskim.ignoreRulesList": [
-    "DS137138"
-  ],
+  "devskim.ignoreRulesList": ["DS137138"],
   "devskim.suppressionCommentStyle": "block"
 }

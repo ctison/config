@@ -2,4 +2,4 @@
 
 . "$(dirname "$0")/_/husky.sh"
 
-exec pnpm run pre-commit
+exec pnpm lint-staged

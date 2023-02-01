@@ -77,7 +77,6 @@ RUN git clone https://github.com/ytdl-org/youtube-dl /y && \
   rm -rf /y
 
 SHELL [ "/usr/bin/fish", "-c" ]
-RUN fisher update
 
 RUN /config/bin/install/bat
 RUN /config/bin/install/direnv
