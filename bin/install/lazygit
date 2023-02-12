@@ -11,4 +11,4 @@ curl -fsSLO https://github.com/jesseduffield/lazygit/releases/download/v"$VERSIO
 tar --no-same-{o,p} -C /usr/local/bin/ -xf lazygit_"$VERSION"_Linux_x86_64.tar.gz lazygit
 rm lazygit_"$VERSION"_Linux_x86_64.tar.gz
 chmod 500 /usr/local/bin/lazygit
-ln -s /usr/local/bin/lazygit /usr/local/bin/lg
+ln -fsv /usr/local/bin/lazygit /usr/local/bin/lg

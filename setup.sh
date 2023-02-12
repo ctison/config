@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -euxo pipefail
 shopt -s nullglob
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
@@ -10,9 +10,8 @@ id
 if type apt-get >/dev/null 2>&1; then
   # shellcheck disable=SC2034
   DEBIAN_FRONTEND=noninteractive
-  apt-get update
-  apt-get install -y fish curl jq sed tar
-  mkdir -p ~/.config && ln -s /config/fish ~/.config/fish
+  apt-get update && apt-get install -y fish curl jq sed tar
+  mkdir -p ~/.config && ln -fsv /config/fish ~/.config/
   chsh -s /usr/bin/fish
   useradd -D -s /usr/bin/fish
   fish -c fish_update_completions

@@ -2,6 +2,9 @@
   "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[dockercompose]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -20,10 +23,126 @@
   "blockman.n04Sub05MinDistanceBetweenRightSideEdges": 8,
   "blockman.n33A01B1FromDepth0ToInwardForAllBorders": "!30,1,0,2; neutral > linear-gradient(to left, rgb(144,54,8), rgb(48,36,112))",
   "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
-  "cSpell.userWords": ["ctison", "pnpm"],
+  "cSpell.userWords": [
+    "buildx",
+    "cloudbuild",
+    "corepack",
+    "crds",
+    "ctison",
+    "gcloud",
+    "gserviceaccount",
+    "kubeconfig",
+    "Kustomization",
+    "kustomize",
+    "linkerd",
+    "nvmrc",
+    "pnpm",
+    "pulumi",
+    "workdir"
+  ],
+  "commit-message-editor.confirmAmend": false,
+  "commit-message-editor.dynamicTemplate": [
+    "{type}{scope}{breaking_change}{description}",
+    "{body}",
+    "{footer}"
+  ],
+  "commit-message-editor.staticTemplate": ["chore: "],
+  "commit-message-editor.tokens": [
+    {
+      "description": "Increase major version  on next release - https://semver.org",
+      "label": "Breaking change (required)",
+      "name": "breaking_change",
+      "type": "boolean"
+    },
+    {
+      "description": "The semantic type of the changes - https://www.conventionalcommits.org",
+      "label": "Type (required)",
+      "multiple": true,
+      "name": "type",
+      "options": [
+        {
+          "description": "Cleaning/Refactoring/Styling/Unused commit: onDeploy => patch version (X.Y.Z+1)",
+          "label": "chore"
+        },
+        {
+          "description": "A new feature: onDeploy => if breaking change, major version (X+1.0.0), else minor version (X.Y+1.0)",
+          "label": "feat"
+        },
+        {
+          "description": "A bug fix: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
+          "label": "fix"
+        },
+        {
+          "description": "Changes to the build system(s): onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
+          "label": "build"
+        },
+        {
+          "description": "Changes to the CI/CD: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
+          "label": "ci/cd"
+        },
+        {
+          "description": "Changes to the documentation(s): onDeploy => patch version (X.Y.Z+1)",
+          "label": "docs"
+        },
+        {
+          "description": "Changes to the test(s): onDeploy => patch version (X.Y.Z+1)",
+          "label": "test"
+        },
+        {
+          "description": "Improve production performances without a breaking change: onDeploy => patch version (X.Y.Z+1)",
+          "label": "perf"
+        },
+        {
+          "description": "Reverts a previous commit: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
+          "label": "revert"
+        }
+      ],
+      "separator": ",",
+      "type": "enum"
+    },
+    {
+      "description": "A noun describing a section of the codebase - https://www.conventionalcommits.org",
+      "label": "Scopes",
+      "name": "scope",
+      "prefix": "(",
+      "suffix": ")",
+      "type": "text"
+    },
+    {
+      "description": "A short summary of the code changes - https://www.conventionalcommits.org",
+      "label": "Description (required)",
+      "name": "description",
+      "prefix": ": ",
+      "type": "text"
+    },
+    {
+      "description": "Describe the code changes - https://developers.google.com/tech-writing/overview",
+      "label": "Body",
+      "lines": 5,
+      "multiline": true,
+      "name": "body",
+      "prefix": "\n",
+      "type": "text"
+    },
+    {
+      "description": "Optional footer - https://git-scm.com/docs/git-interpret-trailers",
+      "label": "Footer",
+      "lines": 5,
+      "multiline": true,
+      "name": "footer",
+      "prefix": "\n",
+      "type": "text"
+    }
+  ],
+  "commit-message-editor.view.defaultView": "form",
   "debug.allowBreakpointsEverywhere": true,
   "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "delegated",
+  "devskim.enableBestPracticeRules": true,
+  "devskim.enableManualReviewRules": true,
+  "devskim.enableSuppressionInfo": true,
+  "devskim.ignoreRulesList": ["DS137138"],
+  "devskim.suppressionCommentStyle": "block",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
@@ -32,14 +151,22 @@
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
   "editor.guides.indentation": false,
+  "editor.inlayHints.enabled": "onUnlessPressed",
   "editor.inlayHints.padding": true,
   "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "always",
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": false,
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.minimap.scale": 3,
   "editor.renderWhitespace": "trailing",
+  "editor.rulers": [
+    {
+      "color": "#4c59bd",
+      "column": 80
+    }
+  ],
   "editor.scrollbar.vertical": "visible",
   "editor.snippetSuggestions": "bottom",
   "editor.suggest.insertMode": "replace",
@@ -47,6 +174,7 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.unicodeHighlight.includeComments": true,
+  "editor.wordWrap": "on",
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
@@ -72,8 +200,8 @@
     "*.lsrules": "json",
     ".env": "shellscript",
     ".env.*": "shellscript",
-    "PROJECT": "yaml",
-    ".env.test.local": "dotenv"
+    ".env.test.local": "dotenv",
+    "PROJECT": "yaml"
   },
   "files.eol": "\n",
   "files.exclude": {
@@ -92,13 +220,27 @@
     "**/.rush/**": true,
     "**/common/temp/**": true
   },
+  "git-graph.openNewTabEditorGroup": "Two",
+  "git-graph.showStatusBarItem": false,
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
+  "github.copilot.advanced": {
+    "debug.showScores": true
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "yaml": true
+  },
   "githubPullRequests.fileListLayout": "tree",
   "githubPullRequests.pullBranch": "never",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.statusBar.enabled": false,
   "gitlens.views.branches.branches.layout": "list",
+  "gitlens.views.commitDetails.files.layout": "tree",
   "gitlens.views.commits.showBranchComparison": false,
   "gitlens.views.repositories.branches.layout": "list",
   "gitlens.views.repositories.files.layout": "list",
@@ -109,6 +251,9 @@
   "go.inlayHints.compositeLiteralFields": true,
   "go.inlayHints.compositeLiteralTypes": true,
   "go.inlayHints.constantValues": true,
+  "go.inlayHints.functionTypeParameters": true,
+  "go.inlayHints.parameterNames": true,
+  "go.inlayHints.rangeVariableTypes": true,
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "html.completion.attributeDefaultValue": "singlequotes",
@@ -132,14 +277,18 @@
       }
     ]
   },
+  "markdown.occurrencesHighlight.enabled": true,
+  "markdown.validate.enabled": true,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
   "notebook.lineNumbers": "on",
+  "outline.collapseItems": "alwaysCollapse",
   "prettier.jsxSingleQuote": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.variableTypes": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.formatting.provider": "yapf",
@@ -151,6 +300,10 @@
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.inlayHints.bindingModeHints.enable": true,
   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
+  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
+  "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
+  "screencastMode.keyboardOverlayTimeout": 1000,
+  "screencastMode.onlyKeyboardShortcuts": true,
   // "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
   "search.exclude": {
     "**/.next": true,
@@ -194,6 +347,8 @@
   },
   "window.commandCenter": true,
   "workbench.colorCustomizations": {
+    "activityBar.activeBorder": "#00ff6e",
+    "activityBar.foreground": "#26ff00",
     "editor.findMatchBackground": "#b1007f",
     "editor.lineHighlightBackground": "#1073cf2d",
     "editor.lineHighlightBorder": "#9fced11f",
@@ -206,13 +361,13 @@
     "errorLens.infoBackground": "#0000",
     "terminal.selectionBackground": "#e26cffcb"
   },
-  "workbench.tree.indent": 15,
-  "workbench.tree.renderIndentGuides": "always",
-  "workbench.colorTheme": "GitHub Dark Dimmed",
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.openSideBySideDirection": "down",
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.revealIfOpen": true,
+  "workbench.editor.splitInGroupLayout": "vertical",
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.untitled.hint": "hidden",
@@ -222,9 +377,12 @@
     "*.ipynb": "jupyter-notebook"
   },
   "workbench.iconTheme": "vscode-great-icons",
+  "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.startupEditor": "none",
+  "workbench.tree.indent": 15,
+  "workbench.tree.renderIndentGuides": "always",
   "xstate.nestTypegenFiles": false,
   "yaml.format.singleQuote": true,
   "yaml.schemas": {
@@ -233,39 +391,5 @@
     ]
   },
   "zenMode.fullScreen": false,
-  "gitlens.currentLine.enabled": false,
-  "git-graph.openNewTabEditorGroup": "Two",
-  "git-graph.showStatusBarItem": false,
-  "gitlens.views.commitDetails.files.layout": "tree",
-  "gitlens.showWelcomeOnInstall": false,
-  "gitlens.statusBar.enabled": false,
-  "workbench.editor.splitInGroupLayout": "vertical",
-  "workbench.editor.openSideBySideDirection": "down",
-  "workbench.panel.defaultLocation": "right",
-  "editor.rulers": [
-    {
-      "column": 80,
-      "color": "#4c59bd"
-    }
-  ],
-  "editor.inlayHints.enabled": "onUnlessPressed",
-  "go.inlayHints.functionTypeParameters": true,
-  "go.inlayHints.parameterNames": true,
-  "go.inlayHints.rangeVariableTypes": true,
-  "python.analysis.inlayHints.functionReturnTypes": true,
-  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
-  "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
-  "outline.collapseItems": "alwaysCollapse",
-  "screencastMode.keyboardOverlayTimeout": 1000,
-  "screencastMode.onlyKeyboardShortcuts": true,
-  "github.copilot.advanced": {
-    "debug.showScores": true
-  },
-  "editor.wordWrap": "on",
-  "workbench.activityBar.visible": false,
-  "devskim.enableBestPracticeRules": true,
-  "devskim.enableManualReviewRules": true,
-  "devskim.enableSuppressionInfo": true,
-  "devskim.ignoreRulesList": ["DS137138"],
-  "devskim.suppressionCommentStyle": "block"
+  "workbench.activityBar.visible": false
 }

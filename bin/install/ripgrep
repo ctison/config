@@ -10,7 +10,7 @@ TMP="$(mktemp -d)"
 case "$(uname -m)" in
 x86_64)
   curl -fsSLo "$TMP/ripgrep.deb" --tlsv1.2 --proto '=https' https://github.com/BurntSushi/ripgrep/releases/download/"$VERSION"/ripgrep_"$VERSION"_amd64.deb
-  dpkg -i ripgrep_"$VERSION"_"$(dpkg --print-architecture)".deb
+  dpkg -i "$TMP"/ripgrep.deb
   ;;
 aarch64)
   echo "Not supported"
