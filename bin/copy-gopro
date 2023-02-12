@@ -20,7 +20,7 @@ if ! test -f "$1/Get_started_with_GoPro.url"; then
 	exit
 fi
 
-MOVIES="$(find "$1" -type f -iname '*.MP4' -not -name '.*')"
+MOVIES="$(find "$1/DCIM" -type f -iname '*.MP4' -not -name '.*')"
 
 echo "$MOVIES" | while IFS= read -r M; do
 	DATE=$(date -r "$M" '+%Y-%m-%d %H-%M-%S')

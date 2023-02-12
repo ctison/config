@@ -175,8 +175,8 @@ if type -q arch 2>/dev/null
 end
 
 if type -q exa 2>/dev/null
-  alias l='exa -lag@ --group-directories-first --git'
-  alias t='e -T'
+  alias l='exa -lag --group-directories-first --git'
+  alias t='l -T'
 end
 
 ### Setup config
