@@ -15,9 +15,9 @@ hi StatusLine ctermbg=blue ctermfg=yellow
 
 " Syntax coloring
 syntax on
-colorscheme delek
+" colorscheme delek
 
-autocmd FileType python colorscheme zellner
+" autocmd FileType python colorscheme zellner
 
 " Toggle paste mode
 set pastetoggle=<F10>

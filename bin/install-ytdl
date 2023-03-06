@@ -1,0 +1,16 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+TEMP_DIR="$(mktemp -d)"
+pushd "$TEMP_DIR"
+
+git clone https://github.com/ytdl-org/youtube-dl
+cd youtube-dl
+make youtube-dl youtube-dl.fish PYTHON=python3
+install -m 755 youtube-dl ~/.local/bin/
+install -m 644 youtube-dl.fish /etc/fish/completions/youtube-dl.fish
+
+popd
+rm -rf -- "$TEMP_DIR"

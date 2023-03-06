@@ -14,7 +14,7 @@ def main [
   --tag (-v): string = 'latest'              # The release tag to install. Defaults to "latest".
   --arch: string                             # The architecture to install. Defaults to the current architecture.
   --os: string                               # The operating system to install. Defaults to the current operating system.
-  --libc: string = 'glibc'                   # The libc to filter by. Defaults to glibc.
+  --libc: string = 'gnu'                   # The libc to filter by. Defaults to gnu.
   --bin-dir = ('~/.local/bin' | path expand) # The path to the bin directory. Defaults to ~/.local/bin.
 ] {
   mut repo = $repo
@@ -48,7 +48,7 @@ def main [
   $'Operating system: ($os)'
 
   let filters_arch = if $arch == 'x86_64' {
-    ['x86_64', 'amd64']
+    ['x86_64', 'amd64', 'x64']
   } else if $arch == 'aarch64' {
     ['aarch64', 'arm64']
   } else if $arch == 'armv7l' {
@@ -80,6 +80,10 @@ def main [
 
   if $libc != 'musl' {
     $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -ni 'musl'})
+  }
+
+  if $libc != 'gnu' {
+    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -ni 'gnu'})
   }
 
   if ($selected_assets | length) == 0 {

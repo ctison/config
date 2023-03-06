@@ -36,8 +36,8 @@ gpm ducaale/xh --libc musl        # TODO remove --libc musl when possible
 gpm starship/starship --libc musl # TODO remove --libc musl when possible
 gpm sharkdp/bat
 gpm junegunn/fzf
-# gpm ogham/exa # NO BUILD FOR ARM64
-# gpm BurntSushi/ripgrep # NO BUILD FOR ARM64
+gpm BurntSushi/ripgrep --arch x86_64 --libc musl # NO BUILD FOR ARM64
+gpm jdxcode/rtx
 
 if type fish >/dev/null 2>&1; then
   chsh -s /usr/bin/fish

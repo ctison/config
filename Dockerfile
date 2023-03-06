@@ -61,27 +61,15 @@ RUN apt-get update && \
 RUN rm -rf -- ~/.* ~/* /etc/skel/
 RUN mkdir -pm 0700 ~/.config /etc/skel
 
+# Set fish as default shell for future users
+RUN useradd -D -s /usr/bin/fish
+
 ENV PATH="/config/bin:~/.local/bin:$PATH"
 COPY /setup.sh /config/
 COPY /bin/install-nushell /bin/gpm /config/bin/
 RUN /config/setup.sh
 
 COPY ./ /config
-
-# Set fish as default shell for future users
-RUN useradd -D -s /usr/bin/fish
-
-# Update fish completions
-RUN fish -c fish_update_completions
-
-RUN git clone https://github.com/ytdl-org/youtube-dl /y && \
-  cd /y && \
-  make youtube-dl youtube-dl.fish PYTHON=python3 && \
-  install -m 755 youtube-dl /usr/local/bin/ && \
-  install -m 644 youtube-dl.fish /etc/fish/completions/youtube-dl.fish && \
-  rm -rf /y
-
-SHELL [ "/usr/bin/fish", "-c" ]
 
 RUN rm -rf -- /var/lib/apt/lists/*
 
