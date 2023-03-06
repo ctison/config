@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/wasme https://github.com/solo-io/wasme/releases/latest/download/wasme-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/wasme

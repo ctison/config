@@ -1,9 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-VERSION=$(curl -s https://api.github.com/repos/vmware-tanzu/octant/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -LO https://github.com/vmware-tanzu/octant/releases/download/v"$VERSION"/octant_"$VERSION"_Linux-64bit.deb
-dpkg -i octant_"$VERSION"_Linux-64bit.deb
-rm octant_"$VERSION"_Linux-64bit.deb

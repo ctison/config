@@ -223,5 +223,17 @@
   {
     "key": "alt+cmd+h",
     "command": "workbench.view.extension.copilot-labs"
+  },
+  {
+    "key": "alt+cmd+y",
+    "command": "settings.cycle",
+    "when": "editorTextFocus",
+    "args": {
+      "id": "editor.inlayHints.enabled",
+      "values": [
+        { "editor.inlayHints.enabled": "offUnlessPressed" },
+        { "editor.inlayHints.enabled": "onUnlessPressed" }
+      ]
+    }
   }
 ]

@@ -1,0 +1,204 @@
+#!/usr/bin/env nu
+
+let aliases = {
+  'btm': 'ClementTsang/bottom'
+}
+
+let filter_patterns = ['.txt', '.sha256', '.md5', '.shasum', '.sig', '.sha1', '.sha512', '.sha256sum', '.asc', '.json', '.yaml', '.sh', '.1', '.2', '.3', '.5', '.6', '.7', '.8']
+
+# Install an asset's release from a Github repository
+#
+# Example: gpm starship/starship
+def main [
+  repo: string                               # The repository to install from (eg. starship/starship).
+  --tag (-v): string = 'latest'              # The release tag to install. Defaults to "latest".
+  --arch: string                             # The architecture to install. Defaults to the current architecture.
+  --os: string                               # The operating system to install. Defaults to the current operating system.
+  --libc: string = 'glibc'                   # The libc to filter by. Defaults to glibc.
+  --bin-dir = ('~/.local/bin' | path expand) # The path to the bin directory. Defaults to ~/.local/bin.
+] {
+  mut repo = $repo
+  if ($repo | str contains / | not $in) {
+    $repo = ($aliases | get $repo)
+  }
+
+  let release = if $tag == "latest" {
+    http get $'https://api.github.com/repos/($repo)/releases/latest'
+  } else if $tag == "pre-release" {
+    http get $'https://api.github.com/repos/($repo)/releases' | $in.0
+  } else {
+    http get $'https://api.github.com/repos/($repo)/releases/tags/($tag)'
+  }
+
+  $'Installing ($repo) ($release.name)'
+
+  let arch = if $arch == $nothing {
+    $nu.'os-info'.arch
+  } else {
+    $arch
+  }
+
+  let os = if $os == $nothing {
+    $nu.'os-info'.name
+  } else {
+    $os
+  }
+
+  $'Architecture: ($arch)'
+  $'Operating system: ($os)'
+
+  let filters_arch = if $arch == 'x86_64' {
+    ['x86_64', 'amd64']
+  } else if $arch == 'aarch64' {
+    ['aarch64', 'arm64']
+  } else if $arch == 'armv7l' {
+    ['armv7l', 'armhf']
+  } else if $arch == 'armv6l' {
+    ['armv6l', 'armhf']
+  } else {
+    [$arch]
+  }
+
+  let filters_os = if $os == 'Linux' {
+    ['linux']
+  } else if $os == 'Darwin' {
+    ['darwin', 'apple']
+  } else if $os == 'Windows' {
+    ['windows', 'win']
+  } else {
+    [$os]
+  }
+
+  $'Filters OS: ($filters_os)'
+  $'Filters arch: ($filters_arch)'
+
+  mut selected_assets = ($release.assets |
+    filter {|asset| $filters_arch | any {|filter| $asset.name | str contains -i $filter}} |
+    filter {|asset| $filters_os | any {|filter| $asset.name | str contains -i $filter}} |
+    filter {|asset| $filter_patterns | all {|filter| $asset.name | str ends-with $filter | not $in}}
+  )
+
+  if $libc != 'musl' {
+    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -ni 'musl'})
+  }
+
+  if ($selected_assets | length) == 0 {
+    $release.assets.name
+    error make -u {msg: $'No assets found for ($arch)/($os)'}
+  }
+
+  if ($selected_assets | length) > 1 {
+    let prefered_formats = ['.tar.gz', '.zip']
+    for file_format in $prefered_formats {
+      let filtered_assets = ($selected_assets | filter {|asset| $asset.name | str ends-with $file_format})
+      if ($filtered_assets | length) == 1 {
+        $selected_assets = $filtered_assets
+        break
+      }
+    }
+    if ($selected_assets | length) > 1 {
+      $selected_assets.name
+      error make -u {msg: $'Multiple assets found for ($arch)/($os)'}
+    }
+  }
+
+  $'Selected asset:'
+  $selected_assets | transpose
+
+  let release_dir = ('~/.cache/gpm' | path join $repo $release.tag_name | path expand)
+
+
+  let download_dir = ($release_dir | path join 'download')
+  mkdir $download_dir
+
+  $'> Downloading ($selected_assets.name.0) from ($release.tag_name)'
+  let asset_path = ($download_dir | path join $selected_assets.name.0)
+  http get $selected_assets.browser_download_url.0 | save -fp $asset_path
+  $'< Saved ($asset_path)'
+
+  let extract_path = ($release_dir | path join 'extract')
+  mkdir $extract_path
+
+  let bin_dir = ($bin_dir | path expand)
+  mkdir $bin_dir
+
+  if (['.tar.gz', 'tar.xz', '.tgz'] | any {|ext| $asset_path | str ends-with $ext}) {
+    main tar l $asset_path
+    tar extract $asset_path $extract_path | each {|file|
+      $'Extracted ($file)'
+      ^ln -sfv $file $bin_dir
+      chmod 500 $asset_path
+    }
+  }
+  if ($asset_path | str ends-with '.zip') {
+    zip l $asset_path
+    zip extract $asset_path $extract_path | each {|file|
+      $'Extracted ($file)'
+      ^ln -sfv $file $bin_dir
+      chmod 500 $asset_path
+    }
+  }
+  if ($asset_path | path parse | echo $in.extension | str contains -i $nu.os-info.name) {
+    ln -sfv $asset_path $'($bin_dir)/($asset_path | path basename | split row - | split row . | split row _ | $in.0)'
+    chmod 500 $asset_path
+  }
+
+  if ($asset_path | path parse | $in.extension) == '' {
+    ln -sfv $asset_path $'($bin_dir)/($asset_path | path basename | split row - | split row . | split row _ | $in.0)'
+    chmod 500 $asset_path
+  }
+
+
+  $nothing
+}
+
+def 'tar x' [archive: string, to: string, file?: string] {
+  tar --no-same-o --no-same-p -C $to -xzf $archive $file
+}
+
+# List files in a tar archive
+def 'main tar l' [archive: string] {
+  tar -tvf $archive | lines | filter {|line| $line | str ends-with '/' | not $in} | parse -r '^\s*(?<mode>[rwx-]+).+?(?<path>[^\s]+)\s*$'
+}
+
+def 'filter_executables' [files] {
+  $files |
+    filter {$in.mode | str starts-with '-'} |
+    filter {$in.mode | str contains 'x'} |
+    filter {|file| $filter_patterns | all {|pattern| $file.path | str ends-with $pattern | not $in}}
+}
+
+def 'tar extract' [archive: string, to: string] {
+  filter_executables (main tar l $archive) | each {
+    let name = ($in.path | str trim -r)
+    tar x $archive $to $name
+    $'($to)/($name)'
+  }
+}
+
+def 'zip l' [archive: string] {
+  zipinfo $archive | lines | skip 2 | drop 1 | parse -r '^\s*(?<mode>[rwx-]+).+?(?<path>[^\s]+)\s*$'
+}
+
+def 'zip x' [archive: string, to: string, file?: string] {
+  unzip -o $archive $file -d $to $file
+}
+
+def 'zip extract' [archive: string, to: string] {
+  filter_executables (zip l $archive) | each {
+    let name = ($in.path | str trim -r)
+    zip x $archive $to $name
+    $'($to)/($name)'
+  }
+}
+
+# Search for a repo on github
+def 'main s' [search: string] {
+  http get $'https://api.github.com/search/repositories?per_page=10&sort=stars&q=($search)' |
+    get items | select stargazers_count full_name language description
+}
+
+# Print the URL of the releases page for a given repo
+def 'main p' [repo: string] {
+  $'https://github.com/($repo)/releases'
+}

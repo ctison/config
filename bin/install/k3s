@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/k3s https://github.com/rancher/k3s/releases/latest/download/k3s
-chmod 500 /usr/local/bin/k3s

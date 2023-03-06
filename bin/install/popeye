@@ -1,9 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -LO https://github.com/derailed/popeye/releases/latest/download/popeye_Linux_x86_64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ -xf popeye_Linux_x86_64.tar.gz popeye
-chmod 500 /usr/local/bin/popeye
-rm popeye_Linux_x86_64.tar.gz

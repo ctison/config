@@ -22,8 +22,8 @@ f = pull --ff-only
 ff = fetch --all
 g = grep
 l = log --format=oneline --graph
-p = push
-pf = push --force
+p = push -v
+pf = p --force
 pu = push --set-upstream origin @
 rb = rebase
 rbm = rebase origin/main
@@ -61,7 +61,7 @@ submoduleSummary = true
 [pull]
 rebase = false
 [push]
-default = current
+default = upstream
 [init]
 defaultBranch = main
 

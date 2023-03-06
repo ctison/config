@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/base https://github.com/ctison/base/releases/latest/download/base-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/base

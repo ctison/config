@@ -24,13 +24,22 @@
   "blockman.n33A01B1FromDepth0ToInwardForAllBorders": "!30,1,0,2; neutral > linear-gradient(to left, rgb(144,54,8), rgb(48,36,112))",
   "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
   "cSpell.userWords": [
+    "apm",
     "buildx",
+    "Ciliums",
     "cloudbuild",
+    "CONTAINERD",
     "corepack",
     "crds",
     "ctison",
+    "DATAPATH",
+    "Direnv",
+    "dotenv",
+    "endregion",
+    "envrc",
     "gcloud",
     "gserviceaccount",
+    "iac",
     "kubeconfig",
     "Kustomization",
     "kustomize",
@@ -79,6 +88,10 @@
         {
           "description": "Changes to the CI/CD: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
           "label": "ci/cd"
+        },
+        {
+          "description": "Changes to the infrastructure",
+          "label": "infra"
         },
         {
           "description": "Changes to the documentation(s): onDeploy => patch version (X.Y.Z+1)",
@@ -145,7 +158,6 @@
   "devskim.suppressionCommentStyle": "block",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
-  "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.formatOnSave": true,
@@ -154,7 +166,6 @@
   "editor.inlayHints.enabled": "onUnlessPressed",
   "editor.inlayHints.padding": true,
   "editor.inlineSuggest.enabled": true,
-  "editor.inlineSuggest.showToolbar": "always",
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": false,
   "editor.linkedEditing": true,
@@ -391,5 +402,6 @@
     ]
   },
   "zenMode.fullScreen": false,
+  "markdown-preview-github-styles.colorTheme": "light",
   "workbench.activityBar.visible": false
 }

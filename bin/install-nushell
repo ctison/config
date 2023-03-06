@@ -1,0 +1,22 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euxo pipefail
+
+CURL=(curl -fsSL --tlsv1.2 --proto '=https')
+
+TEMP_DIR="$(mktemp -d)"
+pushd "$TEMP_DIR"
+
+# shellcheck disable=SC2068
+VERSION=$(${CURL[@]} https://api.github.com/repos/nushell/nushell/releases/latest | jq -r .tag_name | sed s/^v//)
+
+# shellcheck disable=SC2068
+${CURL[@]} -o nu.tar.gz https://github.com/nushell/nushell/releases/download/"$VERSION"/nu-"$VERSION"-"$(uname -m)"-unknown-linux-gnu.tar.gz
+
+mkdir -p ~/.local/bin/
+tar --no-same-{o,p} -C ~/.local/bin/ -xvf nu.tar.gz --wildcards '*/nu' --strip=1
+chmod 500 ~/.local/bin/nu
+
+popd
+rm -rf -- "$TEMP_DIR"

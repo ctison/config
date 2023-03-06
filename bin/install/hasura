@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/hasura https://github.com/hasura/graphql-engine/releases/latest/download/cli-hasura-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/hasura

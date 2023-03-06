@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/rio https://github.com/rancher/rio/releases/latest/download/rio-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/rio

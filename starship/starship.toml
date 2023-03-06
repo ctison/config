@@ -93,11 +93,14 @@ style = 'black bold'
 [directory]
 truncation_length = 0
 truncate_to_repo = false
+truncation_symbol = "#"
 style = 'bold blue'
 read_only = " "
 
 [status]
-disabled = true
+disabled = false
+format = '[\($status\)]($style) '
+style = 'bold fg:11'
 
 #
 # Modules
@@ -178,7 +181,7 @@ format = ' [$symbol($version)]($style)'
 symbol = 'erlang:'
 
 [gcloud]
-format = ' [$symbol$account(@$domain)(\($region\))]($style)'
+format = ' [$symbol$account@$project]($style)'
 symbol = 'gcloud:'
 
 [git_branch]
@@ -320,6 +323,13 @@ style = 'bold black'
 format = ' [$symbol($version)]($style)'
 symbol = 'scala:'
 
+[shell]
+format = '[$indicator]($style)'
+style = 'green bold'
+disabled = false
+nu_indicator = "Ξ"
+fish_indicator = ""
+
 [spack]
 format = ' [$symbol$environment]($style)'
 symbol = 'spack:'
@@ -336,7 +346,7 @@ symbol = 'tf:'
 format = ' [$time]($style)'
 
 [username]
-format = ' [$user]($style)'
+format = '[\[$user\]]($style) '
 
 [vagrant]
 format = ' [$symbol($version)]($style)'

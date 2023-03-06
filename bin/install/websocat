@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/websocat https://github.com/vi/websocat/releases/latest/download/websocat_"$(dpkg --print-architecture)"-linux-static
-chmod 500 /usr/local/bin/websocat

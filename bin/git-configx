@@ -8,7 +8,7 @@ git config --global user.email 'ctison@pm.me'
 
 git config --global commit.gpgsign true
 git config --global tag.gpgSign true
-# NOTE: Do not forget to set GPG_TTY=$(tty) to permit gpg to prompt for passphrase.
+# NOTE: Do not forget to set GPG_TTY=$(tty) to allow gpg to prompt for passphrase.
 
 # git config --global url.'git@github.com:'.insteadOf 'https://github.com/'
 # git config --global url.'git@gitlab.com:'.insteadOf 'https://gitlab.com/'

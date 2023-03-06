@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/reg https://github.com/genuinetools/reg/releases/latest/download/reg-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/reg

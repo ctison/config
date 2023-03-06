@@ -1,8 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/serverless https://github.com/serverless/serverless/releases/latest/download/serverless-linux-x64
-chmod 500 /usr/local/bin/serverless
-ln -sfv /usr/local/bin/serverless /usr/local/bin/sls

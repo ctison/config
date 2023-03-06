@@ -1,8 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-VERSION=$(curl -s https://api.github.com/repos/operator-framework/operator-sdk/releases/latest | jq -r .tag_name)
-curl -Lo /usr/local/bin/o https://github.com/operator-framework/operator-sdk/releases/download/"$VERSION"/operator-sdk-"$VERSION"-x86_64-linux-gnu
-chmod 500 /usr/local/bin/o

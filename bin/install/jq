@@ -1,8 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -LO https://github.com/stedolan/jq/releases/latest/download/jq-linux64
-chmod 500 jq-linux64
-mv jq-linux64 /usr/local/bin/jq

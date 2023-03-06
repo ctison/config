@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/calico https://github.com/projectcalico/calicoctl/releases/latest/download/calicoctl-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/calico

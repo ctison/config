@@ -99,7 +99,7 @@ end
 
 if type -q gcloud 2>/dev/null
   alias ls-gcp='gcloud config configurations list'
-  alias set-gcp='set -gx CLOUDSDK_ACTIVE_CONFIG_NAME'
+  alias set-gcp='gcloud config configurations activate'
 end
 
 if type -q shellcheck 2>/dev/null
@@ -179,6 +179,14 @@ if type -q exa 2>/dev/null
   alias t='l -T'
 end
 
+if type -q direnv 2>/dev/null
+  alias da='direnv allow'
+end
+
+if type -q gcloud 2>/dev/null
+  alias gi='gcloud beta interactive'
+end
+
 ### Setup config
 
 function setupConfig -a CONFIGPATH
@@ -248,13 +256,20 @@ if test -d ~/.krew/bin
   set -a PATH ~/.krew/bin
 end
 
-if type -q fnm 2>/dev/null
-  eval (fnm env)
-end
-
 if type -q direnv 2>/dev/null
   direnv hook fish | source
 end
+
+# if type -q fnm 2>/dev/null
+#   eval (fnm env)
+# end
+
+
+if type -q rtx 2>/dev/null
+  # set -gx RTX_LOG_LEVEL debug
+  rtx activate fish | source
+end
+
 
 if type -q mcfly 2>/dev/null
   mcfly init fish | source
@@ -268,9 +283,9 @@ if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
   eval /opt/homebrew/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
 end
 
-if test "$TERM_PROGRAM" = 'vscode'
-  set -l fishIntegrationPath (code --locate-shell-integration-path fish)
-  if test -f "$fishIntegrationPath"
-    source "$fishIntegrationPath"
-  end
-end
+# if test "$TERM_PROGRAM" = 'vscode'
+#   set -l fishIntegrationPath (code --locate-shell-integration-path fish)
+#   if test -f "$fishIntegrationPath"
+#     source "$fishIntegrationPath"
+#   end
+# end

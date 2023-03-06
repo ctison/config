@@ -1,9 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -LO https://github.com/vlang/v/releases/latest/download/v_linux.zip
-unzip -j v_linux.zip v/v -d /usr/local/bin/
-chmod 500 /usr/local/bin/v
-rm v_linux.zip

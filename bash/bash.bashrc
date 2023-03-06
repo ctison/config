@@ -1,7 +1,7 @@
+# Install to /etc/bash.bashrc or ~/.bashrc
+
 # shellcheck shell=bash
-
-set -o pipefail
-
+set -euo pipefail
 shopt -s nullglob
 
 # Disable bash history
@@ -16,10 +16,12 @@ umask 0077
 # End of configuration if non interactive
 [ -z "$PS1" ] && return
 
-# Configure PS1
-if [ "$(id -u)" = 0 ]; then PS1='\[\033[1;31m\]#\[\033[0m\] ' ; else PS1='\[\033[1;32m\]$\[\033[0m\] ' ; fi
-
 shopt -s checkwinsize
 
 # Disable less history
 declare -x LESSHISTFILE=-
+
+# Starship prompt
+if type starship 2>/dev/null >&2; then
+  eval "$(starship init bash)"
+fi

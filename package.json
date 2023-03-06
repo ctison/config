@@ -3,7 +3,7 @@
   "scripts": {
     "format": "prettier --write . ; sort-package-json",
     "format:check": "prettier --check . ; sort-package-json --check",
-    "image": "docker build -t ctison/dev .",
+    "image": "docker buildx bake --load",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -21,5 +21,5 @@
     "prettier": "2.8.4",
     "sort-package-json": "2.4.1"
   },
-  "packageManager": "pnpm@7.28.0"
+  "packageManager": "pnpm@7.29.0"
 }

@@ -1,8 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-VERSION=$(curl -s https://api.github.com/repos/kudobuilder/kudo/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -Lo /usr/local/bin/kubectl-kudo https://github.com/kudobuilder/kudo/releases/download/v"$VERSION"/kubectl-kudo_"$VERSION"_linux_x86_64
-chmod 500 /usr/local/bin/kubectl-kudo

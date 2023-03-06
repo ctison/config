@@ -1,9 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-VERSION=$(curl -s https://api.github.com/repos/pachyderm/pachyderm/releases/latest | jq -r .tag_name | sed s/^v//)
-curl -LO https://github.com/pachyderm/pachyderm/releases/download/v"${VERSION}"/pachctl_"${VERSION}"_"$(dpkg --print-architecture)".deb
-dpkg -i pachctl_"${VERSION}"_"$(dpkg --print-architecture)".deb
-rm pachctl_"${VERSION}"_"$(dpkg --print-architecture)".deb

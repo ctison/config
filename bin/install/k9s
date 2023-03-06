@@ -1,9 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -LO https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_x86_64.tar.gz
-tar --no-same-{o,p} -C /usr/local/bin/ -xzf k9s_Linux_x86_64.tar.gz k9s
-chmod 500 /usr/local/bin/k9s
-rm k9s_Linux_x86_64.tar.gz
