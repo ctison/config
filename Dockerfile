@@ -69,8 +69,10 @@ COPY /setup.sh /config/
 COPY /bin/install-nushell /bin/gpm /config/bin/
 RUN /config/setup.sh
 
-COPY ./ /config
-
 RUN rm -rf -- /var/lib/apt/lists/*
 
-CMD ["tmux"]
+COPY ./ /config
+
+SHELL [ "/usr/bin/fish", "-c" ]
+
+CMD ["fish", "-lc", "zellij -s main"]

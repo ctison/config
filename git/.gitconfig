@@ -92,6 +92,6 @@ tool = vscode
 [merge]
 tool = vscode
 [mergetool "vscode"]
-cmd = code-insiders --wait $MERGED
+cmd = code --wait $MERGED
 [difftool "vscode"]
-cmd = code-insiders --wait --diff $LOCAL $REMOTE
+cmd = code --wait --diff $LOCAL $REMOTE

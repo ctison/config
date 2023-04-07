@@ -58,8 +58,11 @@ end
 if type -q kubectl 2>/dev/null
   alias k=kubectl
   alias kz='k kustomize'
-  if not set -q KUBECONFIG && test -f ~/.kube/configs/docker-desktop.yaml
-    set -gx KUBECONFIG ~/.kube/configs/docker-desktop.yaml
+  function kd -w 'kubectl diff'
+    KUBECTL_EXTERNAL_DIFF='difft' kubectl diff $argv
+  end
+  function kdd -w 'kubectl diff'
+    KUBECTL_EXTERNAL_DIFF='delta' kubectl diff $argv
   end
   alias ls-k8s='l ~/.kube/configs/*'
   alias set-k8s='set -gx KUBECONFIG'
@@ -279,6 +282,10 @@ if type -q lazygit 2>/dev/null
   alias lg='lazygit'
 end
 
+if type -q zellij 2>/dev/null
+  alias z='zellij'
+end
+
 if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
   eval /opt/homebrew/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
 end
@@ -289,3 +296,9 @@ end
 #     source "$fishIntegrationPath"
 #   end
 # end
+
+# if test -S ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+#   set -gx SSH_AUTH_SOCK ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+# end
+
+set -gx CARGO_REGISTRIES_CRATES_IO_PROTOCOL sparse

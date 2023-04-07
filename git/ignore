@@ -1,3 +1,4 @@
 .envrc
 .envrc.local
-/xxx/
+/x/
+.DS_Store

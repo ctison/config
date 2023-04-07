@@ -61,7 +61,7 @@ def main [
 
   let filters_os = if $os == 'Linux' {
     ['linux']
-  } else if $os == 'Darwin' {
+  } else if $os == 'macos' {
     ['darwin', 'apple']
   } else if $os == 'Windows' {
     ['windows', 'win']

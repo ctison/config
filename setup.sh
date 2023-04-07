@@ -17,6 +17,7 @@ ln -fsv "$SCRIPT_DIR"/rtx ~/.config/
 ln -fsv "$SCRIPT_DIR"/starship/starship.toml ~/.config/
 ln -fsv "$SCRIPT_DIR"/tmux ~/.config/
 ln -fsv "$SCRIPT_DIR"/vim/vimrc ~/.vimrc
+ln -fsv "$SCRIPT_DIR"/zellij ~/.config/
 
 # Install nushell
 "$SCRIPT_DIR/bin/install-nushell"
@@ -38,8 +39,11 @@ gpm sharkdp/bat
 gpm junegunn/fzf
 gpm BurntSushi/ripgrep --arch x86_64 --libc musl # NO BUILD FOR ARM64
 gpm jdxcode/rtx
+gpm zellij-org/zellij --libc musl # TODO remove --libc musl when possible
 
 if type fish >/dev/null 2>&1; then
   chsh -s /usr/bin/fish
   fish -c fish_update_completions
+  mkdir -pm 0700 ~/.local/share/fish/vendor_completions.d
+  zellij setup --generate-completion fish >~/.local/share/fish/vendor_completions.d/zellij.fish
 fi
