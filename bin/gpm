@@ -167,13 +167,13 @@ def 'main tar l' [archive: string] {
 
 def 'filter_executables' [files] {
   $files |
-    filter {$in.mode | str starts-with '-'} |
-    filter {$in.mode | str contains 'x'} |
+    filter {|| $in.mode | str starts-with '-'} |
+    filter {|| $in.mode | str contains 'x'} |
     filter {|file| $filter_patterns | all {|pattern| $file.path | str ends-with $pattern | not $in}}
 }
 
 def 'tar extract' [archive: string, to: string] {
-  filter_executables (main tar l $archive) | each {
+  filter_executables (main tar l $archive) | each {||
     let name = ($in.path | str trim -r)
     tar x $archive $to $name
     $'($to)/($name)'
@@ -189,7 +189,7 @@ def 'zip x' [archive: string, to: string, file?: string] {
 }
 
 def 'zip extract' [archive: string, to: string] {
-  filter_executables (zip l $archive) | each {
+  filter_executables (zip l $archive) | each {||
     let name = ($in.path | str trim -r)
     zip x $archive $to $name
     $'($to)/($name)'
