@@ -1,7 +1,7 @@
 [user]
 name = Charles Tison
 email = ctison@pm.me
-signingKey = "AF97BFE3"
+signingKey = "BEB530F4CDA14DE8"
 
 [alias]
 a = add
