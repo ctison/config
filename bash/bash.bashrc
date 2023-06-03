@@ -1,8 +1,6 @@
 # Install to /etc/bash.bashrc or ~/.bashrc
 
 # shellcheck shell=bash
-set -euo pipefail
-shopt -s nullglob
 
 # Disable bash history
 unset HISTFILE

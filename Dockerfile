@@ -36,7 +36,6 @@ RUN apt-get update && \
   apt-get install --autoremove --no-install-recommends -y \
   bind9-dnsutils \
   docker-ce \
-  docker-compose-plugin \
   file \
   fish \
   htop \

@@ -1,0 +1,32 @@
+#cloud-config
+# yaml-language-server: $schema=https://raw.githubusercontent.com/canonical/cloud-init/main/cloudinit/config/schemas/versions.schema.cloud-config.json
+users:
+  - name: 'null'
+    groups: docker
+    ssh_authorized_keys:
+      - ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAcBr9WtF8K91EXtszi8Y/JtuJ6+MX/o2fzfPwjMmsdNIuoV57ctzhQzeUla3VVw8eGKiBh53HIuSnFHCEcR9cI=
+    shell: /usr/bin/fish
+
+apt:
+  sources:
+    docker.list:
+      source: deb https://download.docker.com/linux/ubuntu $RELEASE stable
+      keyserver: https://download.docker.com/linux/ubuntu/gpg
+      keyid: 7EA0A9C3F273FCD8
+    gcp.list:
+      source: deb https://packages.cloud.google.com/apt cloud-sdk main
+      keyserver: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      keyid: B53DC80D13EDEF05
+    azure.list:
+      source: deb https://packages.microsoft.com/repos/azure-cli/ $RELEASE main
+      keyserver: https://packages.microsoft.com/keys/microsoft.asc
+      keyid: EB3E94ADBE1229CF
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - bind9-dnsutils
+  - git
+  - fish
+  - docker-ce

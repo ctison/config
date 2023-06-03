@@ -22,7 +22,7 @@ ln -fsv "$SCRIPT_DIR"/zellij ~/.config/
 # Install nushell
 "$SCRIPT_DIR/bin/install-nushell"
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$SCRIPT_DIR/bin:$PATH"
 
 # Install tools
 gpm cli/cli

@@ -55,6 +55,10 @@ if test -d /opt/homebrew/bin
   set -p PATH /opt/homebrew/bin
 end
 
+if test -d ~/.docker/bin
+  set -p PATH ~/.docker/bin
+end
+
 if type -q kubectl 2>/dev/null
   alias k=kubectl
   alias kz='k kustomize'
@@ -85,6 +89,7 @@ end
 if type -q docker 2>/dev/null
   alias dc='docker compose'
   alias dx='docker buildx'
+  set -gx DOCKER_BUILDKIT 1
 end
 
 if grep -E ~/.vscode-server/bin/'[[:alnum:]]+'/bin/code (type -p code 2>/dev/null | psub) >/dev/null 2>&1 || type -q code 2>/dev/null
@@ -119,10 +124,6 @@ end
 
 if type -q tar 2>/dev/null
   alias tar='tar --no-same-o --no-same-p'
-end
-
-if type -q docker 2>/dev/null
-  set -gx DOCKER_BUILDKIT 1
 end
 
 if type -q hub 2>/dev/null
@@ -206,6 +207,8 @@ if test -f ~/config/Dockerfile
   setupConfig ~/config
 else if test -f ~/work/config/Dockerfile
   setupConfig ~/work/config
+else if test -f ~/x/config/Dockerfile
+  setupConfig ~/x/config
 else if test -f /config/tusk/tusk.yaml
   setupConfig /config
 else if test -f ~/Documents/Work/ctison/config/Dockerfile
@@ -302,3 +305,8 @@ end
 # end
 
 set -gx CARGO_REGISTRIES_CRATES_IO_PROTOCOL sparse
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f ~/google-cloud-sdk/path.fish.inc ]
+  source ~/google-cloud-sdk/path.fish.inc
+end

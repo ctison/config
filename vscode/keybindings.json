@@ -235,5 +235,10 @@
         { "editor.inlayHints.enabled": "onUnlessPressed" }
       ]
     }
+  },
+  {
+    "key": "cmd+i",
+    "command": "toggle.diff.renderSideBySide",
+    "when": "editorTextFocus && isInDiffEditor"
   }
 ]

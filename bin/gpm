@@ -14,8 +14,8 @@ def main [
   --tag (-v): string = 'latest'              # The release tag to install. Defaults to "latest".
   --arch: string                             # The architecture to install. Defaults to the current architecture.
   --os: string                               # The operating system to install. Defaults to the current operating system.
-  --libc: string = 'gnu'                   # The libc to filter by. Defaults to gnu.
-  --bin-dir = ('~/.local/bin' | path expand) # The path to the bin directory. Defaults to ~/.local/bin.
+  --libc: string = 'gnu'                     # The libc to filter by. Defaults to gnu.
+  --bin-dir: string = '~/.local/bin'         # The path to the bin directory. Defaults to ~/.local/bin.
 ] {
   mut repo = $repo
   if ($repo | str contains / | not $in) {
