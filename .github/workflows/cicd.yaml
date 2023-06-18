@@ -49,6 +49,3 @@ jobs:
           workdir: .github/
           pull: true
           push: true
-          set: |
-            *.attest=type=provenance
-            *.attest=type=sbom
