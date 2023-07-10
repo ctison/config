@@ -13,3 +13,6 @@ services:
           - type=registry,ref=ghcr.io/ctison/dev:cache,mode=max
         cache-from:
           - type=registry,ref=ghcr.io/ctison/dev:cache
+        platforms:
+          - linux/amd64
+          - linux/arm64

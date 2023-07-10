@@ -156,6 +156,7 @@
     "rfq",
     "workdir"
   ],
+  "database-client.showFilter": true,
   "debug.allowBreakpointsEverywhere": true,
   "debug.console.acceptSuggestionOnEnter": "on",
   "dev.containers.defaultExtensions": [],
@@ -166,6 +167,7 @@
   "devskim.ignoreRulesList": ["DS137138"],
   "devskim.suppressionCommentStyle": "block",
   "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.formatOnSave": true,
@@ -190,6 +192,7 @@
   "editor.snippetSuggestions": "bottom",
   "editor.suggest.insertMode": "replace",
   "editor.suggest.preview": true,
+  "editor.suggest.showWords": false,
   "editor.tabSize": 2,
   "editor.unicodeHighlight.includeComments": true,
   "editor.wordWrap": "on",
@@ -252,6 +255,7 @@
   },
   "githubPullRequests.fileListLayout": "tree",
   "githubPullRequests.pullBranch": "never",
+  "gitlens.graph.minimap.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.branches.branches.layout": "list",
@@ -346,10 +350,12 @@
     "**/zshenv": true,
     "**/zshrc": true
   },
+  "solidity.telemetry": false,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.macOptionClickForcesSelection": true,
   "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.hideCondition": "never",
   "terminal.integrated.tabs.showActions": "never",
@@ -369,6 +375,8 @@
     "disable-linters": ["resource-limits"]
   },
   "window.commandCenter": true,
+  "window.zoomLevel": -1,
+  "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
     "activityBar.activeBorder": "#00ff6e",
     "activityBar.foreground": "#26ff00",
@@ -414,12 +422,5 @@
       "kustomization.yaml"
     ]
   },
-  "zenMode.fullScreen": false,
-  "remote.SSH.enableRemoteCommand": true,
-  "remote.SSH.showLoginTerminal": true,
-  "editor.suggest.showWords": false,
-  "database-client.showFilter": true,
-  "terminal.integrated.shellIntegration.enabled": false,
-  "workbench.activityBar.visible": false,
-  "window.zoomLevel": -1
+  "zenMode.fullScreen": false
 }
