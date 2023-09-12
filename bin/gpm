@@ -62,21 +62,23 @@ def main [
   let filters_os = if $os == 'Linux' {
     ['linux']
   } else if $os == 'macos' {
-    ['darwin', 'apple']
+    ['darwin', 'apple', 'macos']
   } else if $os == 'Windows' {
     ['windows', 'win']
   } else {
     [$os]
   }
 
-  $'Filters OS: ($filters_os)'
-  $'Filters arch: ($filters_arch)'
+  print $release.assets
+  print $'Filters OS: ($filters_os)'
+  print $'Filters arch: ($filters_arch)'
 
   mut selected_assets = ($release.assets |
     filter {|asset| $filters_arch | any {|filter| $asset.name | str contains -i $filter}} |
     filter {|asset| $filters_os | any {|filter| $asset.name | str contains -i $filter}} |
     filter {|asset| $filter_patterns | all {|filter| $asset.name | str ends-with $filter | not $in}}
   )
+
 
   if $libc != 'musl' {
     $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -ni 'musl'})

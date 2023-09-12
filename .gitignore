@@ -6,3 +6,4 @@ __pycache__/
 *.local
 *.log
 .DS_Store
+/rtx/trusted-configs/

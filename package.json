@@ -12,14 +12,13 @@
   },
   "prettier": {
     "jsxSingleQuote": true,
-    "semi": false,
     "singleQuote": true
   },
   "devDependencies": {
+    "bun-types": "1.0.1",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
     "prettier": "3.0.3",
     "sort-package-json": "2.5.1"
-  },
-  "packageManager": "pnpm@8.7.4"
+  }
 }

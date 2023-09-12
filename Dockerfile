@@ -14,6 +14,9 @@ ARG CURL='curl -fsSL --tlsv1.2 --proto =https'
 RUN $CURL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/docker.gpg
 RUN echo 'deb https://download.docker.com/linux/debian bullseye stable' > /etc/apt/sources.list.d/docker.list
 
+RUN $CURL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/kubernetes.gpg
+RUN echo "deb https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" > /etc/apt/sources.list.d/kubernetes.list
+
 RUN $CURL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/google.gpg
 RUN echo 'deb https://packages.cloud.google.com/apt cloud-sdk main' > /etc/apt/sources.list.d/google-cloud-sdk.list
 

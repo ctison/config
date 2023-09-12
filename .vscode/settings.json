@@ -1,19 +1,19 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true,
-  "editor.tabSize": 2,
+  "cSpell.words": ["Automerge", "datasource", "dnsutils", "gomod", "nistp"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
   "files.associations": {
-    "**/package.json": "json",
-    "**/*.json": "jsonc"
+    "**/*.json": "jsonc",
+    "**/package.json": "json"
   },
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "cSpell.words": ["Automerge", "datasource", "dnsutils", "gomod", "nistp"],
-  "deno.enablePaths": ["./deno/"]
+  "json.sortOnSave.enabled": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

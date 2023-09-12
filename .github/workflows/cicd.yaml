@@ -20,14 +20,16 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
       - name: Lint
         run: |
-          corepack enable
-          pnpm install --frozen-lockfile
-          pnpm run format:check
+          bun install --frozen-lockfile
+          bun run format:check
 
   deploy:
     runs-on: ubuntu-latest

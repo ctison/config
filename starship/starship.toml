@@ -14,8 +14,6 @@ $git_state\
 $git_metrics\
 $git_status\
 $hg_branch\
-$docker_context\
-$package\
 $c\
 $cmake\
 $cobol\
@@ -34,6 +32,7 @@ $julia\
 $kotlin\
 $lua\
 $nim\
+$bun\
 $nodejs\
 $ocaml\
 $perl\
@@ -59,12 +58,10 @@ $meson\
 $spack\
 $memory_usage\
 $aws\
-$gcloud\
 $openstack\
 $azure\
 $env_var\
 $crystal\
-$kubernetes\
 $custom\
 $sudo\
 $cmd_duration\
@@ -81,7 +78,7 @@ command_timeout = 2_000
 add_newline = false
 
 [character]
-success_symbol = '[λ](bold green)'
+success_symbol = '[λ](green bold)'
 error_symbol = '[λ](bold red)'
 
 [cmd_duration]
@@ -125,6 +122,7 @@ symbol = 'buf:'
 [bun]
 format = ' [$symbol($version)]($style)'
 symbol = 'bun:'
+style = 'bold purple'
 
 [c]
 format = ' [$symbol($version(-$name))]($style)'
@@ -182,7 +180,8 @@ symbol = 'erlang:'
 
 [gcloud]
 format = ' [$symbol$account@$project]($style)'
-symbol = 'gcloud:'
+symbol = 'gcp:'
+style = 'bold cyan'
 
 [git_branch]
 style = 'bold red'
@@ -244,7 +243,7 @@ symbol = 'kotlin:'
 format = ' [$symbol$context( \($namespace\))]($style)'
 disabled = false
 symbol = 'k8s:'
-style = 'black bold'
+style = 'bold cyan'
 
 [lua]
 format = ' [$symbol($version)]($style)'
@@ -265,6 +264,7 @@ symbol = 'nix:'
 [nodejs]
 format = ' [$symbol($version)]($style)'
 symbol = 'node:'
+style = 'bold purple'
 
 [ocaml]
 format = ' [$symbol($version)(\($switch_indicator$switch_name\))]($style)'
@@ -317,7 +317,7 @@ symbol = 'ruby:'
 [rust]
 format = ' [$symbol($version)]($style)'
 symbol = 'rust:'
-style = 'bold black'
+style = 'bold purple'
 
 [scala]
 format = ' [$symbol($version)]($style)'

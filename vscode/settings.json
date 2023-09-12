@@ -204,7 +204,7 @@
     "*.jsx": "${capture}.js",
     "*.ts": "${capture}.js",
     "*.tsx": "${capture}.ts",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
     "tsconfig.json": "tsconfig.*.json"
   },
   "extensions.ignoreRecommendations": true,

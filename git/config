@@ -90,6 +90,10 @@ file-decoration-style = none
 
 [diff]
 tool = vscode
+[diff "lockb"]
+textconv = bun
+binary = true
+
 [merge]
 tool = vscode
 [mergetool "vscode"]
