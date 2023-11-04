@@ -240,5 +240,14 @@
     "key": "cmd+i",
     "command": "toggle.diff.renderSideBySide",
     "when": "editorTextFocus && isInDiffEditor"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.splitEditor"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "workbench.action.splitEditorOrthogonal",
+    "when": "editorTextFocus && isInDiffEditor"
   }
 ]

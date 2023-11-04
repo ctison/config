@@ -54,5 +54,5 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["bin/**/*"]
+  "include": ["bin/**/*", "x/**/*"]
 }

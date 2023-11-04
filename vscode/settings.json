@@ -18,6 +18,7 @@
     "editor.defaultFormatter": "ms-python.python",
     "gitlens.codeLens.symbolScopes": ["!Module"]
   },
+  "accessibility.dimUnfocused.enabled": true,
   "blockman.n01LineHeight": 0,
   "blockman.n04Sub01ColorComboPresetForDarkTheme": "Classic Dark 1 (Solid colors)",
   "blockman.n04Sub05MinDistanceBetweenRightSideEdges": 8,
@@ -130,10 +131,12 @@
     "buildx",
     "Ciliums",
     "cloudbuild",
+    "cmds",
     "CONTAINERD",
     "corepack",
     "crds",
     "ctison",
+    "daemonset",
     "DATAPATH",
     "datasource",
     "datasources",
@@ -149,11 +152,21 @@
     "Kustomization",
     "kustomize",
     "linkerd",
+    "lintstagedrc",
+    "mantine",
+    "nomicfoundation",
     "nvmrc",
+    "otlp",
+    "outdir",
     "plpgsql",
     "pnpm",
     "pulumi",
     "rfq",
+    "rocksdb",
+    "sepolia",
+    "signin",
+    "statefulset",
+    "surrealdb",
     "workdir"
   ],
   "database-client.showFilter": true,
@@ -166,10 +179,13 @@
   "devskim.enableSuppressionInfo": true,
   "devskim.ignoreRulesList": ["DS137138"],
   "devskim.suppressionCommentStyle": "block",
-  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.sort.json": "never"
+  },
+  "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
   "editor.guides.indentation": false,
@@ -181,12 +197,13 @@
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.minimap.scale": 3,
+  "editor.multiDocumentOccurrencesHighlight": true,
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [
-    {
-      "color": "#4c59bd",
-      "column": 80
-    }
+    // {
+    //   "color": "#4c59bd",
+    //   "column": 80
+    // }
   ],
   "editor.scrollbar.vertical": "visible",
   "editor.snippetSuggestions": "bottom",
@@ -199,12 +216,13 @@
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": false,
   "explorer.fileNesting.patterns": {
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.jsx": "${capture}.js",
     "*.ts": "${capture}.js",
     "*.tsx": "${capture}.ts",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, turbo.json",
     "tsconfig.json": "tsconfig.*.json"
   },
   "extensions.ignoreRecommendations": true,
@@ -320,7 +338,6 @@
   "python.linting.pylintArgs": ["--load-plugins", "pylint_quotes"],
   "redhat.telemetry.enabled": false,
   "remote.downloadExtensionsLocally": true,
-  "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.inlayHints.bindingModeHints.enable": true,
   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
   "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
@@ -350,7 +367,15 @@
     "**/zshenv": true,
     "**/zshrc": true
   },
+  "solidity.formatter": "forge",
   "solidity.telemetry": false,
+  "surround.custom": {
+    "promise": {
+      "label": "Promise",
+      "languageIds": ["javascript", "typescript"],
+      "snippet": "Promise<$TM_SELECTED_TEXT>$0"
+    }
+  },
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.macOptionClickForcesSelection": true,
@@ -374,9 +399,9 @@
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
   },
+  "vscode-ethover.hover.getBalance": "no",
   "window.commandCenter": true,
-  "window.zoomLevel": -1,
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "activityBar.activeBorder": "#00ff6e",
     "activityBar.foreground": "#26ff00",
@@ -390,26 +415,28 @@
     "editorBracketPairGuide.background5": "#F0ABFC",
     "editorBracketPairGuide.background6": "#F5D0FE",
     "editorGhostText.foreground": "#00ff08",
+    "editorInlayHint.foreground": "#ffffff",
     "errorLens.infoBackground": "#0000",
     "terminal.selectionBackground": "#e26cffcb"
   },
   "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.empty.hint": "hidden",
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.openSideBySideDirection": "down",
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.revealIfOpen": true,
-  "workbench.editor.splitInGroupLayout": "vertical",
+  "workbench.editor.splitInGroupLayout": "horizontal",
+  "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.editor.untitled.hint": "hidden",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.btm": "default",
     "*.ipynb": "jupyter-notebook"
   },
   "workbench.iconTheme": "vscode-great-icons",
-  "workbench.panel.defaultLocation": "right",
+  // "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.startupEditor": "none",
@@ -422,5 +449,6 @@
       "kustomization.yaml"
     ]
   },
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "zig.zls.enabled": true
 }

@@ -30,22 +30,22 @@ def main [
     http get $'https://api.github.com/repos/($repo)/releases/tags/($tag)'
   }
 
-  $'Installing ($repo) ($release.name)'
+  print $'Installing ($repo) ($release.name)'
 
-  let arch = if $arch == $nothing {
+  let arch = if $arch == null {
     $nu.'os-info'.arch
   } else {
     $arch
   }
 
-  let os = if $os == $nothing {
+  let os = if $os == null {
     $nu.'os-info'.name
   } else {
     $os
   }
 
-  $'Architecture: ($arch)'
-  $'Operating system: ($os)'
+  print $'Architecture: ($arch)'
+  print $'Operating system: ($os)'
 
   let filters_arch = if $arch == 'x86_64' {
     ['x86_64', 'amd64', 'x64']
@@ -108,7 +108,7 @@ def main [
     }
   }
 
-  $'Selected asset:'
+  print $'Selected asset:'
   $selected_assets | transpose
 
   let release_dir = ('~/.cache/gpm' | path join $repo $release.tag_name | path expand)
@@ -117,10 +117,10 @@ def main [
   let download_dir = ($release_dir | path join 'download')
   mkdir $download_dir
 
-  $'> Downloading ($selected_assets.name.0) from ($release.tag_name)'
   let asset_path = ($download_dir | path join $selected_assets.name.0)
+  print $'> Downloading ($selected_assets.name.0) from ($release.tag_name) to ($asset_path)'
   http get $selected_assets.browser_download_url.0 | save -fp $asset_path
-  $'< Saved ($asset_path)'
+  print $'< Saved ($asset_path)'
 
   let extract_path = ($release_dir | path join 'extract')
   mkdir $extract_path
@@ -131,7 +131,7 @@ def main [
   if (['.tar.gz', 'tar.xz', '.tgz'] | any {|ext| $asset_path | str ends-with $ext}) {
     main tar l $asset_path
     tar extract $asset_path $extract_path | each {|file|
-      $'Extracted ($file)'
+      print $'Extracted ($file)'
       ^ln -sfv $file $bin_dir
       chmod 500 $asset_path
     }
@@ -139,7 +139,7 @@ def main [
   if ($asset_path | str ends-with '.zip') {
     zip l $asset_path
     zip extract $asset_path $extract_path | each {|file|
-      $'Extracted ($file)'
+      print $'Extracted ($file)'
       ^ln -sfv $file $bin_dir
       chmod 500 $asset_path
     }
@@ -153,9 +153,6 @@ def main [
     ln -sfv $asset_path $'($bin_dir)/($asset_path | path basename | split row - | split row . | split row _ | $in.0)'
     chmod 500 $asset_path
   }
-
-
-  $nothing
 }
 
 def 'tar x' [archive: string, to: string, file?: string] {
@@ -178,7 +175,7 @@ def 'tar extract' [archive: string, to: string] {
   filter_executables (main tar l $archive) | each {||
     let name = ($in.path | str trim -r)
     tar x $archive $to $name
-    $'($to)/($name)'
+    print $'($to)/($name)'
   }
 }
 
@@ -194,7 +191,7 @@ def 'zip extract' [archive: string, to: string] {
   filter_executables (zip l $archive) | each {||
     let name = ($in.path | str trim -r)
     zip x $archive $to $name
-    $'($to)/($name)'
+    print $'($to)/($name)'
   }
 }
 
@@ -206,5 +203,5 @@ def 'main s' [search: string] {
 
 # Print the URL of the releases page for a given repo
 def 'main p' [repo: string] {
-  $'https://github.com/($repo)/releases'
+  print $'https://github.com/($repo)/releases'
 }

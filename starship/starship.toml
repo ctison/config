@@ -122,7 +122,7 @@ symbol = 'buf:'
 [bun]
 format = ' [$symbol($version)]($style)'
 symbol = 'bun:'
-style = 'bold purple'
+style = 'bold yellow'
 
 [c]
 format = ' [$symbol($version(-$name))]($style)'
@@ -264,7 +264,7 @@ symbol = 'nix:'
 [nodejs]
 format = ' [$symbol($version)]($style)'
 symbol = 'node:'
-style = 'bold purple'
+style = 'bold yellow'
 
 [ocaml]
 format = ' [$symbol($version)(\($switch_indicator$switch_name\))]($style)'
@@ -317,7 +317,7 @@ symbol = 'ruby:'
 [rust]
 format = ' [$symbol($version)]($style)'
 symbol = 'rust:'
-style = 'bold purple'
+style = 'bold yellow'
 
 [scala]
 format = ' [$symbol($version)]($style)'
@@ -359,3 +359,4 @@ symbol = 'v:'
 [zig]
 format = ' [$symbol($version)]($style)'
 symbol = 'zig:'
+style = 'bold yellow'

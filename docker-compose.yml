@@ -5,3 +5,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
+  surrealdb:
+    image: surrealdb/surrealdb
+    command:
+      - start
+      - --no-banner
+      - --auth
+      - --user=root
+      - --pass=root
+      - file:/data/data.db
+    volumes:
+      - ./data:/data
+    ports:
+      - 127.0.0.1:8000:8000
