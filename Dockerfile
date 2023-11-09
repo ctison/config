@@ -35,6 +35,9 @@ RUN echo 'deb https://packages.doppler.com/public/cli/deb/debian any-version mai
 RUN $CURL 'https://apt.releases.hashicorp.com/gpg' | gpg --dearmor -o /etc/apt/trusted.gpg.d/hashicorp.gpg
 RUN echo 'deb https://apt.releases.hashicorp.com bullseye main' > /etc/apt/sources.list.d/hashicorp.list
 
+RUN $CURL 'https://rtx.pub/gpg-key.pub' | gpg --dearmor -o /etc/apt/trusted.gpg.d/rtx.gpg
+RUN echo 'deb https://rtx.pub/deb stable main' > /etc/apt/sources.list.d/rtx.list
+
 RUN apt-get update && \
   apt-get install --autoremove --no-install-recommends -y \
   bind9-dnsutils \
@@ -50,6 +53,7 @@ RUN apt-get update && \
   net-tools \
   p7zip \
   pinfo \
+  rtx \
   socat \
   ssh \
   tmux \
@@ -59,6 +63,8 @@ RUN apt-get update && \
   xattr \
   xz-utils \
   zip
+
+RUN echo 'eval "$(rtx env -s bash)"' > ~/.profile
 
 RUN rm -rf -- ~/.* ~/* /etc/skel/
 RUN mkdir -pm 0700 ~/.config /etc/skel
