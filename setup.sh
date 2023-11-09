@@ -45,5 +45,5 @@ if type fish >/dev/null 2>&1; then
   chsh -s /usr/bin/fish
   fish -c fish_update_completions
   mkdir -pm 0700 ~/.local/share/fish/vendor_completions.d
-  zellij setup --generate-completion fish >~/.local/share/fish/vendor_completions.d/zellij.fish
+  # zellij setup --generate-completion fish >~/.local/share/fish/vendor_completions.d/zellij.fish
 fi
