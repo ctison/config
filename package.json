@@ -4,7 +4,8 @@
     "format": "prettier --write . ; sort-package-json",
     "format:check": "prettier --check . ; sort-package-json --check",
     "image": "docker buildx bake --load",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "update": "bun x npm-check-updates -ui"
   },
   "lint-staged": {
     "package.json": "sort-package-json",
@@ -17,7 +18,7 @@
   "devDependencies": {
     "bun-types": "1.0.11",
     "husky": "8.0.3",
-    "lint-staged": "15.0.2",
+    "lint-staged": "15.1.0",
     "prettier": "3.0.3",
     "sort-package-json": "2.6.0"
   }

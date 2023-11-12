@@ -175,7 +175,7 @@ def 'tar extract' [archive: string, to: string] {
   filter_executables (main tar l $archive) | each {||
     let name = ($in.path | str trim -r)
     tar x $archive $to $name
-    print $'($to)/($name)'
+    $'($to)/($name)'
   }
 }
 
@@ -191,7 +191,7 @@ def 'zip extract' [archive: string, to: string] {
   filter_executables (zip l $archive) | each {||
     let name = ($in.path | str trim -r)
     zip x $archive $to $name
-    print $'($to)/($name)'
+    $'($to)/($name)'
   }
 }
 

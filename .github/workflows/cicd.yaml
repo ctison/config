@@ -20,6 +20,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v3
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
