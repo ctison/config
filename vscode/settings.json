@@ -128,6 +128,7 @@
     "apm",
     "automerge",
     "autoscaler",
+    "autosize",
     "backoff",
     "buildx",
     "Ciliums",
@@ -205,7 +206,7 @@
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.minimap.scale": 3,
-  "editor.multiDocumentOccurrencesHighlight": true,
+  "editor.occurrencesHighlight": "multiFile",
   "editor.renderWhitespace": "trailing",
   "editor.rulers": [
     // {
@@ -430,10 +431,8 @@
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.openSideBySideDirection": "down",
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.revealIfOpen": true,
-  "workbench.editor.splitInGroupLayout": "horizontal",
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",

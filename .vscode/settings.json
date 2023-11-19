@@ -4,7 +4,7 @@
   },
   "cSpell.words": ["Automerge", "datasource", "dnsutils", "gomod", "nistp"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
