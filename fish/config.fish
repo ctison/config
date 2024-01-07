@@ -271,9 +271,8 @@ end
 # end
 
 
-if type -q rtx 2>/dev/null
-  # set -gx RTX_LOG_LEVEL debug
-  rtx activate fish | source
+if type -q mise 2>/dev/null
+  mise activate fish | source
 end
 
 

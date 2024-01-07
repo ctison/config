@@ -2,3 +2,5 @@
 .envrc.local
 /x/
 .DS_Store
+.rtx.local.toml
+.mise.local.toml

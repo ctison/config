@@ -15,7 +15,7 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "gitlens.codeLens.symbolScopes": ["!Module"]
   },
   "accessibility.dimUnfocused.enabled": true,
@@ -31,99 +31,6 @@
     "{body}",
     "{footer}"
   ],
-  "commit-message-editor.staticTemplate": ["chore: "],
-  "commit-message-editor.tokens": [
-    {
-      "description": "Increase major version  on next release - https://semver.org",
-      "label": "Breaking change (required)",
-      "name": "breaking_change",
-      "type": "boolean"
-    },
-    {
-      "description": "The semantic type of the changes - https://www.conventionalcommits.org",
-      "label": "Type (required)",
-      "multiple": true,
-      "name": "type",
-      "options": [
-        {
-          "description": "Cleaning/Refactoring/Styling/Unused commit: onDeploy => patch version (X.Y.Z+1)",
-          "label": "chore"
-        },
-        {
-          "description": "A new feature: onDeploy => if breaking change, major version (X+1.0.0), else minor version (X.Y+1.0)",
-          "label": "feat"
-        },
-        {
-          "description": "A bug fix: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
-          "label": "fix"
-        },
-        {
-          "description": "Changes to the build system(s): onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
-          "label": "build"
-        },
-        {
-          "description": "Changes to the CI/CD: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
-          "label": "ci/cd"
-        },
-        {
-          "description": "Changes to the infrastructure",
-          "label": "infra"
-        },
-        {
-          "description": "Changes to the documentation(s): onDeploy => patch version (X.Y.Z+1)",
-          "label": "docs"
-        },
-        {
-          "description": "Changes to the test(s): onDeploy => patch version (X.Y.Z+1)",
-          "label": "test"
-        },
-        {
-          "description": "Improve production performances without a breaking change: onDeploy => patch version (X.Y.Z+1)",
-          "label": "perf"
-        },
-        {
-          "description": "Reverts a previous commit: onDeploy => if breaking change, major version (X+1.0.0), else patch version (X.Y.Z+1)",
-          "label": "revert"
-        }
-      ],
-      "separator": ",",
-      "type": "enum"
-    },
-    {
-      "description": "A noun describing a section of the codebase - https://www.conventionalcommits.org",
-      "label": "Scopes",
-      "name": "scope",
-      "prefix": "(",
-      "suffix": ")",
-      "type": "text"
-    },
-    {
-      "description": "A short summary of the code changes - https://www.conventionalcommits.org",
-      "label": "Description (required)",
-      "name": "description",
-      "prefix": ": ",
-      "type": "text"
-    },
-    {
-      "description": "Describe the code changes - https://developers.google.com/tech-writing/overview",
-      "label": "Body",
-      "lines": 5,
-      "multiline": true,
-      "name": "body",
-      "prefix": "\n",
-      "type": "text"
-    },
-    {
-      "description": "Optional footer - https://git-scm.com/docs/git-interpret-trailers",
-      "label": "Footer",
-      "lines": 5,
-      "multiline": true,
-      "name": "footer",
-      "prefix": "\n",
-      "type": "text"
-    }
-  ],
-  "commit-message-editor.view.defaultView": "form",
   "cSpell.userWords": [
     "apm",
     "automerge",
@@ -134,12 +41,14 @@
     "Ciliums",
     "cloudbuild",
     "cmds",
+    "CNCF",
     "CONTAINERD",
     "corepack",
     "crds",
     "ctison",
     "daemonset",
     "DATAPATH",
+    "datas",
     "datasource",
     "datasources",
     "Direnv",
@@ -162,6 +71,7 @@
     "multichain",
     "nomicfoundation",
     "nvmrc",
+    "opentelemetry",
     "otlp",
     "outdir",
     "plpgsql",
@@ -174,9 +84,11 @@
     "shellcheck",
     "signin",
     "statefulset",
+    "sublink",
     "surrealdb",
     "viem",
-    "workdir"
+    "workdir",
+    "zustand"
   ],
   "database-client.showFilter": true,
   "debug.allowBreakpointsEverywhere": true,
@@ -202,7 +114,7 @@
   "editor.inlayHints.padding": true,
   "editor.inlineSuggest.enabled": true,
   "editor.insertSpaces": true,
-  "editor.lightbulb.enabled": false,
+  "editor.lightbulb.enabled": "off",
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.minimap.scale": 3,
@@ -216,7 +128,6 @@
   ],
   "editor.scrollbar.vertical": "visible",
   "editor.snippetSuggestions": "bottom",
-  "editor.suggest.insertMode": "replace",
   "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
   "editor.tabSize": 2,
@@ -270,6 +181,7 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
+  "git.openRepositoryInParentFolders": "never",
   "github.copilot.advanced": {
     "debug.showScores": true
   },
@@ -337,13 +249,12 @@
   "prettier.jsxSingleQuote": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.fixAll": ["source.unusedImports"],
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.variableTypes": true,
   "python.analysis.typeCheckingMode": "basic",
-  "python.formatting.provider": "yapf",
   "python.languageServer": "Pylance",
-  "python.linting.enabled": true,
-  "python.linting.pylintArgs": ["--load-plugins", "pylint_quotes"],
   "redhat.telemetry.enabled": false,
   "remote.downloadExtensionsLocally": true,
   "rust-analyzer.inlayHints.bindingModeHints.enable": true,
@@ -351,7 +262,6 @@
   "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
   "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
   "screencastMode.keyboardOverlayTimeout": 1000,
-  "screencastMode.onlyKeyboardShortcuts": true,
   // "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
   "search.exclude": {
     "**/.next": true,
@@ -401,7 +311,7 @@
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  "typescript.preferences.importModuleSpecifier": "relative",
+  // "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.suggest.completeFunctionCalls": true,
   "vs-kubernetes": {
@@ -434,7 +344,6 @@
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.tabActionCloseVisibility": false,
-  "workbench.editor.tabCloseButton": "off",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
