@@ -61,7 +61,7 @@ end
 
 if type -q kubectl 2>/dev/null
   alias k=kubectl
-  alias kz='k kustomize'
+  alias kz='k kustomize --enable-helm'
   function kd -w 'kubectl diff'
     KUBECTL_EXTERNAL_DIFF='difft' kubectl diff $argv
   end

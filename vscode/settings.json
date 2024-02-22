@@ -32,12 +32,14 @@
     "{footer}"
   ],
   "cSpell.userWords": [
+    "apikey",
     "apm",
     "automerge",
     "autoscaler",
     "autosize",
     "backoff",
     "buildx",
+    "chrono",
     "Ciliums",
     "cloudbuild",
     "cmds",
@@ -59,6 +61,7 @@
     "fullscreen",
     "gcloud",
     "gserviceaccount",
+    "hmac",
     "httpyac",
     "iac",
     "icns",
@@ -86,6 +89,7 @@
     "statefulset",
     "sublink",
     "surrealdb",
+    "tailwindcss",
     "viem",
     "workdir",
     "zustand"
@@ -319,7 +323,6 @@
   },
   "vscode-ethover.hover.getBalance": "no",
   "window.commandCenter": true,
-  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "activityBar.activeBorder": "#00ff6e",
     "activityBar.foreground": "#26ff00",
@@ -364,5 +367,6 @@
     ]
   },
   "zenMode.fullScreen": false,
-  "zig.zls.enabled": true
+  "zig.zls.enabled": true,
+  "workbench.activityBar.location": "hidden"
 }

@@ -1,5 +1,2 @@
 [alias.nodejs]
 lts = '18'
-
-[settings]
-experimental = true
