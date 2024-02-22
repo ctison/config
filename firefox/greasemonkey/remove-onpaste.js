@@ -5,5 +5,5 @@
 // ==/UserScript==
 
 document.querySelectorAll('input').forEach((input) => {
-  input.onpaste = null
-})
+  input.onpaste = null;
+});
