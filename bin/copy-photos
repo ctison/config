@@ -1,0 +1,21 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 DEST_FOLDER"
+  exit 1
+fi
+
+displayNotification() {
+  osascript <<EOF
+display notification "$1" with title "🎥 Copy Photos"
+EOF
+  echo "$1"
+}
+
+adb pull '/storage/emulated/0/DCIM/Camera/' "$1"
+adb shell 'rm /storage/emulated/0/DCIM/Camera/*'
+
+displayNotification 'Finished successfuly 🚀'

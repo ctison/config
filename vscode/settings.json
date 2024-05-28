@@ -90,7 +90,10 @@
     "sublink",
     "surrealdb",
     "tailwindcss",
+    "unlisten",
+    "upsert",
     "viem",
+    "waitlist",
     "workdir",
     "zustand"
   ],
@@ -113,7 +116,6 @@
   "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
-  "editor.guides.indentation": false,
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlayHints.padding": true,
   "editor.inlineSuggest.enabled": true,
@@ -189,6 +191,7 @@
   "github.copilot.advanced": {
     "debug.showScores": true
   },
+  "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
     "markdown": false,
@@ -198,6 +201,9 @@
   },
   "githubPullRequests.fileListLayout": "tree",
   "githubPullRequests.pullBranch": "never",
+  "gitlens.advanced.messages": {
+    "suppressIntegrationRequestTimedOutWarning": true
+  },
   "gitlens.graph.minimap.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
@@ -298,6 +304,7 @@
       "snippet": "Promise<$TM_SELECTED_TEXT>$0"
     }
   },
+  "tabby.api.endpoint": "http://127.0.0.1:5959",
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.macOptionClickForcesSelection": true,

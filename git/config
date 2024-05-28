@@ -22,6 +22,10 @@ f = pull --ff-only
 ff = fetch --all
 g = grep
 l = log --format=oneline --graph
+m = merge
+mm = merge origin/main
+mc = merge --continue
+ma = merge --abort
 p = push -v
 pf = p --force
 pu = push --set-upstream origin @
