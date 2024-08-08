@@ -16,7 +16,7 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "bun-types": "1.1.21",
+    "bun-types": "1.1.22",
     "husky": "9.1.4",
     "lint-staged": "15.2.8",
     "prettier": "3.3.3",
