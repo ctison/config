@@ -16,6 +16,8 @@ EOF
 }
 
 adb pull '/storage/emulated/0/DCIM/Camera/' "$1"
-adb shell 'rm /storage/emulated/0/DCIM/Camera/*'
+adb pull '/storage/emulated/0/Pictures/Screenshots/' "$1"
+adb shell 'rm -f -- /storage/emulated/0/DCIM/Camera/*'
+adb pull 'rm -f -- /storage/emulated/0/Pictures/Screenshots/*'
 
 displayNotification 'Finished successfuly 🚀'

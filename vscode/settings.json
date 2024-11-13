@@ -1,12 +1,10 @@
 {
+  "C_Cpp.intelliSenseEngine": "disabled",
   "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[dockercompose]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[fish]": {
     "editor.formatOnSave": false
@@ -24,13 +22,6 @@
   "blockman.n04Sub05MinDistanceBetweenRightSideEdges": 8,
   "blockman.n33A01B1FromDepth0ToInwardForAllBorders": "!30,1,0,2; neutral > linear-gradient(to left, rgb(144,54,8), rgb(48,36,112))",
   "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
-  "C_Cpp.intelliSenseEngine": "disabled",
-  "commit-message-editor.confirmAmend": false,
-  "commit-message-editor.dynamicTemplate": [
-    "{type}{scope}{breaking_change}{description}",
-    "{body}",
-    "{footer}"
-  ],
   "cSpell.userWords": [
     "apikey",
     "apm",
@@ -59,6 +50,7 @@
     "envrc",
     "expando",
     "fullscreen",
+    "gantt",
     "gcloud",
     "gserviceaccount",
     "hmac",
@@ -97,6 +89,12 @@
     "workdir",
     "zustand"
   ],
+  "commit-message-editor.confirmAmend": false,
+  "commit-message-editor.dynamicTemplate": [
+    "{type}{scope}{breaking_change}{description}",
+    "{body}",
+    "{footer}"
+  ],
   "database-client.showFilter": true,
   "debug.allowBreakpointsEverywhere": true,
   "debug.console.acceptSuggestionOnEnter": "on",
@@ -107,13 +105,14 @@
   "devskim.enableSuppressionInfo": true,
   "devskim.ignoreRulesList": ["DS137138"],
   "devskim.suppressionCommentStyle": "block",
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.codeActionsOnSave": {
     "source.sort.json": "never"
   },
-  "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
   "editor.inlayHints.enabled": "offUnlessPressed",
@@ -330,6 +329,7 @@
   },
   "vscode-ethover.hover.getBalance": "no",
   "window.commandCenter": true,
+  "window.newWindowProfile": "Default",
   "workbench.colorCustomizations": {
     "activityBar.activeBorder": "#00ff6e",
     "activityBar.foreground": "#26ff00",
@@ -375,5 +375,5 @@
   },
   "zenMode.fullScreen": false,
   "zig.zls.enabled": true,
-  "workbench.activityBar.location": "hidden"
+  "workbench.editor.splitInGroupLayout": "vertical"
 }

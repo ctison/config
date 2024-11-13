@@ -249,5 +249,15 @@
     "key": "cmd+\\",
     "command": "workbench.action.splitEditorOrthogonal",
     "when": "editorTextFocus && isInDiffEditor"
+  },
+  {
+    "key": "alt+cmd+]",
+    "command": "editor.unfoldRecursively",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "cmd+k cmd+]",
+    "command": "-editor.unfoldRecursively",
+    "when": "editorTextFocus && foldingEnabled"
   }
 ]

@@ -81,11 +81,11 @@ def main [
 
 
   if $libc != 'musl' {
-    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -ni 'musl'})
+    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -i 'musl' | not $in})
   }
 
   if $libc != 'gnu' {
-    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -ni 'gnu'})
+    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -i 'gnu' | not $in})
   }
 
   if ($selected_assets | length) == 0 {
