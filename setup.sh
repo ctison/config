@@ -7,7 +7,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 echo ">>> Executed as: $(id)"
 
 # Link configurations
-mkdir -pm 0700 ~/.config/
+mkdir -pm 0700 ~/.config/ ~/.cargo/
 ln -fsv "$SCRIPT_DIR"/bash/bash.bashrc ~/.bashrc
 ln -fsv "$SCRIPT_DIR"/direnv ~/.config/
 ln -fsv "$SCRIPT_DIR"/fish ~/.config/
@@ -18,6 +18,7 @@ ln -fsv "$SCRIPT_DIR"/starship/starship.toml ~/.config/
 ln -fsv "$SCRIPT_DIR"/tmux ~/.config/
 ln -fsv "$SCRIPT_DIR"/vim/vimrc ~/.vimrc
 ln -fsv "$SCRIPT_DIR"/zellij ~/.config/
+ln -fsv "$SCRIPT_DIR"/cargo/config.toml ~/.cargo/
 
 # Install nushell
 "$SCRIPT_DIR/bin/install-nushell"

@@ -4,7 +4,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dockerfile]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "[fish]": {
     "editor.formatOnSave": false
@@ -13,7 +13,7 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "ms-python.python",
     "gitlens.codeLens.symbolScopes": ["!Module"]
   },
   "accessibility.dimUnfocused.enabled": true,
@@ -88,12 +88,6 @@
     "waitlist",
     "workdir",
     "zustand"
-  ],
-  "commit-message-editor.confirmAmend": false,
-  "commit-message-editor.dynamicTemplate": [
-    "{type}{scope}{breaking_change}{description}",
-    "{body}",
-    "{footer}"
   ],
   "database-client.showFilter": true,
   "debug.allowBreakpointsEverywhere": true,
@@ -180,8 +174,6 @@
     "**/.rush/**": true,
     "**/common/temp/**": true
   },
-  "git-graph.openNewTabEditorGroup": "Two",
-  "git-graph.showStatusBarItem": false,
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -204,7 +196,6 @@
     "suppressIntegrationRequestTimedOutWarning": true
   },
   "gitlens.graph.minimap.enabled": false,
-  "gitlens.showWelcomeOnInstall": false,
   "gitlens.statusBar.enabled": false,
   "gitlens.views.branches.branches.layout": "list",
   "gitlens.views.commitDetails.files.layout": "tree",
@@ -295,7 +286,6 @@
     "**/zshrc": true
   },
   "solidity.formatter": "forge",
-  "solidity.telemetry": false,
   "surround.custom": {
     "promise": {
       "label": "Promise",
@@ -303,7 +293,6 @@
       "snippet": "Promise<$TM_SELECTED_TEXT>$0"
     }
   },
-  "tabby.api.endpoint": "http://127.0.0.1:5959",
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.macOptionClickForcesSelection": true,
@@ -375,5 +364,6 @@
   },
   "zenMode.fullScreen": false,
   "zig.zls.enabled": true,
-  "workbench.editor.splitInGroupLayout": "vertical"
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "workbench.activityBar.location": "hidden"
 }

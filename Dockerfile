@@ -1,7 +1,7 @@
 FROM kalilinux/kali-rolling
 
 SHELL [ "/bin/bash", "--norc", "--noprofile", "-euxo", "pipefail", "-O", "nullglob", "-c" ]
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -52,7 +52,6 @@ RUN apt-get update && \
   ncat \
   net-tools \
   p7zip \
-  pinfo \
   mise \
   socat \
   ssh \

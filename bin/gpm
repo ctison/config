@@ -119,6 +119,7 @@ def main [
 
   let asset_path = ($download_dir | path join $selected_assets.name.0)
   print $'> Downloading ($selected_assets.name.0) from ($release.tag_name) to ($asset_path)'
+  rm -f $asset_path
   http get $selected_assets.browser_download_url.0 | save -fp $asset_path
   print $'< Saved ($asset_path)'
 
@@ -129,7 +130,7 @@ def main [
   mkdir $bin_dir
 
   if (['.tar.gz', 'tar.xz', '.tgz'] | any {|ext| $asset_path | str ends-with $ext}) {
-    main tar l $asset_path
+    print (main tar l $asset_path)
     tar extract $asset_path $extract_path | each {|file|
       print $'Extracted ($file)'
       ^ln -sfv $file $bin_dir
@@ -156,7 +157,11 @@ def main [
 }
 
 def 'tar x' [archive: string, to: string, file?: string] {
-  tar --no-same-o --no-same-p -C $to -xzf $archive $file
+  if $nu.'os-info'.name == 'linux' {
+    tar --no-same-o --no-same-p -C $to -xaf $archive $file
+  } else if $nu.'os-info'.name == 'macos' {
+    tar --no-same-o --no-same-p -C $to -xf $archive $file
+  }
 }
 
 # List files in a tar archive
@@ -173,6 +178,7 @@ def 'filter_executables' [files] {
 
 def 'tar extract' [archive: string, to: string] {
   filter_executables (main tar l $archive) | each {||
+    print $'Extracting ($in.path) to ($to)'
     let name = ($in.path | str trim -r)
     tar x $archive $to $name
     $'($to)/($name)'
