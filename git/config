@@ -22,6 +22,7 @@ f = pull --ff-only
 ff = fetch --all
 g = grep
 l = log --format=oneline --graph
+lsu = ls-files --other
 m = merge
 mm = merge origin/main
 mc = merge --continue
