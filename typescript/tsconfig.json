@@ -19,7 +19,6 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
-    "noUncheckedSideEffectImports": true,
     "resolveJsonModule": true,
 
     // Emit
@@ -46,7 +45,7 @@
     "target": "ESNext",
 
     // Projects
-    "composite": true,
+    "incremental": true,
 
     // Output Formatting
     "noErrorTruncation": true,

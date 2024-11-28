@@ -32,10 +32,12 @@ $(for SECRET in $SECRETS; do echo "        $SECRET: \${{ secrets.$SECRET }}"; do
 $(for SECRET in $SECRETS; do echo "        $SECRET=\$$SECRET"; done)
         EOF
     - name: Archive production artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: env
         path: .env
+        if-no-files-found: error
+        include-hidden-files: true
 EOF
 
 git add .github/workflows/

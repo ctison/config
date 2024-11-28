@@ -6,6 +6,8 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 echo ">>> Executed as: $(id)"
 
+# cSpell:words vimrc zellij nushell
+
 # Link configurations
 mkdir -pm 0700 ~/.config/ ~/.cargo/
 ln -fsv "$SCRIPT_DIR"/bash/bash.bashrc ~/.bashrc
