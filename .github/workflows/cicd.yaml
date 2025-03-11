@@ -46,6 +46,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/bake-action@v6
         with:
+          source: .
           workdir: .github/
           pull: true
           push: true

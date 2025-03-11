@@ -1,14 +1,12 @@
 services:
   dev:
-    image: ctison/dev
+    image: ghcr.io/ctison/dev:latest
     build:
       context: ..
       x-bake:
         attest:
           - type=sbom
           - type=provenance
-        tags:
-          - ghcr.io/ctison/dev:latest
         cache-to:
           - type=registry,ref=ghcr.io/ctison/dev:cache,mode=max
         cache-from:
