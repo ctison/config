@@ -1,3 +1,6 @@
+[core]
+ignorecase = false
+
 [user]
 name = Charles Tison
 email = ctison@pm.me

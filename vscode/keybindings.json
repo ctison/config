@@ -259,5 +259,10 @@
     "key": "cmd+k cmd+]",
     "command": "-editor.unfoldRecursively",
     "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "shift+cmd+3",
+    "command": "editor.action.referenceSearch.trigger",
+    "when": "editorHasReferenceProvider && !inReferenceSearchEditor && !isInEmbeddedEditor"
   }
 ]
