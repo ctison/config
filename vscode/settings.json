@@ -66,6 +66,7 @@
     "plpgsql",
     "pnpm",
     "pulumi",
+    "reinvocation",
     "rfq",
     "rocksdb",
     "screencast",
@@ -88,7 +89,7 @@
   "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "delegated",
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": true,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": { "source.sort.json": "never" },
@@ -166,8 +167,8 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
-    "markdown": false,
     "plaintext": false,
+    "markdown": false,
     "scminput": false,
     "yaml": true
   },
@@ -316,7 +317,6 @@
   "vscode-ethover.hover.getBalance": "no",
   "window.commandCenter": true,
   "window.newWindowProfile": "Default",
-  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "activityBar.activeBorder": "#00ff6e",
     "activityBar.foreground": "#26ff00",
@@ -361,5 +361,17 @@
       "kustomization.yaml"
     ]
   },
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "github.copilot.chat.codesearch.enabled": true,
+  "window.systemColorTheme": "dark",
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "gitlens.codeLens.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "docker.extension.enableComposeLanguageServer": false
 }

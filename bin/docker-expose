@@ -18,4 +18,4 @@ NAME="$1-$2"
 PORT="$2"
 LOCAL_PORT="${3:-$PORT}"
 
-exec docker run -d --rm -p "$LOCAL_PORT":"$PORT" --name "$NAME" ctison/socat "TCP-LISTEN:$PORT,reuseaddr,fork" "TCP:$CONTAINER_URL:$PORT"
+exec docker run -d --rm -p "$LOCAL_PORT":"$PORT" --name "$NAME" alpine/socat "TCP-LISTEN:$PORT,reuseaddr,fork" "TCP:$CONTAINER_URL:$PORT"

@@ -26,8 +26,9 @@ async function fetchGithubApi<T = unknown>(path: string): Promise<T> {
   const proc = Bun.spawn(['gh', 'api', path]);
   const exitCode = await proc.exited;
   if (exitCode !== 0) {
-    const response = await new Response(proc.stderr).text();
-    throw new Error(`gh api exited with code ${exitCode}: ${response}`);
+    const stderr = await new Response(proc.stderr).text();
+    const stdout = await new Response(proc.stdout).text();
+    throw new Error(`gh api exited with code ${exitCode}: ${stderr} ${stdout}`);
   }
   const response = await new Response(proc.stdout).json();
   return response as T;
