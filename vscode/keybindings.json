@@ -264,5 +264,14 @@
     "key": "shift+cmd+3",
     "command": "editor.action.referenceSearch.trigger",
     "when": "editorHasReferenceProvider && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  // Claude
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
   }
 ]

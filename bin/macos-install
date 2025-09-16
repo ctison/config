@@ -1,0 +1,24 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if ! type brew 2>/dev/null >&2; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew install \
+  bat dust eza fd fish gh git git-lfs \
+  jq k9s lazygit mise nushell openssh \
+  ripgrep shellcheck sk starship xh
+
+brew install --cask \
+  apparency deskpad font-fira-code-nerd-font iina \
+  iterm2 stats suspicious-package
+
+mkdir -p ~/x/
+ln -sfv /Volume

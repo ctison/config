@@ -74,18 +74,18 @@ def main [
   print $'Filters arch: ($filters_arch)'
 
   mut selected_assets = ($release.assets |
-    filter {|asset| $filters_arch | any {|filter| $asset.name | str contains -i $filter}} |
-    filter {|asset| $filters_os | any {|filter| $asset.name | str contains -i $filter}} |
-    filter {|asset| $filter_patterns | all {|filter| $asset.name | str ends-with $filter | not $in}}
+    where {|asset| $filters_arch | any {|filter| $asset.name | str contains -i $filter}} |
+    where {|asset| $filters_os | any {|filter| $asset.name | str contains -i $filter}} |
+    where {|asset| $filter_patterns | all {|filter| $asset.name | str ends-with $filter | not $in}}
   )
 
 
   if $libc != 'musl' {
-    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -i 'musl' | not $in})
+    $selected_assets = ($selected_assets | where {|asset| $asset.name | str contains -i 'musl' | not $in})
   }
 
   if $libc != 'gnu' {
-    $selected_assets = ($selected_assets | filter {|asset| $asset.name | str contains -i 'gnu' | not $in})
+    $selected_assets = ($selected_assets | where {|asset| $asset.name | str contains -i 'gnu' | not $in})
   }
 
   if ($selected_assets | length) == 0 {
@@ -96,7 +96,7 @@ def main [
   if ($selected_assets | length) > 1 {
     let prefered_formats = ['.tar.gz', '.zip']
     for file_format in $prefered_formats {
-      let filtered_assets = ($selected_assets | filter {|asset| $asset.name | str ends-with $file_format})
+  let filtered_assets = ($selected_assets | where {|asset| $asset.name | str ends-with $file_format})
       if ($filtered_assets | length) == 1 {
         $selected_assets = $filtered_assets
         break
@@ -166,14 +166,14 @@ def 'tar x' [archive: string, to: string, file?: string] {
 
 # List files in a tar archive
 def 'main tar l' [archive: string] {
-  tar -tvf $archive | lines | filter {|line| $line | str ends-with '/' | not $in} | parse -r '^\s*(?<mode>[rwx-]+).+?(?<path>[^\s]+)\s*$'
+  tar -tvf $archive | lines | where {|line| $line | str ends-with '/' | not $in} | parse -r '^\s*(?<mode>[rwx-]+).+?(?<path>[^\s]+)\s*$'
 }
 
 def 'filter_executables' [files] {
   $files |
-    filter {|| $in.mode | str starts-with '-'} |
-    filter {|| $in.mode | str contains 'x'} |
-    filter {|file| $filter_patterns | all {|pattern| $file.path | str ends-with $pattern | not $in}}
+    where {|| $in.mode | str starts-with '-'} |
+    where {|| $in.mode | str contains 'x'} |
+    where {|file| $filter_patterns | all {|pattern| $file.path | str ends-with $pattern | not $in}}
 }
 
 def 'tar extract' [archive: string, to: string] {

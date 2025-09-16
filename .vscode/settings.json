@@ -2,7 +2,7 @@
   "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["libc", "nushell"],
+  "cSpell.words": ["ipsw", "libc", "nullglob", "nushell"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
@@ -14,5 +14,25 @@
   },
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#5eca2a",
+    "activityBar.background": "#5eca2a",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#4676d9",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#5eca2a",
+    "statusBar.background": "#4aa021",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#5eca2a",
+    "statusBarItem.remoteBackground": "#4aa021",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#4aa021",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#4aa02199",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#4aa021"
 }

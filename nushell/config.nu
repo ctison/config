@@ -265,8 +265,6 @@ $env.config = {
     }
   }
   filesize: {
-    metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-    format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
   }
   cursor_shape: {
     emacs: line # block, underscore, line (line is the default)
