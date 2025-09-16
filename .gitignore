@@ -9,3 +9,4 @@ __pycache__/
 /rtx/trusted-configs/
 /data/
 *.tsbuildinfo
+.venv/

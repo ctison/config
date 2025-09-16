@@ -46,6 +46,7 @@
     "gantt",
     "gcloud",
     "gserviceaccount",
+    "hackernews",
     "hmac",
     "httpyac",
     "iac",
@@ -74,6 +75,7 @@
     "shellcheck",
     "signin",
     "statefulset",
+    "streamable",
     "sublink",
     "surrealdb",
     "tailwindcss",
@@ -138,7 +140,7 @@
     ".env.test.local": "dotenv",
     "*.env": "shellscript",
     "*.gyp": "python",
-    "*.hcl": "terraform",
+    "*.hcl": "hcl",
     "*.lsrules": "json",
     "**/*.json": "jsonc",
     "**/package.json": "json",
@@ -372,6 +374,24 @@
   "github.copilot.chat.generateTests.codeLens": true,
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
   "gitlens.codeLens.enabled": false,
+  "docker.extension.enableComposeLanguageServer": true,
+  "gitlens.graph.layout": "editor",
+  "workbench.panel.showLabels": false,
+  "workbench.secondarySideBar.showLabels": false,
+  "chat.agent.maxRequests": 200,
+  "chat.mcp.autostart": "newAndOutdated",
+  "[prompt]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
   "workbench.activityBar.location": "hidden",
-  "docker.extension.enableComposeLanguageServer": false
+  "peacock.surpriseMeOnStartup": true,
+  "window.title": "[${rootName}]${separator}${profileName}${separator}${activeEditorShort}"
 }

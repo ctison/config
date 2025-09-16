@@ -1,0 +1,37 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &>/dev/null && pwd)
+
+if ! type brew 2>/dev/null >&2; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew install \
+  bat dust eza fd fish gh git git-lfs \
+  jq k9s lazygit mise nushell openssh \
+  ripgrep shellcheck sk starship xh
+
+brew install --cask \
+  apparency deskpad font-fira-code-nerd-font iina \
+  iterm2 stats suspicious-package bruno firefox brave-browser
+
+mkdir -pm 0700 ~/x/ ~/.config/
+ln -sfv "$SCRIPT_DIR" ~/x/
+echo '/opt/homebrew/bin/fish' | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
+ln -sfv "$SCRIPT_DIR/fish" ~/.config/
+ln -sfv "$SCRIPT_DIR/git" ~/.config/
+ln -sfv "$SCRIPT_DIR/nushell" ~/.config/
+ln -sfv "$SCRIPT_DIR/mise" ~/.config/
+ln -sfv "$SCRIPT_DIR/starship/starship.toml" ~/.config/
+ln -sfv "$SCRIPT_DIR/tmux" ~/.config/
+ln -sfv "$SCRIPT_DIR/vim/vimrc" ~/.config/
+ln -sfv "$SCRIPT_DIR/zellij" ~/.config/
+ln -fsv "$SCRIPT_DIR"/cargo/config.toml ~/.cargo/

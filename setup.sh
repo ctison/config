@@ -42,7 +42,7 @@ gpm sharkdp/bat
 gpm junegunn/fzf
 gpm BurntSushi/ripgrep --arch x86_64 --libc musl # NO BUILD FOR ARM64
 gpm jdx/mise
-gpm zellij-org/zellij --libc musl # TODO remove --libc musl when possible
+gpm zellij-org/zellij --libc musl --include no-web  # TODO remove --libc musl when possible
 
 if type fish >/dev/null 2>&1; then
   chsh -s /usr/bin/fish

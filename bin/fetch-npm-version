@@ -1,0 +1,14 @@
+#!/bin/bash
+umask 0077
+shopt -s nullglob
+set -euo pipefail
+
+if [ $# == 0 ]; then
+  echo 'Usage: fetch-npm-version PACKAGE [...]'
+  exit 1
+fi
+
+for package in "$@"; do
+  latest_version=$(curl -s "https://registry.npmjs.org/$package/latest" | jq -r '.version')
+  echo "\"$package\": \"$latest_version\""
+done

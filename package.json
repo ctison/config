@@ -28,5 +28,5 @@
     "sort-package-json": "3.4.0",
     "typescript": "5.9.2"
   },
-  "packageManager": "bun@1.2.5"
+  "packageManager": "bun@1.2.22"
 }
