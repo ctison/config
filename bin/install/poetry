@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euo pipefail
-
-apt-get install -y python3-venv
-curl -sSL https://install.python-poetry.org | python3 -

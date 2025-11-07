@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/mc https://dl.min.io/client/mc/release/linux-"$(dpkg --print-architecture)"/mc
-chmod 500 /usr/local/bin/mc

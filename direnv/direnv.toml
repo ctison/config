@@ -1,4 +1,0 @@
-# https://direnv.net
-
-[global]
-strict_env = true

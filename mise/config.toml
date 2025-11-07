@@ -1,2 +1,8 @@
+[tools]
+fnox = '1'
+
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+status.missing_tools = 'always'
+status.show_env = true
+status.show_tools = true
+npm.bun = true

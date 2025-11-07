@@ -2,19 +2,53 @@
   "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-docker" },
-  "[fish]": { "editor.formatOnSave": false },
-  "[helm]": { "editor.defaultFormatter": "redhat.vscode-yaml" },
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[fish]": {
+    "editor.formatOnSave": false
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[helm]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[prompt]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    },
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.wordWrap": "on"
+  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.python",
     "gitlens.codeLens.symbolScopes": ["!Module"]
   },
   "accessibility.dimUnfocused.enabled": true,
+  "biome.suggestInstallingGlobally": false,
   "blockman.n01LineHeight": 0,
   "blockman.n04Sub01ColorComboPresetForDarkTheme": "Classic Dark 1 (Solid colors)",
   "blockman.n04Sub05MinDistanceBetweenRightSideEdges": 8,
   "blockman.n33A01B1FromDepth0ToInwardForAllBorders": "!30,1,0,2; neutral > linear-gradient(to left, rgb(144,54,8), rgb(48,36,112))",
   "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
+  "chat.agent.maxRequests": 200,
+  "chat.mcp.autostart": "newAndOutdated",
   "cSpell.userWords": [
     "apikey",
     "apm",
@@ -66,7 +100,9 @@
     "outdir",
     "plpgsql",
     "pnpm",
+    "popd",
     "pulumi",
+    "pushd",
     "reinvocation",
     "rfq",
     "rocksdb",
@@ -91,10 +127,13 @@
   "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "delegated",
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": true,
+  "diffEditor.renderSideBySide": false,
+  "docker.extension.enableComposeLanguageServer": true,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
-  "editor.codeActionsOnSave": { "source.sort.json": "never" },
+  "editor.codeActionsOnSave": {
+    "source.sort.json": "never"
+  },
   "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
@@ -113,7 +152,7 @@
   "editor.renderWhitespace": "trailing",
   // "editor.rulers": [{ "color": "#4c59bd", "column": 80 }],
   "editor.scrollbar.vertical": "visible",
-  "editor.snippetSuggestions": "bottom",
+  "editor.snippetSuggestions": "none",
   "editor.stickyScroll.enabled": false,
   "editor.suggest.preview": true,
   "editor.suggest.showWords": false,
@@ -121,7 +160,8 @@
   "editor.unicodeHighlight.includeComments": true,
   "editor.wordWrap": "on",
   "emmet.showExpandedAbbreviation": "never",
-  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
+  "errorLens.enabled": true,
+  "errorLens.enabledDiagnosticLevels": ["warning", "info", "hint", "error"],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.fileNesting.enabled": false,
@@ -159,18 +199,31 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "files.watcherExclude": { "**/.rush/**": true, "**/common/temp/**": true },
+  "files.watcherExclude": {
+    "**/.rush/**": true,
+    "**/common/temp/**": true
+  },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
   "git.openRepositoryInParentFolders": "never",
-  "github.copilot.advanced": { "debug.showScores": true },
+  "github.copilot.advanced": {
+    "debug.showScores": true
+  },
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
-    "plaintext": false,
     "markdown": false,
+    "plaintext": false,
     "scminput": false,
     "yaml": true
   },
@@ -181,7 +234,10 @@
   "gitlens.advanced.messages": {
     "suppressIntegrationRequestTimedOutWarning": true
   },
-  "gitlens.graph.minimap.enabled": false,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.graph.layout": "editor",
   "gitlens.statusBar.enabled": false,
   "gitlens.views.branches.branches.layout": "list",
   "gitlens.views.commitDetails.files.layout": "tree",
@@ -199,7 +255,9 @@
   "go.inlayHints.rangeVariableTypes": true,
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
-  "html.completion.attributeDefaultValue": "singlequotes",
+  "html.completion.attributeDefaultValue": "empty",
+  "inlineChat.enableV2": true,
+  "inlineChat.hideOnRequest": true,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "literals",
   "javascript.inlayHints.parameterTypes.enabled": true,
@@ -231,6 +289,7 @@
   },
   "notebook.lineNumbers": "on",
   "outline.collapseItems": "alwaysCollapse",
+  "peacock.surpriseMeOnStartup": true,
   "prettier.jsxSingleQuote": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
@@ -271,6 +330,18 @@
   },
   "solidity.formatter": "forge",
   "surround.custom": {
+    "effect-error": {
+      "description": "Effect.fail(...)",
+      "label": "Effect.fail",
+      "languageIds": ["typescript", "typescriptreact", "mdx"],
+      "snippet": "return yield* Effect.fail($TM_SELECTED_TEXT)$0"
+    },
+    "effect-trypromise": {
+      "description": "Effect.tryPromise(...)",
+      "label": "Effect.tryPromise",
+      "languageIds": ["typescript", "typescriptreact", "mdx"],
+      "snippet": "yield* Effect.tryPromise(async () => $TM_SELECTED_TEXT)$0"
+    },
     "promise": {
       "description": "Promise<...>",
       "label": "Promise",
@@ -293,6 +364,12 @@
         "javascriptreact"
       ],
       "snippet": "// =============================================================================\n// #region ${1:regionName}\n$TM_SELECTED_TEXT\n// #endregion ${1:regionName}"
+    },
+    "twJoin": {
+      "description": "twJoin(...)",
+      "label": "twJoin",
+      "languageIds": ["typescript", "typescriptreact", "mdx"],
+      "snippet": "{twJoin($TM_SELECTED_TEXT)}$0"
     }
   },
   "telemetry.telemetryLevel": "off",
@@ -315,28 +392,35 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.suggest.completeFunctionCalls": true,
-  "vs-kubernetes": { "disable-linters": ["resource-limits"] },
+  "vs-kubernetes": {
+    "disable-linters": ["resource-limits"]
+  },
   "vscode-ethover.hover.getBalance": "no",
   "window.commandCenter": true,
   "window.newWindowProfile": "Default",
+  "window.systemColorTheme": "dark",
+  "window.title": "[${rootName}]${separator}${profileName}${separator}${activeEditorShort}",
+  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "activityBar.activeBorder": "#00ff6e",
     "activityBar.foreground": "#26ff00",
-    "editor.findMatchBackground": "#b1007f",
+    "diffEditor.insertedLineBackground": "#00ff0022",
+    "diffEditor.insertedTextBackground": "#00ff0033",
+    "diffEditor.removedLineBackground": "#ff000022",
+    "diffEditor.removedTextBackground": "#ff000033",
+    "editor.findMatchBackground": "#85005f",
     "editor.lineHighlightBackground": "#1073cf2d",
     "editor.lineHighlightBorder": "#9fced11f",
-    "editorBracketPairGuide.background1": "#A21CAF",
-    "editorBracketPairGuide.background2": "#C026D3",
-    "editorBracketPairGuide.background3": "#D946EF",
-    "editorBracketPairGuide.background4": "#E879F9",
-    "editorBracketPairGuide.background5": "#F0ABFC",
-    "editorBracketPairGuide.background6": "#F5D0FE",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000",
+    "editorError.foreground": "#ff000055",
     "editorGhostText.foreground": "#f700ff",
     "editorInlayHint.foreground": "#ffffff",
     "errorLens.infoBackground": "#0000",
+    "terminal.findMatchBorder": "#ff0000",
     "terminal.selectionBackground": "#e26cffcb"
   },
   "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.highlightModifiedTabs": true,
@@ -351,6 +435,9 @@
     "*.ipynb": "jupyter-notebook"
   },
   "workbench.iconTheme": "vscode-great-icons",
+  "workbench.panel.showLabels": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.secondarySideBar.showLabels": false,
   // "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
@@ -363,35 +450,5 @@
       "kustomization.yaml"
     ]
   },
-  "zenMode.fullScreen": false,
-  "github.copilot.chat.codesearch.enabled": true,
-  "window.systemColorTheme": "dark",
-  "github.copilot.chat.agent.thinkingTool": true,
-  "github.copilot.chat.editor.temporalContext.enabled": true,
-  "github.copilot.chat.edits.temporalContext.enabled": true,
-  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
-  "github.copilot.chat.languageContext.typescript.enabled": true,
-  "github.copilot.chat.generateTests.codeLens": true,
-  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
-  "gitlens.codeLens.enabled": false,
-  "docker.extension.enableComposeLanguageServer": true,
-  "gitlens.graph.layout": "editor",
-  "workbench.panel.showLabels": false,
-  "workbench.secondarySideBar.showLabels": false,
-  "chat.agent.maxRequests": 200,
-  "chat.mcp.autostart": "newAndOutdated",
-  "[prompt]": {
-    "editor.unicodeHighlight.ambiguousCharacters": false,
-    "editor.unicodeHighlight.invisibleCharacters": false,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.wordWrap": "on",
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    }
-  },
-  "workbench.activityBar.location": "hidden",
-  "peacock.surpriseMeOnStartup": true,
-  "window.title": "[${rootName}]${separator}${profileName}${separator}${activeEditorShort}"
+  "zenMode.fullScreen": false
 }

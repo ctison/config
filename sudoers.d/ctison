@@ -1,3 +1,0 @@
-# env EDITOR=vi sudo visudo -f /etc/sudoers.d/"$USER"
-# Set default sudo password timeout to 0
-Defaults timestamp_timeout=0

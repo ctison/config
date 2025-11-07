@@ -125,7 +125,14 @@
   },
   {
     "key": "shift+cmd+c",
-    "command": "workbench.action.createTerminalEditorSide"
+    "command": "workbench.action.createTerminalEditor"
+  },
+  {
+    "command": "-workbench.action.chat.openagent"
+  },
+  {
+    "key": "cmd+shift+i",
+    "command": "workbench.action.openChat"
   },
   {
     "key": "alt+cmd+/",

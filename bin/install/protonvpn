@@ -1,8 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-apt-get update
-apt-get install -y openvpn dialog python3-pip
-pip3 install -U protonvpn-cli

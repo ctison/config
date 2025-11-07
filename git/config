@@ -25,7 +25,7 @@ f = pull --ff-only
 ff = fetch --all
 g = grep
 l = log --format=oneline --graph
-lsu = ls-files --other
+lsu = ls-files --others --directory -x node_modules/ -x /x/ -x /.husky/
 m = merge
 mm = merge origin/main
 mc = merge --continue

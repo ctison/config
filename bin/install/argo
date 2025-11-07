@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/argo https://github.com/argoproj/argo/releases/latest/download/argo-linux-"$(dpkg --print-architecture)"
-chmod 500 /usr/local/bin/argo

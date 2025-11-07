@@ -1,4 +1,4 @@
 {
   "extends": ["./typescript/tsconfig.json"],
-  "include": ["bin/**/*", "x/**/*"]
+  "include": ["bun/**/*"]
 }

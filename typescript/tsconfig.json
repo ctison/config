@@ -1,6 +1,5 @@
 {
   // https://www.typescriptlang.org/tsconfig
-  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     // Type Checking
     "strict": true,
@@ -18,13 +17,15 @@
     // Modules
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
+    "noUncheckedSideEffectImports": true,
     "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
 
     // Emit
     "declaration": true,
     "declarationMap": true,
     "noEmit": true,
+    "outDir": "${configDir}/dist",
     "removeComments": true,
     "sourceMap": true,
 
@@ -36,16 +37,14 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "preserveSymlinks": true,
     "verbatimModuleSyntax": true,
 
     // Language and Environment
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "jsx": "preserve",
+    "moduleDetection": "force",
     "target": "ESNext",
-
-    // Projects
-    "incremental": true,
 
     // Output Formatting
     "noErrorTruncation": true,
@@ -53,5 +52,6 @@
 
     /* Completeness */
     "skipLibCheck": true
-  }
+  },
+  "include": ["${configDir}/src/**/*", "${configDir}/scripts/**/*"]
 }

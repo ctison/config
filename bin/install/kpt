@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-curl -Lo /usr/local/bin/kpt https://storage.googleapis.com/kpt-dev/latest/linux_"$(dpkg --print-architecture)"/kpt
-chmod 500 /usr/local/bin/kpt

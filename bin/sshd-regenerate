@@ -1,7 +1,0 @@
-#!/bin/bash
-umask 0077
-shopt -s nullglob
-set -euxo pipefail
-
-rm -f -- /etc/ssh/ssh_host_*
-exec ssh-keygen -A
