@@ -1,0 +1,4 @@
+if_missing = 'error'
+
+[providers]
+keychain = { type = 'keychain', service = 'fnox' }

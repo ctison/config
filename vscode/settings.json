@@ -1,3 +1,4 @@
+// cSpell:disable
 {
   "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -139,6 +140,7 @@
   "editor.guides.bracketPairs": false,
   "editor.hover.delay": 100,
   "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlayHints.maximumLength": 0,
   "editor.inlayHints.padding": true,
   "editor.inlineSuggest.enabled": true,
   "editor.inlineSuggest.syntaxHighlightingEnabled": true,
@@ -211,7 +213,6 @@
   "github.copilot.advanced": {
     "debug.showScores": true
   },
-  "github.copilot.chat.agent.thinkingTool": true,
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.editor.temporalContext.enabled": true,
   "github.copilot.chat.edits.temporalContext.enabled": true,
@@ -336,6 +337,12 @@
       "languageIds": ["typescript", "typescriptreact", "mdx"],
       "snippet": "return yield* Effect.fail($TM_SELECTED_TEXT)$0"
     },
+    "effect-gen": {
+      "description": "Effect.gen(function* () { ... })",
+      "label": "Effect.gen",
+      "languageIds": ["typescript", "typescriptreact", "mdx"],
+      "snippet": "Effect.gen(function* () {\n  $TM_SELECTED_TEXT\n})$0"
+    },
     "effect-trypromise": {
       "description": "Effect.tryPromise(...)",
       "label": "Effect.tryPromise",
@@ -376,6 +383,7 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.macOptionClickForcesSelection": true,
   "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.sendKeybindingsToShell": true,
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.tabs.hideCondition": "never",
@@ -389,7 +397,7 @@
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.suggest.completeFunctionCalls": true,
   "vs-kubernetes": {
@@ -438,7 +446,6 @@
   "workbench.panel.showLabels": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.secondarySideBar.showLabels": false,
-  // "workbench.panel.defaultLocation": "right",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.startupEditor": "none",
@@ -450,5 +457,6 @@
       "kustomization.yaml"
     ]
   },
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "npm.autoDetect": "off"
 }

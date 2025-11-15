@@ -1,4 +1,61 @@
 {
-  "extends": ["./typescript/tsconfig.json"],
-  "include": ["bun/**/*"]
+  // https://www.typescriptlang.org/tsconfig
+  "compilerOptions": {
+    // Type Checking
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+
+    // Modules
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["${configDir}/src/*"]
+    },
+    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": true,
+    "emitDeclarationOnly": true,
+    "outDir": "${configDir}/dist",
+    "removeComments": true,
+    "sourceMap": true,
+
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": true,
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    // Language and Environment
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "moduleDetection": "force",
+    "target": "ESNext",
+
+    // Output Formatting
+    "noErrorTruncation": true,
+    "noEmitOnError": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "include": ["${configDir}/src/**/*", "${configDir}/scripts/**/*"]
 }

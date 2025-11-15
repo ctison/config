@@ -9,22 +9,29 @@
     "argparse",
     "fnox",
     "lazygit",
-    "libc",
     "nullglob",
     "nushell",
     "osascript",
-    "pipefail"
+    "pipefail",
+    "pkgs",
+    "watchexec"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports": "never",
+    "source.organizeImports.biome": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "files.associations": {
     "**/*.json": "jsonc",
-    "**/package.json": "json"
+    "**/package.json": "json",
+    "/git/config": "properties"
   },
   "files.eol": "\n",
   "files.insertFinalNewline": true,
+  "search.exclude": {
+    "**/dist": true
+  },
   "typescript.tsdk": "node_modules/typescript/lib"
 }

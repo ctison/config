@@ -1,18 +1,12 @@
 [tools]
 bun = '1'
+node = 'lts'
+aqua = 'latest'
+watchexec = 'latest'
+fnox = 'latest'
 
-eza = 'latest'
-gh = 'latest'
-duf = 'latest'
-dust = { os = ['darwin'], version = 'latest' }
-fd = 'latest'
-lazygit = 'latest'
-shellcheck = 'latest'
-xh = 'latest'
-starship = 'latest'
-bat = 'latest'
-ripgrep = 'latest'
-zellij = 'latest'
+[env]
+_.path = ['{{config_root}}/node_modules/.bin']
 
 [settings]
 unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'

@@ -1,31 +1,61 @@
 {
-  "name": "@ctison/config",
+  "name": "@ctison/root",
   "private": true,
   "type": "module",
+  "workspaces": {
+    "packages": [
+      "pkgs/*",
+      "pkgs/_/*"
+    ]
+  },
   "scripts": {
-    "format": "prettier -w .",
-    "format:check": "prettier -c .",
-    "image": "docker buildx bake --load",
+    "clean": "bun run -F './**' clean",
+    "clean:hard": "bun ./scripts/clean.ts",
+    "dev": "docker run -it --rm ctison/dev",
+    "format": "bun --bun prettier -w .",
+    "format:check": "bun --bun prettier -c .",
+    "image": "docker build -t ctison/dev .",
+    "image:check": "docker build check .",
+    "lint": "biome ci --reporter=summary",
     "prepare": "husky",
     "pretest": "tsc",
-    "test": "bun test --pass-with-no-tests",
-    "update": "bun update -ir"
+    "test": "bun run -F './**' test",
+    "update": "bun update -ri"
   },
   "lint-staged": {
     "package.json": "sort-package-json",
-    "*": "prettier -wu"
+    "*": [
+      "prettier -wu",
+      "biome ci --no-errors-on-unmatched --error-on-warnings"
+    ]
   },
   "prettier": {
+    "jsdocCommentLineStrategy": "multiline",
     "jsxSingleQuote": true,
-    "singleQuote": true
+    "plugins": [
+      "prettier-plugin-jsdoc"
+    ],
+    "singleQuote": true,
+    "tsdoc": true,
+    "overrides": [
+      {
+        "files": "*.jsonc",
+        "options": {
+          "trailingComma": "none"
+        }
+      }
+    ]
   },
   "devDependencies": {
-    "@types/bun": "1.3.1",
+    "@biomejs/biome": "2.3.5",
+    "@types/bun": "1.3.2",
+    "@types/node": "24.10.1",
     "husky": "9.1.7",
     "lint-staged": "16.2.6",
     "prettier": "3.6.2",
+    "prettier-plugin-jsdoc": "1.5.0",
     "sort-package-json": "3.4.0",
     "typescript": "5.9.3"
   },
-  "packageManager": "bun@1.3.1"
+  "packageManager": "bun@1.3.2"
 }

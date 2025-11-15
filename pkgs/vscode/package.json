@@ -1,0 +1,52 @@
+{
+  "name": "vscode",
+  "displayName": "VSCode Meta Extension API",
+  "version": "0.0.1",
+  "categories": [
+    "Other"
+  ],
+  "publisher": "ctison",
+  "type": "module",
+  "main": "dist/bundle/src/index.js",
+  "files": [
+    "dist/bundle/src/index.js"
+  ],
+  "scripts": {
+    "prebuild": "tsc",
+    "build": "bun ./scripts/build.ts",
+    "prebundle": "tsc",
+    "bundle": "bun run build --bundle",
+    "clean": "bun ./scripts/clean.ts",
+    "preload": "bun run pack",
+    "load": "bun ./scripts/load-vsix.ts",
+    "prepack": "bun run bundle",
+    "pack": "bun run ./scripts/pack.ts",
+    "pretest": "bun run build",
+    "test": "bun ./scripts/test.ts"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "title": "ctison: Run Script",
+        "command": "ctison.run-script"
+      }
+    ],
+    "configuration": {
+      "properties": {
+        "scripts": {}
+      }
+    }
+  },
+  "activationEvents": [],
+  "devDependencies": {
+    "@ctison/utils": "workspace:*",
+    "@types/vscode": "1.106.0",
+    "@vscode/dts": "0.4.1",
+    "@vscode/test-electron": "2.5.2",
+    "@vscode/vsce": "3.7.0"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "pricing": "Free"
+}

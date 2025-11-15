@@ -1,5 +1,12 @@
-.git/
-node_modules/
-*.log
-/Dockerfile
-.DS_Store
+*
+!/setup.sh
+
+!/bin
+!/cargo
+!/fish
+!/git
+!/mise
+!/starship
+!/vim
+!/vscode
+!/zellij

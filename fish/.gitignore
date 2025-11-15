@@ -1,7 +1,4 @@
 /fishd.*
 /fish_variables
 /completions/
-/functions/_nvm_*
-/functions/nvm.fish
-/functions/br.fish
 /conf.d/

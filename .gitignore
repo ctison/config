@@ -6,7 +6,13 @@ __pycache__/
 *.local
 *.log
 .DS_Store
-/rtx/trusted-configs/
 /data/
 *.tsbuildinfo
 .venv/
+/aqua.yaml
+*.local.*
+dist/
+/x/
+.husky/_/
+.vscode-test/
+*.vsix

@@ -1,0 +1,14 @@
+{
+  "name": "@ctison/utils",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "pretest": "tsc",
+    "test": "bun test --only-failures"
+  }
+}

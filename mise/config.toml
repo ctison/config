@@ -1,6 +1,3 @@
-[tools]
-fnox = '1'
-
 [settings]
 status.missing_tools = 'always'
 status.show_env = true

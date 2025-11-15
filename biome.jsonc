@@ -1,0 +1,74 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["./.biome/base.jsonc"],
+  "files": {
+    "includes": ["**", "!!x", "!!.husky/_"]
+  },
+  "linter": {
+    "rules": {
+      "correctness": {
+        "noNodejsModules": "off",
+        "useImportExtensions": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noReExportAll": "off",
+        "noNamespaceImport": "off"
+      },
+      "suspicious": {
+        "noConsole": "off",
+        "useAwait": "off"
+      },
+      "style": {
+        "noDefaultExport": "off",
+        "noNamespace": "off",
+        "useExportsLast": "off",
+        "noNonNullAssertion": "off",
+        "useConsistentTypeDefinitions": {
+          "level": "warn",
+          "options": {
+            "style": "type"
+          }
+        }
+      }
+    }
+  },
+  "overrides": [
+    { "includes": ["**/__snapshots__/**"], "linter": { "enabled": false } },
+    {
+      "includes": [
+        "**/*.test.*",
+        "**/tests/**",
+        ".github/actions/**",
+        "**/scripts/**",
+        "pkgs/_/**"
+      ],
+      "javascript": {
+        "globals": ["Bun"]
+      },
+      "linter": {
+        "rules": {
+          "complexity": "off",
+          "correctness": {
+            "noProcessGlobal": "off",
+            "noNodejsModules": "off"
+          },
+          "performance": "off",
+          "style": {
+            "noMagicNumbers": "off",
+            "noParameterAssign": "off",
+            "noNestedTernary": "off"
+          },
+          "suspicious": {
+            "noConsole": "off",
+            "noTsIgnore": "off",
+            "noExportsInTest": "off",
+            "useIterableCallbackReturn": "off",
+            "useAwait": "off",
+            "noMisplacedAssertion": "off"
+          }
+        }
+      }
+    }
+  ]
+}

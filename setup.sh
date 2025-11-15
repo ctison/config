@@ -9,10 +9,11 @@ echo ">>> Executed as: $(id)"
 
 # Link configurations
 mkdir -p ~/.config/ ~/.cargo/
+ln -fsv "$SCRIPT_DIR"/cargo/config.toml ~/.cargo/
 ln -fsv "$SCRIPT_DIR"/fish ~/.config/
 ln -fsv "$SCRIPT_DIR"/git ~/.config/
 ln -fsv "$SCRIPT_DIR"/mise ~/.config/
 ln -fsv "$SCRIPT_DIR"/starship/starship.toml ~/.config/
+# cSpell:words vimrc
 ln -fsv "$SCRIPT_DIR"/vim/vimrc ~/.vimrc
 ln -fsv "$SCRIPT_DIR"/zellij ~/.config/
-ln -fsv "$SCRIPT_DIR"/cargo/config.toml ~/.cargo/

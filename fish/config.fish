@@ -1,31 +1,34 @@
-set fish_color_autosuggestion 777777
-set fish_color_command 00FF00
-set fish_color_comment 30BE30
-set fish_color_cwd green
-set fish_color_cwd_root red
-set fish_color_end FF7B7B
-set fish_color_error A40000
-set fish_color_escape cyan
-set fish_color_history_current cyan
-set fish_color_host -o cyan
-set fish_color_match cyan
-set fish_color_normal normal
-set fish_color_operator cyan
-set fish_color_param 30BE30
-set fish_color_quote 44FF44
-set fish_color_redirection 7BFF7B
-set fish_color_search_match --background=purple
-set fish_color_selection --background=purple
-set fish_color_status red
-set fish_color_user -o green
-set fish_color_valid_path --underline
-
 umask 0077
+set -U fish_private_mode true
+
+set fish_color_autosuggestion   777777
+set fish_color_command          00FF00
+set fish_color_comment          30BE30
+set fish_color_cwd              green
+set fish_color_cwd_root         red
+set fish_color_end              FF7B7B
+set fish_color_error            A40000
+set fish_color_escape           cyan
+set fish_color_history_current  cyan
+set fish_color_host             -o=cyan
+set fish_color_match            cyan
+set fish_color_normal           normal
+set fish_color_operator         cyan
+set fish_color_param            30BE30
+set fish_color_quote            44FF44
+set fish_color_redirection      7BFF7B
+set fish_color_search_match     --background=purple
+set fish_color_selection        --background=purple
+set fish_color_status           red
+set fish_color_user             -o=green
+set fish_color_valid_path       --underline
 
 fish_add_path -Pa \
     ~/.cargo/bin ~/go/bin \
     ~/.local/bin /opt/homebrew/bin \
-    ~/.docker/bin ~/.krew/bin
+    ~/.docker/bin ~/.krew/bin \
+    "$HOME/Library/Application Support/Code - Insiders/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin" \
+    "$HOME/Library/Application Support/Code/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin"
 
 if type -q mise 2>/dev/null
     if status is-interactive
@@ -36,6 +39,9 @@ if type -q mise 2>/dev/null
 end
 
 if status is-interactive
+    set -gx fish_key_bindings fish_user_key_bindings
+    function rl; exec fish; end
+
     function _cmd_exists -a COMMAND
         type -q $COMMAND 2>/dev/null
     end
@@ -87,12 +93,9 @@ if status is-interactive
     end
 end
 
-### Setup config
-for d in ~/x/config /config
-    if test -d "$d/bin"
-        fish_add_path -Pa "$d/bin"
-        alias man="man -P $d/bin/pager"
-        set -gx PAGER "$d/bin/pager"
-        break
-    end
+# cSpell:words realpath
+set d (builtin realpath (status dirname)/..)
+if test -d "$d/bin"
+    fish_add_path -Pa "$d/bin"
 end
+set -e d

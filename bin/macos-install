@@ -10,8 +10,12 @@ if ! type brew 2>/dev/null >&2; then
 fi
 
 echo >> ~/.zprofile
+# shellcheck disable=SC2016
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
+# cSpell:words shellenv
+
+# cSpell:disable
 
 brew install \
   bat dust eza fd fish gh git git-lfs \
@@ -22,7 +26,9 @@ brew install --cask \
   apparency deskpad font-fira-code-nerd-font iina \
   iterm2 stats suspicious-package bruno firefox brave-browser
 
-mkdir -pm 0700 ~/x/ ~/.{config,cargo}/
+# cSpell:enable
+
+mkdir -p ~/x/ ~/.{config,cargo}/
 ln -sfv "$SCRIPT_DIR" ~/x/
 echo '/opt/homebrew/bin/fish' | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/fish
