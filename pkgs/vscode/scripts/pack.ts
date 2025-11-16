@@ -1,7 +1,7 @@
 import * as utils from '@ctison/utils';
+import { packageJsonPath } from './_';
 
 export async function main(): Promise<number> {
-  const packageJsonPath = utils.ctx.packageJsonPath;
   console.debug(`>>> Loading ${packageJsonPath}`);
 
   if ((await utils.hasUnstagedModifications(packageJsonPath)).length > 0) {

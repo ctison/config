@@ -4,10 +4,10 @@ function fish_user_key_bindings
   bind --erase --all --preset
   bind ''            self-insert
   bind enter         execute
-  bind alt-enter     'alt-enter'
-  bind ctrl-alt-s    'printf %s\n $o | fish_clipboard_copy'
-  # bind shift-enter   execute
+  bind alt-enter     'execute-output'
+  bind shift-enter   'execute-output'
   # bind ctrl-enter    execute
+  bind ctrl-alt-s    'o | fish_clipboard_copy'
   bind tab           complete
   bind ctrl-c        cancel-commandline
   bind ctrl-d        exit
@@ -20,9 +20,7 @@ function fish_user_key_bindings
   bind right         forward-char
   bind left          backward-char
   bind shift-left    prevd-or-backward-word
-  bind alt-left      prevd-or-backward-word
   bind shift-right   nextd-or-forward-word
-  bind alt-right     nextd-or-forward-word
   bind escape        cancel
   bind ctrl-l        'status test-terminal-feature scroll-content-up && commandline -f scrollback-push' clear-screen
   bind ctrl-d        delete-or-exit

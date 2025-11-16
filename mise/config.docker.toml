@@ -1,12 +1,5 @@
+[settings]
+trusted_config_paths = ["/"]
+
 [tools]
-eza = 'latest'
-gh = 'latest'
-duf = 'latest'
-fd = 'latest'
-lazygit = 'latest'
-shellcheck = 'latest'
-xh = 'latest'
-starship = 'latest'
-bat = 'latest'
-ripgrep = 'latest'
 zellij = 'latest'

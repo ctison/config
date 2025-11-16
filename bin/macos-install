@@ -28,11 +28,11 @@ brew install --cask \
 
 # cSpell:enable
 
-mkdir -p ~/x/ ~/.{config,cargo}/
+mkdir -p ~/x/ ~/.config/fish ~/.cargo
 ln -sfv "$SCRIPT_DIR" ~/x/
 echo '/opt/homebrew/bin/fish' | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/fish
-ln -sfv "$SCRIPT_DIR/fish" ~/.config/
+ln -sfv "$SCRIPT_DIR/fish"/* ~/.config/fish/
 ln -sfv "$SCRIPT_DIR/git" ~/.config/
 ln -sfv "$SCRIPT_DIR/nushell" ~/.config/
 ln -sfv "$SCRIPT_DIR/mise" ~/.config/

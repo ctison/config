@@ -1,16 +1,14 @@
 import { rm } from 'node:fs/promises';
 import { Glob } from 'bun';
-import { ctx } from '.';
 
 export namespace clean {
   export type Options = {
-    packageDir?: string;
+    packageDir: string;
     globs?: string[];
   };
 }
 
-export async function clean(opts?: clean.Options) {
-  const packageDir = opts?.packageDir ?? ctx.packageDir;
+export async function clean({ packageDir, ...opts }: clean.Options) {
   await Promise.all(
     (opts?.globs ?? clean.defaultGlobs).map(async (glob) => {
       const promises: Promise<void>[] = [];

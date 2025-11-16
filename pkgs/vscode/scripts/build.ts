@@ -1,5 +1,6 @@
 import { parseArgs } from 'node:util';
 import * as utils from '@ctison/utils';
+import { packageDir } from './_';
 
 export namespace build {
   export type Options = {
@@ -9,8 +10,9 @@ export namespace build {
 
 export async function build(opts?: build.Options) {
   if (opts?.bundle) {
-    await utils.clean({ globs: ['dist/bundle/'] });
+    await utils.clean({ packageDir, globs: ['dist/bundle/'] });
     await utils.build({
+      packageDir,
       tsconfigPath: null,
       buildOpts: {
         target: 'node',
@@ -26,8 +28,9 @@ export async function build(opts?: build.Options) {
       },
     });
   } else {
-    await utils.clean({ globs: ['dist/src/'] });
+    await utils.clean({ packageDir, globs: ['dist/src/'] });
     await utils.build({
+      packageDir,
       tsconfigPath: null,
       includeTestFiles: true,
       buildOpts: {

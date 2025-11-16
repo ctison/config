@@ -1,21 +1,10 @@
 {
-  "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
+  "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml][toml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[fish]": {
     "editor.formatOnSave": false
   },
-  "cSpell.words": [
-    "argparse",
-    "fnox",
-    "lazygit",
-    "nullglob",
-    "nushell",
-    "osascript",
-    "pipefail",
-    "pkgs",
-    "watchexec"
-  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports": "never",

@@ -1,4 +1,4 @@
-function alt-enter
+function execute-output
   if test -n "$(commandline)"
     builtin commandline "set o ($(commandline))"
   else

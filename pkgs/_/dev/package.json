@@ -1,0 +1,21 @@
+{
+  "name": "@ctison/dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build --target node --outdir ./dist/ --packages external ./src/main.ts",
+    "clean": "rm -rf ./dist",
+    "dev": "watchexec -w ./src -c -- bun run start",
+    "start": "bun run build && node ./dist/main.js"
+  },
+  "dependencies": {
+    "@docker/node-sdk": "0.0.17",
+    "@effect/platform-node": "0.100.0",
+    "@octokit/request": "10.0.7",
+    "effect": "3.19.3",
+    "surrealdb": "1.3.2"
+  },
+  "devDependencies": {
+    "@effect/language-service": "0.56.0"
+  }
+}

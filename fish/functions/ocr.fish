@@ -1,4 +1,4 @@
-# cSpell:words mktemp screencapture tesseract
+# cSpell:words screencapture tesseract
 function ocr
   set -l img (mktemp).png
   /usr/sbin/screencapture -i -- "$img"

@@ -1,18 +1,15 @@
 import { Glob } from 'bun';
-import { ctx } from '.';
 
 export namespace build {
   export type Options = {
-    packageDir?: string;
+    packageDir: string;
     tsconfigPath?: string | null;
     includeTestFiles?: boolean;
     buildOpts?: Partial<Bun.BuildConfig>;
   };
 }
 
-export async function build(opts?: build.Options) {
-  const packageDir = opts?.packageDir ?? ctx.packageDir;
-
+export async function build({ packageDir, ...opts }: build.Options) {
   if (opts?.tsconfigPath !== null) {
     const tsconfigPath =
       opts?.tsconfigPath ?? `${packageDir}/tsconfig.build.json`;

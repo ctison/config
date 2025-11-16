@@ -24,6 +24,12 @@
         "noNamespace": "off",
         "useExportsLast": "off",
         "noNonNullAssertion": "off",
+        "useFilenamingConvention": {
+          "level": "warn",
+          "options": {
+            "filenameCases": ["camelCase", "kebab-case", "PascalCase"]
+          }
+        },
         "useConsistentTypeDefinitions": {
           "level": "warn",
           "options": {
@@ -35,6 +41,10 @@
   },
   "overrides": [
     { "includes": ["**/__snapshots__/**"], "linter": { "enabled": false } },
+    {
+      "includes": ["**/_.*"],
+      "linter": { "rules": { "style": { "useFilenamingConvention": "off" } } }
+    },
     {
       "includes": [
         "**/*.test.*",

@@ -1,9 +1,9 @@
 import path from 'node:path';
-import { ctx } from '@ctison/utils';
 import { runTests } from '@vscode/test-electron';
+import { packageDir } from './_';
 
 if (import.meta.main) {
-  const extensionDevelopmentPath = ctx.packageDir;
+  const extensionDevelopmentPath = packageDir;
   const extensionTestsPath = path.resolve(
     extensionDevelopmentPath,
     'dist',

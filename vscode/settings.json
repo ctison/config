@@ -14,16 +14,10 @@
     },
     "editor.tabSize": 2
   },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "[fish]": {
+  "[dockerfile][fish]": {
     "editor.formatOnSave": false
   },
-  "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "[helm]": {
+  "[github-actions-workflow][helm]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[prompt]": {
@@ -43,93 +37,14 @@
   },
   "accessibility.dimUnfocused.enabled": true,
   "biome.suggestInstallingGlobally": false,
-  "blockman.n01LineHeight": 0,
-  "blockman.n04Sub01ColorComboPresetForDarkTheme": "Classic Dark 1 (Solid colors)",
-  "blockman.n04Sub05MinDistanceBetweenRightSideEdges": 8,
-  "blockman.n33A01B1FromDepth0ToInwardForAllBorders": "!30,1,0,2; neutral > linear-gradient(to left, rgb(144,54,8), rgb(48,36,112))",
-  "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
   "chat.agent.maxRequests": 200,
   "chat.mcp.autostart": "newAndOutdated",
-  "cSpell.userWords": [
-    "apikey",
-    "apm",
-    "automerge",
-    "autoscaler",
-    "autosize",
-    "backoff",
-    "buildx",
-    "chrono",
-    "Ciliums",
-    "cloudbuild",
-    "cmds",
-    "CNCF",
-    "CONTAINERD",
-    "corepack",
-    "crds",
-    "ctison",
-    "daemonset",
-    "DATAPATH",
-    "datas",
-    "datasource",
-    "datasources",
-    "Direnv",
-    "dotenv",
-    "endregion",
-    "envrc",
-    "expando",
-    "fullscreen",
-    "gantt",
-    "gcloud",
-    "gserviceaccount",
-    "hackernews",
-    "hmac",
-    "httpyac",
-    "iac",
-    "icns",
-    "kubeconfig",
-    "Kustomization",
-    "kustomize",
-    "linkerd",
-    "lintstagedrc",
-    "mantine",
-    "multichain",
-    "nomicfoundation",
-    "nowrap",
-    "nvmrc",
-    "opentelemetry",
-    "otlp",
-    "outdir",
-    "plpgsql",
-    "pnpm",
-    "popd",
-    "pulumi",
-    "pushd",
-    "reinvocation",
-    "rfq",
-    "rocksdb",
-    "screencast",
-    "sepolia",
-    "shellcheck",
-    "signin",
-    "statefulset",
-    "streamable",
-    "sublink",
-    "surrealdb",
-    "tailwindcss",
-    "unlisten",
-    "upsert",
-    "viem",
-    "waitlist",
-    "workdir",
-    "zustand"
-  ],
   "debug.allowBreakpointsEverywhere": true,
   "debug.console.acceptSuggestionOnEnter": "on",
   "dev.containers.defaultExtensions": [],
   "dev.containers.workspaceMountConsistency": "delegated",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
-  "docker.extension.enableComposeLanguageServer": true,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
@@ -142,6 +57,7 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlayHints.maximumLength": 0,
   "editor.inlayHints.padding": true,
+  "editor.inlineSuggest.edits.showLongDistanceHint": true,
   "editor.inlineSuggest.enabled": true,
   "editor.inlineSuggest.syntaxHighlightingEnabled": true,
   "editor.insertSpaces": true,
@@ -152,7 +68,6 @@
   "editor.minimap.scale": 3,
   "editor.occurrencesHighlight": "multiFile",
   "editor.renderWhitespace": "trailing",
-  // "editor.rulers": [{ "color": "#4c59bd", "column": 80 }],
   "editor.scrollbar.vertical": "visible",
   "editor.snippetSuggestions": "none",
   "editor.stickyScroll.enabled": false,
@@ -210,16 +125,15 @@
   "git.confirmSync": false,
   "git.mergeEditor": true,
   "git.openRepositoryInParentFolders": "never",
-  "github.copilot.advanced": {
-    "debug.showScores": true
-  },
+  "github.copilot.chat.alternateGptPrompt.enabled": true,
   "github.copilot.chat.codesearch.enabled": true,
-  "github.copilot.chat.editor.temporalContext.enabled": true,
-  "github.copilot.chat.edits.temporalContext.enabled": true,
-  "github.copilot.chat.generateTests.codeLens": true,
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
   "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.languageContext.typescript.includeDocumentation": true,
+  "github.copilot.chat.newWorkspace.useContext7": true,
+  "github.copilot.chat.newWorkspaceCreation.enabled": false,
+  "github.copilot.chat.responsesApiReasoningEffort": "high",
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
@@ -228,8 +142,6 @@
     "scminput": false,
     "yaml": true
   },
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
   "githubPullRequests.fileListLayout": "tree",
   "githubPullRequests.pullBranch": "never",
   "gitlens.advanced.messages": {
@@ -258,7 +170,6 @@
   "go.useLanguageServer": true,
   "html.completion.attributeDefaultValue": "empty",
   "inlineChat.enableV2": true,
-  "inlineChat.hideOnRequest": true,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "literals",
   "javascript.inlayHints.parameterTypes.enabled": true,
@@ -289,8 +200,8 @@
     "jupyter-notebook": "left"
   },
   "notebook.lineNumbers": "on",
+  "npm.autoDetect": "off",
   "outline.collapseItems": "alwaysCollapse",
-  "peacock.surpriseMeOnStartup": true,
   "prettier.jsxSingleQuote": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
@@ -403,7 +314,6 @@
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
   },
-  "vscode-ethover.hover.getBalance": "no",
   "window.commandCenter": true,
   "window.newWindowProfile": "Default",
   "window.systemColorTheme": "dark",
@@ -452,11 +362,5 @@
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always",
   "yaml.format.singleQuote": true,
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/kustomization.json": [
-      "kustomization.yaml"
-    ]
-  },
-  "zenMode.fullScreen": false,
-  "npm.autoDetect": "off"
+  "zenMode.fullScreen": false
 }

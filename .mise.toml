@@ -1,19 +1,41 @@
 [tools]
 bun = '1'
 node = 'lts'
-aqua = 'latest'
 watchexec = 'latest'
 fnox = 'latest'
+'aqua:mutagen-io/mutagen' = 'latest'
 
 [env]
 _.path = ['{{config_root}}/node_modules/.bin']
 
-[settings]
-unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
-
 [tasks.ci]
-run = '''
-bun install --frozen-lockfile
-bun run format:check
-bun run test
-'''
+run = 'bun install --frozen-lockfile'
+depends_post = ['lint', 'test']
+
+[tasks.clean]
+run = 'bun run clean'
+
+[tasks.'clean:hard']
+run = 'bun ./scripts/clean.ts'
+
+[tasks.format]
+alias = 'fmt'
+run = 'bun --bun prettier -w .'
+
+[tasks.lint]
+depends = 'lint:*'
+
+[tasks.'lint:biome']
+run = 'bun --bun biome ci --reporter=summary'
+
+[tasks.'lint:format']
+run = 'bun --bun prettier -c .'
+
+[tasks.'lint:spell']
+run = 'bun --bun cspell .'
+
+[tasks.test]
+run = 'bun run test'
+
+[tasks.docker]
+run = 'docker build -t ctison/dev .'

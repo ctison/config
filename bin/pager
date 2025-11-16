@@ -2,6 +2,8 @@
 umask 0077
 set -e
 
+# cSpell:ignore groff termcap tput setaf setab
+
 LESS_TERMCAP_md=$(tput bold; tput setaf 1)
 LESS_TERMCAP_me=$(tput sgr0)
 LESS_TERMCAP_se=$(tput sgr0)
@@ -15,5 +17,7 @@ export LESS_TERMCAP_se
 export LESS_TERMCAP_so
 export LESS_TERMCAP_ue
 export LESS_TERMCAP_us
+
+export GROFF_NO_SGR=1
 
 exec less -R "$@"
