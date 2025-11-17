@@ -1,5 +1,6 @@
 [settings]
-trusted_config_paths = ["/"]
+trusted_config_paths = ['/']
+disable_tools = ['aqua:mutagen-io/mutagen']
 
 [tools]
 zellij = 'latest'

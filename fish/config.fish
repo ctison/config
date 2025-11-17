@@ -27,9 +27,8 @@ set fish_color_status           red
 set fish_color_user             -o green
 set fish_color_valid_path       --underline
 
-set __CONFIG_DIR (builtin path resolve (status dirname)/..)
 
-alias do=docker-ops
+set __CONFIG_DIR (builtin path dirname (builtin path dirname (builtin path resolve (builtin status -f))))
 
 fish_add_path -Pa \
   $__CONFIG_DIR/bin \
@@ -59,12 +58,15 @@ if status is-interactive
 
   alias b='builtin'
   alias rl='exec fish'
-  alias o='printf %s\n $o'
-  alias pr='print %s\n'
+  alias pr='builtin printf %s\n'
+  alias o='pr $o'
 
+  _add_alias bu   brew upgrade --greedy-auto-update
   _add_alias cat  bat -P
   _add_alias d    docker
+  _add_alias dc   docker compose
   _add_alias g    git
+  _add_alias gpg  gpg --keyid-format long
   _add_alias h    xh https://httpbin.org/anything
   _add_alias k    kubectl
   _add_alias k9s  k9s --logoless --headless -c pu
@@ -77,15 +79,10 @@ if status is-interactive
   _add_alias z    zellij
   _add_alias zo   zellij options
 
-  _add_alias gpg gpg --keyid-format long
   if _cmd_exists gpg
     set -gx GPG_TTY (tty)
   end
 
-  _add_alias dc docker compose
-  if _cmd_exists docker
-    set -gx DOCKER_BUILDKIT 1
-  end
 
   if _cmd_exists code-insiders
     set -gx EDITOR 'code-insiders -w'
@@ -111,6 +108,7 @@ if status is-interactive
     alias rg="RIPGREP_CONFIG_PATH=$__CONFIG_DIR/fish/ripgrep.rc command rg"
   end
 
-  # cSpell:ignore manpager
+  # cSpell:ignore manpager MANROFFOPT
   set -gx MANPAGER $__CONFIG_DIR/bin/pager
+  alias man='MANROFFOPT=-c command man'
 end

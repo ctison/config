@@ -27,8 +27,6 @@ export async function build({ packageDir, ...opts }: build.Options) {
     }
   }
 
-  const commitHash = await getGitCommitHash().then((s) => `"${s.trim()}"`);
-
   await Bun.build({
     entrypoints,
     root: packageDir,
@@ -51,7 +49,7 @@ export async function build({ packageDir, ...opts }: build.Options) {
     loader: {},
     define: {
       // biome-ignore-start lint/style/useNamingConvention: ...
-      ___COMMIT_HASH___: commitHash,
+      ___COMMIT_HASH___: await getGitCommitHash().then((s) => `"${s.trim()}"`),
       // biome-ignore-end lint/style/useNamingConvention: ...
     },
     ...opts?.buildOpts,

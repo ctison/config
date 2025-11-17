@@ -9,7 +9,7 @@ function c
   end
   for project in $argv
     echo ">>> $project"
-    cd "$project"
+    cd $project
     mise i && mise up
     mise exec -- (echo $EDITOR | string split -f1 ' ') .
     cd -

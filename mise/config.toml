@@ -5,12 +5,15 @@ duf = 'latest'
 eza = 'latest'
 fd = 'latest'
 gh = 'latest'
+jq = 'latest'
 lazygit = 'latest'
 starship = 'latest'
 xh = 'latest'
+'aqua:mutagen-io/mutagen' = 'latest'
 
 [settings]
 auto_install = false
+experimental = true
 
 unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
 unix_default_inline_shell_args = 'bash -euo pipefail -O nullglob -c'

@@ -136,9 +136,9 @@
   "github.copilot.chat.responsesApiReasoningEffort": "high",
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
-    "*": true,
-    "markdown": false,
+    "*": false,
     "plaintext": false,
+    "markdown": false,
     "scminput": false,
     "yaml": true
   },

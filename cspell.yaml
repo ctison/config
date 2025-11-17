@@ -1,29 +1,29 @@
 useGitignore: true
-
 ignorePaths:
   - starship.toml
   - vim/vimrc
   - git/config
   - biome.jsonc
-
 words:
   - argparse
+  - buildx
+  - chsh
   - ctison
   - fnox
   - lazygit
+  - liveshare
+  - mktemp
   - nullglob
   - nushell
+  - openagent
   - osascript
   - pipefail
   - pkgs
-  - watchexec
-  - shopt
-  - chsh
-  - shellcheck
-  - liveshare
-  - openagent
-  - vimrc
+  - popd
   - pulumi
-  - buildx
+  - pushd
+  - shellcheck
+  - shopt
   - surrealdb
-  - mktemp
+  - vimrc
+  - watchexec

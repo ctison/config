@@ -1,16 +1,19 @@
+experimental_monorepo_root = true
+
+[settings]
+task.monorepo_depth = 3
+
 [tools]
 bun = '1'
 node = 'lts'
 watchexec = 'latest'
 fnox = 'latest'
-'aqua:mutagen-io/mutagen' = 'latest'
 
 [env]
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tasks.ci]
-run = 'bun install --frozen-lockfile'
-depends_post = ['lint', 'test']
+run = 'mise -E ci run ci'
 
 [tasks.clean]
 run = 'bun run clean'

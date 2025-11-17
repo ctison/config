@@ -1,25 +1,14 @@
-import { NodeRuntime } from '@effect/platform-node';
-import { Console, Effect } from 'effect';
-import { Docker, MainLive, Surreal } from './svc';
+import { program } from 'commander';
+import packageJson from '../package.json' with { type: 'json' };
+
+program.name(packageJson.name);
+
+export async function main(): Promise<number> {
+  program.parse();
+
+  return 0;
+}
 
 if (import.meta.main) {
-  NodeRuntime.runMain(
-    Effect.gen(function* () {
-      {
-        const surreal = yield* Surreal.client;
-        yield* Console.log('Surreal Client:', surreal.status);
-        const docker = yield* Docker.client;
-        const images = yield* Effect.tryPromise(async () => docker.imageList());
-        yield* Console.log('Docker Images:', images.length);
-      }
-      {
-        const surreal = yield* Surreal.client;
-        yield* Console.log('Surreal Client:', surreal.status);
-
-        const docker = yield* Docker.client;
-        const images = yield* Effect.tryPromise(async () => docker.imageList());
-        yield* Console.log('Docker Images:', images.length);
-      }
-    }).pipe(Effect.provide(MainLive)),
-  );
+  process.exitCode = await main();
 }

@@ -22,3 +22,10 @@ export async function discardUnstagedModifications(
 export async function getRepositoryUrl(name = 'origin'): Promise<string> {
   return await Bun.$`git remote get-url ${name}`.text().then((s) => s.trim());
 }
+
+export async function isGitRepository(): Promise<boolean> {
+  return await Bun.$`git rev-parse --is-inside-work-tree`
+    .quiet()
+    .then(() => true)
+    .catch(() => false);
+}

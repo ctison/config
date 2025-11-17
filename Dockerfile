@@ -52,7 +52,8 @@ SHELL [ "/usr/bin/fish", "-lc" ]
 ENV MISE_ENV=docker
 ARG MISE_ALWAYS_KEEP_DOWNLOAD=true
 RUN --mount=type=cache,sharing=locked,target=/root/.local/share/mise/downloads \
-    mise install
+    mise install && \
+    mise install bun@latest node@lts watchexec@latest fnox@latest
 
 ENTRYPOINT [ "fish", "-lC" ]
 CMD [ "mise trust" ]

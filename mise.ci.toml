@@ -1,0 +1,6 @@
+[settings]
+enable_tools = ['bun', 'node']
+
+[tasks.ci]
+run = 'bun install --frozen-lockfile'
+depends_post = ['lint', 'test']

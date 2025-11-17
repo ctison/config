@@ -1,0 +1,18 @@
+[tasks.build]
+sources = ['./src/**/*']
+outputs = ['./dist/main.js']
+run = '''
+bun build --target node --outdir ./dist/ --packages external ./src/main.ts
+'''
+
+[tasks.clean]
+run = 'rm -rf ./dist'
+
+[tasks.dev]
+run = 'watchexec -w ./src -c -- bun run start'
+
+[tasks.start]
+quiet = true
+depends = 'build'
+dir = '{{ env.PWD }}'
+run = 'node {{ config_root }}/dist/main.js'
