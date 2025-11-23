@@ -1,0 +1,29 @@
+#:schema https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+[keyboard]
+bindings = [
+  { mods = 'Shift|Control', key = 'Space', action = 'ReceiveChar' },
+
+  { mods = 'Command', key = 'B', action = 'ReceiveChar' },
+  { mods = 'Command', key = 'K', action = 'ReceiveChar' },
+  { mods = 'Command|Alt', key = 'H', action = 'None' },
+  { mods = 'Command', key = 'M', action = 'ReceiveChar' },
+  { mods = 'Command', key = 'W', action = 'ReceiveChar' },
+  { mods = 'Command', key = 'T', action = 'ReceiveChar' },
+  { mods = 'Command', key = 'F', action = 'ReceiveChar' },
+  { mods = 'Command|Control', key = 'F', action = 'ReceiveChar' },
+  { mods = 'Command|Shift', key = '[', action = 'ReceiveChar' },
+  { mods = 'Command|Shift', key = ']', action = 'ReceiveChar' },
+  { mods = 'Command', key = 'Tab', action = 'ReceiveChar' },
+  { mods = 'Command|Shift', key = 'Tab', action = 'ReceiveChar' },
+  { mods = 'Command', key = '1', action = 'ReceiveChar' },
+  { mods = 'Command', key = '2', action = 'ReceiveChar' },
+  { mods = 'Command', key = '3', action = 'ReceiveChar' },
+  { mods = 'Command', key = '4', action = 'ReceiveChar' },
+  { mods = 'Command', key = '5', action = 'ReceiveChar' },
+  { mods = 'Command', key = '6', action = 'ReceiveChar' },
+  { mods = 'Command', key = '7', action = 'ReceiveChar' },
+  { mods = 'Command', key = '8', action = 'ReceiveChar' },
+  { mods = 'Command', key = '9', action = 'ReceiveChar' },
+
+  { mods = 'Command|Shift', key = 'W', action = 'Quit' },
+]

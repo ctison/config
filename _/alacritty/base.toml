@@ -1,0 +1,39 @@
+#:schema https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+[general]
+ipc_socket = false
+
+[window]
+padding = { x = 5, y = 5 }
+decorations = 'Buttonless'
+dynamic_padding = true
+option_as_alt = 'Both'
+
+[font]
+size = 12
+
+[colors]
+primary.background = '#000000'
+primary.foreground = '#ffffff'
+
+[colors.normal]
+black = '#484f58'
+blue = '#58a6ff'
+cyan = '#39c5cf'
+green = '#3fb950'
+magenta = '#bc8cff'
+red = '#ff7b72'
+white = '#b1bac4'
+yellow = '#d29922'
+
+[colors.bright]
+black = '#6e7681'
+blue = '#79c0ff'
+cyan = '#56d4dd'
+green = '#56d364'
+magenta = '#d2a8ff'
+red = '#ffa198'
+white = '#ffffff'
+yellow = '#e3b341'
+
+[terminal]
+osc52 = 'OnlyCopy'

@@ -1,0 +1,295 @@
+[
+  {
+    "command": "workbench.action.toggleMaximizedPanel",
+    "key": "cmd+m"
+  },
+  {
+    "command": "workbench.action.toggleEditorWidths",
+    "key": "cmd+shift+2"
+  },
+  {
+    "command": "git-graph.view",
+    "key": "f13"
+  },
+  {
+    "command": "-fiveServer.close",
+    "key": "cmd+l cmd+c",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "-fiveServer.start",
+    "key": "cmd+l cmd+o",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "-extension.liveServer.goOnline",
+    "key": "cmd+l cmd+o",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "-extension.liveServer.goOffline",
+    "key": "cmd+l cmd+c",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "explorer.newFile",
+    "key": "cmd+n"
+  },
+  {
+    "command": "explorer.newFolder",
+    "key": "ctrl+shift+n",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "key": "shift+cmd+c",
+    "when": "!terminalFocus"
+  },
+  {
+    "command": "-liveshare.join",
+    "key": "alt+cmd+j",
+    "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
+  },
+  {
+    "command": "-editor.action.insertSnippet",
+    "key": "alt+cmd+j",
+    "when": "editorTextFocus && editorLangId == 'nushell'"
+  },
+  {
+    "command": "workbench.action.nextPanelView",
+    "key": "alt+cmd+x"
+  },
+  {
+    "command": "workbench.action.previousPanelView",
+    "key": "alt+cmd+z"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.previousWorkspace",
+    "key": "cmd+l cmd+0"
+  },
+  {
+    "command": "-l13Projects.action.tag.pickTag",
+    "key": "cmd+l cmd+t"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot1",
+    "key": "cmd+l cmd+1"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot2",
+    "key": "cmd+l cmd+2"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot3",
+    "key": "cmd+l cmd+3"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot4",
+    "key": "cmd+l cmd+4"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot5",
+    "key": "cmd+l cmd+5"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot6",
+    "key": "cmd+l cmd+6"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot7",
+    "key": "cmd+l cmd+7"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot8",
+    "key": "cmd+l cmd+8"
+  },
+  {
+    "command": "-l13Projects.action.hotkey.slot9",
+    "key": "cmd+l cmd+9"
+  },
+  {
+    "command": "-workbench.view.extension.l13Projects",
+    "key": "cmd+l cmd+p"
+  },
+  {
+    "command": "workbench.action.toggleActivityBarVisibility",
+    "key": "alt+cmd+;"
+  },
+  {
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "key": "alt+cmd+'"
+  },
+  {
+    "command": "git.openChange",
+    "key": "alt+cmd+,"
+  },
+  {
+    "command": "workbench.action.createTerminalEditor",
+    "key": "shift+cmd+c"
+  },
+  {
+    "command": "-workbench.action.chat.openagent",
+    "key": ""
+  },
+  {
+    "command": "workbench.action.openChat",
+    "key": "cmd+shift+i"
+  },
+  {
+    "command": "-liveshare.followToTheSide",
+    "key": "alt+cmd+/",
+    "when": "liveshare:hasCollaborators"
+  },
+  {
+    "command": "editor.action.showHover",
+    "key": "alt+cmd+/",
+    "when": "editorTextFocus"
+  },
+  // Show the quick pick shell commands history in terminal
+  {
+    "command": "workbench.action.quickOpenNavigateNextInViewPicker",
+    "key": "ctrl+r",
+    "when": "inQuickOpen && inTerminalRunCommandPicker"
+  },
+  // Have ctrl+c close the quick pick
+  {
+    "command": "workbench.action.closeQuickOpen",
+    "key": "ctrl+c",
+    "when": "inQuickOpen && inTerminalRunCommandPicker"
+  },
+  {
+    "command": "editor.emmet.action.balanceOut",
+    "key": "alt+cmd+b"
+  },
+  {
+    "command": "editor.emmet.action.balanceIn",
+    "key": "alt+cmd+v"
+  },
+  {
+    "command": "-workbench.action.focusSideBar",
+    "key": "cmd+0"
+  },
+  {
+    "command": "revealInExplorer",
+    "key": "cmd+0"
+  },
+  {
+    "command": "rust-analyzer.run",
+    "key": "cmd+r",
+    "when": "editorLangId == rust"
+  },
+  {
+    "command": "rust-analyzer.openDocs",
+    "key": "alt+cmd+d",
+    "when": "editorLangId == rust"
+  },
+  {
+    "command": "outline.focus",
+    "key": "alt+cmd+o"
+  },
+  {
+    "command": "workbench.action.terminal.resizePaneLeft",
+    "key": "ctrl+cmd+up",
+    "when": "terminalFocus && panelPosition != 'bottom'"
+  },
+  {
+    "command": "workbench.action.terminal.resizePaneRight",
+    "key": "ctrl+cmd+down",
+    "when": "terminalFocus && panelPosition != 'bottom'"
+  },
+  {
+    "command": "workbench.action.terminal.resizePaneUp",
+    "key": "ctrl+cmd+up",
+    "when": "terminalFocus && panelPosition == 'bottom'"
+  },
+  {
+    "command": "workbench.action.terminal.resizePaneDown",
+    "key": "ctrl+cmd+down",
+    "when": "terminalFocus && panelPosition == 'bottom'"
+  },
+  // Remove default resize terminal
+  {
+    "command": "-workbench.action.terminal.resizePaneDown",
+    "key": "ctrl+cmd+down",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "command": "-workbench.action.terminal.resizePaneLeft",
+    "key": "ctrl+cmd+left",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "command": "-workbench.action.terminal.resizePaneRight",
+    "key": "ctrl+cmd+right",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "command": "-workbench.action.terminal.resizePaneUp",
+    "key": "ctrl+cmd+up",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "command": "workbench.view.extension.copilot-labs",
+    "key": "alt+cmd+h"
+  },
+  {
+    "args": {
+      "id": "editor.inlayHints.enabled",
+      "values": [
+        {
+          "editor.inlayHints.enabled": "offUnlessPressed"
+        },
+        {
+          "editor.inlayHints.enabled": "onUnlessPressed"
+        }
+      ]
+    },
+    "command": "settings.cycle",
+    "key": "alt+cmd+y",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "toggle.diff.renderSideBySide",
+    "key": "cmd+i",
+    "when": "editorTextFocus && isInDiffEditor"
+  },
+  {
+    "command": "-workbench.action.splitEditor",
+    "key": "cmd+\\"
+  },
+  {
+    "command": "workbench.action.splitEditorOrthogonal",
+    "key": "cmd+\\",
+    "when": "editorTextFocus && isInDiffEditor"
+  },
+  {
+    "command": "editor.unfoldRecursively",
+    "key": "alt+cmd+]",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "command": "-editor.unfoldRecursively",
+    "key": "cmd+k cmd+]",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "command": "editor.action.referenceSearch.trigger",
+    "key": "shift+cmd+3",
+    "when": "editorHasReferenceProvider && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "command": "-toggleSuggestionDetails",
+    "key": "ctrl+space",
+    "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "command": "-workbench.action.terminal.sendSequence",
+    "key": "shift+enter",
+    "when": "terminalFocus && terminalShellIntegrationEnabled && !accessibilityModeEnabled && terminalShellType == 'pwsh'"
+  },
+  {
+    "command": "-workbench.action.terminal.findNext",
+    "key": "shift+enter",
+    "when": "terminalFindInputFocused && terminalHasBeenCreated || terminalFindInputFocused && terminalProcessSupported"
+  }
+]

@@ -1,29 +1,28 @@
 useGitignore: true
+allowCompoundWords: true
 ignorePaths:
-  - starship.toml
-  - vim/vimrc
-  - git/config
+  - _/git/
+  - _/firefox/
+  - _/starship/starship.toml
+  - _/vim/vimrc
+  - _/vscode/settings.json
   - biome.jsonc
+  - Dockerfile
 words:
-  - argparse
-  - buildx
   - chsh
   - ctison
   - fnox
-  - lazygit
-  - liveshare
-  - mktemp
-  - nullglob
+  - mkcd
+  - nistp
   - nushell
-  - openagent
+  - nvim
   - osascript
-  - pipefail
   - pkgs
   - popd
   - pulumi
   - pushd
-  - shellcheck
   - shopt
-  - surrealdb
   - vimrc
-  - watchexec
+ignoreRegExpList:
+  - \bcom(\.\w+)+\b
+  - \'aqua:\w+/\w+\'

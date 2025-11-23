@@ -1,0 +1,5 @@
+--style=full,-numbers,-changes
+--tabs=2
+--pager less
+# cSpell:ignore Catppuccin
+--theme 'Catppuccin Latte'

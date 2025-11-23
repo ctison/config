@@ -1,0 +1,28 @@
+[tools]
+'aqua:mutagen-io/mutagen' = 'latest'
+'aqua:nushell/nushell' = 'latest'
+bat = 'latest'
+duf = 'latest'
+eza = 'latest'
+fd = 'latest'
+fzf = 'latest'
+gh = 'latest'
+jq = 'latest'
+lazygit = 'latest'
+ripgrep = 'latest'
+starship = 'latest'
+xh = 'latest'
+zellij = 'latest'
+
+[settings]
+auto_install = false
+experimental = true
+
+unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
+unix_default_inline_shell_args = 'bash -euo pipefail -O nullglob -c'
+
+[settings.npm]
+bun = true
+
+[settings.status]
+missing_tools = 'always'

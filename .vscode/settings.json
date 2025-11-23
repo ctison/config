@@ -13,12 +13,29 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "files.associations": {
+    "**/{bat,ripgrep}/config": "shellscript",
     "**/*.json": "jsonc",
-    "**/package.json": "json",
-    "/git/config": "properties"
+    "**/git/*": "properties",
+    "**/ignore": "ignore",
+    "**/package.json": "json"
   },
   "files.eol": "\n",
   "files.insertFinalNewline": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["/_/vscode/settings.json"],
+      "url": "vscode://schemas/settings/user"
+    },
+    {
+      "fileMatch": ["/_/vscode/keybindings.json"],
+      "url": "vscode://schemas/keybindings"
+    },
+    {
+      "fileMatch": ["/_/vscode/mcp.json"],
+      "url": "vscode://schemas/mcp"
+    }
+  ],
+  "nushellLanguageServer.includeDirs": ["_/nushell/"],
   "search.exclude": {
     "**/dist": true
   },

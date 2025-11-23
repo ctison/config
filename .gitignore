@@ -11,6 +11,7 @@ __pycache__/
 .venv/
 /aqua.yaml
 *.local.*
+!*.local.template.*
 dist/
 /x/
 .husky/_/

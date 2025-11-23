@@ -4,9 +4,7 @@ plugins:
   - prettier-plugin-jsdoc
   - prettier-plugin-toml
 
-# spellchecker:ignore tsdoc
 tsdoc: true
-jsdocCommentLineStrategy: multiline
 
 overrides:
   - { files: '*.jsonc', options: { trailingComma: none } }

@@ -1,12 +1,4 @@
 *
 !/setup.sh
-
+!/_
 !/bin
-!/cargo
-!/fish
-!/git
-!/mise
-!/starship
-!/vim
-!/vscode
-!/zellij

@@ -1,0 +1,78 @@
+theme "dracula"
+
+show_startup_tips false
+show_release_notes false
+
+ui {
+  pane_frames {
+    hide_session_name true
+  }
+}
+
+default_layout "main"
+
+keybinds clear-defaults=true {
+  normal {
+    bind "Super t" { NewTab; }
+    bind "Shift Super [" { GoToPreviousTab; }
+    bind "Shift Super ]" { GoToNextTab; }
+    bind "Ctrl Super Left" { MoveTab "Left"; }
+    bind "Ctrl Super Right" { MoveTab "Right"; }
+    bind "Ctrl Super Up" { PreviousSwapLayout; }
+
+
+    bind "Super d" { NewPane "Right"; }
+    bind "Super Shift d" { NewPane "Down"; }
+    bind "Super w" { CloseFocus; }
+    bind "Alt Super Left" { MoveFocus "Left"; }
+    bind "Alt Super Right" { MoveFocus "Right"; }
+    bind "Alt Super Up" { MoveFocus "Up"; }
+    bind "Alt Super Down" { MoveFocus "Down"; }
+    bind "Ctrl Super Left" { Resize "Left"; }
+    bind "Ctrl Super Right" { Resize "Right"; }
+    bind "Ctrl Super Up" { Resize "Up"; }
+    bind "Ctrl Super Down" { Resize "Down"; }
+
+
+    bind "Shift Super e" { EditScrollback; }
+    bind "Super Up" { HalfPageScrollUp; }
+    bind "Super Down" { HalfPageScrollDown; }
+    bind "Super PageUp" { ScrollToTop; }
+    bind "Super Down" { ScrollToBottom; }
+
+    bind "Super f" { SwitchToMode "entersearch"; }
+    bind "Alt Super i" { ToggleActiveSyncTab; }
+
+    bind "Shift Super b" { TogglePaneEmbedOrFloating; }
+    bind "Super b" { ToggleFloatingPanes; }
+    bind "Super g" { ToggleFocusFullscreen; }
+
+    bind "Super s" {
+      LaunchOrFocusPlugin "zellij:strider" {
+        floating true
+      }
+    }
+
+    bind "Super Shift s" {
+      LaunchOrFocusPlugin "zellij:session-manager" {
+        floating true
+      }
+    }
+
+    bind "F2" { TogglePaneFrames; }
+  }
+
+  entersearch {
+    bind "Enter" { SwitchToMode "search"; }
+    bind "Alt Super c" { SearchToggleOption "CaseSensitivity"; }
+  }
+
+  search {
+    bind "Enter" { Search "Up"; }
+    bind "Shift Enter" { Search "Down"; }
+  }
+
+  shared_among "entersearch" "search" {
+    bind "Ctrl c" "Esc" "Super f" { SwitchToMode "normal"; }
+  }
+}

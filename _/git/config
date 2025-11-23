@@ -1,0 +1,31 @@
+[user]
+  name = Charles Tison
+  email = hello@ctison.dev
+  signingkey = key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBG7BmXgWsIgWTy8NSovgqq+6BR38nQEbwl4cblNCpv9OP20+6vRGY4ufysKCBA/2m6hI4SPQqlKvwEWU8BWS/ts=
+
+[commit]
+  gpgsign = true
+[tag]
+  gpgSign = true
+[gpg]
+  format = ssh
+
+[init]
+  defaultBranch = main
+[status]
+  submoduleSummary = true
+[pull]
+  rebase = false
+[push]
+  default = upstream
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[include]
+  path = ./config.local
+  path = ./aliases.config
+  path = ./delta.config

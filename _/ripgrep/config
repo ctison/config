@@ -1,0 +1,7 @@
+# https://docs.rs/regex/1.*/regex/#syntax
+# https://docs.rs/regex/1.*/regex/bytes/index.html#syntax
+# -P: https://www.pcre.org
+--hidden
+--glob=!.git/
+--no-require-git
+--type-not=lock

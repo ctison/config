@@ -1,0 +1,51 @@
+" ~/.vimrc
+
+set nocompatible
+set number
+set ruler
+set mouse=a
+set wildmenu
+set hlsearch
+
+set shell=/bin/bash
+
+" Status bar (at bottom)
+set laststatus=2
+hi StatusLine ctermbg=blue ctermfg=yellow
+
+" Syntax coloring
+syntax on
+colorscheme sorbet
+
+" autocmd FileType python colorscheme zellner
+
+" Toggle paste mode
+set pastetoggle=<F10>
+
+" Disable logging
+set viminfo=
+
+" Map backspace
+set backspace=indent,eol,start
+
+" https://vim.fandom.com/wiki/Indenting_source_code
+set tabstop=2
+set shiftwidth=2
+set softtabstop=0
+set expandtab
+set autoindent
+set nosmartindent
+
+" " Configure netrw
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_winsize = 20
+" let g:netrw_altv = 1
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+
+" set listchars=tab:>·,space:·
+" set list

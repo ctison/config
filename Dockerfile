@@ -1,4 +1,3 @@
-# cSpell:disable
 FROM kalilinux/kali-rolling
 
 SHELL [ "/bin/bash", "--norc", "--noprofile", "-euxo", "pipefail", "-O", "nullglob", "-c" ]
@@ -47,7 +46,7 @@ RUN chsh -s /usr/bin/fish
 
 COPY ./ /config
 RUN /config/setup.sh
-SHELL [ "/usr/bin/fish", "-lc" ]
+SHELL [ "/usr/bin/fish", "-c" ]
 
 ENV MISE_ENV=docker
 ARG MISE_ALWAYS_KEEP_DOWNLOAD=true

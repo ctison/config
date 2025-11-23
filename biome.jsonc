@@ -1,8 +1,8 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["./.biome/base.jsonc"],
+  "extends": ["./_/biome/base.jsonc"],
   "files": {
-    "includes": ["**", "!!x", "!!.husky/_"]
+    "includes": ["**", "!!x", "!!.husky/_", "!!_/firefox"]
   },
   "linter": {
     "rules": {

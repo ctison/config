@@ -1,0 +1,9 @@
+pane_frames false
+layout {
+  pane size=2 {
+    plugin location="compact-bar" borderless=true {
+      hide_swap_layout_indication "true"
+    }
+  }
+  pane
+}

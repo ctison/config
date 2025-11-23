@@ -1,0 +1,20 @@
+theme = 'focus_nova'
+
+[editor]
+bufferline = 'always'
+color-modes = true
+default-line-ending = 'lf'
+trim-final-newlines = true
+trim-trailing-whitespace = true
+popup-border = 'all'
+end-of-line-diagnostics = 'hint'
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.inline-diagnostics]
+other-lines = 'hint'
+max-diagnostics = 20
