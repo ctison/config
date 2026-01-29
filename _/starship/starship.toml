@@ -367,3 +367,7 @@ style = 'bold yellow'
 [env_var.NU_OVERLAYS]
 format = ' [\[$env_value\]]($style)'
 style = 'bold bright-black'
+
+[env_var.__LOG_LEVEL]
+format = ' [\[$env_value\]]($style)'
+style = 'bold bright-blue'

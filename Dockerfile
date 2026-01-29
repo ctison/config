@@ -20,13 +20,17 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,sharing=locked,target=/var/lib/apt <<EOF
 apt-get update
 apt-get install --autoremove --no-install-recommends -y \
+  aptitude \
+  apt-file \
   bind9-dnsutils \
   file \
-  fish \
+  iproute2 \
+  iptables \
   less \
   man \
   ncat \
   net-tools \
+  nmap \
   p7zip \
   mise \
   socat \
@@ -41,18 +45,13 @@ EOF
 
 RUN rm -rf -- ~/.* ~/* /etc/skel/
 RUN mkdir -pm 0700 ~/.config /etc/skel
-RUN useradd -D -s /usr/bin/fish
-RUN chsh -s /usr/bin/fish
 
 COPY ./ /config
-RUN /config/setup.sh
-SHELL [ "/usr/bin/fish", "-c" ]
 
 ENV MISE_ENV=docker
 ARG MISE_ALWAYS_KEEP_DOWNLOAD=true
 RUN --mount=type=cache,sharing=locked,target=/root/.local/share/mise/downloads \
-    mise install && \
-    mise install bun@latest node@lts watchexec@latest fnox@latest
+    mise install
 
-ENTRYPOINT [ "fish", "-lC" ]
+ENTRYPOINT [ "nu", "-l" ]
 CMD [ "mise trust" ]

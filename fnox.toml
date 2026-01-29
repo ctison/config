@@ -1,4 +1,5 @@
-if_missing = 'error'
+if_missing = "error"
 
-[providers]
-keychain = { type = 'keychain', service = 'fnox' }
+[providers.keychain]
+type = "keychain"
+service = "dev.ctison.config"

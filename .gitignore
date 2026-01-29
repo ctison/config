@@ -1,6 +1,4 @@
 node_modules/
-yarn-debug.log*
-yarn-error.log*
 __pycache__/
 *-checkpoint.ipynb
 *.local
@@ -17,3 +15,6 @@ dist/
 .husky/_/
 .vscode-test/
 *.vsix
+.data/
+.x/
+/target/

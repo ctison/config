@@ -8,10 +8,14 @@ ignorePaths:
   - _/vscode/settings.json
   - biome.jsonc
   - Dockerfile
+  - '*.dockerfile'
 words:
+  - cpus
   - chsh
+  - clippy
   - ctison
   - fnox
+  - ipsw
   - mkcd
   - nistp
   - nushell
@@ -22,6 +26,8 @@ words:
   - pulumi
   - pushd
   - shopt
+  - surrealdb
+  - surrealkv
   - vimrc
 ignoreRegExpList:
   - \bcom(\.\w+)+\b

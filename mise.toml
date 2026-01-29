@@ -1,16 +1,14 @@
-experimental_monorepo_root = true
+# experimental_monorepo_root = true
 
-[settings]
-task.monorepo_depth = 3
+# [monorepo]
+# config_roots = []
 
 [tools]
 bun = '1'
 node = 'lts'
 watchexec = 'latest'
 fnox = 'latest'
-
-[env]
-_.path = ['{{config_root}}/node_modules/.bin']
+rust = 'latest'
 
 [tasks.ci]
 run = 'mise -E ci run ci'

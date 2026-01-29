@@ -35,7 +35,6 @@
       "url": "vscode://schemas/mcp"
     }
   ],
-  "nushellLanguageServer.includeDirs": ["_/nushell/"],
   "search.exclude": {
     "**/dist": true
   },

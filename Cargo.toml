@@ -1,0 +1,17 @@
+[workspace]
+resolver = '3'
+members = []
+
+[workspace.package]
+edition = '2024'
+version = '0.0.0'
+
+[workspace.lints.clippy]
+type_complexity = 'allow'
+single_match = 'allow'
+collapsible_else_if = 'allow'
+
+[workspace.dependencies]
+anyhow = { version = '1.0.100' }
+clap = { version = '4.5.53', features = ['derive'] }
+tokio = { version = '1.48.0', features = ['full'] }
