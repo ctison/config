@@ -47,11 +47,12 @@ RUN rm -rf -- ~/.* ~/* /etc/skel/
 RUN mkdir -pm 0700 ~/.config /etc/skel
 
 COPY ./ /config
+RUN bash /config/setup.sh
 
 ENV MISE_ENV=docker
 ARG MISE_ALWAYS_KEEP_DOWNLOAD=true
 RUN --mount=type=cache,sharing=locked,target=/root/.local/share/mise/downloads \
     mise install
+RUN mise ls
 
-ENTRYPOINT [ "nu", "-l" ]
-CMD [ "mise trust" ]
+ENTRYPOINT [ "mise", "x", "--", "nu", "-l" ]

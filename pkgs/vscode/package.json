@@ -40,10 +40,10 @@
   "activationEvents": [],
   "devDependencies": {
     "@ctison/utils": "workspace:*",
-    "@types/vscode": "1.106.1",
+    "@types/vscode": "1.116.0",
     "@vscode/dts": "0.4.1",
     "@vscode/test-electron": "2.5.2",
-    "@vscode/vsce": "3.7.1"
+    "@vscode/vsce": "3.9.0"
   },
   "engines": {
     "vscode": "^1.0.0"

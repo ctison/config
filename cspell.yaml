@@ -10,22 +10,26 @@ ignorePaths:
   - Dockerfile
   - '*.dockerfile'
 words:
-  - cpus
   - chsh
   - clippy
+  - cpus
   - ctison
+  - dotenv
   - fnox
   - ipsw
   - mkcd
   - nistp
+  - nuon
   - nushell
   - nvim
   - osascript
   - pkgs
   - popd
+  - proxelar
   - pulumi
   - pushd
   - shopt
+  - spacetimedb
   - surrealdb
   - surrealkv
   - vimrc

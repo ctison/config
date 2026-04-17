@@ -1,8 +1,10 @@
 export const DIR = path self | path expand | path dirname -n 4
 export const DIR_NU = path self | path expand | path dirname -n 3
 export const DIR_CONFIG = $DIR | path dirname
+export const DIR_CONTANERS_STATE = $DIR_CONFIG | path join x/.docker
 export const DIR_X = $DIR_CONFIG | path dirname
 export const DIR_BIN = $DIR | path join bin/
+export const DIR_LOCAL_STATE = '.x'
 
 const SELF = path self
 const DIR_SELF = $SELF | path dirname

@@ -26,12 +26,12 @@ alias o      = ^open
 alias p      = pulumi
 alias scrcpy = scrcpy --legacy-paste
 alias t      = eza -lagMnO --group-directories-first --no-quotes --time-style=long-iso --no-time -T --hyperlink
-alias tar    = tar --no-same-o --no-same-p2
+alias tar    = tar --no-same-owner --no-same-permissions
 alias v      = vim
 alias z      = zellij
 alias ze     = zellij e
 alias zo     = zellij options
-alias ytba   = youtube-dl -f bestaudio -o '%(channel)s - %(title)s.%(ext)s'
+alias ytba   = yt-dlp -f bestaudio -o '%(channel)s - %(title)s.%(ext)s'
 # cSpell:ignore ytba scrcpy
 
 if (which rg | is-not-empty) {

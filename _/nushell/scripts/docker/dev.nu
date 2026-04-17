@@ -1,11 +1,10 @@
 export def main [
-  path?: path
-  --image (-i): string = 'ctison/dev'
   --name (-n): string
   ...rest
 ]: nothing -> nothing {
   let name = $name | default {pwd | path basename | str replace ' ' '-'}
   let mounts = []
+
   (docker run -it --rm -d --name $name --hostname $name
     ...$mounts --workdir $'/root/($name)' ...$rest
   )
@@ -21,8 +20,15 @@ export def main [
   mutagen sync terminate $name
 }
 
-export def build [--arch(-a): string, --pull(-p)]: nothing -> nothing {
+export def build [--arch(-a): string, --pull(-p), --debug(-d)]: nothing -> nothing {
   use ../utils/cfg.nu
   let arch = $arch | default { $'linux/(uname | $in.machine)' }
-  docker build --platform $arch ...(if $pull {[--pull]} else []) --load -t ctison/dev $cfg.DIR_CONFIG
+  (docker build --platform $arch
+    ...(if $pull {[--pull]} else [])
+    ...(if $debug {[--debug]} else [])
+    --load -t ctison/dev $cfg.DIR_CONFIG)
+}
+
+export def run [] {
+  docker run -it --rm ctison/dev
 }

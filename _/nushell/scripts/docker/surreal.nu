@@ -10,6 +10,10 @@ export def help [cmd: string = 'start']: nothing -> string {
   | ^bat -l help
 }
 
+export def pull []: nothing -> nothing {
+  ^docker pull surrealdb/surrealdb
+}
+
 export def start []: nothing -> any {
   let db = ls -c
   match ($db | length) {
@@ -44,6 +48,85 @@ export def start []: nothing -> any {
       error make -u {msg: $'Found ($n) containers matching'}
     }
   }
+  update-surrealist
+  update-dotenv
+}
+
+export def update-surrealist []: nothing -> nothing {
+  ls -c
+  | $in.ports.0.0
+  | parse -r ':(?<port>\d+)->'
+  | $in.port.0
+  | let port
+  let name = pwd | path basename
+  let url = $'127.0.0.1:($port)'
+  try { killall surrealist o+e>/dev/null }
+  let configPath = '~/Library/Application Support/SurrealDB/Surrealist/config.json' | path expand
+  open $configPath
+    | update $.connections {
+      let _name = $'🐳 ($name)'
+      $in | match ($in | any {|e| $e.name == $_name}) {
+        true => {
+          update $.authentication.hostname $url
+        }
+        false => {
+          append {
+            "authentication": {
+              "access": "",
+              "accessFields": [],
+              "database": "",
+              "hostname": $url,
+              "mode": "root",
+              "namespace": "",
+              "password": "admin",
+              "protocol": "ws",
+              "token": "",
+              "username": "admin"
+            },
+            "designerTableList": true,
+            "diagramAlgorithm": "default",
+            "diagramDirection": "default",
+            "diagramHoverFocus": "default",
+            "diagramLineStyle": "default",
+            "diagramLinkMode": "default",
+            "diagramMode": "default",
+            "diagramStrategy": "NETWORK_SIMPLEX",
+            "explorerTableList": true,
+            "graphqlQuery": "",
+            "graphqlShowVariables": false,
+            "graphqlVariables": "{}",
+            "icon": 24,
+            "id": (random chars -l 8),
+            "labels": [ "local" ],
+            "lastDatabase": $name,
+            "lastNamespace": $name,
+            "name": $_name,
+            "pinnedTables": [],
+            "queries": [],
+            "queryHistory": [],
+            "queryTabList": true
+          }
+        }
+      }
+    }
+    | save -f $configPath
+  ^open -a Surrealist
+  ignore
+}
+
+export def update-dotenv []: nothing -> nothing {
+  ls -c
+  | $in.ports.0.0
+  | parse -r ':(?<port>\d+)->'
+  | $in.port.0
+  | let port
+  if ('.env.local' | path exists) {
+    open -r .env.local
+    | str replace -m '^(SURREAL_ENDPOINT)=.*$' $'$1=ws://127.0.0.1:($port)'
+    | save -f .env.local
+    log info 'Updated .env.local'
+  }
+  ignore
 }
 
 export def ls [--current(-c)]: nothing -> table {
@@ -55,6 +138,7 @@ export def ls [--current(-c)]: nothing -> table {
     | where labels.x-cwd? == (pwd)
   }
 }
+
 
 export def logs [--follow(-f)]: nothing -> string {
   ls -c

@@ -49,7 +49,7 @@ export def install [--keep(-k)]: record -> nothing {
   log info $'Downloaded release: ($out)'
 
   hdiutil attach $out
-  cp -ipr /Volumes/Surrealist/Surrealist.app /Applications/Surrealist.app
+  cp -rfv /Volumes/Surrealist/Surrealist.app /Applications/
   hdiutil detach /Volumes/Surrealist
 
   if not $keep {

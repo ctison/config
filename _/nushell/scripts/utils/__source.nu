@@ -1,5 +1,6 @@
 use ./log.nu
 
+use ./cache.nu
 use ./cell-path.nu
 use ./cfg.nu
 use ./dbg.nu
@@ -16,6 +17,7 @@ use ./mise.nu
 use ./plugin.nu
 use ./preview.nu
 use ./rl.nu
+use ./semver.nu
 use ./starship.nu
 use ./state.nu
 use ./str.nu

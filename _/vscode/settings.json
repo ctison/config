@@ -83,6 +83,7 @@
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
+      // TOML
       {
         "scope": ["support.type.property-name.table.toml", "meta.table.toml"],
         "settings": {
@@ -118,6 +119,18 @@
         "settings": {
           "foreground": "#c20000"
         }
+      },
+      // SURREAL QL
+      {
+        "scope": ["keyword.control.define.surrealql"],
+        "settings": {
+          "fontStyle": "bold",
+          "foreground": "#ffaa00"
+        }
+      },
+      {
+        "scope": ["meta.embedded.block.surrealql"],
+        "settings": {}
       }
     ]
   },
@@ -216,6 +229,17 @@
   "javascript.referencesCodeLens.enabled": true,
   "javascript.suggest.completeFunctionCalls": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://biomejs.dev": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  },
   "jupyter.askForKernelRestart": false,
   "launch": {
     "compounds": [],
@@ -343,6 +367,7 @@
   "terminal.integrated.macOptionIsMeta": true,
   "terminal.integrated.sendKeybindingsToShell": true,
   "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.shellIntegration.environmentReporting": false,
   "terminal.integrated.shellIntegration.quickFixEnabled": false,
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.stickyScroll.enabled": false,
@@ -408,6 +433,7 @@
   "workbench.editor.splitInGroupLayout": "vertical",
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.useModal": "off",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.btm": "default",
@@ -417,6 +443,7 @@
   "workbench.panel.showLabels": false,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.secondarySideBar.showLabels": false,
+  "workbench.settings.editor": "json",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.startupEditor": "none",

@@ -1,4 +1,3 @@
-umask 0077
 $env.SHELL  = 'nu'
 $env.LC_ALL = 'C'
 

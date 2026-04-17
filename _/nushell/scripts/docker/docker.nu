@@ -4,7 +4,12 @@ export def ps []: nothing -> table {
   | rename -b { str kebab-case }
   | rename -c {names: name, created-at: created}
   | update created { date from-human }
-  | update labels { split row ',' | each {split row '='} | into record }
+  | update labels {
+    split row -r ','
+    | each { split row '=' }
+    | where ($in | length) == 2
+    | into record
+  }
   | update local-volumes { into int }
   | update mounts { split row ',' }
   | update ports { split row -r ', *' | compact -e | if ($in | is-empty) {''} else $in }
@@ -17,7 +22,7 @@ export def ps []: nothing -> table {
 }
 
 export def inspect [nameOrId: string]: nothing -> record {
-  docker inspect -f json $nameOrId
+  ^docker inspect -f json $nameOrId
   | from json
   | first
 }

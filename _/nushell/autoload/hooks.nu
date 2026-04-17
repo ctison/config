@@ -1,6 +1,6 @@
-$env.config.hooks.display_output = {
-  pager
-}
+# $env.config.hooks.display_output = {
+#   pager
+# }
 
 $env.config.hooks.pre_prompt ++= [{
   overlay list | enumerate | flatten

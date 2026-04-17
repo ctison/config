@@ -331,7 +331,7 @@ fish_indicator = ""
 
 [shlvl]
 disabled = false
-format = '[\[$shlvl\]](bold white) '
+format = '[\[$shlvl\]](bold yellow) '
 
 [spack]
 format = ' [$symbol$environment]($style)'
