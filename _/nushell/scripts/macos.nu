@@ -1,5 +1,8 @@
 use ./utils/str.nu dedent
 
+# cSpell:words sysadminctl
+
+# Clean some data
 export def clean [
   ...apps: string
   --all(-a)
@@ -22,11 +25,15 @@ export def clean [
         </plist>
         ' | dedent | str trim -l o> `~/Library/Application Support/.com.contextsformac.Contexts.plist`
       }
+      'monodraw' => {
+        rm `~/Library/Preferences/com.helftone.monodraw.plist`
+      }
     }
   }
   null
 }
 
+# List macos images from ipsw.me
 export def 'ipsw ls' [id?: string] {
   if $id != nil {
     http get $'https://api.ipsw.me/v4/device/($id)'

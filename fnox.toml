@@ -1,9 +1,1 @@
 if_missing = "error"
-
-[providers.keychain]
-type = "keychain"
-service = "dev.ctison.config"
-
-[secrets]
-DOCKERHUB_USER = { provider = "keychain", value = "DOCKERHUB_USER" }
-DOCKERHUB_SECRET = { provider = "keychain", value = "DOCKERHUB_SECRET" }

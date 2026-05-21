@@ -1,3 +1,4 @@
+# Remove common leading indentation from each line.
 export def dedent []: string -> string {
   let lines = $in | lines
   let regex = $lines | each {split chars -g} | reduce -f null {|line acc|

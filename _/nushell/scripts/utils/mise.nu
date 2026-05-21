@@ -4,15 +4,25 @@ use ./state.nu
 
 const STATE_VARS = [MISE_SHELL __MISE_DIFF __MISE_SESSION __MISE_SHIM]
 
-@complete external
-export def --env --wrapped main [command?: string, --help, ...rest] {
-  const commands = [deactivate shell sh]
-  match $command {
-    'activate' => { state set $.mise.env.MISE_SHELL nu }
-    $s if $s in $commands => { ^mise $command ...$rest | compute-updates | update-env }
-    _ => { ^mise $command ...$rest }
-  }
+export def --env deactivate [...$rest] {
+  ^mise deactivate ...$rest
+  | compute-updates
+  | update-env
 }
+
+export def --env shell [...$rest] {
+  ^mise shell ...$rest
+  | compute-updates
+  | update-env
+}
+
+export def --env sh [...$rest] {
+  ^mise sh ...$rest
+  | compute-updates
+  | update-env
+}
+
+
 
 export def --env activate [] {
   state set $.mise.env.MISE_SHELL nu

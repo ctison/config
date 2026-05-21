@@ -1,6 +1,4 @@
-export async function hasUnstagedModifications(
-  ...files: string[]
-): Promise<string[]> {
+export async function hasUnstagedModifications(...files: string[]): Promise<string[]> {
   const results = await Promise.all(
     files.map(async (file) => {
       const gitStatus = await Bun.$`git status --porcelain ${file}`.text();
@@ -13,9 +11,7 @@ export async function hasUnstagedModifications(
   return results.filter((file) => typeof file === 'string');
 }
 
-export async function discardUnstagedModifications(
-  ...files: string[]
-): Promise<void> {
+export async function discardUnstagedModifications(...files: string[]): Promise<void> {
   await Bun.$`git checkout -- ${files}`;
 }
 

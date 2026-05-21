@@ -325,9 +325,10 @@ symbol = 'scala:'
 [shell]
 format = '[$indicator]($style)'
 style = 'green bold'
-disabled = true
-nu_indicator = "Ξ"
-fish_indicator = ""
+disabled = false
+nu_indicator = ''
+fish_indicator = 'fish'
+zsh_indicator = 'zsh'
 
 [shlvl]
 disabled = false

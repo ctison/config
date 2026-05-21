@@ -9,24 +9,13 @@ source ./scripts/utils/__source.nu
 const self = path self | path expand
 log scope --enter $self
 
-$env.PATH = [
-  $cfg.DIR_BIN
-] ++ $env.PATH
-
 env-path add ...[
   $cfg.DIR_BIN
   /sbin /usr/sbin /bin /usr/bin
   ~/.cargo/bin ~/go/bin
-  ~/.local/bin ~/.docker/bin
+  ~/.local/bin ~/.docker/bin ~/.bun/bin
   /opt/homebrew/bin
 ]
-
-if ($env.TERM_PROGRAM? == 'vscode') {
-  env-path add ...[
-    '/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/'
-    '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/'
-  ]
-}
 
 if (which -a mise | where type == external | is-not-empty) {
   mise activate
@@ -49,6 +38,7 @@ if-tool-run carapace {
     CARAPACE_HIDDEN: 2
     CARAPACE_MERGEFLAGS: 1
     CARAPACE_NOSPACE: '*'
+    CARAPACE_BRIDGES: 'fish'
   }
   with-env {
     CARAPACE_ENV: 0

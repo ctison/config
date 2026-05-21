@@ -11,8 +11,7 @@ export namespace build {
 
 export async function build({ packageDir, ...opts }: build.Options) {
   if (opts?.tsconfigPath !== null) {
-    const tsconfigPath =
-      opts?.tsconfigPath ?? `${packageDir}/tsconfig.build.json`;
+    const tsconfigPath = opts?.tsconfigPath ?? `${packageDir}/tsconfig.build.json`;
     await Bun.$`tsc --build ${tsconfigPath}`;
   }
 

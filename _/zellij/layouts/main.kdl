@@ -5,5 +5,7 @@ layout {
       hide_swap_layout_indication "true"
     }
   }
-  pane
+  pane {
+    focus true
+  }
 }

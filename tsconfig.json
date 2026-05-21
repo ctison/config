@@ -23,6 +23,7 @@
     },
     "resolveJsonModule": true,
     "rewriteRelativeImportExtensions": true,
+    "types": ["*"],
 
     // Emit
     "declaration": true,

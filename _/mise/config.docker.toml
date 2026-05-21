@@ -1,3 +1,8 @@
 [settings]
 trusted_config_paths = ['/']
 disable_tools = ['aqua:mutagen-io/mutagen']
+
+[tools]
+# cSpell:disable
+'github:0xMassi/webclaw' = 'latest'
+# cSpell:enable

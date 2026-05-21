@@ -1,6 +1,9 @@
-# $env.config.hooks.display_output = {
-#   pager
-# }
+$env.config.hooks.display_output = {
+  $env.__OUT = [$in]
+  $in | table
+}
+
+def o [] { $env.__OUT.0 }
 
 $env.config.hooks.pre_prompt ++= [{
   overlay list | enumerate | flatten
@@ -24,8 +27,9 @@ $env.config.hooks.pre_execution ++= [{
 # Display current hooks
 def hooks [] {
   $env.config.hooks
-  | update pre_prompt {each {dbg format}}
-  | update pre_execution {each {dbg format}}
-  | update display_output {dbg format}
-  | table -e | log info $'$env.config.hooks' $in
+  | update display_output {dbg --drop}
+  | update pre_prompt {each {dbg --drop}}
+  | update pre_execution {each {dbg --drop}}
+  | table -e
+  | log info '$env.config.hooks' $in
 }

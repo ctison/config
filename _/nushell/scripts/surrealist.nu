@@ -1,11 +1,12 @@
 use ./gh
 use ./utils/log.nu
 
-export def update []: nothing -> nothing {
-  let v = try {
+export def update [--keep(-k)]: nothing -> nothing {
+  let path = '/Applications/Surrealist.app/Contents/Info.plist'
+  let v = if ($path | path exists) {
     open /Applications/Surrealist.app/Contents/Info.plist
     | get CFBundleShortVersionString
-  } catch { 'N/A' }
+  } else 'N/A'
 
   log info $'Current version: ($v)'
 
@@ -21,7 +22,7 @@ export def update []: nothing -> nothing {
     loop {
       match (input 'Install (y/n): ') {
         'y' => {
-          $latestRelease | install
+          $latestRelease | install --keep=($keep)
           break
         }
         'n' => { break }
@@ -49,6 +50,7 @@ export def install [--keep(-k)]: record -> nothing {
   log info $'Downloaded release: ($out)'
 
   hdiutil attach $out
+  rm -rf /Applications/Surrealist.app
   cp -rfv /Volumes/Surrealist/Surrealist.app /Applications/
   hdiutil detach /Volumes/Surrealist
 

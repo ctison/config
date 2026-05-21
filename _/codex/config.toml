@@ -1,0 +1,27 @@
+personality = 'pragmatic'
+oss_provider = 'ollama'
+
+model_provider = 'mlx'
+model = 'mlx-community/Qwen3.6-35B-A3B-4bit'
+
+[model_providers.dmr]
+name = 'Docker Model Runner'
+base_url = 'http://127.0.0.1:12434'
+
+[model_providers.mlx]
+name = 'MLX'
+base_url = 'http://127.0.0.1:7777/v1'
+
+[tui]
+status_line = [
+  'model-with-reasoning',
+  'current-dir',
+  'run-state',
+  'context-remaining',
+  'context-used',
+  'used-tokens',
+  'total-input-tokens',
+  'total-output-tokens',
+  'session-id',
+]
+status_line_use_colors = true

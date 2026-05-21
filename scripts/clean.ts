@@ -13,12 +13,7 @@ const {
   },
 });
 
-const globsToClean = [
-  'node_modules/',
-  '.turbo/',
-  '**/node_modules/',
-  '**/.turbo/',
-];
+const globsToClean = ['node_modules/', '.turbo/', '**/node_modules/', '**/.turbo/'];
 
 const promises: Promise<unknown>[] = [];
 
@@ -26,8 +21,7 @@ if (apply) {
   await Bun.$`bun run clean`;
 }
 
-const paths =
-  Bun.$`git ls-files -o --directory -x .vscode-test/ ${globsToClean}`.lines();
+const paths = Bun.$`git ls-files -o --directory -x .vscode-test/ ${globsToClean}`.lines();
 
 for await (const path of paths) {
   if (path.length > 0) {

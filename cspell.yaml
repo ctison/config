@@ -1,18 +1,18 @@
 useGitignore: true
 allowCompoundWords: true
 ignorePaths:
-  - _/git/
   - _/firefox/
+  - _/git/
   - _/starship/starship.toml
-  - _/vim/vimrc
+  - _/vim/.vimrc
   - _/vscode/settings.json
+  - '*-lock.json'
+  - '*.dockerfile'
   - biome.jsonc
   - Dockerfile
-  - '*.dockerfile'
 words:
   - chsh
   - clippy
-  - cpus
   - ctison
   - dotenv
   - fnox
@@ -22,16 +22,15 @@ words:
   - nuon
   - nushell
   - nvim
+  - ollama
   - osascript
   - pkgs
-  - popd
-  - proxelar
   - pulumi
-  - pushd
+  - qwen
   - shopt
-  - spacetimedb
   - surrealdb
   - surrealkv
+  - tombi
   - vimrc
 ignoreRegExpList:
   - \bcom(\.\w+)+\b

@@ -1,3 +1,6 @@
 #:schema https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+
+# https://alacritty.org/config-alacritty.html
+
 [general]
 import = ['./base.toml', './keybinds.toml', './alacritty.local.toml']

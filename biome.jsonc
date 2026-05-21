@@ -79,6 +79,21 @@
           }
         }
       }
+    },
+    {
+      // Remove once typescript v6 is supported
+      // https://biomejs.dev/internals/language-support/#typescript-support
+      "includes": ["**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnresolvedImports": "info"
+          },
+          "suspicious": {
+            "noImportCycles": "info"
+          }
+        }
+      }
     }
   ]
 }

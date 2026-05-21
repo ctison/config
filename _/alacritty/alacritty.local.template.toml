@@ -1,3 +1,9 @@
 #:schema https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+#:tombi schema.strict = false
+# cSpell:words Fira
+
+env.SHELL = '/path/to/nu'
+general.ipc_socket = true
 general.live_config_reload = true
 terminal.shell = '/path/to/zellij'
+font.normal.family = 'FiraCode Nerd Font Mono'

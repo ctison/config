@@ -1,3 +1,5 @@
+// https://zellij.dev/documentation/options.html
+
 theme "dracula"
 
 show_startup_tips false
@@ -5,7 +7,7 @@ show_release_notes false
 
 ui {
   pane_frames {
-    hide_session_name true
+    hide_session_name false
   }
 }
 
@@ -16,18 +18,23 @@ keybinds clear-defaults=true {
     bind "Super t" { NewTab; }
     bind "Shift Super [" { GoToPreviousTab; }
     bind "Shift Super ]" { GoToNextTab; }
-    bind "Ctrl Super Left" { MoveTab "Left"; }
-    bind "Ctrl Super Right" { MoveTab "Right"; }
     bind "Ctrl Super Up" { PreviousSwapLayout; }
-
 
     bind "Super d" { NewPane "Right"; }
     bind "Super Shift d" { NewPane "Down"; }
+    bind "Super s" { NewPane; }
+    bind "Super Shift s" { NewPane "stacked"; }
     bind "Super w" { CloseFocus; }
     bind "Alt Super Left" { MoveFocus "Left"; }
     bind "Alt Super Right" { MoveFocus "Right"; }
     bind "Alt Super Up" { MoveFocus "Up"; }
     bind "Alt Super Down" { MoveFocus "Down"; }
+
+    bind "Alt Shift Left" { MovePane "Left"; }
+    bind "Alt Shift Right" { MovePane "Right"; }
+    bind "Alt Shift Up" { MovePane "Up"; }
+    bind "Alt Shift Down" { MovePane "Down"; }
+
     bind "Ctrl Super Left" { Resize "Left"; }
     bind "Ctrl Super Right" { Resize "Right"; }
     bind "Ctrl Super Up" { Resize "Up"; }
@@ -43,23 +50,20 @@ keybinds clear-defaults=true {
     bind "Super f" { SwitchToMode "entersearch"; }
     bind "Alt Super i" { ToggleActiveSyncTab; }
 
-    bind "Shift Super b" { TogglePaneEmbedOrFloating; }
-    bind "Super b" { ToggleFloatingPanes; }
     bind "Super g" { ToggleFocusFullscreen; }
+    bind "Super b" { ToggleFloatingPanes; }
+    bind "Shift Super b" { TogglePaneEmbedOrFloating; }
+    bind "Super p" { TogglePanePinned; }
 
-    bind "Super s" {
-      LaunchOrFocusPlugin "zellij:strider" {
-        floating true
-      }
-    }
-
-    bind "Super Shift s" {
+    bind "F1" {
       LaunchOrFocusPlugin "zellij:session-manager" {
         floating true
       }
     }
+  }
 
-    bind "F2" { TogglePaneFrames; }
+  shared_among "renametab" "renamepane" "session" {
+    bind "Esc" { SwitchToMode "normal"; }
   }
 
   entersearch {

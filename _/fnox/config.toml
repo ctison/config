@@ -1,0 +1,19 @@
+if_missing = 'error'
+
+[providers]
+keychain = { type = 'keychain', service = 'dev.ctison.config' }
+
+[profiles.binance.secrets]
+BINANCE_API_KEY = { provider = 'keychain', value = 'BINANCE_API_KEY' }
+BINANCE_SECRET_KEY = { provider = 'keychain', value = 'BINANCE_SECRET_KEY' }
+
+[profiles.dockerhub.secrets]
+DOCKERHUB_USER = { provider = 'keychain', value = 'DOCKERHUB_USER' }
+DOCKERHUB_SECRET = { provider = 'keychain', value = 'DOCKERHUB_SECRET' }
+
+[profiles.github.secrets]
+GITHUB_TOKEN = { provider = 'keychain', value = 'GITHUB_TOKEN' }
+
+[profiles.sl.secrets]
+SL_URL = { provider = 'keychain', value = 'SL_URL' }
+SL_KEY = { provider = 'keychain', value = 'SL_KEY' }

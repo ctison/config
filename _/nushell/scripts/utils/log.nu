@@ -26,6 +26,8 @@ export def complete-log-level []: nothing -> list<string> { $LOG_LEVELS }
 
 export def get-current-log-level []: nothing -> string { state get -o $STATE_KEY | default info }
 
+export def is-debug []: nothing -> bool { (get-current-log-level) == 'debug' }
+
 export def --env set-log-level [level: string@complete-log-level]: nothing -> nothing {
   $level | state set $STATE_KEY | ignore
 }

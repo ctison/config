@@ -2,9 +2,9 @@ use ../utils/log.nu
 use ../utils/cache.nu
 use ./docker.nu
 use ./api.nu
-use ../utils/cfg.nu DIR_CONFIG
+use ../utils/cfg.nu DIR_STATE_DOCKER
 
-const DIR_DATA = $DIR_CONFIG | path join x/.docker/elk
+const DIR_DATA = $DIR_STATE_DOCKER | path join elk
 
 const LABEL_APP = $.'dev.app'
 const LABEL_CWD = $.'dev.cwd'
@@ -42,13 +42,17 @@ export def start [--force(-f)]: nothing -> any {
   try { ^docker network create elk o+e> /dev/null }
   log info "Created network 'elk'"
 
-  if (docker ps | where name == elasticsearch | length) == 0 {
+  let cElasticsearch = docker ps | where name == elasticsearch
+  if ($cElasticsearch | is-empty) {
     (^docker run -d --name elasticsearch
       --network elk
       -m 1GB
       -p 127.0.0.1:9200:9200
       elasticsearch:($tags.elasticsearch)
     )
+    log info 'Started elasticsearch on https://127.0.0.1:9200'
+  } else if ($cElasticsearch.0.state == 'exited') {
+    ^docker start elasticsearch
     log info 'Started elasticsearch on https://127.0.0.1:9200'
   }
 
@@ -87,7 +91,8 @@ export def start [--force(-f)]: nothing -> any {
   log info $'Password: ($password)'
 
 
-  if (docker ps | where name == kibana | length) == 0 {
+  let cKibana = docker ps | where name == kibana
+  if ($cKibana | is-empty) {
     let token = try {
       open -r ($DIR_DATA)/enrollment-token-kibana
     } catch {
@@ -115,9 +120,13 @@ export def start [--force(-f)]: nothing -> any {
     ^docker exec -it kibana kibana-setup -t $token
     ^docker restart kibana
     log info 'Started kibana on http://127.0.0.1:5601'
+  } else if ($cKibana.0.state == 'exited') {
+    ^docker start kibana
+    log info 'Started kibana on http://127.0.0.1:5601'
   }
 
-  if (docker ps | where name == apm-server | length) == 0 {
+  let cApmServer = docker ps | where name == apm-server
+  if ($cApmServer | is-empty) {
     (^docker create --name apm-server
       --network elk
       -p 127.0.0.1:8200:8200
@@ -141,6 +150,9 @@ export def start [--force(-f)]: nothing -> any {
     ^docker cp ($tmpDir)/apm-server.yml apm-server:(docker inspect apm-server | $in.Config.WorkingDir)/apm-server.yml
     rm -rf ($tmpDir)
     docker start apm-server
+    log info 'Started apm-server on 127.0.0.1:8200'
+  } else if ($cApmServer.0.state == 'exited') {
+    ^docker start apm-server
     log info 'Started apm-server on 127.0.0.1:8200'
   }
 

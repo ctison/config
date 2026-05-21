@@ -1,4 +1,5 @@
 #:schema https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+
 [keyboard]
 bindings = [
   { mods = 'Shift|Control', key = 'Space', action = 'ReceiveChar' },

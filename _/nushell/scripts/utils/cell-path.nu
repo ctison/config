@@ -1,9 +1,8 @@
+# Join cell-paths
 export def join [
   ...cell_paths: cell-path
   --optional(-o)
-]: [
-  oneof<nothing, cell-path, list<cell-path>> -> cell-path
-] {
+]: oneof<nothing, cell-path, list<cell-path>> -> cell-path {
   append $cell_paths
   | flatten
   | each { match ($in | describe) {

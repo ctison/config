@@ -1,5 +1,5 @@
-use ../utils/log.nu
 use ../utils/cfg.nu
+use ../utils/log.nu
 export use ./notifs.nu
 export use ./starring.nu
 

@@ -1,6 +1,6 @@
-use ../utils/cfg.nu DIR_CONTANERS_STATE
+use ../utils/cfg.nu DIR_STATE_DOCKER
 
-const DIR_VOLUME = $DIR_CONTANERS_STATE | path join mitmproxy
+const DIR_VOLUME = $DIR_STATE_DOCKER | path join mitmproxy
 const IMAGE = 'mitmproxy/mitmproxy'
 
 export def pull [] {

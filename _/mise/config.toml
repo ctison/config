@@ -1,18 +1,59 @@
+# cSpell:disable
 [tools]
-'aqua:mutagen-io/mutagen' = 'latest'
-'aqua:nushell/nushell' = '0.110.0'
+age = 'latest'
+aube = 'latest'
 bat = 'latest'
+carapace = 'latest'
+copilot = 'latest'
+dive = 'latest'
 duf = 'latest'
+dust = { version = 'latest', os = "linux" }
 eza = 'latest'
 fd = 'latest'
+fnox = 'latest'
 fzf = 'latest'
-# gh = 'latest'
+gh = 'latest'
+helix = 'latest'
+jcode = 'latest'
 jq = 'latest'
+k9s = 'latest'
 lazygit = 'latest'
+mutagen = 'latest'
+nushell = 'latest'
 ripgrep = 'latest'
+shellcheck = 'latest'
 starship = 'latest'
+uv = 'latest'
 xh = 'latest'
 zellij = 'latest'
+
+[tool_alias]
+age = 'aqua:FiloSottile/age'
+aube = 'github:endevco/aube'
+bat = 'aqua:sharkdp/bat'
+carapace = 'aqua:carapace-sh/carapace-bin'
+copilot = 'github:github/copilot-cli'
+dive = 'github:wagoodman/dive'
+duf = 'aqua:muesli/duf'
+dust = 'github:bootandy/dust'
+eza = 'asdf:eza'
+fd = 'aqua:sharkdp/fd'
+fzf = 'aqua:junegunn/fzf'
+gh = 'github:cli/cli'
+helix = 'aqua:helix-editor/helix'
+jq = 'aqua:jqlang/jq'
+jcode = 'github:1jehuang/jcode'
+k9s = 'aqua:derailed/k9s'
+lazygit = 'aqua:jesseduffield/lazygit'
+mutagen = 'aqua:mutagen-io/mutagen'
+nushell = 'aqua:nushell/nushell'
+ripgrep = 'aqua:BurntSushi/ripgrep'
+shellcheck = 'aqua:koalaman/shellcheck'
+starship = 'aqua:starship/starship'
+uv = 'aqua:astral-sh/uv'
+xh = 'aqua:ducaale/xh'
+zellij = 'aqua:zellij-org/zellij'
+# cSpell:enable
 
 [settings]
 auto_install = false
@@ -20,9 +61,6 @@ experimental = true
 
 unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
 unix_default_inline_shell_args = 'bash -euo pipefail -O nullglob -c'
-
-[settings.npm]
-bun = true
 
 [settings.status]
 missing_tools = 'always'

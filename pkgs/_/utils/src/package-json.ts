@@ -10,8 +10,8 @@ export namespace findNearestPackageJson {
      */
     from?: string;
     /**
-     * If true, returns the directory containing package.json instead of the
-     * path to package.json.
+     * If true, returns the directory containing package.json instead of the path to
+     * package.json.
      *
      * @default false
      */

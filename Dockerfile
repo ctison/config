@@ -28,11 +28,11 @@ apt-get install --autoremove --no-install-recommends -y \
   iptables \
   less \
   man \
+  mise \
   ncat \
   net-tools \
   nmap \
   p7zip \
-  mise \
   socat \
   ssh \
   unrar \
@@ -51,8 +51,8 @@ RUN bash /config/setup.sh
 
 ENV MISE_ENV=docker
 ARG MISE_ALWAYS_KEEP_DOWNLOAD=true
-RUN --mount=type=cache,sharing=locked,target=/root/.local/share/mise/downloads \
+RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
+    --mount=type=cache,sharing=locked,target=/root/.local/share/mise/downloads \
     mise install
-RUN mise ls
 
 ENTRYPOINT [ "mise", "x", "--", "nu", "-l" ]

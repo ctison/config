@@ -18,4 +18,4 @@ export LESS_TERMCAP_so
 export LESS_TERMCAP_ue
 export LESS_TERMCAP_us
 
-exec less -R "$@"
+exec less -Rj.5 "$@"

@@ -1,8 +1,11 @@
 use ./npm.nu
 use ./utils/log.nu
 
-export def find-root-package []: [nothing -> path] {
-  mut path = pwd
+# Find the root package.json from
+export def find-root-package [
+  dir?: path
+]: [nothing -> path] {
+  mut path = $dir | default { pwd }
   loop {
     try {
       let packageJsonPath = $path | path join 'package.json'
@@ -44,4 +47,12 @@ export def add-to-catalog [
   | items {|name| $'"($name)": "catalog:($catalog)",' }
   | str join (char newline)
   | tee { try { pbcopy } }
+}
+
+export def run --wrapped [...rest] {
+  if ($rest | is-empty) {
+    open ./package.json | $in.scripts
+  } else {
+    run-external bun run ...$rest
+  }
 }
