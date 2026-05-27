@@ -44,12 +44,45 @@ $env.config.keybindings ++= [{
   mode: emacs
   event: {
     send: ExecuteHostCommand
-    cmd: 'show_help'
+    cmd: '__kb_help'
+  }
+}, {
+  name: job_unfreeze
+  keycode: char_z
+  modifier: control
+  mode: emacs
+  event: {
+    send: ExecuteHostCommand
+    cmd: 'job unfreeze'
+  }
+}, {
+  name: tab_name
+  modifier: alt
+  keycode: char_n
+  mode: emacs
+  event: {
+    send: ExecuteHostCommand
+    cmd: 'z ac rename-tab ([~ (pwd | path relative-to ~)] | path join)'
   }
 }]
 
-def show_help []: nothing -> nothing {
-  ast -j (commandline)
+const HELP_HISTORY_FILE = $nu.default-config-dir | path join .help_history
+
+def _help []: nothing -> nothing {
+  print ''
+  loop {
+    try {
+      input --history-file $HELP_HISTORY_FILE 'Search: '
+      | if ($in | is-empty) { break } else $in
+      | h ...($in | split words)
+    }
+  }
+}
+
+def __kb_help []: nothing -> nothing {
+  commandline
+  | if $in == '' { return (_help) } else $in
+  | ast -j $in
   | $in.block
   | from json
   | let json
@@ -69,7 +102,8 @@ def show_help []: nothing -> nothing {
     if ($e.pipe? | is-not-empty) {
       $e.pipe?.start <= $cursor and $cursor <= $e.pipe.end
     } else {
-      $e.span.start <= $cursor and ($cursor <= $e.span.end or $i + 1 >= $length)
+      ($e.span.start <= $cursor and ($cursor <= $e.span.end or $i + 1 >= $length)
+      or $i == 0 and $cursor < $e.span.start)
     }
   }
   | match $in.0.item.expr {
@@ -77,11 +111,16 @@ def show_help []: nothing -> nothing {
       [$internal.head.span_source]
     }
     {ExternalCall: $external} => {
-      [$external.0.span.span_source]
+      [
+        $external.0.span.span_source
+        ...(
+          $external
+          | slice 1..
+          | each -f { each { $in.Regular?.span.span_source } }
+        )
+      ]
     }
   }
-  | if ($in | is-not-empty) { h ...$in } else {
-    $json | to yaml | code -
-  }
+  | if ($in | is-not-empty) { h ...$in }
   return
 }

@@ -1,0 +1,41 @@
+# cSpell:disable
+[tools]
+age = 'latest'
+aube = 'latest'
+bat = 'latest'
+bun = 'latest'
+copilot = 'latest'
+dive = 'latest'
+duf = 'latest'
+edit = 'latest'
+eza = 'latest'
+fd = 'latest'
+fnox = 'latest'
+gh = 'latest'
+k9s = 'latest'
+lazygit = 'latest'
+mutagen = 'latest'
+nushell = 'latest'
+ripgrep = 'latest'
+rust = 'latest'
+shellcheck = 'latest'
+'github:skim-rs/skim' = 'latest'
+starship = 'latest'
+uv = 'latest'
+xh = 'latest'
+zellij = 'latest'
+
+[tool_alias]
+nushell = 'aqua:nushell/nushell'
+# cSpell:enable
+
+[settings]
+auto_install = false
+experimental = true
+http_retries = 0
+
+unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
+unix_default_inline_shell_args = 'bash -euo pipefail -O nullglob -c'
+
+[settings.status]
+missing_tools = 'always'

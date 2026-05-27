@@ -5,5 +5,5 @@
 env.SHELL = '/path/to/nu'
 general.ipc_socket = true
 general.live_config_reload = true
-terminal.shell = '/path/to/zellij'
+terminal.shell = { program = '/path/to/zellij', args = [] }
 font.normal.family = 'FiraCode Nerd Font Mono'

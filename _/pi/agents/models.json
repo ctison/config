@@ -1,25 +1,12 @@
+// https://pi.dev/docs/latest
 {
   "providers": {
-    "dmr": {
-      "baseUrl": "http://127.0.0.1:12434/v1",
-      "api": "openai-completions",
-      "apiKey": "UNSECURE",
-      "models": [
-        { "id": "ai/qwen3:latest" },
-        { "id": "ai/gpt-oss:latest" },
-        { "id": "ai/gemma3:latest" },
-        { "id": "docker.io/ai/gemma4:26B" },
-        { "id": "docker.io/ai/gemma4:E4B" },
-        { "id": "docker.io/ai/qwen3.6:35B-A3B-UD-Q4_K_M" }
-      ]
-    },
     "mlx": {
-      "baseUrl": "http://127.0.0.1:7777",
+      "baseUrl": "http://127.0.0.1:7777/v1",
       "api": "openai-completions",
       "apiKey": "UNSECURE",
       "models": [
-        { "id": "mlx-community/Qwen3.6-35B-A3B-8bit" },
-        { "id": "mlx-community/Qwen3.6-35B-A3B-4bit" }
+        { "id": "qwen3", "reasoning": true, "contextWindow": 262144, "maxTokens": 262144 }
       ]
     }
   }

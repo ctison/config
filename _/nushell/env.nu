@@ -2,13 +2,20 @@ $env.SHELL  = 'nu'
 $env.LC_ALL = 'C'
 
 @complete external
-def --wrapped nu [...rest] { ^$nu.current-exe ...$rest }
+def nu [] { ^($nu.current-exe) }
 
-source ./scripts/utils/__source.nu
+const SELF = path self
+source ($SELF | path expand | path dirname | path join 00 _.nu)
+source ($SELF | path expand | path dirname | path join 01 _.nu)
+unlet $SELF
 
-const self = path self | path expand
-log scope --enter $self
+# Restore state after reload
+do --env {
+  $env.__RELOAD? | if $in != null { state set $. { $in | from json } }
+  hide-env -i __RELOAD
+}
 
+# Configure $PATH
 env-path add ...[
   $cfg.DIR_BIN
   /sbin /usr/sbin /bin /usr/bin
@@ -17,35 +24,20 @@ env-path add ...[
   /opt/homebrew/bin
 ]
 
-if (which -a mise | where type == external | is-not-empty) {
-  mise activate
-}
+const __STARSHIP = $nu.cache-dir | path join starship.nu
 
-mkdir $nu.cache-dir
-const starship = $nu.cache-dir | path join 'starship.nu'
-const carapace = $nu.cache-dir | path join 'carapace.nu'
-
-touch $starship $carapace
-
-if-tool-run starship {
-  starship init nu | save -f $starship
-  log debug $'Saved starship to (fmt link $starship)'
-}
-
-if-tool-run carapace {
-  load-env {
-    CARAPACE_EXCLUDES: 'eza'
-    CARAPACE_HIDDEN: 2
-    CARAPACE_MERGEFLAGS: 1
-    CARAPACE_NOSPACE: '*'
-    CARAPACE_BRIDGES: 'fish'
+# If interactive
+if $nu.is-interactive {
+  # Activate mise
+  if (has-tool mise) {
+    touch ~/.config/mise/config
+    mise activate
   }
-  with-env {
-    CARAPACE_ENV: 0
-  } {
-    (carapace _carapace nushell) | save -f $carapace
-    log debug $'Saved carapace to (fmt link $carapace)'
+
+  # Save dynamic code to files that will be sourced by `config.nu`
+  mkdir $nu.cache-dir
+
+  if (has-tool starship) {
+    starship init nu | save -f $__STARSHIP
   }
 }
-
-log scope --exit $self

@@ -1,17 +1,21 @@
 $env.config.hooks.display_output = {
-  $env.__OUT = [$in]
-  $in | table
+  if ($in | describe) == nothing { return } else $in
+  | state set last-value { $in }
+  | table -e
 }
 
-def o [] { $env.__OUT.0 }
+def o [] { state get last-value }
 
 $env.config.hooks.pre_prompt ++= [{
+  if $env.ZELLIJ_PANE_ID? != null {
+    zellij ac rename-tab (path relative-to-home)
+  }
   overlay list | enumerate | flatten
   | where active and name != zero and index != 0
   | if ($in | length) > 0 {
     $env.NU_OVERLAYS = $in | get name | str join ','
   }
-  log get-current-log-level
+  log current-log-level
   | if ($in != 'info') {
     $env.__LOG_LEVEL = $in
   }

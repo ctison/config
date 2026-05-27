@@ -63,6 +63,8 @@
   "chat.useCustomizationsInParentRepositories": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewSessions.orientation": "stacked",
+  "containers.containerClient": "com.microsoft.visualstudio.containers.docker",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
   "debug.allowBreakpointsEverywhere": true,
   "debug.console.acceptSuggestionOnEnter": "on",
   "dev.containers.defaultExtensions": [],
@@ -113,14 +115,7 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.fileNesting.enabled": false,
-  "explorer.fileNesting.patterns": {
-    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-    "*.jsx": "${capture}.js",
-    "*.ts": "${capture}.js",
-    "*.tsx": "${capture}.ts",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, turbo.json",
-    "tsconfig.json": "tsconfig.*.json"
-  },
+  "explorer.fileNesting.patterns": {},
   "extensions.allowOpenInModalEditor": true,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
@@ -214,6 +209,8 @@
   "mise.checkForNewMiseVersion": false,
   "mise.configureExtensionsAutomatically": true,
   "mise.configureExtensionsUseSymLinks": true,
+  "mise.enableCodeLens": false,
+  "mise.showToolVersionsDecorations": false,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"

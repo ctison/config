@@ -7,10 +7,7 @@
 bun = '1'
 node = 'lts'
 watchexec = 'latest'
-fnox = 'latest'
 rust = 'latest'
-copilot = 'latest'
-rtk = 'latest'
 
 [tasks.ci]
 run = 'mise -E ci run ci'

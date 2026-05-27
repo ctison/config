@@ -18,7 +18,6 @@ keybinds clear-defaults=true {
     bind "Super t" { NewTab; }
     bind "Shift Super [" { GoToPreviousTab; }
     bind "Shift Super ]" { GoToNextTab; }
-    bind "Ctrl Super Up" { PreviousSwapLayout; }
 
     bind "Super d" { NewPane "Right"; }
     bind "Super Shift d" { NewPane "Down"; }
@@ -30,10 +29,10 @@ keybinds clear-defaults=true {
     bind "Alt Super Up" { MoveFocus "Up"; }
     bind "Alt Super Down" { MoveFocus "Down"; }
 
-    bind "Alt Shift Left" { MovePane "Left"; }
-    bind "Alt Shift Right" { MovePane "Right"; }
-    bind "Alt Shift Up" { MovePane "Up"; }
-    bind "Alt Shift Down" { MovePane "Down"; }
+    bind "Super Shift Left" { MovePane "Left"; }
+    bind "Super Shift Right" { MovePane "Right"; }
+    bind "Super Shift Up" { MovePane "Up"; }
+    bind "Super Shift Down" { MovePane "Down"; }
 
     bind "Ctrl Super Left" { Resize "Left"; }
     bind "Ctrl Super Right" { Resize "Right"; }

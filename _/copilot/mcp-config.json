@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ctx7": {
+      "type": "local",
+      "command": "mcp-ctx7",
+      "tools": ["*"]
+    }
+  }
+}

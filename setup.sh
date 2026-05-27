@@ -30,7 +30,7 @@ ft_link 'fish/*' ~/.config/fish/
 ft_link fnox ~/.config/
 ft_link git ~/.config/
 ft_link 'helix/*' ~/.config/helix/
-ft_link mise ~/.config/
+ft_link 'mise/*' ~/.config/mise/
 ft_link 'opencode/*' ~/.config/opencode/
 ft_link pi/'agents/*' ~/.config/pi/agents/
 ft_link starship/starship.toml ~/.config/

@@ -17,7 +17,10 @@ words:
   - dotenv
   - fnox
   - ipsw
+  - kreuzberg
+  - kreuzcrawl
   - mkcd
+  - msgpackz
   - nistp
   - nuon
   - nushell
@@ -25,6 +28,7 @@ words:
   - ollama
   - osascript
   - pkgs
+  - psub
   - pulumi
   - qwen
   - shopt

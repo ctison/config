@@ -34,7 +34,7 @@
 
   // Open chat in editor
   { "key": "cmd+shift+i", "command": "workbench.action.openChat" },
-  { "key": "ctrl+`", "command": "workbench.panel.chat" },
+  { "key": "ctrl+`", "command": "workbench.action.togglePanel" },
 
   // Show hover
   { "key": "alt+cmd+/", "command": "editor.action.showHover", "when": "editorTextFocus" },
@@ -160,6 +160,9 @@
   { "key": "f1", "when": "focusedView == workbench.scm", "command": "git.stageFile" },
   { "key": "cmd+F1", "when": "focusedView == workbench.scm", "command": "git.unstageFile" },
   { "key": "shift+shift+F1", "command": "git.viewChanges" },
+
+  // Join all editors
+  { "key": "f18", "command": "workbench.action.joinAllGroups" },
 
   // Reload
   { "key": "shift+f19", "command": "workbench.action.restartExtensionHost" },

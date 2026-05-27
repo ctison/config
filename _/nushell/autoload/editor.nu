@@ -10,11 +10,8 @@ $env.ENV_CONVERSIONS = $env.ENV_CONVERSIONS | merge (
 
 # Setup $env.{VISUAL,EDITOR}
 do --env {
-  let $editors = [hx, nvim, vim]
-  let visuals = ['zed -w']
-    | do-if ($env.TERM_PROGRAM? == 'vscode') {
-      append ['code -w', 'code-insiders -w']
-    }
+  let $editors = ['code -w' hx, nvim, vim]
+  let visuals = ['code -w' 'zed -w']
   mut hasSetVisual = false
   for $visual in $visuals {
     let visual = $visual | split row ' '

@@ -14,6 +14,12 @@ DOCKERHUB_SECRET = { provider = 'keychain', value = 'DOCKERHUB_SECRET' }
 [profiles.github.secrets]
 GITHUB_TOKEN = { provider = 'keychain', value = 'GITHUB_TOKEN' }
 
+[profiles.dev.secrets]
+GITHUB_TOKEN = { provider = "keychain", value = "GITHUB_TOKEN" }
+
 [profiles.sl.secrets]
 SL_URL = { provider = 'keychain', value = 'SL_URL' }
 SL_KEY = { provider = 'keychain', value = 'SL_KEY' }
+
+[profiles.ctx7.secrets]
+CTX7_KEY = { provider = "keychain", value = "CTX7_KEY" }

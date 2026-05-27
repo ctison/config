@@ -1,0 +1,11 @@
+{
+  "lspServers": {
+    "nu": {
+      "command": "nu",
+      "args": ["--lsp"],
+      "fileExtensions": {
+        ".nu": "nushell"
+      }
+    }
+  }
+}

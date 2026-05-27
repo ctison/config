@@ -1,4 +1,5 @@
-FROM kalilinux/kali-rolling
+FROM ubuntu
+# FROM kalilinux/kali-rolling
 
 SHELL [ "/bin/bash", "--norc", "--noprofile", "-euxo", "pipefail", "-O", "nullglob", "-c" ]
 ENV LANG=C.UTF-8

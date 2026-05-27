@@ -4,7 +4,6 @@ __pycache__/
 *.local
 *.log
 .DS_Store
-/data/
 *.tsbuildinfo
 .venv/
 /aqua.yaml
@@ -13,8 +12,5 @@ __pycache__/
 dist/
 /x/
 .husky/_/
-.vscode-test/
-*.vsix
-.data/
 .x/
-/target/
+/_/mise/config.toml
