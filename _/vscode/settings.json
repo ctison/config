@@ -29,8 +29,8 @@
       "other": "off",
       "strings": "off"
     },
+    "editor.unicodeHighlight.ambiguousCharacters": true,
     "editor.unicodeHighlight.invisibleCharacters": false,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.wordWrap": "on"
   },
   "[python]": {
@@ -63,7 +63,11 @@
   "chat.useCustomizationsInParentRepositories": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewSessions.orientation": "stacked",
-  "containers.containerClient": "com.microsoft.visualstudio.containers.docker",
+  "chatgpt.composerEnterBehavior": "cmdIfMultiline",
+  "claudeCode.autosave": false,
+  "claudeCode.enableNewConversationShortcut": true,
+  "claudeCode.preferredLocation": "sidebar",
+  "claudeCode.useCtrlEnterToSend": true,
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
   "debug.allowBreakpointsEverywhere": true,
   "debug.console.acceptSuggestionOnEnter": "on",
@@ -77,10 +81,10 @@
   "docker.extension.enableComposeLanguageServer": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
-  "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.codeActionsOnSave": {
     "source.sort.json": "never"
   },
+  "editor.codeActionWidget.includeNearbyQuickFixes": true,
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.guides.bracketPairs": false,
@@ -132,13 +136,12 @@
   },
   "files.eol": "\n",
   "files.exclude": {
-    "**/.DS_Store": false,
+    "**/.DS_Store": true,
     "**/.git": false,
     "**/.hg": false,
     "**/.svn": false,
     "**/CVS": false,
-    "**/Thumbs.db": false,
-    "*/.DS_Store": true
+    "**/Thumbs.db": false
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -183,7 +186,6 @@
   "js/ts.preferences.jsxAttributeCompletionStyle": "none",
   "js/ts.preferences.quoteStyle": "single",
   "js/ts.preferences.useAliasesForRenames": false,
-  "js/ts.referencesCodeLens.enabled": true,
   "js/ts.suggest.completeFunctionCalls": true,
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "js/ts.tsserver.automaticTypeAcquisition.enabled": true,
@@ -256,8 +258,10 @@
     "**/.rush": true,
     "**/common/temp": true
   },
+  "search.experimental.useIgnoreFilesInFindFiles": true,
   "search.showLineNumbers": true,
   "search.smartCase": true,
+  "search.useParentIgnoreFiles": true,
   "shellcheck.ignorePatterns": {
     "**/.env*": true,
     "**/*.zlogin": true,
@@ -293,6 +297,12 @@
       "languageIds": ["typescript", "typescriptreact", "mdx"],
       "snippet": "yield* Effect.tryPromise(async () => $TM_SELECTED_TEXT)$0"
     },
+    "nu-str": {
+      "description": "$'...'",
+      "label": "nu str",
+      "languageIds": ["nushell"],
+      "snippet": "$'$TM_SELECTED_TEXT'"
+    },
     "promise": {
       "description": "Promise<...>",
       "label": "Promise",
@@ -321,12 +331,6 @@
       "label": "twJoin",
       "languageIds": ["typescript", "typescriptreact", "mdx"],
       "snippet": "{twJoin($TM_SELECTED_TEXT)}$0"
-    },
-    "nu-str": {
-      "description": "$'($...)'",
-      "label": "nu str",
-      "languageIds": ["nushell"],
-      "snippet": "$'($TM_SELECTED_TEXT)'"
     }
   },
   "swift.backgroundCompilation": false,
@@ -386,18 +390,18 @@
     "editorGutter.modifiedBackground": "#fa08",
     "editorGutter.modifiedSecondaryBackground": "#fa0",
     "editorInlayHint.foreground": "#fff",
+    "editorOverviewRuler.addedForeground": "#0000",
+    "editorOverviewRuler.background": "#0000",
+    "editorOverviewRuler.border": "#0000",
+    "editorOverviewRuler.deletedForeground": "#0000",
+    "editorOverviewRuler.modifiedForeground": "#0000",
     "errorLens.infoBackground": "#0000",
     "focusBorder": "#0f0",
     "list.focusOutline": "#0f0",
     "terminal.findMatchBorder": "#f00",
     "terminal.selectionBackground": "#e26cffcb",
     "tree.inactiveIndentGuidesStroke": "#444",
-    "tree.indentGuidesStroke": "#0f0a",
-    "editorOverviewRuler.addedForeground": "#0000",
-    "editorOverviewRuler.modifiedForeground": "#0000",
-    "editorOverviewRuler.deletedForeground": "#0000",
-    "editorOverviewRuler.background": "#0000",
-    "editorOverviewRuler.border": "#0000"
+    "tree.indentGuidesStroke": "#0f0a"
   },
   "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.autoLockGroups": {

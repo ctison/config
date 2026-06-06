@@ -25,3 +25,22 @@ This folder contains Nushell configurations.
 ## If/else
 
 - To check a value emptiness: `if ($varName | is-empty) or ($overVar | is-not-empty) {}`
+
+## Piping
+
+- Each pipes to newline
+
+```
+ls
+| where name =~ codex
+| $in.name
+```
+
+# Map
+
+These folder are sourced in this order:
+
+`base/` thin layer notably exposing `log ...` commands
+`helpers/` contains that improve or fill the gaps of nushell
+`stubs/` wrappers for tools, some are loaded dynamically by external bins (eg. `bun x ...`)
+`tools/` custom commands

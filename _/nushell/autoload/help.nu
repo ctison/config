@@ -21,7 +21,18 @@ def h [
         or $which.0.type == custom
         and (scope commands | where name == $rest.0 | $in.0.complete == 'external')
       ) {
-      run-external ...$rest '--help' o+e>| h
+      try {
+        if $rest == ['xh'] {
+          ^xh help | h
+        } else if $rest.0 == 'git' {
+            run-external ...$rest --help
+            | h
+        } else {
+          run-external ...$rest '--help' o+e>| h
+        }
+      } catch {
+        man $rest.0
+      }
     } else {
       help ...$rest
       | bh --color=never

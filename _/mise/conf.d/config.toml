@@ -1,38 +1,56 @@
 # cSpell:disable
 [tools]
-age = 'latest'
 aube = 'latest'
 bat = 'latest'
 bun = 'latest'
+claude = 'latest'
 copilot = 'latest'
+delta = 'latest'
 dive = 'latest'
 duf = 'latest'
 edit = 'latest'
 eza = 'latest'
 fd = 'latest'
+fish = 'latest'
 fnox = 'latest'
 gh = 'latest'
 k9s = 'latest'
 lazygit = 'latest'
+leaf = 'latest'
 mutagen = 'latest'
+node = 'latest'
 nushell = 'latest'
 ripgrep = 'latest'
 rust = 'latest'
 shellcheck = 'latest'
-'github:skim-rs/skim' = 'latest'
+skim = 'latest'
 starship = 'latest'
+# tombi = 'latest'
+tree-sitter = 'latest'
 uv = 'latest'
 xh = 'latest'
 zellij = 'latest'
+typescript-language-server = 'latest'
+pastel = 'latest'
+fresh = 'latest'
 
 [tool_alias]
+fish = 'github:fish-shell/fish-shell'
 nushell = 'aqua:nushell/nushell'
+skim = 'github:skim-rs/skim'
+typescript-language-server = 'npm:typescript-language-server'
+pastel = 'github:sharkdp/pastel'
+fresh = 'github:sinelaw/fresh'
+rmux = 'github:Helvesec/rmux'
+leaf = 'github:RivoLink/leaf'
+
 # cSpell:enable
 
 [settings]
 auto_install = false
 experimental = true
 http_retries = 0
+npm.package_manager = 'bun'
 
 unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
 unix_default_inline_shell_args = 'bash -euo pipefail -O nullglob -c'

@@ -5,10 +5,6 @@
   "[fish]": {
     "editor.formatOnSave": false
   },
-  "bun.runtime": "${workspaceFolder}/.vscode/mise-tools/bun",
-  "debug.javascript.defaultRuntimeExecutable": {
-    "pwa-node": "${workspaceFolder}/.vscode/mise-tools/node"
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports": "never",
@@ -16,16 +12,6 @@
   },
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
-  "emeraldwalk.runonsave": {
-    "shell": "nu",
-    "commands": [
-      {
-        "messageAfter": "Ran for ${file}",
-        "match": "/(\\.vscode/settings\\.json$|_/vscode/settings\\.json$)",
-        "cmd": "open -r '${file}' | from json | sort | to json | bun prettier --stdin-filepath settings.json | save -f '${file}'"
-      }
-    ]
-  },
   "files.associations": {
     "**/{bat,ripgrep}/config": "shellscript",
     "**/*.json": "jsonc",
@@ -53,9 +39,5 @@
       "fileMatch": ["_/copilot/hooks/*.json"],
       "url": "vscode://schemas/hooks"
     }
-  ],
-  "search.exclude": {
-    "**/dist": true
-  },
-  "shellcheck.executablePath": "${workspaceFolder}/.vscode/mise-tools/shellcheck"
+  ]
 }

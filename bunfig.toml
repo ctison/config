@@ -1,4 +1,5 @@
+env = false
+
 [install]
 exact = true
 linker = 'isolated'
-env = false

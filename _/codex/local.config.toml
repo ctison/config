@@ -1,0 +1,12 @@
+# https://developers.openai.com/codex/config-reference
+
+#:schema https://developers.openai.com/codex/config-schema.json
+
+oss_provider = 'ollama'
+model_provider = 'mlx'
+model = "gpt-5.4-mini"
+model_reasoning_effort = "medium"
+
+[model_providers.mlx]
+name = 'MLX'
+base_url = 'http://127.0.0.1:7777/v1'

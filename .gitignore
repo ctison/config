@@ -14,3 +14,5 @@ dist/
 .husky/_/
 .x/
 /_/mise/config.toml
+/target/
+.dockerignore

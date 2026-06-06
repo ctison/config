@@ -10,11 +10,15 @@ ignorePaths:
   - '*.dockerfile'
   - biome.jsonc
   - Dockerfile
+  - _/fresh/keymaps/
 words:
+  - caido
   - chsh
   - clippy
+  - cpus
   - ctison
   - dotenv
+  - fputs
   - fnox
   - ipsw
   - kreuzberg
@@ -35,7 +39,9 @@ words:
   - surrealdb
   - surrealkv
   - tombi
+  - unwritable
   - vimrc
 ignoreRegExpList:
   - \bcom(\.\w+)+\b
   - \'aqua:\w+/\w+\'
+  - \bxterm_\w+

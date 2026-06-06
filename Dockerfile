@@ -1,5 +1,5 @@
-FROM ubuntu
-# FROM kalilinux/kali-rolling
+# FROM ubuntu
+FROM kalilinux/kali-rolling
 
 SHELL [ "/bin/bash", "--norc", "--noprofile", "-euxo", "pipefail", "-O", "nullglob", "-c" ]
 ENV LANG=C.UTF-8
@@ -27,6 +27,7 @@ apt-get install --autoremove --no-install-recommends -y \
   file \
   iproute2 \
   iptables \
+  libatomic1 \
   less \
   man \
   mise \
@@ -50,10 +51,11 @@ RUN mkdir -pm 0700 ~/.config /etc/skel
 COPY ./ /config
 RUN bash /config/setup.sh
 
-ENV MISE_ENV=docker
-ARG MISE_ALWAYS_KEEP_DOWNLOAD=true
+ENV MISE_ENV=remote
+ENV MISE_ALWAYS_KEEP_DOWNLOAD=true
 RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
     --mount=type=cache,sharing=locked,target=/root/.local/share/mise/downloads \
     mise install
 
-ENTRYPOINT [ "mise", "x", "--", "nu", "-l" ]
+ENTRYPOINT [ "mise", "x", "--"]
+CMD [ "nu", "-l" ]

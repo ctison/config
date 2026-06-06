@@ -1,0 +1,11 @@
+[settings]
+trusted_config_paths = ['/']
+disable_tools = ['dive', 'fnox', 'mutagen']
+
+[tools]
+# cSpell:disable
+code-server = { version = 'latest', postinstall = '' }
+# cSpell:enable
+
+[tool_alias]
+code-server = 'github:coder/code-server'

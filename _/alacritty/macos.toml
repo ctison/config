@@ -1,0 +1,9 @@
+#:schema https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+#:tombi schema.strict = false
+
+# cSpell:words Fira
+font.normal.family = 'FiraCode Nerd Font Mono'
+
+[terminal.shell]
+program = '/opt/homebrew/bin/mise'
+args = ['x', '--', 'zellij']

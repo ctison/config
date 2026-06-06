@@ -1,0 +1,6 @@
+*
+!/.gitignore
+!/CLAUDE.md
+!/managed-settings.json
+!/settings.json
+!/keybindings.json

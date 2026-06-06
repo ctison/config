@@ -1,2 +1,2 @@
-.agents/
-_/firefox/
+*.lock
+*-lock.json

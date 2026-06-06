@@ -2,7 +2,7 @@
   "mcpServers": {
     "ctx7": {
       "type": "local",
-      "command": "mcp-ctx7",
+      "command": "mcp-context7.nu",
       "tools": ["*"]
     }
   }

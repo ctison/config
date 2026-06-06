@@ -5,13 +5,9 @@ theme "dracula"
 show_startup_tips false
 show_release_notes false
 
-ui {
-  pane_frames {
-    hide_session_name false
-  }
-}
-
 default_layout "main"
+focus_follows_mouse true
+default_shell "nu"
 
 keybinds clear-defaults=true {
   normal {
@@ -54,11 +50,13 @@ keybinds clear-defaults=true {
     bind "Shift Super b" { TogglePaneEmbedOrFloating; }
     bind "Super p" { TogglePanePinned; }
 
-    bind "F1" {
+    bind "F6" {
       LaunchOrFocusPlugin "zellij:session-manager" {
         floating true
       }
     }
+
+    bind "F7" { TogglePaneFrames; }
   }
 
   shared_among "renametab" "renamepane" "session" {

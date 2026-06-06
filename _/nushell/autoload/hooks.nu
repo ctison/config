@@ -26,6 +26,8 @@ $env.config.hooks.pre_execution ++= [{
     NU_OVERLAYS
     __LOG_LEVEL
   ]
+  # Not working, but silently ignored
+  commandline edit --append ' | let o'
 }]
 
 # Display current hooks

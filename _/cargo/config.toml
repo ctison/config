@@ -1,2 +1,2 @@
 [alias]
-dac = "doc --all-features --document-private-items --open"
+dac = 'doc --all-features --document-private-items --open'

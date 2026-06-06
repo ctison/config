@@ -22,21 +22,14 @@ is_linux=0
 
 ft_link .agents ~/
 ft_link 'bash/*' ~/
-ft_link bat ~/.config/
-ft_link 'cargo/*' ~/.cargo/
-ft_link 'codex/*' ~/.codex/
-ft_link 'copilot/*' ~/.copilot/
 ft_link 'fish/*' ~/.config/fish/
 ft_link fnox ~/.config/
 ft_link git ~/.config/
-ft_link 'helix/*' ~/.config/helix/
 ft_link 'mise/*' ~/.config/mise/
 ft_link 'opencode/*' ~/.config/opencode/
-ft_link pi/'agents/*' ~/.config/pi/agents/
 ft_link starship/starship.toml ~/.config/
 ft_link vim/.vimrc ~/
 ft_link 'zed/*' ~/.config/zed/
-ft_link zellij ~/.config/
 ft_link 'zsh/*' ~/
 
 if (( is_macos )); then

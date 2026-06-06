@@ -2,7 +2,8 @@
 #:tombi schema.strict = false
 
 [general]
-ipc_socket = false
+ipc_socket = true
+live_config_reload = true
 
 [window]
 padding = { x = 5, y = 5 }

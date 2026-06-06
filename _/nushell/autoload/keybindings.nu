@@ -17,7 +17,7 @@ $env.config.keybindings ++= [{
   mode: emacs
   event: {
     send: ExecuteHostCommand
-    cmd: 'commandline | pbcopy'
+    cmd: 'commandline | osc copy'
   }
 }, {
   name: reload
@@ -66,7 +66,7 @@ $env.config.keybindings ++= [{
   }
 }]
 
-const HELP_HISTORY_FILE = $nu.default-config-dir | path join .help_history
+const HELP_HISTORY_FILE = $nu.data-dir | path join history.help.txt
 
 def _help []: nothing -> nothing {
   print ''
@@ -106,13 +106,23 @@ def __kb_help []: nothing -> nothing {
       or $i == 0 and $cursor < $e.span.start)
     }
   }
+  # | tee { to json | bat -l json }
   | match $in.0.item.expr {
     {Call: $internal} => {
-      [$internal.head.span_source]
+      [
+        $internal.head.span_source
+        ...(
+          if (which $internal.head.span_source).type == alias {
+            $internal
+            | get --optional arguments.Positional.span.span_source
+            | compact
+          } else []
+        )
+      ]
     }
     {ExternalCall: $external} => {
       [
-        $external.0.span.span_source
+        $external.0.expr.GlobPattern.0
         ...(
           $external
           | slice 1..

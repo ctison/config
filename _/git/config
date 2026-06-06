@@ -28,4 +28,4 @@
 [include]
   path = ./config.local
   path = ./aliases.config
-  path = ./delta.config
+  # path = ./delta.config

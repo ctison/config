@@ -1,4 +1,4 @@
-# ~/.config/starship.toml
+# https://starship.rs/config/
 
 format = """
 $status\
@@ -372,3 +372,6 @@ style = 'bold bright-black'
 [env_var.__LOG_LEVEL]
 format = ' [\[$env_value\]]($style)'
 style = 'bold bright-blue'
+
+[env_var.HTTP_PROXY]
+format = ' 🔓'

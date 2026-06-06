@@ -1,38 +1,7 @@
-# experimental_monorepo_root = true
-
-# [monorepo]
-# config_roots = []
-
 [tools]
 bun = '1'
 node = 'lts'
-watchexec = 'latest'
-rust = 'latest'
+nushell = 'latest'
 
-[tasks.ci]
-run = 'mise -E ci run ci'
-
-[tasks.clean]
-run = 'bun run clean'
-
-[tasks.'clean:hard']
-run = 'bun ./scripts/clean.ts'
-
-[tasks.format]
-alias = 'fmt'
-run = 'bun --bun prettier -w .'
-
-[tasks.lint]
-depends = 'lint:*'
-
-[tasks.'lint:biome']
-run = 'bun --bun biome ci --reporter=summary'
-
-[tasks.'lint:format']
-run = 'bun --bun prettier -c .'
-
-[tasks.'lint:spell']
-run = 'bun --bun cspell .'
-
-[tasks.test]
-run = 'bun run test'
+[tool_alias]
+nushell = 'aqua:nushell/nushell'

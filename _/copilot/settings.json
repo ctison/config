@@ -17,6 +17,6 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.copilot/status.nu"
+    "command": "copilot-status-line.nu"
   }
 }
