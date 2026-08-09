@@ -1,0 +1,4 @@
+# https://cli.github.com/manual/gh_config
+version: 1
+color_labels: enabled
+telemetry: disabled

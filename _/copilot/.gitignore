@@ -1,0 +1,7 @@
+*
+!/.gitignore
+!/AGENTS.md
+!/lsp-config.json
+!/mcp-config.json
+!/settings.json
+!/hooks/

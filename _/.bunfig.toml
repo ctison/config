@@ -1,0 +1,11 @@
+# https://bun.com/docs/runtime/bunfig
+
+env = false
+
+[install]
+exact = true
+linker = 'isolated'
+minimumReleaseAge = 86400  # seconds == 1 day
+
+[run]
+noOrphans = true

@@ -3,26 +3,28 @@ allowCompoundWords: true
 ignorePaths:
   - _/firefox/
   - _/git/
-  - _/starship/starship.toml
+  - _/nvim/
+  - _/starship.toml
   - _/vim/.vimrc
   - _/vscode/settings.json
   - '*-lock.json'
   - '*.dockerfile'
   - biome.jsonc
   - Dockerfile
-  - _/fresh/keymaps/
 words:
+  - cagent
   - caido
   - chsh
   - clippy
   - cpus
   - ctison
   - dotenv
-  - fputs
   - fnox
+  - fputs
   - ipsw
   - kreuzberg
   - kreuzcrawl
+  - lfk
   - mkcd
   - msgpackz
   - nistp
@@ -41,7 +43,13 @@ words:
   - tombi
   - unwritable
   - vimrc
+  - codegen
+  - rspack
+  - worktree
+  - xhigh
 ignoreRegExpList:
   - \bcom(\.\w+)+\b
   - \'aqua:\w+/\w+\'
   - \bxterm_\w+
+  - "@\\w+/\\w+\\b"
+  - -\w+

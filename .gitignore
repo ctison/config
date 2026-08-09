@@ -1,18 +1,29 @@
-node_modules/
-__pycache__/
-*-checkpoint.ipynb
-*.local
-*.log
+# System
 .DS_Store
+
+# Husky pre-commit
+.husky/_/
+
+# Log
+*.log
+
+# Typescript compiler (tsc)
 *.tsbuildinfo
-.venv/
-/aqua.yaml
+dist/
+
+# Local files
+*.local
 *.local.*
 !*.local.template.*
-dist/
-/x/
-.husky/_/
-.x/
-/_/mise/config.toml
+
+# Node
+node_modules/
+
+# Cargo rust
 /target/
+
+# Docker ignore is generated
 .dockerignore
+
+# Ignore default mise config
+/_/mise/config.toml

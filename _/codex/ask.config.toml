@@ -1,5 +1,0 @@
-# https://developers.openai.com/codex/config-reference
-
-#:schema https://developers.openai.com/codex/config-schema.json
-
-sandbox_mode = "read-only"

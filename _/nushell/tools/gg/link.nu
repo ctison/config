@@ -1,6 +1,6 @@
 const LINKS = [
   [src dst];
-  [codex/* ~/.codex/]
+  [~ ~/.codex/]
 ]
 
 export def main [] {

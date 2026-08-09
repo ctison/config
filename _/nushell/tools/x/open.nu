@@ -1,6 +1,6 @@
 export const DIR_GIT = $cfg.DIR_X | path join x
 
-export def main [repo?: string]: [nothing -> nothing] {
+export def --env main [repo?: string]: [nothing -> nothing] {
   $repo
   | default {
     %ls -tf ~/x/x
@@ -24,4 +24,5 @@ export def main [repo?: string]: [nothing -> nothing] {
       ($url | url join) $dir
     )
   }
+  cd $dir
 }

@@ -1,14 +1,14 @@
 # cSpell:disable
+
 [tools]
 aube = 'latest'
 bat = 'latest'
 bun = 'latest'
-claude = 'latest'
+# claude = 'latest'
 copilot = 'latest'
-delta = 'latest'
+deno = 'latest'
 dive = 'latest'
 duf = 'latest'
-edit = 'latest'
 eza = 'latest'
 fd = 'latest'
 fish = 'latest'
@@ -16,44 +16,44 @@ fnox = 'latest'
 gh = 'latest'
 k9s = 'latest'
 lazygit = 'latest'
-leaf = 'latest'
+lfk = 'latest'
 mutagen = 'latest'
+neovim = 'latest'
 node = 'latest'
 nushell = 'latest'
+pitchfork = 'latest'
 ripgrep = 'latest'
 rust = 'latest'
 shellcheck = 'latest'
 skim = 'latest'
 starship = 'latest'
-# tombi = 'latest'
 tree-sitter = 'latest'
+typescript-language-server = 'latest'
 uv = 'latest'
 xh = 'latest'
 zellij = 'latest'
-typescript-language-server = 'latest'
-pastel = 'latest'
-fresh = 'latest'
 
 [tool_alias]
+agent-browser = 'npm:agent-browser'
+codex = 'npm:@openai/codex'
 fish = 'github:fish-shell/fish-shell'
+hunk = 'npm:hunkdiff'
+lfk = 'github:janosmiko/lfk'
 nushell = 'aqua:nushell/nushell'
+open-pencil-mcp = 'npm:@open-pencil/mcp'
 skim = 'github:skim-rs/skim'
 typescript-language-server = 'npm:typescript-language-server'
-pastel = 'github:sharkdp/pastel'
-fresh = 'github:sinelaw/fresh'
-rmux = 'github:Helvesec/rmux'
-leaf = 'github:RivoLink/leaf'
-
-# cSpell:enable
 
 [settings]
 auto_install = false
 experimental = true
-http_retries = 0
-npm.package_manager = 'bun'
-
+http_retries = 1
 unix_default_file_shell_args = 'bash -euo pipefail -O nullglob'
 unix_default_inline_shell_args = 'bash -euo pipefail -O nullglob -c'
+minimum_release_age = '0h'
+
+[settings.npm]
+package_manager = 'bun'
 
 [settings.status]
 missing_tools = 'always'

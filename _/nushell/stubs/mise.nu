@@ -82,7 +82,7 @@ def --env update-env []: record<load: record, hide: list<string>> -> nothing {
     log trace -R ($in | table -e)
   }
   load-env $in.load
-  hide-env ...$in.hide
+  hide-env -i ...$in.hide
 }
 
 
@@ -91,5 +91,21 @@ def --env mise-hook [] {
     main hook-env -s nu
     | compute-updates
   }
+  | log debug -R
   | update-env
+}
+
+
+export def --wrapped search [...rest] {
+  mise search ...$rest
+  | lines
+  | parse -r '^(?<name>[^\s]+)\s+(?<desc>.+)$'
+  | each {
+    let tool
+    | insert backend (
+      mise tool --json $tool.name
+      | from json
+      | $in.backend
+    )
+  }
 }

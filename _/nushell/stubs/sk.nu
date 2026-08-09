@@ -10,12 +10,3 @@ export def --wrapped main [...rest] {
       ...$rest
   )
 }
-
-export def --wrapped explore [...rest] {
-  (
-    main
-      --header 'Preview files'
-      --preview 'sk-preview {}'
-     ...$rest
-  )
-}

@@ -1,9 +1,151 @@
+theme "dracula"
 pane_frames false
+
 layout {
   pane size=2 borderless=true {
     plugin location="compact-bar"
   }
   pane {
     focus true
+  }
+}
+
+keybinds clear-defaults=true {
+  shared {
+    bind "F6" {
+      LaunchOrFocusPlugin "zellij:session-manager" {
+        floating true
+      }
+    }
+  }
+
+  normal {
+    bind "Super s" { SwitchToMode "locked"; }
+
+    bind "Super t" { NewTab; }
+    bind "Super Shift [" { GoToPreviousTab; }
+    bind "Super Shift ]" { GoToNextTab; }
+
+    bind "Super d" { NewPane "Right"; }
+    bind "Super Shift d" { NewPane "Down"; }
+    bind "Super Shift s" { NewPane "stacked"; }
+    bind "Super w" { CloseFocus; }
+    bind "Alt Super Left" { MoveFocus "Left"; }
+    bind "Alt Super Right" { MoveFocus "Right"; }
+    bind "Alt Super Up" { MoveFocus "Up"; }
+    bind "Alt Super Down" { MoveFocus "Down"; }
+
+    bind "Super Shift Left" { MovePane "Left"; }
+    bind "Super Shift Right" { MovePane "Right"; }
+    bind "Super Shift Up" { MovePane "Up"; }
+    bind "Super Shift Down" { MovePane "Down"; }
+
+    bind "Ctrl Super Left" { Resize "Left"; }
+    bind "Ctrl Super Right" { Resize "Right"; }
+    bind "Ctrl Super Up" { Resize "Up"; }
+    bind "Ctrl Super Down" { Resize "Down"; }
+
+    bind "Shift Super e" { EditScrollback; }
+    bind "Super Up" { HalfPageScrollUp; }
+    bind "Super Down" { HalfPageScrollDown; }
+    bind "Super PageUp" { ScrollToTop; }
+    bind "Super Down" { ScrollToBottom; }
+
+    bind "Super f" { SwitchToMode "entersearch"; }
+    bind "Alt Super i" { ToggleActiveSyncTab; }
+
+    bind "Super g" { ToggleFocusFullscreen; }
+    bind "Super b" { ToggleFloatingPanes; }
+    bind "Shift Super b" { TogglePaneEmbedOrFloating; }
+    bind "Super p" { TogglePanePinned; }
+
+    bind "F7" { TogglePaneFrames; }
+
+    bind "Super 1" { GoToTab 1; }
+    bind "Super 2" { GoToTab 2; }
+    bind "Super 3" { GoToTab 3; }
+    bind "Super 4" { GoToTab 4; }
+    bind "Super 5" { GoToTab 5; }
+    bind "Super 6" { GoToTab 6; }
+    bind "Super 7" { GoToTab 7; }
+    bind "Super 8" { GoToTab 8; }
+    bind "Super 9" { GoToTab 9; }
+
+    bind "Super Shift 1" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 1" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 2" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 2" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 3" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 3" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 4" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 4" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 5" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 5" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 6" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 6" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 7" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 7" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 8" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 8" {
+        in_place true
+        close_on_exit true
+      }
+    }
+    bind "Super Shift 9" {
+      Run "nu" "-lc" "zellij ac go-to-parent-tab 9" {
+        in_place true
+        close_on_exit true
+      }
+    }
+  }
+
+  locked {
+    bind "Super s" { SwitchToMode "normal"; }
+  }
+
+  shared_among "renametab" "renamepane" "session" {
+    bind "Esc" { SwitchToMode "normal"; }
+  }
+
+  entersearch {
+    bind "Enter" { SwitchToMode "search"; }
+    bind "Alt Super c" { SearchToggleOption "CaseSensitivity"; }
+  }
+
+  search {
+    bind "Enter" { Search "Up"; }
+    bind "Shift Enter" { Search "Down"; }
+  }
+
+  shared_among "entersearch" "search" {
+    bind "Ctrl c" "Esc" "Super f" { SwitchToMode "normal"; }
   }
 }

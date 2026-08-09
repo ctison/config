@@ -30,7 +30,7 @@ export def update [--keep(-k)]: nothing -> nothing {
 }
 
 export def install [--keep(-k)]: record -> nothing {
-  let tmp = mktemp -d
+  let tmp = null | mktemp -d
 
   let url = $in
     | get assets

@@ -5,3 +5,4 @@ export use ./vscode.nu
 export use ./mcp.nu
 export use ./npm.nu
 export use ./sl.nu
+export use ./hl.nu

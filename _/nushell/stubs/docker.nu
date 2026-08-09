@@ -59,7 +59,7 @@ export def 'docker images' [
 ] {
   ^docker images -a --format json --no-trunc
   | from json -o
-  | rename -b { str downcase }
+  | rename -b { str lowercase }
   | update size { into filesize }
   | update createdsince { try { date from-human } catch { $in } }
   | if $raw { $in } else {

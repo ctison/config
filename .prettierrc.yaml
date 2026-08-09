@@ -4,7 +4,6 @@ printWidth: 90
 
 plugins:
   - prettier-plugin-jsdoc
-  - prettier-plugin-toml
 
 tsdoc: true
 

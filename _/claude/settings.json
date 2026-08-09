@@ -1,40 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "opus",
-  "worktree": {
-    "baseRef": "head",
-    "bgIsolation": "none"
-  },
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "effortLevel": "high",
-  "remoteControlAtStartup": false,
-  "permissions": {
-    "disableBypassPermissionsMode": "disable",
-    "defaultMode": "default"
-  },
   "env": {
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_AUTO_CONNECT_IDE": "true",
     "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "1"
   },
-  "strictKnownMarketplaces": [],
-  "spinnerTipsEnabled": false,
-  "tui": "fullscreen",
-  "statusLine": {
-    "type": "command",
-    "command": "claude-status-line.nu"
+  "permissions": {
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable"
   },
-  "allowedHttpHookUrls": [],
-  "disableDeepLinkRegistration": "disable",
-  "disableRemoteControl": true,
-  "fastModePerSessionOptIn": true,
-  "showThinkingSummaries": false,
-  "skipWebFetchPreflight": true,
-  "viewMode": "verbose",
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -42,10 +17,36 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Code\""
+            "command": "osascript -e 'display notification \"Claude Code\"'"
           }
         ]
       }
     ]
-  }
+  },
+  "worktree": {
+    "baseRef": "head",
+    "bgIsolation": "none"
+  },
+  "disableRemoteControl": true,
+  "allowedHttpHookUrls": [],
+  "statusLine": {
+    "type": "command",
+    "command": "claude-status-line.nu"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "dev@inline": true
+  },
+  "strictKnownMarketplaces": [],
+  "viewMode": "verbose",
+  "skipWebFetchPreflight": true,
+  "spinnerTipsEnabled": false,
+  "effortLevel": "high",
+  "fastModePerSessionOptIn": true,
+  "tui": "fullscreen",
+  "showThinkingSummaries": false,
+  "remoteControlAtStartup": false,
+  "disableDeepLinkRegistration": "disable"
 }

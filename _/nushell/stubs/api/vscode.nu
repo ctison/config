@@ -28,7 +28,7 @@ export def 'ext download' [
   --path(-p): path = '.'
 ] {
   mkdir $path
-  let platform = ((uname).kernel-name | str downcase)-((uname).machine | str replace 'aarch64' 'arm64')
+  let platform = ((uname).kernel-name | str lowercase)-((uname).machine | str replace 'aarch64' 'arm64')
     | log debug { $'$platform: ($in)' }
   let ext = cache api-vscode-ext-($pkg) { ext version $pkg }
   let file = $path | path join $'($pkg)-($ext.versions.0.version).vsix'

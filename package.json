@@ -4,15 +4,11 @@
   "type": "module",
   "workspaces": {
     "packages": [
+      "_/.agents/skills/dev-react",
       "pkgs/*",
       "pkgs/_/*"
     ],
-    "catalogs": {
-      "react": {
-        "react": "19.2.5",
-        "react-dom": "19.2.5"
-      }
-    }
+    "catalogs": {}
   },
   "scripts": {
     "ci": "nu ./scripts/ci.nu",
@@ -25,17 +21,18 @@
     "update": "bun update -ri"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.16",
+    "@biomejs/biome": "2.5.5",
     "@types/bun": "1.3.14",
-    "@types/node": "25.9.1",
+    "@types/node": "26.1.1",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "cspell": "10.0.1",
     "husky": "9.1.7",
-    "lint-staged": "17.0.7",
-    "prettier": "3.8.3",
-    "prettier-plugin-jsdoc": "1.8.1",
-    "prettier-plugin-toml": "2.0.6",
+    "lint-staged": "17.2.0",
+    "prettier": "3.9.6",
     "sort-package-json": "4.0.0",
-    "typescript": "6.0.3"
+    "tombi": "1.2.4",
+    "typescript": "7.0.2"
   },
   "packageManager": "bun@1.0.0"
 }

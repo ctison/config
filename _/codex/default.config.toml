@@ -1,0 +1,64 @@
+#:schema https://raw.githubusercontent.com/openai/codex/refs/heads/main/codex-rs/core/config.schema.json
+
+analytics.enabled = false
+
+approval_policy = 'on-request'
+approvals_reviewer = 'auto_review'
+
+hide_agent_reasoning = false
+
+personality = 'pragmatic'
+service_tier = 'fast'
+
+sandbox_mode = 'workspace-write'
+
+[tui]
+status_line = [
+  'model-with-reasoning',
+  'run-state',
+  'task-progress',
+  'context-remaining',
+  'used-tokens',
+  'total-input-tokens',
+  'total-output-tokens'
+]
+status_line_use_colors = true
+theme = 'two-dark'
+show_tooltips = false
+
+[tui.keymap.editor]
+insert_newline = ['enter']
+
+[tui.keymap.composer]
+submit = ['shift-enter']
+
+[desktop]
+appearanceTheme = 'dark'
+codeFontSize = 13
+composerEnterBehavior = 'cmdAlways'
+dock-icon-preference = 'codex-system'
+enabled-reasoning-efforts = ['low', 'medium', 'high', 'xhigh', 'ultra', 'max']
+hotkey-window-projectless-default-enabled = true
+sansFontSize = 14
+show-context-window-usage = true
+usePointerCursors = true
+conversationDetailMode = 'STEPS_COMMANDS'
+followUpQueueMode = 'queue'
+
+[desktop.open-in-target-preferences]
+global = 'vscode'
+
+[desktop.appearanceDarkChromeTheme]
+accent = '#339cff'
+contrast = 100
+ink = '#ffffff'
+opaqueWindows = false
+surface = '#181818'
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = '#40c977'
+diffRemoved = '#fa423e'
+skill = '#ad7bf9'
+
+[projects.'/Users/nil/x/config']
+trust_level = 'trusted'

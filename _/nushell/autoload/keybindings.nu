@@ -47,6 +47,15 @@ $env.config.keybindings ++= [{
     cmd: '__kb_help'
   }
 }, {
+  name: help
+  keycode: char_e
+  modifier: shift_alt
+  mode: emacs
+  event: {
+    send: ExecuteHostCommand
+    cmd: '__kb_help --force'
+  }
+}, {
   name: job_unfreeze
   keycode: char_z
   modifier: control
@@ -54,15 +63,6 @@ $env.config.keybindings ++= [{
   event: {
     send: ExecuteHostCommand
     cmd: 'job unfreeze'
-  }
-}, {
-  name: tab_name
-  modifier: alt
-  keycode: char_n
-  mode: emacs
-  event: {
-    send: ExecuteHostCommand
-    cmd: 'z ac rename-tab ([~ (pwd | path relative-to ~)] | path join)'
   }
 }]
 
@@ -79,7 +79,11 @@ def _help []: nothing -> nothing {
   }
 }
 
-def __kb_help []: nothing -> nothing {
+def __kb_help [--force]: nothing -> nothing {
+  if $force {
+    h ...(commandline | split row --regex '\s+')
+    return
+  }
   commandline
   | if $in == '' { return (_help) } else $in
   | ast -j $in
@@ -108,29 +112,29 @@ def __kb_help []: nothing -> nothing {
   }
   # | tee { to json | bat -l json }
   | match $in.0.item.expr {
-    {Call: $internal} => {
-      [
-        $internal.head.span_source
-        ...(
-          if (which $internal.head.span_source).type == alias {
-            $internal
-            | get --optional arguments.Positional.span.span_source
-            | compact
-          } else []
-        )
-      ]
+      {Call: $internal} => {
+        [
+          $internal.head.span_source
+          ...(
+            if (which $internal.head.span_source).type == alias {
+              $internal
+              | get --optional arguments.Positional.span.span_source
+              | compact
+            } else []
+          )
+        ]
+      }
+      {ExternalCall: $external} => {
+        [
+          $external.0.expr.GlobPattern.0
+          ...(
+            $external
+            | slice 1..
+            | each -f { each { $in.Regular?.span.span_source } }
+          )
+        ]
+      }
     }
-    {ExternalCall: $external} => {
-      [
-        $external.0.expr.GlobPattern.0
-        ...(
-          $external
-          | slice 1..
-          | each -f { each { $in.Regular?.span.span_source } }
-        )
-      ]
-    }
-  }
   | if ($in | is-not-empty) { h ...$in }
   return
 }

@@ -1,5 +1,5 @@
 [tools]
-bun = '1'
+bun = 'latest'
 node = 'lts'
 nushell = 'latest'
 

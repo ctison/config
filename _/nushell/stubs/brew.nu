@@ -12,7 +12,7 @@ export def --wrapped main [...rest] {
 export def --wrapped info [
   --raw(-R)
   ...rest
-]: nothing -> table {
+]: nothing -> record {
   main info --json=v2 ...$rest
   | from json
   | if $raw { $in } else { info-filter }

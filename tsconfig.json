@@ -58,5 +58,5 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["${configDir}/src/**/*", "${configDir}/scripts/**/*"]
+  "include": ["${configDir}/*", "${configDir}/src/**/*", "${configDir}/scripts/**/*"]
 }

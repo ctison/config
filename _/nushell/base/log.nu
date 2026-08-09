@@ -1,4 +1,3 @@
-
 const ENV_KEY = '__LOG_LEVEL'
 const STATE_KEY = $.log-level
 export const LOG_LEVELS = [trace debug info warning error]
@@ -84,7 +83,7 @@ export def main [
         | if $raw {
           print
         } else {
-          print $'(colorize $level ($level | str upcase)): ($in)'
+          print $'(colorize $level ($level | str uppercase)): ($in)'
         }
       }
     }

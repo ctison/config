@@ -13,3 +13,4 @@ use ./psub.nu
 use ./semver.nu
 use ./str.nu
 use ./url.nu
+use ./view.nu

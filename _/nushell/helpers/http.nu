@@ -16,7 +16,7 @@ export def * [
 ] {
   let method_span = ($method | metadata).span
   let headers = $headers | get-headers
-  match ($method | str downcase) {
+  match ($method | str lowercase) {
     'get' => {(
       http get
         --headers $headers

@@ -1,6 +1,9 @@
 {
-  "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml][toml]": {
+  "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tombi-toml.tombi"
   },
   "[fish]": {
     "editor.formatOnSave": false
@@ -13,7 +16,6 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "files.associations": {
-    "**/{bat,ripgrep}/config": "shellscript",
     "**/*.json": "jsonc",
     "**/git/*": "properties",
     "**/ignore": "ignore",

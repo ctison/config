@@ -1,23 +1,14 @@
+# Run the repo-wide format & lint sweep.
 def main [] {
-  main fmt
-  main biome
-  main cspell
-}
-
-def 'main fmt' [...rest] {
   git ls-files --cached --others --exclude-standard
   | lines
-  | where {$in | path exists}
+  | where { $in | path exists }
   | ls ...$in
   | where type == file
   | $in.name
-  | bun --bun prettier --check --ignore-unknown ...$in
-}
-
-def --wrapped 'main biome' [...rest] {
-  bun --bun biome ci --reporter=summary ...$rest
-}
-
-def --wrapped 'main cspell' [...rest] {
-  bun --bun cspell .
+  | tee { where $in == package.json | bun --bun sort-package-json --check ...$in }
+  | tee { bun --bun prettier --check --ignore-unknown ...$in }
+  | tee { where $in ends-with .toml | bun --bun tombi format --check ...$in }
+  | tee { bun --bun biome ci --reporter=summary ...$in }
+  null
 }

@@ -10,3 +10,14 @@ export def --wrapped main [...rest] {
     )
   }
 }
+
+@complete external
+export def --wrapped status [...rest] {
+  main status --porcelain=v1 ...$rest
+  | lines
+  | parse -r '^(?<stage>.)(?<change>.) (?<path>.+)$'
+  | update stage { if $in != ' ' { $in } }
+  | update change { if $in != ' ' { $in } }
+}
+
+export alias s = status

@@ -1,0 +1,4 @@
+[profiles]
+[profiles.github]
+[profiles.github.secrets]
+GITHUB_TOKEN = { provider = 'keychain', value = 'GITHUB_TOKEN' }

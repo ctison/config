@@ -18,5 +18,7 @@
   "statusLine": {
     "type": "command",
     "command": "copilot-status-line.nu"
-  }
+  },
+  "disabledSkills": ["customize-cloud-agent"],
+  "model": "auto"
 }

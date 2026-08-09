@@ -3,6 +3,7 @@ export use ./proxy.nu
 export use ./caido.nu
 export use ./dev
 export use ./open.nu
+export use ./diff.nu
 
 export def ls [] {
   docker ps -R

@@ -1,0 +1,5 @@
+theme = 'github-dark-high-contrast'
+wrap_lines = true
+menu_bar = false
+hunk_headers = false
+transparent_bg = true

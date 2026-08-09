@@ -29,7 +29,7 @@ export def start []: nothing -> any {
           --allow-experimental
           --allow-all
       )
-      ls -c | %table -e | log debug -f
+      ls -c | %table -e | log debug -Rf
     }
     1 => {
       if $c.0.state == paused {

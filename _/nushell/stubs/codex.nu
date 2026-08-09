@@ -4,6 +4,7 @@ export def --wrapped main [...rest] {
     CODEX_HOME: $'($cfg.DIR_)/codex'
   } {
     (bun x --bun -p @openai/codex codex
+      --profile default
       ...(if ($rest | is-empty) {[--strict-config]} else [])
       ...$rest
     )

@@ -1,9 +1,16 @@
 [
+  // Open keybindings
+  { "key": "cmd+k cmd+k", "command": "workbench.action.openGlobalKeybindingsFile" },
   // Remove default keybinds
   { "command": "-workbench.action.splitEditor", "key": "cmd+\\" },
 
   // Disable toggling suggestion details
   { "key": "ctrl+space", "command": "-toggleSuggestionDetails", "when": "suggestWidgetVisible" },
+  {
+    "key": "ctrl+shift+space",
+    "command": "toggleSuggestionDetails",
+    "when": "suggestWidgetVisible"
+  },
 
   // Toggle terminal in right panel
   { "key": "cmd+shift+1", "command": "workbench.action.toggleAuxiliaryBar" },
@@ -34,7 +41,7 @@
 
   // Open chat in editor
   { "key": "cmd+shift+i", "command": "workbench.action.openChat" },
-  { "key": "ctrl+`", "command": "workbench.action.togglePanel" },
+  // { "key": "ctrl+`", "command": "workbench.action.togglePanel" },
 
   // Show hover
   { "key": "alt+cmd+/", "command": "editor.action.showHover", "when": "editorTextFocus" },
@@ -87,6 +94,19 @@
       "values": [
         { "editor.inlayHints.enabled": "offUnlessPressed" },
         { "editor.inlayHints.enabled": "onUnlessPressed" }
+      ]
+    }
+  },
+
+  // Toggle split direction
+  {
+    "key": "cmd+shift+0",
+    "command": "settings.cycle",
+    "args": {
+      "id": "workbench.editor.openSideBySideDirection",
+      "values": [
+        { "workbench.editor.openSideBySideDirection": "right" },
+        { "workbench.editor.openSideBySideDirection": "down" }
       ]
     }
   },
@@ -159,7 +179,7 @@
   },
   { "key": "f1", "when": "focusedView == workbench.scm", "command": "git.stageFile" },
   { "key": "cmd+F1", "when": "focusedView == workbench.scm", "command": "git.unstageFile" },
-  { "key": "shift+shift+F1", "command": "git.viewChanges" },
+  { "key": "cmd+shift+F1", "command": "git.viewChanges" },
 
   // Join all editors
   { "key": "f18", "command": "workbench.action.joinAllGroups" },
@@ -176,5 +196,19 @@
       ]
     }
   },
-  { "key": "cmd+shift+f19", "command": "workbench.action.reloadWindow" }
+  { "key": "cmd+shift+f19", "command": "workbench.action.reloadWindow" },
+
+  // Terminal signals
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.sendSignal",
+    "args": { "signal": "SIGTERM" },
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "workbench.action.terminal.sendSignal",
+    "args": { "signal": "SIGKILL" },
+    "when": "terminalFocus && terminalProcessSupported"
+  }
 ]

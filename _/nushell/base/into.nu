@@ -2,7 +2,7 @@
 
 export def bucket [--default: string = '␀']: list<any> -> record {
   reduce -f {} {|it acc|
-    $acc | upsert ($it | default $default) {
+    $acc | upsert ($it | default $default | into string) {
       default 0 | $in + 1
     }
   }

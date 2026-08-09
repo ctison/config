@@ -1,3 +1,12 @@
+@complete external
+export def --wrapped main [...rest] {
+  with-env {
+    BUN_FEATURE_FLAG_NO_ORPHANS: 1
+  } {
+    bun ...$rest
+  }
+}
+
 # Find the root package.json from
 export def find-root-package [
   dir?: path

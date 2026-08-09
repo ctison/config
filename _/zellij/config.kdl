@@ -1,7 +1,5 @@
 // https://zellij.dev/documentation/options.html
 
-theme "dracula"
-
 show_startup_tips false
 show_release_notes false
 
@@ -9,71 +7,10 @@ default_layout "main"
 focus_follows_mouse true
 default_shell "nu"
 
-keybinds clear-defaults=true {
-  normal {
-    bind "Super t" { NewTab; }
-    bind "Shift Super [" { GoToPreviousTab; }
-    bind "Shift Super ]" { GoToNextTab; }
-
-    bind "Super d" { NewPane "Right"; }
-    bind "Super Shift d" { NewPane "Down"; }
-    bind "Super s" { NewPane; }
-    bind "Super Shift s" { NewPane "stacked"; }
-    bind "Super w" { CloseFocus; }
-    bind "Alt Super Left" { MoveFocus "Left"; }
-    bind "Alt Super Right" { MoveFocus "Right"; }
-    bind "Alt Super Up" { MoveFocus "Up"; }
-    bind "Alt Super Down" { MoveFocus "Down"; }
-
-    bind "Super Shift Left" { MovePane "Left"; }
-    bind "Super Shift Right" { MovePane "Right"; }
-    bind "Super Shift Up" { MovePane "Up"; }
-    bind "Super Shift Down" { MovePane "Down"; }
-
-    bind "Ctrl Super Left" { Resize "Left"; }
-    bind "Ctrl Super Right" { Resize "Right"; }
-    bind "Ctrl Super Up" { Resize "Up"; }
-    bind "Ctrl Super Down" { Resize "Down"; }
-
-
-    bind "Shift Super e" { EditScrollback; }
-    bind "Super Up" { HalfPageScrollUp; }
-    bind "Super Down" { HalfPageScrollDown; }
-    bind "Super PageUp" { ScrollToTop; }
-    bind "Super Down" { ScrollToBottom; }
-
-    bind "Super f" { SwitchToMode "entersearch"; }
-    bind "Alt Super i" { ToggleActiveSyncTab; }
-
-    bind "Super g" { ToggleFocusFullscreen; }
-    bind "Super b" { ToggleFloatingPanes; }
-    bind "Shift Super b" { TogglePaneEmbedOrFloating; }
-    bind "Super p" { TogglePanePinned; }
-
-    bind "F6" {
-      LaunchOrFocusPlugin "zellij:session-manager" {
-        floating true
-      }
-    }
-
-    bind "F7" { TogglePaneFrames; }
-  }
-
-  shared_among "renametab" "renamepane" "session" {
-    bind "Esc" { SwitchToMode "normal"; }
-  }
-
-  entersearch {
-    bind "Enter" { SwitchToMode "search"; }
-    bind "Alt Super c" { SearchToggleOption "CaseSensitivity"; }
-  }
-
-  search {
-    bind "Enter" { Search "Up"; }
-    bind "Shift Enter" { Search "Down"; }
-  }
-
-  shared_among "entersearch" "search" {
-    bind "Ctrl c" "Esc" "Super f" { SwitchToMode "normal"; }
+ui {
+  pane_frames {
+    hide_session_name true
   }
 }
+
+theme "ao"

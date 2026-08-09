@@ -3,31 +3,52 @@ export const CARGO_BINS = [
   'nu_plugin_regex'
 ]
 
-export def main [reenter = 0] {
-  if $reenter <= 0 {
-    if $nu.os-info.name == 'macos' {
-      log info 'Upgrading Homebrew packages'
-      brew upgrade
-    }
+export def main [...tools: string] {
+  $tools
+  | default {
+    [
+      ...(if $nu.os-info.name == 'macos' {['brew']} else [])
+      mise
+      uv
+      cargo
+      bun
+    ]
+    | input list --multi
+  }
+  | let choices
+
+  if 'brew' in $choices {
+    log info 'Upgrading Homebrew packages'
+    brew upgrade
   }
 
-  if $reenter <= 1 {
+  if 'mise' in $choices {
     log info 'Upgrading mise tools'
-    # mise up
+    mise up
   }
 
-  if $reenter <= 2 {
+  if 'uv' in $choices {
     log info 'Upgrading UV tools'
     uv tool upgrade --all
   }
 
-  if $reenter <= 3 {
+  if 'cargo' in $choices {
     log info 'Upgrading Cargo packages'
-    cargo install --list | lines | where $in !~ ^\s | each {split row ' ' | $in.0}
-    | cargo install ...$in
+    open ~/.cargo/.crates2.json
+    | $in.installs
+    | items {|k v| [$k $v]}
+    | where $it.0 !~ '\(path\+'
+    | par-each {
+      cargo install ($in.0 | split row ' ' | get 0) ...(
+        $in.1.features
+        | if ($in | is-not-empty) {
+          ['--features' ($in | str join ',')]
+        } else []
+      )
+    }
   }
 
-  if $reenter <= 4 {
+  if 'bun' in $choices {
     log info 'Upgrading Bun tools'
     bun update --global --latest
   }

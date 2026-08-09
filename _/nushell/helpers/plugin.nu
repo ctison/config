@@ -12,12 +12,20 @@ export def up []: nothing -> nothing {
   null
 }
 export def rl [...names: string]: nothing -> nothing {
-  let names = $names | default -e { plugin list | $in.name }
+  let names = $names | default -e { plugin list | get name }
   const BIN_DIR = $nu.current-exe | path dirname
   for name in $names {
+    plugin list
+    | where name == $name
+    | $in.filename
+    | let filename
     plugin rm $name
-    plugin add ($BIN_DIR | path join $'nu_plugin_($name)')
+    plugin add $filename
     plugin list | print
   }
   ignore
+}
+
+export def ls [] {
+  plugin list | reject commands
 }

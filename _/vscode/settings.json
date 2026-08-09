@@ -436,5 +436,13 @@
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always",
   "yaml.format.singleQuote": true,
-  "zenMode.fullScreen": false
+  "zenMode.fullScreen": false,
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml"
+  ]
 }
